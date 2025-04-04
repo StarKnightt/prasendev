@@ -46,7 +46,7 @@ export function GithubContributions() {
       >
         <div className="p-4 hover:scale-[1.02] transition-transform duration-300">
           <GitHubCalendar
-            username="StarKnightt"
+            username="Dev-Huang1"
             colorScheme={resolvedTheme as "light" | "dark"}
             fontSize={12}
             blockSize={12}
