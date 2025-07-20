@@ -35,7 +35,6 @@ export function PersonSchema() {
             addressCountry: "India"
           },
           email: DATA.contact.email,
-          telephone: DATA.contact.tel,
           knowsAbout: DATA.skills
         })
       }}

@@ -74,7 +74,7 @@ const COMMANDS = {
   edu: () => DATA.education.map(edu => 
     `\n${edu.school} - ${edu.degree}\n${edu.start} - ${edu.end}\n`
   ).join('\n'),
-  contact: () => `Email: ${DATA.contact.email}\nPhone: ${DATA.contact.tel}`,
+  contact: () => `Email: ${DATA.contact.email}`,
   social: () => Object.entries(DATA.contact.social)
     .map(([platform, data]) => `${platform}: ${data.url}`)
     .join('\n'),
