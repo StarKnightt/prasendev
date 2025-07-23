@@ -239,38 +239,6 @@ export const DATA = {
   ],
   projects: [
     {
-      title: "ChatX",
-      href: "https://www.chatx0.tech/",
-      dates: "June 2025 - Ongoing",
-      active: true,
-      description:
-        "A sleek, terminal-themed chat interface for AI interactions, with a focus on simplicity and efficiency as well as it supports history functionality, saved only on local storage, and it's completely free to use (until the credit runs out).",
-      technologies: [
-        "Next.js",
-        "TailwindCSS",
-        "Typescript",
-        "CSS",
-        "Vercel",
-        "Git",
-        "Google Gemini AI API",
-        "Llama 3.2 70B",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://www.chatx0.tech/",
-          icon: <Icons.globe className="size-3" />,
-        },
-        {
-          type: "Source",
-          href: "https://github.com/StarKnightt/ChatX",
-          icon: <Icons.github className="size-3" />,
-        },
-      ],
-      image: "",
-      video: "https://video.gumlet.io/6745e593080b60408ca085f7/6846a3250f8d7a05185aae32/download.mp4",
-    },
-    {
       title: "CleanType",
       href: "https://clean-type.vercel.app/",
       dates: "March 2025 - April 2025",
