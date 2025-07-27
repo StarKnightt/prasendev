@@ -303,37 +303,35 @@ export const DATA = {
       video: "https://video.gumlet.io/6745e593080b60408ca085f7/67d5057eefcecbdea7560e35/download.mp4",
     },
     {
-      title: "Resume Builder",
-      href: "https://resume-builder-ten-opal.vercel.app/",
-      dates: "May 2023 - Sept 2023",
+      title: "3D Carousel Gallery",
+      href: "https://3dcarousell.vercel.app/",
+      dates: "December 2024 - January 2025",
       active: true,
       description:
-        "It was my final year [Project](https://github.com/StarKnightt/ResumeBuilder) in our college, It is a interactive and versatile Dynamic CV Builder, completely build from scratch with backend functionallity .",
+        "A beautiful and interactive 3D carousel gallery built with Next.js, featuring image and video support with an integrated music player.",
       technologies: [
-        "CSS",
-        "javascript",
-        "MongoDB",
-        "Express.js",
-        "HTML",
-        "Regex",
-        "Node.js",
+        "Next.js",
+        "CSS 3D Transform",
+        "SoundCloud Widget API",
+        "Modern-Javascript",
+        "Vercel",
+        "Git",
       ],
       links: [
         {
           type: "Website",
-          href: "https://builddresume.vercel.app/",
+          href: "https://3dcarousell.vercel.app/",
           icon: <Icons.globe className="size-3" />,
         },
         {
           type: "Source",
-          href: "https://github.com/StarKnightt/ResumeBuilder",
+          href: "https://github.com/StarKnightt/3D-Carousel",
           icon: <Icons.github className="size-3" />,
         },
       ],
-      
       image: "",
       video:
-        "https://video.gumlet.io/6745e593080b60408ca085f7/6745e5e5080b60408ca08984/download.mp4",
+        "https://video.gumlet.io/6745e593080b60408ca085f7/67912b93d696a7af3b2e38ef/download.mp4",
     },
     {
       title: "GitHub Buddy Finder",
@@ -424,35 +422,37 @@ export const DATA = {
       video: "https://video.gumlet.io/6745e593080b60408ca085f7/6745ea2d080b60408ca0bc08/download.mp4",
     },
     {
-      title: "3D Carousel Gallery",
-      href: "https://3dcarousell.vercel.app/",
-      dates: "December 2024 - January 2025",
+      title: "Resume Builder",
+      href: "https://resume-builder-ten-opal.vercel.app/",
+      dates: "May 2023 - Sept 2023",
       active: true,
       description:
-        "A beautiful and interactive 3D carousel gallery built with Next.js, featuring image and video support with an integrated music player.",
+        "It was my final year [Project](https://github.com/StarKnightt/ResumeBuilder) in our college, It is a interactive and versatile Dynamic CV Builder, completely build from scratch with backend functionallity .",
       technologies: [
-        "Next.js",
-        "CSS 3D Transform",
-        "SoundCloud Widget API",
-        "Modern-Javascript",
-        "Vercel",
-        "Git",
+        "CSS",
+        "javascript",
+        "MongoDB",
+        "Express.js",
+        "HTML",
+        "Regex",
+        "Node.js",
       ],
       links: [
         {
           type: "Website",
-          href: "https://3dcarousell.vercel.app/",
+          href: "https://builddresume.vercel.app/",
           icon: <Icons.globe className="size-3" />,
         },
         {
           type: "Source",
-          href: "https://github.com/StarKnightt/3D-Carousel",
+          href: "https://github.com/StarKnightt/ResumeBuilder",
           icon: <Icons.github className="size-3" />,
         },
       ],
+      
       image: "",
       video:
-        "https://video.gumlet.io/6745e593080b60408ca085f7/67912b93d696a7af3b2e38ef/download.mp4",
+        "https://video.gumlet.io/6745e593080b60408ca085f7/6745e5e5080b60408ca08984/download.mp4",
     }
   ],
   hackathons: [
