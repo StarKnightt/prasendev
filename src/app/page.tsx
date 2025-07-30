@@ -195,6 +195,30 @@ export default function Page() {
           </div>
         </section>
 
+        <section id="education">
+          <div className="flex min-h-0 flex-col gap-y-3">
+            <BlurFade delay={BLUR_FADE_DELAY * 7}>
+              <h2 className="text-xl font-bold">Education</h2>
+            </BlurFade>
+            {DATA.education.map((education, id) => (
+              <BlurFade
+                key={education.school}
+                delay={BLUR_FADE_DELAY * 8 + id * 0.05}
+              >
+                <ResumeCard
+                  key={education.school}
+                  href={education.href}
+                  logoUrl={education.logoUrl}
+                  altText={education.school}
+                  title={education.school}
+                  subtitle={education.degree}
+                  period={`${education.start} - ${education.end}`}
+                />
+              </BlurFade>
+            ))}
+          </div>
+        </section>
+
         <section id="blogs">
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade delay={BLUR_FADE_DELAY * 9}>
@@ -233,108 +257,6 @@ export default function Page() {
           </div>
         </section>
 
-        <section id="hackathons">
-          <div className="space-y-12 w-full py-12">
-            <BlurFade delay={BLUR_FADE_DELAY * 13}>
-              <div className="flex flex-col items-center justify-center space-y-4 text-center">
-                <div className="space-y-2">
-                  <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
-                    Hackathons
-                  </div>
-                  <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                    I like building things
-                  </h2>
-                  <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                    During my college years, I participated in some hackathons.
-                  </p>
-                </div>
-              </div>
-            </BlurFade>
-            <BlurFade delay={BLUR_FADE_DELAY * 14}>
-              <ul className="mb-4 ml-4 divide-y divide-dashed border-l">
-                {DATA.hackathons.map((project, id) => (
-                  <BlurFade
-                    key={project.title + project.dates}
-                    delay={BLUR_FADE_DELAY * 15 + id * 0.05}
-                  >
-                    <HackathonCardDynamic
-                      title={project.title}
-                      description={project.description}
-                      location={project.location}
-                      dates={project.dates}
-                      image={project.image}
-                      links={project.links}
-                    />
-                  </BlurFade>
-                ))}
-              </ul>
-            </BlurFade>
-          </div>
-        </section>
-        <section id="education">
-          <div className="flex min-h-0 flex-col gap-y-3">
-            <BlurFade delay={BLUR_FADE_DELAY * 7}>
-              <h2 className="text-xl font-bold">Education</h2>
-            </BlurFade>
-            {DATA.education.map((education, id) => (
-              <BlurFade
-                key={education.school}
-                delay={BLUR_FADE_DELAY * 8 + id * 0.05}
-              >
-                <ResumeCard
-                  key={education.school}
-                  href={education.href}
-                  logoUrl={education.logoUrl}
-                  altText={education.school}
-                  title={education.school}
-                  subtitle={education.degree}
-                  period={`${education.start} - ${education.end}`}
-                />
-              </BlurFade>
-            ))}
-          </div>
-        </section>
-
-        <section id="videos">
-          <BlurFade delay={BLUR_FADE_DELAY * 10}>
-            <div className="space-y-4">
-              <h2 className="text-xl font-bold">Recent Videos</h2>
-              <div className="grid gap-6 sm:grid-cols-2">
-                {DATA.videos.slice(-2).map((video, idx) => (
-                  <BlurFade key={video.url} delay={BLUR_FADE_DELAY * 11 + idx * 0.05}>
-                    <div className="relative overflow-hidden rounded-xl">
-                      <BorderBeam
-                        size={50}
-                        duration={4}
-                        colorFrom="#ffaa40"
-                        colorTo="#9c40ff"
-                        className="from-transparent via-foreground/20 to-transparent"
-                        transition={{
-                          type: "spring",
-                          stiffness: 60,
-                          damping: 20,
-                        }}
-                      />
-                      <VideoCard video={video} />
-                    </div>
-                  </BlurFade>
-                ))}
-                <BlurFade delay={BLUR_FADE_DELAY * 12}>
-                  <Link
-                    href="/videos"
-                    className="mt-4 block"
-                  >
-                    <RainbowButton
-                      className="w-full sm:w-[160px] px-4 py-2 group transition-all duration-300 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] font-bold text-center"
-                    >
-                      All Videos →
-                    </RainbowButton>
-                  </Link>
-                </BlurFade>
-              </div>
-            </div>
-          </BlurFade>
-        </section>
 
         <section id="contact">
           <BlurFade delay={BLUR_FADE_DELAY * 16}>
