@@ -1,0 +1,51 @@
+---
+title: 'How I Fixed the Black Screen Issue in KDE Plasma'
+publishedAt: "2025-08-17"
+summary: 'A simple guide explaining how to fix the black screen issue in KDE Plasma'
+tags: ['KDE', 'Linux', 'Debian', 'Plasma']
+---
+
+# How I Fixed the Black Screen Issue in KDE Plasma
+
+![Black Screen](/black-screen.avif)
+
+Today, I went to my friend's house and he was using KDE Plasma. He was like "oh, I'm gonna try it", and suddenly we got a black screen issue, glad that I faced this issue earlier and fixed it too, so the above image is an old imgage but the method is same, here we go - 
+
+## Temporary Fix
+
+- Yeah, that old school method, **restart the system**, if it worked then fine, but if it didn't, then we need to go for the next method.
+
+- Press **`Ctrl + Alt + T`** to open the terminal.
+- If you can see the mouse cursor but not the desktop, it usually means that **Plasma (plasmashell) has crashed**.
+- Type this command and presss enter - 
+
+```bash
+systemctl --user restart plasma-plasmashell.service
+```
+- This restarts Plasma, and your desktop should come back to life (I hope)
+
+## Permanent Fix
+
+- To stop this from happening again, you’ll need to update your system. Outdated or broken packages can often cause Plasma to crash.
+
+-First, turn on **offline updates** in your Software Update settings.
+![Offline Updates](/debian.avif)
+- This ensures updates are applied safely during a restart.
+- Then run these commands - 
+
+```bash 
+sudo apt dist-upgrade
+sudo apt install -f
+```
+
+- The first command updates all packages (and their dependencies) to the latest version.
+- The second command fixes any broken dependencies that might be causing trouble.
+- After doing this, I haven’t faced the black screen issue again.
+
+## Final Thoughts
+
+- If you use KDE Plasma and suddenly end up staring at a black screen with only your cursor, don’t panic. 
+- A quick restart of plasmashell should bring things back, and keeping your system updated will help prevent it in the future.
+
+- Btw, I posted it a long time ago, but I didn't get any response on twitter, here it is btw - 
+[KDE plasma black screen issue](https://x.com/Star_Knight12/status/1763066711572373959)
