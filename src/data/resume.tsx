@@ -85,6 +85,13 @@ export const DATA = {
       thumbnail: "/video8.avif",
       url:"https://youtu.be/vHTbqgmB2U8",
       date: "2025-05-06"
+    },
+    {
+      title:"How to Get Free Subscriptions for Notion, Cursor, Google, Perplexity & Free Domain Names (Hindi)",
+      description: "In this video I talked about how to get free subscriptions for Notion, Cursor, Google, Perplexity & Free Domain Names.",
+      thumbnail: "/video9.avif",
+      url:"https://youtu.be/0Up-SjeSwI0",
+      date: "2025-08-27"
     }
   ],
   navbar: [
