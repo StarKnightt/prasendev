@@ -137,10 +137,10 @@ export const DATA = {
         icon: Icons.codepen,
         navbar: true,
       },
-      Peerlist: {
-        name: "Peerlist",
-        url: "https://peerlist.io/starknight/signup",
-        icon: Icons.peerlist,
+      Vercel: {
+        name: "Vercel",
+        url: "https://v0.link/prasenjit-nayak",
+        icon: Icons.vercel,
         navbar: true,
       },
       buyMeACoffee: {

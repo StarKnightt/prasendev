@@ -1,4 +1,5 @@
 import { GlobeIcon, MailIcon, FolderIcon } from "lucide-react";
+import { V0Icon } from "./v0-icon";
 
 export type IconProps = React.HTMLAttributes<SVGElement>;
 
@@ -221,16 +222,7 @@ export const Icons = {
       <line x1="12" y1="2" x2="12" y2="8.5" />
     </svg>
   ),
-  peerlist: (props: IconProps) => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
-      <title>Peerlist</title>
-      <rect x="3" y="3" width="18" height="18" rx="4" fill="currentColor" />
-      <path
-        d="M7.5 6.5h6c2.2 0 4 1.8 4 4s-1.8 4-4 4h-2.5v3h-3.5v-11zm3.5 2v4h2.5c1.1 0 2-0.9 2-2s-0.9-2-2-2h-2.5z"
-        fill="white"
-      />
-    </svg>
-  ),
+  vercel: () => <V0Icon />,
   whatsapp: (props: IconProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
