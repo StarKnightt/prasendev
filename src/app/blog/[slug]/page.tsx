@@ -5,7 +5,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { BlogInteractions } from "@/components/blog-interactions";
-import { RandomPromotion } from "@/components/random-promotion";
 
 export async function generateStaticParams() {
   const posts = await getBlogPosts();
@@ -105,7 +104,6 @@ export default async function Blog({
         dangerouslySetInnerHTML={{ __html: post.source }}
       />
       <BlogInteractions slug={params.slug} />
-      <RandomPromotion />
     </section>
   );
 }

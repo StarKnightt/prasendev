@@ -12,13 +12,9 @@ export function PageBackground() {
   const isBlogPage = pathname?.includes('/blog');
   const isGadgetsPage = pathname?.includes('/gadgets');
 
-  if (isBlogPage) {
-    return <GridPattern className="w-full h-full" />;
-  }
-
   if (isGadgetsPage) {
     return <GridPattern className="w-full h-full" />;
   }
-  // Show meteors on all other pages
+  // Show meteors on blog and other pages
   return <MeteorsBackground />;
 }
