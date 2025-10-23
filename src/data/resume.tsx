@@ -20,14 +20,10 @@ export const DATA = {
     "React",
     "Next.js",
     "Typescript",
-    "Node.js",
-    "Java",
     "MongoDB",
-    "JavaScript",
-    "git",
-    "Linux",
-    "RestAPI",
-    "AI API",
+    "shitposting",
+    "can do plank for 3 minutes",
+    "Video Game Player"
   ],
   videos: [
     {
