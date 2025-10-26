@@ -22,7 +22,7 @@ export const DATA = {
     "Typescript",
     "MongoDB",
     "shitposting",
-    "can do plank for 3 minutes",
+    "can do plank for 150 seconds",
     "Video Game Player"
   ],
   videos: [
