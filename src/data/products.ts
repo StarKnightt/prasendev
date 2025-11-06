@@ -99,4 +99,13 @@ export const products: Product[] = [
     category: 'Computer and accessories',
     featured: true,
   },
+  {
+    id: '11',
+    title: 'FIFINE A6T Streaming Gaming USB Microphone Kit,',
+    description: 'if you are investing in this budget, then no doubt it\'s a good investment, that filter of the mic is really awesome, filters out almost all noise and you can tweak it a little bit on obs-studio to get the best out of it',
+    imageUrl: '/images/products/microphone.webp',
+    amazonLink: 'https://amzn.to/47rET2F',
+    category: 'Computer and accessories',
+    featured: false,
+  },
 ];
