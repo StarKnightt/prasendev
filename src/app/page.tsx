@@ -20,6 +20,7 @@ import { ProjectSkeleton } from "@/components/skeletons/project-skeleton";
 import { HackathonSkeleton } from "@/components/skeletons/hackathon-skeleton";
 import { BorderBeam } from "@/components/magicui/border-beam";
 import { GhibliSkyBackground } from "@/components/ghibli-elements";
+import { AgeCounter } from "@/components/age-counter";
 const BLUR_FADE_DELAY = 0.04;
 export const metadata: Metadata = {
   title: DATA.name,
@@ -86,8 +87,11 @@ export default function Page() {
                   delay={BLUR_FADE_DELAY}
                   className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
                   yOffset={8}
-                  text={`Hi, I'm ${DATA.name.split(" ")[0]} 👨🏻‍💻`}
+                  text={`hey, ${DATA.name.split(" ")[0]} here`}
                 />
+                <BlurFade delay={BLUR_FADE_DELAY * 1.5}>
+                  <AgeCounter />
+                </BlurFade>
                 <BlurFadeText
                   className="max-w-[600px] md:text-xl"
                   delay={BLUR_FADE_DELAY}
@@ -114,7 +118,7 @@ export default function Page() {
         
         <section id="about">
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
-            <h2 className="text-xl font-bold">About</h2>
+            <h2 className="text-xl font-bold">about</h2>
           </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 4}>
             <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
@@ -154,6 +158,32 @@ export default function Page() {
                 </BlurFade>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section id="work">
+          <div className="flex min-h-0 flex-col gap-y-3">
+            <BlurFade delay={BLUR_FADE_DELAY * 5}>
+              <h2 className="text-xl font-bold">places I worked for</h2>
+            </BlurFade>
+            {DATA.work.map((work, id) => (
+              <BlurFade
+                key={work.company}
+                delay={BLUR_FADE_DELAY * 6 + id * 0.05}
+              >
+                <ResumeCard
+                  key={work.company}
+                  logoUrl={work.logoUrl}
+                  altText={work.company}
+                  title={work.company}
+                  subtitle={work.title}
+                  href={work.href}
+                  badges={work.badges}
+                  period={`${work.start} - ${work.end}`}
+                  description={work.description}
+                />
+              </BlurFade>
+            ))}
           </div>
         </section>
 
@@ -218,52 +248,13 @@ export default function Page() {
           </div>
         </section>
 
-        <section id="blogs">
-          <div className="flex min-h-0 flex-col gap-y-3">
-            <BlurFade delay={BLUR_FADE_DELAY * 9}>
-              <h2 className="text-xl font-bold">Recent Blog Posts</h2>
-            </BlurFade>
-            <BlurFade delay={BLUR_FADE_DELAY * 10}>
-              <div className="flex flex-col space-y-4">
-                <BlogCard
-                  post={{
-                    title: "Is Computer Science Saturated?",
-                    publishedAt: "2024-06-18",
-                    summary: "Blogs are preparing to launch. Stay tuned!",
-                    slug: "hello-world"
-                  }}
-                />
-                <BlogCard
-                  post={{
-                    title: "How to use Cursor AI IDE pro for Free ?",
-                    publishedAt: "2025-04-09",
-                    summary: "A comprehensive guide explaining how to use Cursor for free",
-                    slug: "cursor-free"
-                  }}
-                />
-                <Link
-                  href="/blog"
-                  className="mt-4 block"
-                >
-                  <RainbowButton
-                    className="w-full sm:w-[160px] px-4 py-2 group transition-all duration-300 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] font-bold text-sm"
-                  >
-                    Read More Blogs
-                  </RainbowButton>
-                </Link>
-              </div>
-            </BlurFade>
-          </div>
-        </section>
-
-
         <section id="contact">
           <BlurFade delay={BLUR_FADE_DELAY * 16}>
             <div className="space-y-4">
               <h2 className="text-xl font-bold">Contact</h2>
               
               <p className="text-muted-foreground">
-                Always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Feel free to reach out!
+              if you want to collab or just talk tech, hit me up.
               </p>
               
               <div className="mt-6 space-y-4">
