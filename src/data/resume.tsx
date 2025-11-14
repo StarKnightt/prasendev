@@ -207,7 +207,7 @@ export const DATA = {
       degree: "Higher Secondary",
       logoUrl: "/waterloo.webp",
       start: "2019",
-      end: "2021",
+      end: "2020",
     },
   ],
   projects: [
