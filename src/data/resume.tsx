@@ -1,8 +1,5 @@
 import { Icons } from "@/components/icons";
-import { Description } from "@radix-ui/react-dialog";
-import { url } from "inspector";
-import { HomeIcon, NotebookIcon, ThumbsDown, VideoIcon, FolderIcon } from "lucide-react";
-import { title } from "process";
+import { HomeIcon, NotebookIcon, VideoIcon, FolderIcon } from "lucide-react";
 
 export const DATA = {
   name: "prasenjit Nayak",

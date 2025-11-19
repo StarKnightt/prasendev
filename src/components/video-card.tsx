@@ -22,7 +22,18 @@ export function VideoCard({ video }: VideoCardProps) {
 
   return (
     <>
-      <div onClick={() => setIsModalOpen(true)} className="cursor-pointer">
+      <div 
+        role="button"
+        tabIndex={0}
+        onClick={() => setIsModalOpen(true)} 
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            setIsModalOpen(true);
+          }
+        }}
+        className="cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-lg"
+      >
         <Card className="overflow-hidden hover:shadow-lg transition-all duration-300">
           <div className="relative group">
             <Image

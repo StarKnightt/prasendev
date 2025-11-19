@@ -35,10 +35,11 @@ const BlurFadeText = ({
 
   if (animateByCharacter) {
     return (
-      <div className="flex">
+      <div className="flex" aria-label={text}>
         <AnimatePresence>
           {characters.map((char, i) => (
             <motion.span
+              aria-hidden="true"
               key={i}
               initial="hidden"
               animate="visible"

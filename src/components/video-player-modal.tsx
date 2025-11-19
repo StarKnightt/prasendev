@@ -35,7 +35,7 @@ export function VideoPlayerModal({ isOpen, onClose, videoUrl, videoTitle }: Vide
         <div className="relative w-full aspect-video">
           <iframe
             src={embedUrl}
-            title={videoUrl}
+            title={videoTitle || "Video player"}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
             className="w-full h-full rounded-lg"
