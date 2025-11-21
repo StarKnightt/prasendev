@@ -1,3 +1,5 @@
+"use client";
+
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -11,6 +13,9 @@ import Image from "next/image";
 import Link from "next/link";
 import Markdown from "react-markdown";
 import { BorderBeam } from "@/components/magicui/border-beam";
+import { VideoPlayerModal } from "./video-player-modal";
+import { useState } from "react";
+import { Play } from "lucide-react";
 
 interface Props {
   title: string;
@@ -41,33 +46,52 @@ export function ProjectCard({
   links,
   className,
 }: Props) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
+
+  const handleCardClick = (e: React.MouseEvent) => {
+    // If there is a video, prevent default link behavior and open modal
+    if (video) {
+      e.preventDefault();
+      setIsModalOpen(true);
+    }
+  };
+
   return (
-    <Card className={cn("flex flex-col overflow-hidden border hover:shadow-lg transition-all duration-300 ease-out h-full relative group", className)}>
-      <Link
-        href={href || "#"}
-        className="block cursor-pointer"
-      >
-        {video && (
-          <video
-            src={video}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="pointer-events-none mx-auto h-40 w-full object-cover object-top"
-          />
-        )}
-        {image && (
-          <Image
-            src={image}
-            alt={title}
-            width={500}
-            height={300}
-            className="h-40 w-full overflow-hidden object-cover object-top"
-          />
-        )}
-      </Link>
-      <CardHeader className="px-2">
+    <>
+      <Card className={cn("flex flex-col overflow-hidden border hover:shadow-lg transition-all duration-300 ease-out h-full relative group", className)}>
+        <Link
+          href={href || "#"}
+          className="block cursor-pointer relative overflow-hidden"
+          onClick={handleCardClick}
+        >
+          {video && (
+            <video
+              src={video}
+              loop
+              muted
+              playsInline
+              className="pointer-events-none mx-auto h-40 w-full object-cover object-top transition-transform duration-500 group-hover:scale-105 group-hover:blur-[2px]"
+            />
+          )}
+          {image && !video && (
+            <Image
+              src={image}
+              alt={title}
+              width={500}
+              height={300}
+              className="h-40 w-full overflow-hidden object-cover object-top transition-transform duration-500 group-hover:scale-105 group-hover:blur-[2px]"
+            />
+          )}
+          
+          {/* Hover Overlay with Play Button */}
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20 z-10">
+             <div className="bg-black/50 rounded-full p-3 backdrop-blur-sm border border-white/20 shadow-xl transform group-hover:scale-110 transition-transform duration-300">
+              <Play className="w-6 h-6 text-white fill-white" />
+             </div>
+          </div>
+        </Link>
+        <CardHeader className="px-2">
         <div className="space-y-1">
           <CardTitle className="mt-1 text-base">{title}</CardTitle>
           <time className="font-sans text-xs">{dates}</time>
@@ -108,12 +132,22 @@ export function ProjectCard({
           </div>
         )}
       </CardFooter>
-      <BorderBeam
-        duration={4}
-        size={300}
-        reverse
-        className="from-transparent via-green-500 to-transparent"
-      />
-    </Card>
+        <BorderBeam
+          duration={4}
+          size={300}
+          reverse
+          className="from-transparent via-green-500 to-transparent"
+        />
+      </Card>
+
+      {video && (
+        <VideoPlayerModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          videoUrl={video}
+          videoTitle={title}
+        />
+      )}
+    </>
   );
 }

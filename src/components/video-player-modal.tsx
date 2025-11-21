@@ -21,8 +21,13 @@ function getYouTubeEmbedUrl(url: string) {
   return videoId ? `https://www.youtube.com/embed/${videoId}` : '';
 }
 
+function isYouTubeUrl(url: string) {
+  return url.includes('youtube.com') || url.includes('youtu.be');
+}
+
 export function VideoPlayerModal({ isOpen, onClose, videoUrl, videoTitle }: VideoPlayerModalProps) {
-  const embedUrl = getYouTubeEmbedUrl(videoUrl);
+  const isYouTube = isYouTubeUrl(videoUrl);
+  const embedUrl = isYouTube ? getYouTubeEmbedUrl(videoUrl) : videoUrl;
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -33,14 +38,26 @@ export function VideoPlayerModal({ isOpen, onClose, videoUrl, videoTitle }: Vide
           </DialogTitle>
         </DialogHeader>
         <div className="relative w-full aspect-video">
-          <iframe
-            src={embedUrl}
-            title={videoTitle || "Video player"}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="w-full h-full rounded-lg"
-            style={{ border: 'none' }}
-          />
+          {isYouTube ? (
+            <iframe
+              src={embedUrl}
+              title={videoTitle || "Video player"}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full rounded-lg"
+              style={{ border: 'none' }}
+            />
+          ) : (
+            <video
+              src={embedUrl}
+              controls
+              autoPlay
+              className="w-full h-full rounded-lg"
+              style={{ backgroundColor: 'black' }}
+            >
+              Your browser does not support the video tag.
+            </video>
+          )}
         </div>
       </DialogContent>
     </Dialog>
