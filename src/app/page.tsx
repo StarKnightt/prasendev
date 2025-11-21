@@ -21,6 +21,7 @@ import { HackathonSkeleton } from "@/components/skeletons/hackathon-skeleton";
 import { BorderBeam } from "@/components/magicui/border-beam";
 import { GhibliSkyBackground } from "@/components/ghibli-elements";
 import { AgeCounter } from "@/components/age-counter";
+import { SpotifyNowPlaying } from "@/components/spotify-now-playing";
 const BLUR_FADE_DELAY = 0.04;
 export const metadata: Metadata = {
   title: DATA.name,
@@ -141,6 +142,11 @@ export default function Page() {
                     delay={BLUR_FADE_DELAY * 5 + idx * 0.05}
                   />
                 ))}
+              </div>
+              
+              {/* Spotify Now Playing */}
+              <div className="mt-6">
+                <SpotifyNowPlaying />
               </div>
             </div>
           </BlurFade>

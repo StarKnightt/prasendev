@@ -19,6 +19,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'assets.hostinger.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.scdn.co',
       }
     ],
     minimumCacheTTL: 60,
