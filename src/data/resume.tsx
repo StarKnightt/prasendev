@@ -85,7 +85,14 @@ export const DATA = {
       thumbnail: "/video9.avif",
       url:"https://youtu.be/0Up-SjeSwI0",
       date: "2025-08-27"
-    }
+    },
+    {
+      title:"The Truth About My 2025: Wins, Losses, & Regrets",
+      description: "In this video, I break down the specific wins and devastating losses that defined my year, and the critical lessons I learned from them. This isn't just a highlight reel, it’s an honest look at what it takes to grow when life hits hard.",
+      thumbnail: "/video10.avif",
+      url:"https://youtu.be/iXPFdG9Ft7E",
+      date: "2025-12-23"
+    },
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
