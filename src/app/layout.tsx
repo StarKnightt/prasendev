@@ -13,6 +13,7 @@ import { PageBackground } from "@/components/page-background";
 import { Analytics } from "@vercel/analytics/react";
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import { SmoothCursor } from "@/components/ui/smooth-cursor";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -117,7 +118,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn(fontSans.variable, "font-sans antialiased")}>
+      <body className={cn(fontSans.variable, "font-sans antialiased cursor-none")}>
+        <SmoothCursor />
         {/* Background container */}
         <div className="fixed inset-0 z-[-1]">
           <PageBackground />
