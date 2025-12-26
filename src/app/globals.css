@@ -263,3 +263,19 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
   mix-blend-mode: overlay;
   filter: contrast(1.2);
 }
+
+/* Keep text cursor for input fields */
+input,
+textarea,
+select {
+  cursor: text !important;
+}
+
+/* Remove cursor on all interactive elements */
+a,
+button,
+[role="button"],
+label,
+.cursor-pointer {
+  cursor: none !important;
+}
