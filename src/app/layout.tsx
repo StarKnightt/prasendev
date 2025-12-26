@@ -14,6 +14,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { SmoothCursor } from "@/components/ui/smooth-cursor";
+import { CommandPalette } from "@/components/command-palette";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -153,6 +154,7 @@ export default function RootLayout({
               <Analytics />
               <SpeedInsights />
               <Navbar />
+              <CommandPalette />
             </TooltipProvider>
           </ThemeProvider>
         </div>
