@@ -21,6 +21,8 @@ import { HackathonSkeleton } from "@/components/skeletons/hackathon-skeleton";
 import { BorderBeam } from "@/components/magicui/border-beam";
 import { GhibliSkyBackground } from "@/components/ghibli-elements";
 import { AgeCounter } from "@/components/age-counter";
+import { GitHubSponsors } from "@/components/github-sponsors";
+import { TwitterTestimonials } from "@/components/twitter-testimonials";
 const BLUR_FADE_DELAY = 0.04;
 export const metadata: Metadata = {
   title: DATA.name,
@@ -194,6 +196,12 @@ export default function Page() {
           </BlurFade>
         </section>
 
+        <section id="sponsors">
+          <BlurFade delay={BLUR_FADE_DELAY * 11}>
+            <GitHubSponsors />
+          </BlurFade>
+        </section>
+
         <section id="projects">
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade delay={BLUR_FADE_DELAY * 7}>
@@ -201,14 +209,21 @@ export default function Page() {
             </BlurFade>
             <BlurFade delay={BLUR_FADE_DELAY * 8}>
               <div className="grid gap-4 sm:grid-cols-2">
-                {DATA.projects.slice(0, 4).map((project) => (
-                  <div key={project.title} className="relative overflow-hidden rounded-xl">
-                    <ProjectCard
-                      {...project}
-                      tags={Array.from(project.technologies)}
-                    />
-                  </div>
-                ))}
+                {DATA.projects
+                  .filter((project) => 
+                    project.active && 
+                    project.title !== "Solar System" && 
+                    project.title !== "Coffee-Website"
+                  )
+                  .slice(0, 2)
+                  .map((project) => (
+                    <div key={project.title} className="relative overflow-hidden rounded-xl">
+                      <ProjectCard
+                        {...project}
+                        tags={Array.from(project.technologies)}
+                      />
+                    </div>
+                  ))}
               </div>
               <Link
                 href="/projects"
@@ -246,6 +261,12 @@ export default function Page() {
               </BlurFade>
             ))}
           </div>
+        </section>
+
+        <section id="testimonials">
+          <BlurFade delay={BLUR_FADE_DELAY * 15}>
+            <TwitterTestimonials />
+          </BlurFade>
         </section>
 
         <section id="contact">

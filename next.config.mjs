@@ -19,6 +19,14 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'assets.hostinger.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'pbs.twimg.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'abs.twimg.com',
       }
     ],
     minimumCacheTTL: 60,
