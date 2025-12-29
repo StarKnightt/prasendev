@@ -11,6 +11,10 @@ A modern, responsive portfolio website built with Next.js 14, TypeScript, Tailwi
 - **Gadgets Shop**: Curated list of recommended products
 - **Animations**: Smooth page transitions and micro-interactions
 - **GitHub Integration**: Live GitHub contribution graph
+- **GitHub Sponsors**: Display your GitHub sponsors with beautiful cards
+- **Twitter/X Testimonials**: Showcase tweets about your work in a marquee
+- **Command Palette**: Quick navigation with Ctrl+K / Cmd+K
+- **Smooth Cursor**: Custom animated cursor effect
 - **SEO Optimized**: Meta tags and OpenGraph support
 - **Performance Focused**: Optimized for Core Web Vitals
 
@@ -49,6 +53,57 @@ npm run dev
 2. Add your blog posts in the `content` directory as MDX files.
 3. Update `src/data/products.ts` to add your recommended products.
 4. Customize theme colors in `tailwind.config.ts`.
+
+## 🔑 Environment Variables
+
+Create a `.env.local` file in the root directory with the following variables:
+
+```env
+# GitHub Token (Required for GitHub Sponsors)
+GITHUB_TOKEN=your_github_personal_access_token
+```
+
+### Setting up GitHub Token
+
+1. Go to [GitHub Settings > Developer Settings > Personal Access Tokens](https://github.com/settings/tokens)
+2. Click "Generate new token (classic)"
+3. Give it a name (e.g., "Portfolio Sponsors")
+4. Select the following scopes:
+   - `read:user` - Read user profile data
+   - `read:org` - Read org membership (if applicable)
+5. Click "Generate token" and copy it
+6. Add it to your `.env.local` file
+
+> **Note**: The token is used to fetch your GitHub sponsors. Without it, the sponsors section will show an error.
+
+## 🐦 Twitter/X Testimonials
+
+To add testimonials from Twitter/X:
+
+1. Open `src/components/twitter-testimonials.tsx`
+2. Add tweet IDs to the `tweetIds` array:
+
+```typescript
+const tweetIds = [
+  "1862049464807989608", // @username
+  "1868648019119522142", // @another_user
+  // Add more tweet IDs here
+];
+```
+
+**To get a tweet ID:**
+- Open the tweet on Twitter/X
+- Copy the URL: `https://x.com/username/status/1234567890`
+- The ID is the number at the end: `1234567890`
+
+## 💖 GitHub Sponsors
+
+The portfolio automatically displays your GitHub sponsors. Features include:
+- Sponsor avatar, name, and username
+- Beautiful card design with hover effects
+- "Sponsor me" button linking to your GitHub Sponsors page
+
+To customize, edit `src/components/github-sponsors.tsx`.
 
 ## 📁 Project Structure
 

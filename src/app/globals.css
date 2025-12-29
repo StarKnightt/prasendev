@@ -279,3 +279,36 @@ label,
 .cursor-pointer {
   cursor: none !important;
 }
+
+/* Marquee animations for testimonials */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Clean tweets - minimal CSS to avoid hiding everything */
+.clean-tweet time {
+  display: none !important;
+}
