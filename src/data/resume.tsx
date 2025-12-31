@@ -10,7 +10,7 @@ export const DATA = {
   description:
     "",
   summary:
-    "Learnt lessons always in a hardway. \n\nCurrently doing **freelancing** and **collaborating** with new people. .\n\n i love to play video games and sometimes publish it on [here](https://www.youtube.com/@StarKnight-12) and thoughts on tech [here](https://www.youtube.com/@Star_Knight12).\n\nhere's is what I think about [computer-science future](https://prasen.dev/blog/is-computer-science-saturated)",
+    "Learnt lessons always in a hardway. \n\nCurrently doing **freelancing** and **collaborating** with new people. .\n\n i love to play video games and sometimes publish it on [here](https://www.youtube.com/@StarKnight-12) and thoughts on tech [here](https://www.youtube.com/@Star_Knight12).\n\nhere's is what I think about [computer-science future](https://www.prasen.dev/blog/hello-world)",
 
   avatarUrl: "/hi.webp",
   skills: [
