@@ -88,7 +88,7 @@ export const products: Product[] = [
     imageUrl: '/images/products/S23.webp',
     amazonLink: 'https://amzn.to/3GQiwsB',
     category: 'Computer and accessories',
-    featured: true,
+    featured: false,
   },
   {
     id: '10',
@@ -107,5 +107,14 @@ export const products: Product[] = [
     amazonLink: 'https://amzn.to/47rET2F',
     category: 'Computer and accessories',
     featured: false,
+  },
+  {
+    id: '12',
+    title: 'Razer BlackWidow V3 Tenkeyless',
+    description: 'I use it for my daily works as well as the keyboards are really great, an all-rounder keyboard for sure, value for money and from razer, so yeah a must buy for sure.',
+    imageUrl: '/images/products/keyboard.webp',
+    amazonLink: 'https://amzn.to/44Pq9ZN',
+    category: 'Computer and accessories',
+    featured: true,
   },
 ];
