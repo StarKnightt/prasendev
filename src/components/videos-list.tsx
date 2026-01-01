@@ -43,18 +43,20 @@ export function VideosList({ videos }: VideosListProps) {
 
   return (
     <>
-      <div className="flex justify-end mb-6">
-        <Select value={sortOrder} onValueChange={(value: "newest" | "oldest") => setSortOrder(value)}>
-          <SelectTrigger className="w-[180px]">
-            <ArrowUpDown className="mr-2 h-4 w-4" />
-            <SelectValue placeholder="Sort by date" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="newest">Newest First</SelectItem>
-            <SelectItem value="oldest">Oldest First</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
+      <BlurFade delay={BLUR_FADE_DELAY}>
+        <div className="flex justify-end mb-6">
+          <Select value={sortOrder} onValueChange={(value: "newest" | "oldest") => setSortOrder(value)}>
+            <SelectTrigger className="w-[180px]">
+              <ArrowUpDown className="mr-2 h-4 w-4" />
+              <SelectValue placeholder="Sort by date" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="newest">Newest First</SelectItem>
+              <SelectItem value="oldest">Oldest First</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+      </BlurFade>
 
       <div className="grid gap-6 sm:grid-cols-2">
         {sortedVideos.map((video, idx) => (
