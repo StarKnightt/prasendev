@@ -6,26 +6,36 @@ import { GadgetFilters } from '@/components/gadgets/gadget-filters';
 import { products } from '@/data/products';
 import BlurFade from '@/components/magicui/blur-fade';
 import { GadgetSkeleton } from "@/components/skeletons/gadget-skeleton";
+import { PackageSearch } from 'lucide-react';
 
 export default function GadgetsPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
 
-  // Get unique categories
+  // Get unique categories with counts
   const categories = useMemo(() => {
     return Array.from(new Set(products.map(product => product.category)));
   }, []);
 
-  // Filter products based on search query and category
+  // Filter and sort products (featured first)
   const filteredProducts = useMemo(() => {
-    return products.filter(product => {
-      const matchesSearch = searchQuery === '' || 
-        product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        product.description.toLowerCase().includes(searchQuery.toLowerCase());
-      const matchesCategory = selectedCategory === '' || product.category === selectedCategory;
-      return matchesSearch && matchesCategory;
-    });
+    return products
+      .filter(product => {
+        const matchesSearch = searchQuery === '' || 
+          product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          product.description.toLowerCase().includes(searchQuery.toLowerCase());
+        const matchesCategory = selectedCategory === '' || product.category === selectedCategory;
+        return matchesSearch && matchesCategory;
+      })
+      .sort((a, b) => {
+        // Featured products first
+        if (a.featured && !b.featured) return -1;
+        if (!a.featured && b.featured) return 1;
+        return 0;
+      });
   }, [searchQuery, selectedCategory]);
+
+  const hasActiveFilters = searchQuery !== '' || selectedCategory !== '';
 
   return (
     <main className="container max-w-6xl mx-auto px-4 py-12">
@@ -38,7 +48,7 @@ export default function GadgetsPage() {
             </p>
           </div>
           
-          <div className="space-y-8">
+          <div className="space-y-6">
             <GadgetFilters
               searchQuery={searchQuery}
               setSearchQuery={setSearchQuery}
@@ -46,15 +56,49 @@ export default function GadgetsPage() {
               setSelectedCategory={setSelectedCategory}
               categories={categories}
             />
+
+            {/* Results count & active filters */}
+            <div className="flex flex-wrap items-center gap-2 text-sm">
+              <span className="text-muted-foreground">
+                Showing <span className="font-medium text-foreground">{filteredProducts.length}</span> of {products.length} gadgets
+              </span>
+              {hasActiveFilters && (
+                <div className="flex items-center gap-2">
+                  <span className="text-muted-foreground">•</span>
+                  {searchQuery && (
+                    <span className="px-2 py-0.5 bg-primary/10 text-primary rounded-full text-xs">
+                      Search: "{searchQuery}"
+                    </span>
+                  )}
+                  {selectedCategory && (
+                    <span className="px-2 py-0.5 bg-primary/10 text-primary rounded-full text-xs">
+                      {selectedCategory}
+                    </span>
+                  )}
+                </div>
+              )}
+            </div>
             
             {filteredProducts.length === 0 ? (
-              <div className="text-center py-12 text-muted-foreground">
-                No gadgets found matching your criteria
+              <div className="text-center py-16 space-y-4">
+                <div className="flex justify-center">
+                  <div className="p-4 bg-muted rounded-full">
+                    <PackageSearch className="size-8 text-muted-foreground" />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <h3 className="font-semibold text-lg">No gadgets found</h3>
+                  <p className="text-muted-foreground text-sm max-w-sm mx-auto">
+                    Try adjusting your search or filter to find what you're looking for.
+                  </p>
+                </div>
               </div>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {filteredProducts.map((product) => (
-                  <GadgetCard key={product.id} product={product} />
+                {filteredProducts.map((product, index) => (
+                  <BlurFade key={product.id} delay={0.05 * index} inView>
+                    <GadgetCard product={product} />
+                  </BlurFade>
                 ))}
               </div>
             )}
