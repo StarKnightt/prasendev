@@ -1,7 +1,7 @@
 import React from 'react';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
+import { Search, X, Filter } from "lucide-react";
 
 interface GadgetFiltersProps {
   searchQuery: string;
@@ -18,27 +18,40 @@ export function GadgetFilters({
   setSelectedCategory,
   categories,
 }: GadgetFiltersProps) {
+  const hasFilters = searchQuery !== '' || selectedCategory !== '';
+
   return (
-    <div className="mb-8 space-y-4">
-      <div className="flex flex-col sm:flex-row gap-4">
-        <div className="flex-1">
-          <Label htmlFor="search" className="mb-2 block">Search Gadgets</Label>
+    <div className="space-y-4">
+      <div className="flex flex-col sm:flex-row gap-3">
+        {/* Search input with icon */}
+        <div className="flex-1 relative">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
           <Input
             id="search"
             type="text"
-            placeholder="Search by name or description..."
+            placeholder="Search gadgets..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full"
+            className="w-full pl-10 pr-10"
           />
+          {searchQuery && (
+            <button
+              onClick={() => setSearchQuery('')}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <X className="size-4" />
+            </button>
+          )}
         </div>
-        <div className="sm:w-48">
-          <Label htmlFor="category" className="mb-2 block">Category</Label>
+
+        {/* Category dropdown */}
+        <div className="relative sm:w-56">
+          <Filter className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground pointer-events-none" />
           <select
             id="category"
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="w-full h-10 px-3 py-2 bg-background border border-input rounded-md"
+            className="w-full h-10 pl-10 pr-3 py-2 bg-background border border-input rounded-md text-sm appearance-none cursor-pointer hover:border-primary/50 transition-colors"
           >
             <option value="">All Categories</option>
             {categories.map((category) => (
@@ -47,20 +60,29 @@ export function GadgetFilters({
               </option>
             ))}
           </select>
+          <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+            <svg className="size-4 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
         </div>
+
+        {/* Clear button */}
+        {hasFilters && (
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => {
+              setSearchQuery('');
+              setSelectedCategory('');
+            }}
+            className="shrink-0 text-muted-foreground hover:text-foreground"
+            title="Clear all filters"
+          >
+            <X className="size-4" />
+          </Button>
+        )}
       </div>
-      {(searchQuery || selectedCategory) && (
-        <Button
-          variant="outline"
-          onClick={() => {
-            setSearchQuery('');
-            setSelectedCategory('');
-          }}
-          className="text-sm"
-        >
-          Clear Filters
-        </Button>
-      )}
     </div>
   );
 }
