@@ -19,9 +19,13 @@ import {
   CopyIcon,
   CheckIcon,
   HashIcon,
+  Volume2Icon,
+  VolumeXIcon,
 } from "lucide-react";
 import { Icons } from "@/components/icons";
 import { cn } from "@/lib/utils";
+import { useSoundSettings } from "@/components/sound-provider";
+import { playSound } from "@/hooks/use-sound";
 
 interface Command {
   id: string;
@@ -40,6 +44,7 @@ export function CommandPalette() {
   const [copied, setCopied] = React.useState(false);
   const router = useRouter();
   const { setTheme, theme } = useTheme();
+  const { enabled: soundEnabled, setEnabled: setSoundEnabled } = useSoundSettings();
   const selectedButtonRef = React.useRef<HTMLButtonElement>(null);
 
   // Handle keyboard shortcuts to open palette
@@ -67,11 +72,14 @@ export function CommandPalette() {
   const copyToClipboard = React.useCallback(async (text: string) => {
     await navigator.clipboard.writeText(text);
     setCopied(true);
+    if (soundEnabled) {
+      playSound("success", 0.3);
+    }
     setTimeout(() => {
       setCopied(false);
       setOpen(false);
     }, 1000);
-  }, []);
+  }, [soundEnabled]);
 
   const navigateToSection = React.useCallback((sectionId: string) => {
     setOpen(false);
@@ -226,6 +234,19 @@ export function CommandPalette() {
       keywords: ["system", "theme", "auto"],
       group: "Theme",
     },
+    // Settings
+    {
+      id: "toggle-sound",
+      label: soundEnabled ? "Disable Sound Effects" : "Enable Sound Effects",
+      description: soundEnabled ? "Turn off UI sounds" : "Turn on UI sounds",
+      icon: soundEnabled ? <Volume2Icon className="size-4" /> : <VolumeXIcon className="size-4" />,
+      action: () => {
+        setSoundEnabled(!soundEnabled);
+        setOpen(false);
+      },
+      keywords: ["sound", "audio", "mute", "effects", "sfx"],
+      group: "Settings",
+    },
     // Quick Actions
     {
       id: "copy-email",
@@ -272,7 +293,7 @@ export function CommandPalette() {
       keywords: ["x", "twitter", "social"],
       group: "Social",
     },
-  ], [copied, router, setTheme, navigateToSection, copyToClipboard]);
+  ], [copied, router, setTheme, navigateToSection, copyToClipboard, soundEnabled, setSoundEnabled]);
 
   // Filter commands based on search
   const filteredCommands = React.useMemo(() => {
