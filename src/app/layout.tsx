@@ -15,6 +15,7 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { SmoothCursor } from "@/components/ui/smooth-cursor";
 import { CommandPalette } from "@/components/command-palette";
+import { SoundProvider } from "@/components/sound-provider";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -149,13 +150,15 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <TooltipProvider delayDuration={0}>
-              {children}
-              <Analytics />
-              <SpeedInsights />
-              <Navbar />
-              <CommandPalette />
-            </TooltipProvider>
+            <SoundProvider>
+              <TooltipProvider delayDuration={0}>
+                {children}
+                <Analytics />
+                <SpeedInsights />
+                <Navbar />
+                <CommandPalette />
+              </TooltipProvider>
+            </SoundProvider>
           </ThemeProvider>
         </div>
       </body>
