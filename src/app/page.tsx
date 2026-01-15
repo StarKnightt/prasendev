@@ -23,6 +23,11 @@ import { GhibliSkyBackground } from "@/components/ghibli-elements";
 import { GitHubSponsors } from "@/components/github-sponsors";
 import { TwitterTestimonials } from "@/components/twitter-testimonials";
 import { AgeCounter } from "@/components/age-counter";
+
+const VisitorCounter = dynamic(() => import("@/components/visitor-counter"), {
+  ssr: false,
+});
+
 const BLUR_FADE_DELAY = 0.04;
 export const metadata: Metadata = {
   title: DATA.name,
@@ -333,7 +338,9 @@ export default function Page() {
                     </a>
                   </p>
                 </div>
-                <div className="flex space-x-4">
+                <div className="flex items-center space-x-4">
+                  <VisitorCounter />
+                  <span className="text-muted-foreground/30">|</span>
                   <Link href="/sitemap.xml" className="text-sm text-muted-foreground hover:text-foreground">
                     Sitemap
                   </Link>
