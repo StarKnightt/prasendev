@@ -3,52 +3,61 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { Eye } from 'lucide-react';
 
 export default function VisitorCounter() {
   const [count, setCount] = useState<number | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Debug log
-    console.log('Current stored count:', localStorage.getItem('visitorCount'));
+    const fetchVisitorCount = async () => {
+      try {
+        const response = await fetch('/api/visitor-count', {
+          method: 'GET',
+          credentials: 'include',
+        });
+        
+        if (response.ok) {
+          const data = await response.json();
+          setCount(data.count);
+        }
+      } catch (error) {
+        console.error('Error fetching visitor count:', error);
+        setCount(0);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-    try {
-      const storedCount = localStorage.getItem('visitorCount');
-      const currentCount = storedCount ? parseInt(storedCount) : 0;
-      
-      // Increment and store
-      const newCount = currentCount + 1;
-      localStorage.setItem('visitorCount', newCount.toString());
-      
-      // Debug log
-      console.log('New count:', newCount);
-      
-      setCount(newCount);
-    } catch (error) {
-      console.error('Error updating visitor count:', error);
-      // Fallback to showing 0 if localStorage fails
-      setCount(0);
-    }
+    fetchVisitorCount();
   }, []);
 
-  // Don't render anything until client-side count is set
-  if (count === null) return null;
+  // Show placeholder until mounted
+  if (isLoading || count === null) {
+    return (
+      <div className="text-sm text-muted-foreground flex items-center gap-1.5">
+        <Eye className="size-3.5" />
+        <span className="tabular-nums opacity-50">---</span>
+      </div>
+    );
+  }
 
   return (
     <motion.div 
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="inline-flex items-center gap-2"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1.5"
+      title="Unique visitors"
     >
+      <Eye className="size-3.5" />
       <motion.span
         key={count}
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="text-foreground/80"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="tabular-nums"
         suppressHydrationWarning
       >
-        <span className="font-medium" suppressHydrationWarning>
-          {count.toLocaleString()}
-        </span>
+        {count.toLocaleString()}
       </motion.span>
     </motion.div>
   );
