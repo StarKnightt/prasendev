@@ -17,6 +17,7 @@ A modern, responsive portfolio website built with Next.js 14, TypeScript, Tailwi
 - **Smooth Cursor**: Custom animated cursor effect
 - **SEO Optimized**: Meta tags and OpenGraph support
 - **Performance Focused**: Optimized for Core Web Vitals
+- **Visitor Counter**: Real-time unique visitor tracking with Upstash Redis
 
 ## 🚀 Tech Stack
 
@@ -61,6 +62,10 @@ Create a `.env.local` file in the root directory with the following variables:
 ```env
 # GitHub Token (Required for GitHub Sponsors)
 GITHUB_TOKEN=your_github_personal_access_token
+
+# Upstash Redis (Required for Visitor Counter)
+UPSTASH_REDIS_REST_URL=your_upstash_redis_url
+UPSTASH_REDIS_REST_TOKEN=your_upstash_redis_token
 ```
 
 ### Setting up GitHub Token
@@ -95,6 +100,47 @@ const tweetIds = [
 - Open the tweet on Twitter/X
 - Copy the URL: `https://x.com/username/status/1234567890`
 - The ID is the number at the end: `1234567890`
+
+## 👁 Visitor Counter
+
+The portfolio includes a unique visitor counter powered by Upstash Redis. It tracks real visitors without counting refreshes.
+
+### How It Works
+
+```
+User visits site → Component fetches API → API checks cookie → Increment or not → Return count
+```
+
+1. **Component** (`visitor-counter.tsx`): Fetches count from API on page load
+2. **API Route** (`/api/visitor-count`): Checks for cookie, increments count in Redis if new visitor
+3. **Upstash Redis**: Stores the visitor count persistently in the cloud
+
+### Key Features
+
+| Feature | How |
+|---------|-----|
+| No duplicate counting | Cookie prevents re-counting for 24 hours |
+| Persists across deploys | Count stored in external Redis database |
+| Thread-safe | Redis `incr()` is atomic |
+| Fast | Upstash is edge-optimized |
+
+### Setting up Upstash Redis
+
+1. Go to [upstash.com](https://upstash.com) and sign up
+2. Click **Create Database** → Name it (e.g., `portfolio-visitors`)
+3. Select a region close to your users
+4. After creation, go to the **REST API** section
+5. Copy `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`
+6. Add them to your `.env.local` file:
+
+```env
+UPSTASH_REDIS_REST_URL=https://your-db.upstash.io
+UPSTASH_REDIS_REST_TOKEN=your-secret-token
+```
+
+7. For Vercel deployment, add these in **Settings → Environment Variables**
+
+> **Note**: Without these environment variables, the visitor counter will show 0.
 
 ## 💖 GitHub Sponsors
 
