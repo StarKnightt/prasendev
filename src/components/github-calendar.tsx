@@ -14,19 +14,11 @@ export function GithubContributions() {
     setMounted(true);
   }, []);
 
-  const theme = {
-    light: ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"],
-    dark: ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"],
-  };
-
-  if (!mounted) {
-    return (
-      <div className="w-full h-[160px] rounded-xl bg-muted animate-pulse" />
-    );
-  }
+  // Fixed container height to prevent layout shift
+  const containerHeight = "min-h-[200px]";
 
   return (
-    <div className="relative overflow-hidden rounded-xl">
+    <div className={`relative overflow-hidden rounded-xl ${containerHeight}`}>
       <BorderBeam
         duration={6}
         size={400}
@@ -39,20 +31,24 @@ export function GithubContributions() {
         className="from-transparent via-pink-500 to-transparent"
       />
       <motion.div
-        className="w-full overflow-hidden rounded-xl bg-card hover:shadow-lg transition-shadow duration-300 p-4"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        className={`w-full overflow-hidden rounded-xl bg-card hover:shadow-lg transition-shadow duration-300 p-4 ${containerHeight}`}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
       >
-        <div className="p-4 hover:scale-[1.02] transition-transform duration-300">
-          <GitHubCalendar
-            username="StarKnightt"
-            colorScheme={resolvedTheme as "light" | "dark"}
-            fontSize={12}
-            blockSize={12}
-            blockMargin={4}
-          />
-        </div>
+        {!mounted ? (
+          <div className="w-full h-[160px] rounded-lg bg-muted/50 animate-pulse" />
+        ) : (
+          <div className="p-4 hover:scale-[1.02] transition-transform duration-300">
+            <GitHubCalendar
+              username="StarKnightt"
+              colorScheme={resolvedTheme as "light" | "dark"}
+              fontSize={12}
+              blockSize={12}
+              blockMargin={4}
+            />
+          </div>
+        )}
       </motion.div>
     </div>
   );

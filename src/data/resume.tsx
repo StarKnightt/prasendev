@@ -2,7 +2,7 @@ import { Icons } from "@/components/icons";
 import { HomeIcon, NotebookIcon, VideoIcon, FolderIcon } from "lucide-react";
 
 export const DATA = {
-  name: "prasenjit Nayak",
+  name: "Prasenjit Nayak",
   initials: "PN",
   url: "https://github.com/StarKnightt/prasendev",
   location: "Odisha, India",
@@ -10,17 +10,19 @@ export const DATA = {
   description:
     "",
   summary:
-    "Learnt lessons always in a hardway. \n\nCurrently doing **freelancing** and **collaborating** with new people.\n\n i love to play video games and sometimes publish it on [here](https://www.youtube.com/@StarKnight-12) and thoughts on tech [here](https://www.youtube.com/@Star_Knight12).\n\nhere's is what I think about [computer-science future](https://www.prasen.dev/blog/hello-world). .\n\n sometimes i do [touch typing](https://monkeytype.com/profile/prasenj4551R) as well.",
+    "I've learned most of my lessons the hard way. \n\nCurrently **freelancing** and **collaborating** with new people on exciting projects.\n\nI love playing video games and sometimes publish content on [my gaming channel](https://www.youtube.com/@StarKnight-12) and share thoughts on tech [here](https://www.youtube.com/@Star_Knight12).\n\nHere's what I think about the [future of computer science](https://www.prasen.dev/blog/hello-world).\n\nI also enjoy [touch typing](https://monkeytype.com/profile/prasenj4551R) in my free time.",
 
   avatarUrl: "/hi.webp",
   skills: [
     "React",
     "Next.js",
-    "Typescript",
+    "TypeScript",
+    "Node.js",
     "MongoDB",
-    "shitposting",
-    "can do plank for 150 seconds",
-    "Video Game Player"
+    "TailwindCSS",
+    "Git",
+    "REST APIs",
+    "Framer Motion"
   ],
   videos: [
     {
@@ -166,22 +168,22 @@ export const DATA = {
       location: "Remote",
       title: "Full Stack Developer",
       logoUrl: "/stealth-ai.webp",
-      start: "august 2025",
-      end: "september 2025",
+      start: "August 2025",
+      end: "September 2025",
       description:
-        "Learned about how to work in a fast-paced environment in a startup.",
+        "Built and shipped features in a fast-paced startup environment. Worked on React frontend components, integrated REST APIs, and collaborated with cross-functional teams on product delivery.",
     },
     {
-      company: "Freelance (self-employed)",
+      company: "Freelance",
       href: "https://github.com/StarKnightt",
       badges: [],
       location: "Remote",
-      title: "Developer",
+      title: "Frontend Developer",
       logoUrl: "/freelance.webp",
       start: "2025",
       end: "Present",
       description:
-        "doing freelancing for small projects and startup, mostly work on frontend and API handling.",
+        "Delivering web solutions for startups and small businesses. Building responsive UIs with React/Next.js, integrating third-party APIs, and deploying production-ready applications.",
     },
     {
       company: "v0 by Vercel",
@@ -192,9 +194,8 @@ export const DATA = {
       logoUrl: "/v0dev_logo.webp",
       start: "2025",
       end: "Present",
-      description: "using v0 to host my projects and websites, also helping other developers to host their projects and websites.",
+      description: "Community ambassador for Vercel's AI-powered UI generation tool. Creating and sharing projects, helping developers adopt v0 for rapid prototyping.",
     },
-    
   ],
   education: [
     {
@@ -434,22 +435,22 @@ export const DATA = {
   ],
   hackathons: [
     {
-      title: "Smart India Hackathon",
+      title: "Smart India Hackathon 2022",
       dates: "March 23rd - 25th, 2022",
       location: "Bhubaneswar, India",
       description:
-        "Developed a learing portal with some free education content with the best paid contents too, the project was called as 'EducationX'.",
+        "Built 'EducationX' - an e-learning portal with free and premium educational content. Implemented user authentication, course management, and payment integration.",
       image:
         "/smart-india-hackathon.webp",
       mlh: "https://github.com/Synchrotek/E-LearningX",
       links: [],
     },
     {
-      title: "Smart India Hackathon",
+      title: "Smart India Hackathon 2023",
       dates: "December 19th - 23rd, 2023",
       location: "Bhubaneswar, India",
       description:
-        "Developed A collaborative coding web platform that enables Multiuser collboration on a coding project in real-time with features of group chat, to-do lists.",
+        "Built 'NexusLink' - a real-time collaborative coding platform with multi-user editing, integrated chat, and project management features using WebSockets.",
       image:
         "/logo.webp",
       mlh: "https://nexuslink01v.netlify.app/",
