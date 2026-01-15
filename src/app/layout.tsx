@@ -106,6 +106,7 @@ export const metadata: Metadata = {
     title: "Prasenjit Nayak",
   },
   other: {
+    "mobile-web-app-capable": "yes",
     "msapplication-TileColor": "#ffffff",
     "msapplication-TileImage": "/favicons/ms-icon-144x144.png",
     "msapplication-config": "/favicons/browserconfig.xml",

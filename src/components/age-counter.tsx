@@ -2,40 +2,41 @@
 
 import { useEffect, useState } from "react";
 
+const calculateYears = () => {
+  const birthDate = new Date('2003-06-27T04:00:00');
+  const now = new Date();
+  const ageInYears = (now.getTime() - birthDate.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
+  return ageInYears.toFixed(9);
+};
+
 export function AgeCounter() {
-  const [years, setYears] = useState<string>("0.000000000");
+  const [years, setYears] = useState<string | null>(null);
 
   useEffect(() => {
-    const calculateYears = () => {
-      
-      const birthDate = new Date('2003-06-27T04:00:00');
-      
-      // Current time
-      const now = new Date();
-      
-      // Calculate age in milliseconds, then convert to years
-      // 1 year = 365.25 days (accounting for leap years)
-      // 1 day = 24 hours, 1 hour = 60 minutes, 1 minute = 60 seconds, 1 second = 1000 milliseconds
-      const ageInYears = (now.getTime() - birthDate.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
-      
-      return ageInYears.toFixed(9);
-    };
-
-   
+    // Only calculate on client to avoid hydration mismatch
     setYears(calculateYears());
-
-    // Update every 50ms for smoother animation (20 times per second)
+    
     const interval = setInterval(() => {
       setYears(calculateYears());
-    }, 50);
+    }, 100);
 
-    // Cleanup interval when component unmounts
     return () => clearInterval(interval);
   }, []);
 
+  // Show placeholder until mounted to prevent hydration mismatch
+  if (years === null) {
+    return (
+      <div className="text-sm font-bold min-h-[20px]">
+        <span className="tabular-nums opacity-0">been on earth for 00.000000000 years</span>
+      </div>
+    );
+  }
+
   return (
-    <div className="text-sm font-bold">
-      been on earth for {years} years
+    <div className="text-sm font-bold min-h-[20px]">
+      <span className="tabular-nums">
+        been on earth for {years} years
+      </span>
     </div>
   );
 }

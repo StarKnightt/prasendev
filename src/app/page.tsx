@@ -20,9 +20,9 @@ import { ProjectSkeleton } from "@/components/skeletons/project-skeleton";
 import { HackathonSkeleton } from "@/components/skeletons/hackathon-skeleton";
 import { BorderBeam } from "@/components/magicui/border-beam";
 import { GhibliSkyBackground } from "@/components/ghibli-elements";
-import { AgeCounter } from "@/components/age-counter";
 import { GitHubSponsors } from "@/components/github-sponsors";
 import { TwitterTestimonials } from "@/components/twitter-testimonials";
+import { AgeCounter } from "@/components/age-counter";
 const BLUR_FADE_DELAY = 0.04;
 export const metadata: Metadata = {
   title: DATA.name,
@@ -75,10 +75,6 @@ const HackathonCardDynamic = dynamic(() => import("@/components/hackathon-card")
 export default function Page() {
   return (
     <>
-      <div className="fixed inset-0 -z-10 overflow-hidden">
-        <GhibliSkyBackground />
-      </div>
-      
       <main className="flex flex-col min-h-[100dvh] space-y-10">
         <PersonSchema />
         <section id="hero">
@@ -132,7 +128,7 @@ export default function Page() {
         <section id="connect">
           <BlurFade delay={BLUR_FADE_DELAY * 4.5}>
             <div className="space-y-4">
-              <h2 className="text-xl font-bold">Let's collaborate 🤝🏻</h2>
+              <h2 className="text-xl font-bold">Connect</h2>
               <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2">
                 {Object.entries(DATA.contact.social).map(([name, social], idx) => (
                   <SocialIconLink
@@ -166,7 +162,7 @@ export default function Page() {
         <section id="work">
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade delay={BLUR_FADE_DELAY * 5}>
-              <h2 className="text-xl font-bold">places I worked for</h2>
+              <h2 className="text-xl font-bold">Work Experience</h2>
             </BlurFade>
             {DATA.work.map((work, id) => (
               <BlurFade
@@ -272,29 +268,39 @@ export default function Page() {
         <section id="contact">
           <BlurFade delay={BLUR_FADE_DELAY * 16}>
             <div className="space-y-4">
-              <h2 className="text-xl font-bold">Contact</h2>
+              <h2 className="text-xl font-bold">Get In Touch</h2>
               
               <p className="text-muted-foreground">
-              if you want to collab or just talk tech, hit me up.
+                Looking for a developer? I'm open to full-time opportunities and interesting projects. Let's connect!
               </p>
               
-              <div className="mt-6 space-y-4">
+              <div className="mt-6 flex flex-wrap gap-3">
                 <a
                   href="mailto:prasen.nayak@hotmail.com"
-                  className="flex items-center gap-2 underline underline-offset-4 hover:opacity-70 transition-opacity"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-foreground text-background hover:opacity-90 transition-opacity font-medium"
                 >
                   <Icons.email className="size-4" />
-                  prasen.nayak@hotmail.com
+                  Hire Me
+                </a>
+
+                <a
+                  href={DATA.contact.social.LinkedIn.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-foreground/20 hover:bg-foreground/5 transition-colors"
+                >
+                  <Icons.linkedin className="size-4" />
+                  LinkedIn
                 </a>
 
                 <a
                   href={DATA.contact.social.X.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-foreground text-background hover:opacity-90 transition-opacity"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-foreground/20 hover:bg-foreground/5 transition-colors"
                 >
                   <DATA.contact.social.X.icon className="size-4" />
-                  Connect on X
+                  Twitter
                 </a>
               </div>
             </div>

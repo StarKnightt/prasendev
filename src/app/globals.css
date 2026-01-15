@@ -166,18 +166,6 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 
 @keyframes border-pulse {
   0% {
-    border-color: rgba(var(--accent-color), 0.3);
-  }
-  50% {
-    border-color: rgba(var(--accent-color), 1);
-  }
-  100% {
-    border-color: rgba(var(--accent-color), 0.3);
-  }
-}
-
-@keyframes border-pulse {
-  0% {
     transform: scale(1);
     opacity: 1;
   }
