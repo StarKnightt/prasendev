@@ -83,8 +83,8 @@ export default function Page() {
       <main className="flex flex-col min-h-[100dvh] space-y-10">
         <PersonSchema />
         <section id="hero">
-          <div className="mx-auto w-full max-w-2xl space-y-8">
-            <div className="gap-2 flex justify-between">
+          <div className="mx-auto w-full space-y-8">
+            <div className="gap-4 flex justify-between">
               <div className="flex-col flex flex-1 space-y-1.5">
                 <BlurFadeText
                   delay={BLUR_FADE_DELAY}
@@ -209,14 +209,14 @@ export default function Page() {
               <h2 className="text-xl font-bold">Featured Projects</h2>
             </BlurFade>
             <BlurFade delay={BLUR_FADE_DELAY * 8}>
-              <div className="grid gap-4 sm:grid-cols-2">
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {DATA.projects
                   .filter((project) => 
                     project.active && 
                     project.title !== "Solar System" && 
                     project.title !== "Coffee-Website"
                   )
-                  .slice(0, 2)
+                  .slice(0, 3)
                   .map((project) => (
                     <div key={project.title} className="relative overflow-hidden rounded-xl">
                       <ProjectCard
