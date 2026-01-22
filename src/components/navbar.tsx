@@ -14,6 +14,11 @@ export default function Navbar() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,9 +41,9 @@ export default function Navbar() {
 
   return (
     <motion.nav
-      initial={{ y: -20, opacity: 0 }}
+      initial={isMounted ? false : { y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled 
@@ -46,12 +51,12 @@ export default function Navbar() {
           : "bg-transparent"
       )}
     >
-      <div className="max-w-4xl mx-auto px-6 py-4">
+      <div className="max-w-4xl mx-auto px-6 py-2.5">
         <div className="flex items-center justify-between">
           {/* Logo/Name */}
           <Link 
             href="/" 
-            className="font-semibold text-lg hover:opacity-70 transition-opacity"
+            className="font-semibold text-base hover:opacity-70 transition-opacity"
           >
             {DATA.name.split(" ")[0]}
           </Link>
@@ -114,10 +119,10 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2 }}
-            className="md:hidden border-t border-border/50 bg-background/95 backdrop-blur-md"
+            transition={{ duration: 0.15 }}
+            className="md:hidden border-t border-border/50 bg-background/95 backdrop-blur-md overflow-hidden"
           >
-            <div className="px-6 py-4 space-y-1">
+            <div className="px-6 py-3 space-y-0.5">
               {DATA.navbar.map((item) => {
                 const isActive = pathname === item.href;
                 return (
@@ -125,7 +130,7 @@ export default function Navbar() {
                     key={item.href}
                     href={item.href}
                     className={cn(
-                      "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors",
+                      "flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors",
                       isActive 
                         ? "bg-muted text-foreground" 
                         : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
