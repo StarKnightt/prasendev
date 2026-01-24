@@ -130,7 +130,7 @@ export default function RootLayout({
         </div>
 
         {/* Main content */}
-        <div className="relative z-10 max-w-4xl mx-auto pt-20 sm:pt-24 pb-12 px-6">
+        <div className="relative z-10 max-w-4xl mx-auto pt-20 sm:pt-24 pb-24 px-6">
           <GoogleAnalytics gaId="G-XVF0SFD4GW" />
           <Script
             id="microsoft-clarity"
