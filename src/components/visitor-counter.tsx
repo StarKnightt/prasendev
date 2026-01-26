@@ -5,6 +5,13 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Eye } from 'lucide-react';
 
+// Helper to get ordinal suffix (1st, 2nd, 3rd, etc.)
+function getOrdinalSuffix(n: number): string {
+  const s = ['th', 'st', 'nd', 'rd'];
+  const v = n % 100;
+  return s[(v - 20) % 10] || s[v] || s[0];
+}
+
 export default function VisitorCounter() {
   const [count, setCount] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -35,9 +42,9 @@ export default function VisitorCounter() {
   // Show placeholder until mounted
   if (isLoading || count === null) {
     return (
-      <div className="text-sm text-muted-foreground flex items-center gap-1.5">
-        <Eye className="size-3.5" />
-        <span className="tabular-nums opacity-50">---</span>
+      <div className="text-sm text-muted-foreground flex items-center gap-2">
+        <Eye className="size-4" />
+        <span className="opacity-50">Loading...</span>
       </div>
     );
   }
@@ -46,19 +53,24 @@ export default function VisitorCounter() {
     <motion.div 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1.5"
-      title="Unique visitors"
+      className="text-sm text-muted-foreground flex items-center gap-2"
+      title="You are a unique visitor!"
     >
-      <Eye className="size-3.5" />
-      <motion.span
-        key={count}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="tabular-nums"
-        suppressHydrationWarning
-      >
-        {count.toLocaleString()}
-      </motion.span>
+      <Eye className="size-4" />
+      <span>
+        You are the{' '}
+        <motion.span
+          key={count}
+          initial={{ opacity: 0, y: 5 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="font-semibold text-foreground tabular-nums"
+          suppressHydrationWarning
+        >
+          {count.toLocaleString()}
+          <sup className="text-xs">{getOrdinalSuffix(count)}</sup>
+        </motion.span>
+        {' '}visitor
+      </span>
     </motion.div>
   );
 }
