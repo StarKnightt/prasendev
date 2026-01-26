@@ -8,12 +8,12 @@ import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { PersonSchema } from "@/components/schema/person-schema";
 import { Metadata } from 'next';
 import { Icons } from "@/components/icons";
 import ShinyButton from "@/components/ui/shiny-button";
 import { RainbowButton } from "@/components/ui/rainbow-button";
-import { SocialIconLink } from "@/components/social-icon-link";
 import { BlogSkeleton } from "@/components/skeletons/blog-skeleton";
 import { GithubSkeleton } from "@/components/skeletons/github-skeleton";
 import { ProjectSkeleton } from "@/components/skeletons/project-skeleton";
@@ -132,19 +132,27 @@ export default function Page() {
 
         <section id="connect">
           <BlurFade delay={BLUR_FADE_DELAY * 4.5}>
-            <div className="space-y-4">
-              <h2 className="text-xl font-bold">Connect</h2>
-              <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2">
-                {Object.entries(DATA.contact.social).map(([name, social], idx) => (
-                  <SocialIconLink
-                    key={name}
-                    name={name}
-                    url={social.url}
-                    icon={<social.icon />}
-                    delay={BLUR_FADE_DELAY * 5 + idx * 0.05}
-                  />
+            <div className="flex items-center gap-4">
+              {Object.entries(DATA.contact.social)
+                .filter(([_, social]) => social.navbar !== false)
+                .map(([name, social]) => (
+                  <Tooltip key={name}>
+                    <TooltipTrigger asChild>
+                      <a
+                        href={social.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-foreground transition-colors"
+                        aria-label={name}
+                      >
+                        <social.icon className="size-5" />
+                      </a>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>{social.name}</p>
+                    </TooltipContent>
+                  </Tooltip>
                 ))}
-              </div>
             </div>
           </BlurFade>
         </section>
