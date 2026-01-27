@@ -5,7 +5,6 @@ import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { JsonLd } from "@/components/json-ld";
@@ -130,18 +129,6 @@ export default function RootLayout({
         {/* Main content */}
         <div className="relative z-10 max-w-4xl mx-auto pt-20 sm:pt-24 pb-24 px-6">
           <GoogleAnalytics gaId="G-XVF0SFD4GW" />
-          <Script
-            id="microsoft-clarity"
-            strategy="afterInteractive"
-          >
-            {`
-              (function(c,l,a,r,i,t,y){
-                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-              })(window, document, "clarity", "script", "p73rco1nfp");
-            `}
-          </Script>
           <JsonLd />
           <ScrollProgress />
           <ThemeProvider
