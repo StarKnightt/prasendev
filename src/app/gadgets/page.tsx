@@ -5,6 +5,11 @@ import BlurFade from '@/components/magicui/blur-fade';
 import { GadgetSkeleton } from "@/components/skeletons/gadget-skeleton";
 import { Cpu, Smartphone, Headphones } from 'lucide-react';
 
+export const metadata = {
+  title: "Gadgets",
+  description: "My tech setup - PC components, peripherals, and productivity tools I use daily as a developer.",
+};
+
 // Category configuration with icons and order
 const categoryConfig: Record<string, { icon: React.ElementType; order: number }> = {
   'PC Components': { icon: Cpu, order: 1 },

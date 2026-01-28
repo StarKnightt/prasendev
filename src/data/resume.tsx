@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, NotebookIcon, VideoIcon, FolderIcon } from "lucide-react";
+import { HomeIcon, NotebookIcon, VideoIcon, FolderIcon, Settings } from "lucide-react";
 
 export const DATA = {
   name: "Prasenjit Nayak",
@@ -23,6 +23,14 @@ export const DATA = {
     "Git",
     "REST APIs",
     "Framer Motion"
+  ],
+  setup: [
+    {
+      title: "Gears Used",
+      description: "Productivity tools and gadgets I use daily.",
+      href: "/gadgets",
+      icon: Settings,
+    },
   ],
   videos: [
     {

@@ -6,7 +6,7 @@ import { BorderBeam } from "@/components/magicui/border-beam";
 
 export const metadata = {
   title: "Projects",
-  description: "Check out my latest projects and experiments.",
+  description: "Web applications and open source projects built with React, Next.js, TypeScript, and Node.js by Prasenjit Nayak.",
 };
 
 const BLUR_FADE_DELAY = 0.04;
