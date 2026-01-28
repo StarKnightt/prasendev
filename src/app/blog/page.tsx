@@ -5,7 +5,7 @@ import { DATA } from "@/data/resume";
 
 export const metadata = {
   title: "Blog",
-  description: "My thoughts on software development, life, and more.",
+  description: "Technical articles about web development, React, Next.js, and software engineering by Prasenjit Nayak.",
   metadataBase: new URL(DATA.url),
   alternates: {
     canonical: `${DATA.url}/blog`,

@@ -23,6 +23,7 @@ import { GhibliSkyBackground } from "@/components/ghibli-elements";
 import { GitHubSponsors } from "@/components/github-sponsors";
 import { TwitterTestimonials } from "@/components/twitter-testimonials";
 import { AgeCounter } from "@/components/age-counter";
+import { ArrowUpRight } from "lucide-react";
 
 const VisitorCounter = dynamic(() => import("@/components/visitor-counter"), {
   ssr: false,
@@ -272,6 +273,38 @@ export default function Page() {
           </div>
         </section>
 
+        <section id="setup">
+          <div className="flex min-h-0 flex-col gap-y-3">
+            <BlurFade delay={BLUR_FADE_DELAY * 9}>
+              <div className="space-y-1">
+                <p className="text-sm text-muted-foreground">Development</p>
+                <h2 className="text-xl font-bold">Setup</h2>
+              </div>
+            </BlurFade>
+            <div className="flex flex-col gap-2">
+              {DATA.setup.map((item, idx) => (
+                <BlurFade key={item.title} delay={BLUR_FADE_DELAY * 9.5 + idx * 0.05}>
+                  <Link
+                    href={item.href}
+                    target={item.href.startsWith('http') ? '_blank' : undefined}
+                    rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className="flex items-center gap-4 p-4 rounded-xl border border-border/50 bg-card/30 hover:bg-card/60 transition-colors group"
+                  >
+                    <div className="p-2.5 rounded-lg bg-muted">
+                      <item.icon className="size-5 text-muted-foreground" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-medium group-hover:text-primary transition-colors">{item.title}</h3>
+                      <p className="text-sm text-muted-foreground">{item.description}</p>
+                    </div>
+                    <ArrowUpRight className="size-4 text-muted-foreground group-hover:text-foreground transition-colors" />
+                  </Link>
+                </BlurFade>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section id="testimonials">
           <BlurFade delay={BLUR_FADE_DELAY * 15}>
             <TwitterTestimonials />
@@ -280,42 +313,20 @@ export default function Page() {
 
         <section id="contact">
           <BlurFade delay={BLUR_FADE_DELAY * 16}>
-            <div className="space-y-4">
-              <h2 className="text-xl font-bold">Get In Touch</h2>
-              
-              <p className="text-muted-foreground">
-                Looking for a developer? I'm open to full-time opportunities and interesting projects. Let's connect!
+            <div className="py-12 flex flex-col items-center justify-center text-center space-y-6 border border-border/50 rounded-2xl bg-card/30">
+              <p className="text-xl text-muted-foreground">
+               I'd love to hear from you.
               </p>
-              
-              <div className="mt-6 flex flex-wrap gap-3">
-                <a
-                  href="mailto:prasen.nayak@hotmail.com"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-foreground text-background hover:opacity-90 transition-opacity font-medium"
-                >
-                  <Icons.email className="size-4" />
-                  Hire Me
-                </a>
-
-                <a
-                  href={DATA.contact.social.LinkedIn.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-foreground/20 hover:bg-foreground/5 transition-colors"
-                >
-                  <Icons.linkedin className="size-4" />
-                  LinkedIn
-                </a>
-
-                <a
-                  href={DATA.contact.social.X.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-foreground/20 hover:bg-foreground/5 transition-colors"
-                >
-                  <DATA.contact.social.X.icon className="size-4" />
-                  Twitter
-                </a>
-              </div>
+              <a
+                href="mailto:prasen.nayak@hotmail.com"
+                className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-muted hover:bg-muted/80 transition-colors text-sm font-medium"
+              >
+                <Avatar className="size-6">
+                  <AvatarImage src={DATA.avatarUrl} alt={DATA.name} />
+                  <AvatarFallback>{DATA.initials}</AvatarFallback>
+                </Avatar>
+                Let's talk
+              </a>
             </div>
           </BlurFade>
         </section>
