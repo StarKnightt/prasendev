@@ -141,6 +141,12 @@ export const DATA = {
         icon: Icons.youtube,
         navbar: true,
       },
+      Instagram: {
+        name: "Instagram",
+        url: "https://www.instagram.com/starknight_143/",
+        icon: Icons.instagram,
+        navbar: true,
+      },
       CodePen: {
         name: "CodePen",
         url: "https://codepen.io/StarKnightt",
