@@ -18,6 +18,7 @@ export function JsonLd() {
       'https://www.linkedin.com/in/prasenjitnayak/',
       'https://twitter.com/Star_Knight12',
       'https://youtube.com/@Star_Knight12',
+      'https://www.instagram.com/starknight_143/',
       'https://codepen.io/StarKnightt'
     ],
     knowsAbout: [
