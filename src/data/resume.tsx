@@ -147,6 +147,12 @@ export const DATA = {
         icon: Icons.instagram,
         navbar: true,
       },
+      Steam: {
+        name: "Steam",
+        url: "https://s.team/p/hpdv-frbg/prvbvwtg",
+        icon: Icons.steam,
+        navbar: true,
+      },
       CodePen: {
         name: "CodePen",
         url: "https://codepen.io/StarKnightt",
