@@ -193,6 +193,7 @@ export default function Page() {
                   badges={work.badges}
                   period={`${work.start} - ${work.end}`}
                   description={work.description}
+                  redacted={(work as any).redacted}
                 />
               </BlurFade>
             ))}
