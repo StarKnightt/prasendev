@@ -49,10 +49,10 @@ export const ResumeCard = ({
       <Card className="flex">
         <div className="flex-none">
           {redacted ? (
-            <div className="border size-12 m-auto bg-gradient-to-br from-muted to-muted/50 rounded-full flex items-center justify-center">
-              <svg className="size-5 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            <div className="size-12 m-auto bg-black dark:bg-zinc-900 rounded-lg flex items-center justify-center">
+              <svg className="size-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="m3 11 18-5v12L3 13v-2z"/>
+                <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>
               </svg>
             </div>
           ) : (
