@@ -182,6 +182,19 @@ export const DATA = {
 
   work: [
     {
+      company: "Confidential",
+      href: "#",
+      badges: ["NDA"],
+      location: "Remote",
+      title: "Full Stack Developer",
+      logoUrl: "/nda-company.svg",
+      start: "December 2025",
+      end: "Present",
+      description:
+        "Gatekeeping this one because of NDA. Working on exciting stuff though!",
+      redacted: true,
+    },
+    {
       company: "Stealth AI Startup",
       href: "https://www.linkedin.com/company/stealthaistartup/",
       badges: [],
