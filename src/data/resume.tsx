@@ -182,12 +182,12 @@ export const DATA = {
 
   work: [
     {
-      company: "Stealth Startup",
+      company: "smart huh :)",
       href: "#",
       badges: ["NDA"],
       location: "",
       title: "Frontend Developer",
-      logoUrl: "/nda-company.svg",
+      logoUrl: "/company.png",
       start: "December 2025",
       end: "Present",
       description:
