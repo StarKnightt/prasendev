@@ -22,13 +22,13 @@ export function GithubContributions() {
       <BorderBeam
         duration={6}
         size={400}
-        className="from-transparent via-purple-500 to-transparent"
+        className="from-transparent via-zinc-400 to-transparent"
       />
       <BorderBeam
         duration={6}
         delay={3}
         size={400}
-        className="from-transparent via-pink-500 to-transparent"
+        className="from-transparent via-slate-300 to-transparent"
       />
       <motion.div
         className={`w-full overflow-hidden rounded-xl bg-card hover:shadow-lg transition-shadow duration-300 p-4 ${containerHeight}`}
@@ -46,6 +46,10 @@ export function GithubContributions() {
               fontSize={12}
               blockSize={12}
               blockMargin={4}
+              theme={{
+                dark: ['#161b22', '#3a3f47', '#6b7280', '#b0b8c4', '#e5e7eb'],
+                light: ['#ebedf0', '#9ca3af', '#6b7280', '#4b5563', '#374151'],
+              }}
             />
           </div>
         )}
