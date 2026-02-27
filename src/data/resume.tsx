@@ -103,6 +103,13 @@ export const DATA = {
       url:"https://youtu.be/iXPFdG9Ft7E",
       date: "2025-12-23"
     },
+    {
+      title:"How I Landed My First Freelance Client",
+      description: "This is a story of how I landed my first freelance client, and the process of getting the client and the project.",
+      thumbnail: "/video11.avif",
+      url:"https://youtu.be/iHrz-D6kylA",
+      date: "2026-02-25"
+    },
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
