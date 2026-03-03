@@ -222,11 +222,8 @@ export default function Page() {
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {DATA.projects
                   .filter((project) => 
-                    project.active && 
-                    project.title !== "Solar System" && 
-                    project.title !== "Coffee-Website"
+                    ["Wallpaperz", "GitHub Buddy Finder", "3D Carousel Gallery"].includes(project.title)
                   )
-                  .slice(0, 3)
                   .map((project) => (
                     <div key={project.title} className="relative overflow-hidden rounded-xl">
                       <ProjectCard
