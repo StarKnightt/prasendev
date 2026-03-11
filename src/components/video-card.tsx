@@ -34,14 +34,14 @@ export function VideoCard({ video }: VideoCardProps) {
         }}
         className="cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-lg"
       >
-        <Card className="overflow-hidden hover:shadow-lg transition-all duration-300">
+        <Card className="overflow-hidden border-border/60 bg-card/40 transition-all duration-300 hover:-translate-y-0.5 hover:border-border hover:bg-card/70 hover:shadow-lg">
           <div className="relative group">
             <Image
               src={video.thumbnail}
               alt={video.title}
               width={500}
               height={280}
-              className="w-full h-48 object-cover"
+              className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
               priority
             />
             <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">

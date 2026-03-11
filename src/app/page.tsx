@@ -81,11 +81,11 @@ const HackathonCardDynamic = dynamic(() => import("@/components/hackathon-card")
 export default function Page() {
   return (
     <>
-      <main className="flex flex-col min-h-[100dvh] space-y-10">
+      <main className="flex min-h-[100dvh] flex-col space-y-12 sm:space-y-14">
         <PersonSchema />
         <section id="hero">
           <div className="mx-auto w-full space-y-8">
-            <div className="gap-4 flex justify-between">
+            <div className="flex flex-col-reverse items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex-col flex flex-1 space-y-1.5">
                 <BlurFadeText
                   delay={BLUR_FADE_DELAY}
@@ -133,7 +133,7 @@ export default function Page() {
 
         <section id="connect">
           <BlurFade delay={BLUR_FADE_DELAY * 4.5}>
-            <div className="flex items-center gap-4">
+            <div className="flex flex-wrap items-center gap-3">
               {Object.entries(DATA.contact.social)
                 .filter(([_, social]) => social.navbar !== false)
                 .map(([name, social]) => (
@@ -143,7 +143,7 @@ export default function Page() {
                         href={social.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-foreground transition-colors"
+                        className="rounded-full border border-border/60 bg-card/40 p-2.5 text-muted-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-border hover:bg-card hover:text-foreground"
                         aria-label={name}
                       >
                         <social.icon className="size-5" />
@@ -161,7 +161,7 @@ export default function Page() {
         <section id="skills">
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade delay={BLUR_FADE_DELAY * 9}>
-              <h2 className="text-xl font-bold">Skills</h2>
+              <h2 className="text-xl font-bold tracking-tight">Skills</h2>
             </BlurFade>
             <div className="flex flex-wrap gap-1">
               {DATA.skills.map((skill, id) => (
@@ -176,7 +176,7 @@ export default function Page() {
         <section id="work">
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade delay={BLUR_FADE_DELAY * 5}>
-              <h2 className="text-xl font-bold">Work Experience</h2>
+              <h2 className="text-xl font-bold tracking-tight">Work Experience</h2>
             </BlurFade>
             {DATA.work.map((work, id) => (
               <BlurFade
@@ -202,7 +202,7 @@ export default function Page() {
 
         <section id="contributions">
           <BlurFade delay={BLUR_FADE_DELAY * 10}>
-            <h2 className="text-xl font-bold">GitHub Contributions</h2>
+            <h2 className="text-xl font-bold tracking-tight">GitHub Contributions</h2>
             <GithubContributions />
           </BlurFade>
         </section>
@@ -216,7 +216,7 @@ export default function Page() {
         <section id="projects">
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade delay={BLUR_FADE_DELAY * 7}>
-              <h2 className="text-xl font-bold">Featured Projects</h2>
+              <h2 className="text-xl font-bold tracking-tight">Featured Projects</h2>
             </BlurFade>
             <BlurFade delay={BLUR_FADE_DELAY * 8}>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -250,7 +250,7 @@ export default function Page() {
         <section id="education">
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade delay={BLUR_FADE_DELAY * 7}>
-              <h2 className="text-xl font-bold">Education</h2>
+              <h2 className="text-xl font-bold tracking-tight">Education</h2>
             </BlurFade>
             {DATA.education.map((education, id) => (
               <BlurFade
@@ -276,7 +276,7 @@ export default function Page() {
             <BlurFade delay={BLUR_FADE_DELAY * 9}>
               <div className="space-y-1">
                 <p className="text-sm text-muted-foreground">Development</p>
-                <h2 className="text-xl font-bold">Setup</h2>
+                <h2 className="text-xl font-bold tracking-tight">Setup</h2>
               </div>
             </BlurFade>
             <div className="flex flex-col gap-2">
@@ -311,13 +311,27 @@ export default function Page() {
 
         <section id="contact">
           <BlurFade delay={BLUR_FADE_DELAY * 16}>
-            <div className="py-12 flex flex-col items-center justify-center text-center space-y-6 border border-border/50 rounded-2xl bg-card/30">
+            <div className="relative overflow-hidden rounded-2xl border border-border/50 bg-gradient-to-b from-card/60 via-card/40 to-card/20 py-12 text-center">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 opacity-70"
+                style={{
+                  backgroundImage:
+                    "radial-gradient(circle at 1px 1px, hsl(var(--foreground) / 0.18) 1px, transparent 0)",
+                  backgroundSize: "16px 16px",
+                }}
+              />
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -top-24 left-1/2 h-56 w-56 -translate-x-1/2 rounded-full bg-foreground/10 blur-3xl"
+              />
+              <div className="relative z-10 flex flex-col items-center justify-center space-y-6">
               <p className="text-xl text-muted-foreground">
                I'd love to hear from you.
               </p>
               <a
                 href="mailto:prasen.nayak@hotmail.com"
-                className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-muted hover:bg-muted/80 transition-colors text-sm font-medium"
+                className="inline-flex items-center gap-2.5 rounded-full border border-border/70 bg-background/70 px-5 py-2.5 text-sm font-medium shadow-sm backdrop-blur transition-all hover:-translate-y-0.5 hover:bg-background"
               >
                 <Avatar className="size-6">
                   <AvatarImage src={DATA.avatarUrl} alt={DATA.name} />
@@ -325,14 +339,15 @@ export default function Page() {
                 </Avatar>
                 Let's talk
               </a>
+              </div>
             </div>
           </BlurFade>
         </section>
         <footer className="mt-20 border-t py-8">
           <BlurFade delay={BLUR_FADE_DELAY * 15}>
             <div className="container mx-auto px-4">
-              <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                <div className="text-sm text-muted-foreground space-y-2">
+              <div className="flex flex-col justify-between gap-4 md:flex-row md:items-center">
+                <div className="space-y-2 text-sm text-muted-foreground">
                   <p>© {new Date().getFullYear()} {DATA.name}. All rights reserved.</p>
                   <p>
                     Open source under{' '}
@@ -355,7 +370,7 @@ export default function Page() {
                     </a>
                   </p>
                 </div>
-                <div className="flex items-center space-x-4">
+                <div className="flex flex-wrap items-center gap-3 text-sm">
                   <VisitorCounter />
                   <span className="text-muted-foreground/30">|</span>
                   <Link href="/sitemap.xml" className="text-sm text-muted-foreground hover:text-foreground">

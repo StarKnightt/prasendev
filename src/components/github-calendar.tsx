@@ -31,7 +31,7 @@ export function GithubContributions() {
         className="from-transparent via-slate-300 to-transparent"
       />
       <motion.div
-        className={`w-full overflow-hidden rounded-xl bg-card hover:shadow-lg transition-shadow duration-300 p-4 ${containerHeight}`}
+        className={`w-full overflow-hidden rounded-xl border border-border/60 bg-card/40 p-4 transition-all duration-300 hover:border-border hover:bg-card/70 hover:shadow-lg ${containerHeight}`}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
@@ -39,7 +39,7 @@ export function GithubContributions() {
         {!mounted ? (
           <div className="w-full h-[160px] rounded-lg bg-muted/50 animate-pulse" />
         ) : (
-          <div className="p-4 hover:scale-[1.02] transition-transform duration-300">
+          <div className="p-4">
             <GitHubCalendar
               username="StarKnightt"
               colorScheme={resolvedTheme as "light" | "dark"}
