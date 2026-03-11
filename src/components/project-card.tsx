@@ -59,7 +59,7 @@ export function ProjectCard({
 
   return (
     <>
-      <Card className={cn("flex flex-col overflow-hidden border hover:shadow-lg transition-all duration-300 ease-out h-full relative group", className)}>
+      <Card className={cn("group relative flex h-full flex-col overflow-hidden border border-border/60 bg-card/40 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-border hover:bg-card/80 hover:shadow-lg", className)}>
         <Link
           href={href || "#"}
           className="block cursor-pointer relative overflow-hidden"
@@ -71,7 +71,7 @@ export function ProjectCard({
               loop
               muted
               playsInline
-              className="pointer-events-none mx-auto h-40 w-full object-cover object-top transition-transform duration-500 group-hover:scale-105 group-hover:blur-[2px]"
+              className="pointer-events-none mx-auto h-40 w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
             />
           )}
           {image && !video && (
@@ -80,30 +80,30 @@ export function ProjectCard({
               alt={title}
               width={500}
               height={300}
-              className="h-40 w-full overflow-hidden object-cover object-top transition-transform duration-500 group-hover:scale-105 group-hover:blur-[2px]"
+              className="h-40 w-full overflow-hidden object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
             />
           )}
           
           {/* Hover Overlay with Play Button */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20 z-10">
-             <div className="bg-black/50 rounded-full p-3 backdrop-blur-sm border border-white/20 shadow-xl transform group-hover:scale-110 transition-transform duration-300">
+          <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+             <div className="rounded-full border border-white/20 bg-black/50 p-3 shadow-xl backdrop-blur-sm transition-transform duration-300 group-hover:scale-110">
               <Play className="w-6 h-6 text-white fill-white" />
              </div>
           </div>
         </Link>
-        <CardHeader className="px-2">
-        <div className="space-y-1">
+        <CardHeader className="px-4 pt-4">
+        <div className="space-y-1.5">
           <CardTitle className="mt-1 text-base">{title}</CardTitle>
           <time className="font-sans text-xs">{dates}</time>
           <div className="hidden font-sans text-xs underline print:visible">
             {link?.replace("https://", "").replace("www.", "").replace("/", "")}
           </div>
-          <Markdown className="prose max-w-full text-pretty font-sans text-xs text-muted-foreground dark:prose-invert">
+          <Markdown className="prose max-w-full text-pretty font-sans text-xs text-muted-foreground dark:prose-invert line-clamp-3">
             {description}
           </Markdown>
         </div>
       </CardHeader>
-      <CardContent className="mt-auto flex flex-col px-2">
+      <CardContent className="mt-auto flex flex-col px-4">
         {tags && tags.length > 0 && (
           <div className="mt-2 flex flex-wrap gap-1 max-w-full overflow-hidden">
             {tags?.map((tag) => (
@@ -118,7 +118,7 @@ export function ProjectCard({
           </div>
         )}
       </CardContent>
-      <CardFooter className="px-2 pb-2">
+      <CardFooter className="px-4 pb-4">
         {links && links.length > 0 && (
           <div className="flex flex-row flex-wrap items-start gap-1">
             {links?.map((link, idx) => (

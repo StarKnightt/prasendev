@@ -19,7 +19,6 @@ const tweetIds = [
   "1861834592170197289", // @AaryanBajaj18
   "1861995257891885277", // @Its_Shiv_Kumarr
   "1862057865105596661", // @csaba_kissi
-  "1862129859520045405", // @nathan_covey
   "1861817455032578394", // @that_tallguy_1
   "1862389476225331622", // @o_stefanishyna
   "1861818760132272528", // @michael_c_law
@@ -30,17 +29,14 @@ const tweetIds = [
   "1862047439416680606", // @AyanDas_
   "1861880157759320380", // @Makanta__
   "1861999738360570195", // @Criticalway_
-  "1862074181866627323", // @_laksh_1231
   "1862052926698492034", // @antduchofficial
   "1862093344395886593", // @raimonvibe
   "1862460639069052951", // @SanjayTomar_
-  "1862209434505679222", // @dev_boai1
   "1862154797786288236", // @AbdulSonaike
   "1864869169809731964", // @bonnienewman
   "1862217676028092752", // @ShajahanArham
   "1897308522733559891", // @SaidAitmbarek
   "1897271067116495138", // @CornelisseJoran
-  "1897270484909347147", // @AnshulSoni2010
   "1897390654222950482", // @Adarsh_Web3
   "1897523143625118146", // @atharvatwts
   "1897333575336517950", // @vivek_naskar
@@ -56,7 +52,6 @@ const tweetIds = [
   "1930677255614722543", // @developertomek
   "1930644230235685183", // @shayanc__
   "1930647273039376406", // @podsumguy
-  "1930880665047683088", // @sanjaydotpro
   "1930731875066339409", // @christiannonis
   "1930696477426500066", // @abhiix4
   "1930680531471261714", // @kshitij_sorted
@@ -91,7 +86,7 @@ export function TwitterTestimonials() {
         <h2 className="text-xl font-bold">Thanks for all of your love 💖</h2>
       </div>
 
-      <div className="relative group">
+      <div className="group relative rounded-2xl border border-border/50 bg-card/30 p-3 sm:p-4">
         {/* Left Arrow */}
         <button
           onClick={() => scroll("left")}
@@ -113,12 +108,12 @@ export function TwitterTestimonials() {
         {/* Scrollable container */}
         <div 
           ref={scrollRef}
-          className="overflow-hidden"
+          className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]"
         >
           <div 
             className="flex gap-4 hover:[animation-play-state:paused]"
             style={{
-              animation: "scroll 240s linear infinite",
+              animation: "scroll 180s linear infinite",
               width: "max-content",
             }}
           >
