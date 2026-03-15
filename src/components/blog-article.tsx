@@ -86,6 +86,7 @@ export function BlogArticle({ html }: { html: string }) {
               </svg>
             </button>
 
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={lightboxSrc}
               alt={lightboxAlt}
