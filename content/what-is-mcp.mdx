@@ -1,0 +1,90 @@
+---
+title: "MCP Changed How I Use AI. Here's What It Actually Is"
+publishedAt: "2026-01-14"
+summary: "Model Context Protocol sounds fancy but it's basically giving AI tools superpowers. Here's how I actually use it."
+tags: ["ai", "mcp", "cursor", "developer-tools"]
+---
+
+# MCP Changed How I Use AI. Here's What It Actually Is
+
+So I kept seeing "MCP" everywhere on Twitter and honestly ignored it for like two weeks because the name sounded way too corporate. Model Context Protocol? Come on.
+
+But then I tried it. And now I can't go back.
+
+## What Even Is MCP?
+
+Okay forget the fancy name. Here's what MCP actually does:
+
+You know how when you use AI (like Claude or Cursor), it can only see what you paste into it? It's basically blind to everything else. Your database, your browser, your project management tool, whatever.
+
+MCP is like giving AI a pair of hands. It lets AI connect to external tools and actually DO things, not just talk about doing things.
+
+Here's the difference visually:
+
+![Without MCP vs With MCP](/blog/mcp-comparison.png)
+
+Think of it like this: before MCP, AI was that smart friend who gives great advice but never actually helps you move. After MCP, that friend shows up with a truck.
+
+## How I Actually Use It
+
+I'm going to keep it real. I use MCP mostly through Cursor (my code editor). Here's my actual workflow:
+
+![MCP Flow: You > AI > MCP Protocol > Browser, Database, GitHub](/blog/mcp-flow.png)
+
+### 1. Browser Testing
+
+I have the browser MCP server connected. So when I make a UI change, I can literally tell the AI "go check if this looks right on the page" and it opens the browser, navigates to my localhost, and tells me what it sees.
+
+No more alt-tabbing between editor and browser 50 times.
+
+### 2. GitHub Stuff
+
+Need to create a PR? Check issues? Look at someone's repo? The AI just does it through MCP. I don't even open GitHub half the time anymore.
+
+### 3. Database Queries
+
+This one's huge. Instead of writing SQL queries manually to check something, I just ask and the AI queries the database directly. Saved me hours during debugging sessions.
+
+## Setting It Up Is Stupidly Simple
+
+Here's the thing that surprised me. It's not complicated at all.
+
+In Cursor, you basically:
+1. Go to settings
+2. Find the MCP section
+3. Add a server (there are tons of pre-built ones)
+4. Done
+
+Most MCP servers are just a JSON config with a command to run. That's it. No Docker containers, no Kubernetes clusters, no 47-step deployment pipeline.
+
+## The Part Nobody Talks About
+
+MCP is open source and it's a standard. Meaning it works the same way regardless of which AI you're using. Anthropic built it but it's not locked to Claude.
+
+![MCP Open Standard: Works across Claude, Cursor, and any future AI tool](/blog/mcp-open-standard.png)
+
+This matters because your setup carries over. If tomorrow some new AI tool comes out that supports MCP, all your connections just work.
+
+## Should You Care?
+
+If you're a developer, yes, absolutely. It's not a "nice to have" anymore. It's becoming the standard way AI tools interact with the real world.
+
+If you're not a developer, you'll probably start using it without even knowing. Apps are building MCP support into their products and it'll just feel like "AI got smarter."
+
+## My Hot Take
+
+MCP is probably the most underrated thing happening in AI right now. Everyone's fighting about which model is better, meanwhile MCP is quietly making ALL models more useful.
+
+It's not about making AI smarter. It's about making AI actually helpful.
+
+Try it. You'll get it immediately.
+
+## Resources
+
+- [MCP Official Docs](https://modelcontextprotocol.io/) - The official spec and documentation
+- [MCP GitHub Repo](https://github.com/modelcontextprotocol) - Source code and community servers
+- [Cursor MCP Setup Guide](https://docs.cursor.com/context/model-context-protocol) - How to add MCP servers in Cursor
+- [Awesome MCP Servers](https://github.com/punkpeye/awesome-mcp-servers) - Community-curated list of MCP servers
+- [Anthropic's MCP Announcement](https://www.anthropic.com/news/model-context-protocol) - The original blog post
+
+*- Prasenjit*
