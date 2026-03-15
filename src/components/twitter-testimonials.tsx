@@ -74,7 +74,7 @@ export function TwitterTestimonials() {
   };
 
   return (
-    <div className="w-full space-y-6">
+    <div className="w-full space-y-6 overflow-hidden">
       <div className="flex items-center gap-3">
         <svg
           viewBox="0 0 24 24"

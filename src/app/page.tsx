@@ -87,19 +87,13 @@ function SectionLabel({ label }: { label: string }) {
 }
 
 function SectionDivider() {
-  return (
-    <div className="relative">
-      <div className="absolute inset-0 flex items-center">
-        <div className="w-full border-t border-border/40" />
-      </div>
-    </div>
-  );
+  return <div className="w-full border-t border-border/40" />;
 }
 
 export default function Page() {
   return (
     <>
-      <main className="flex min-h-[100dvh] flex-col space-y-10 sm:space-y-12">
+      <main className="flex min-h-[100dvh] flex-col space-y-12 sm:space-y-14">
         <PersonSchema />
 
         {/* ─── HERO ─── */}
@@ -332,7 +326,7 @@ export default function Page() {
               <SectionLabel label="Development" />
               <h2 className="mt-1.5 text-xl font-bold tracking-tight">Setup</h2>
             </BlurFade>
-            <div className="grid gap-2 sm:grid-cols-2">
+            <div className="flex flex-col gap-2">
               {DATA.setup.map((item, idx) => (
                 <BlurFade key={item.title} delay={BLUR_FADE_DELAY * 9.5 + idx * 0.05}>
                   <Link
@@ -346,7 +340,7 @@ export default function Page() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <h3 className="font-medium text-sm group-hover:text-primary transition-colors">{item.title}</h3>
-                      <p className="text-xs text-muted-foreground truncate">{item.description}</p>
+                      <p className="text-xs text-muted-foreground">{item.description}</p>
                     </div>
                     <ArrowUpRight className="size-4 shrink-0 text-muted-foreground/40 group-hover:text-foreground transition-colors" />
                   </Link>
@@ -407,7 +401,7 @@ export default function Page() {
         {/* ─── FOOTER ─── */}
         <footer className="border-t border-border/40 pt-8 pb-4">
           <BlurFade delay={BLUR_FADE_DELAY * 15}>
-            <div className="grid gap-8 sm:grid-cols-3">
+            <div className="grid gap-6 sm:grid-cols-3">
               <div className="space-y-2">
                 <p className="text-sm font-medium">{DATA.name}</p>
                 <p className="text-xs text-muted-foreground leading-relaxed">
