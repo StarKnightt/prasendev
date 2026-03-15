@@ -78,11 +78,31 @@ const HackathonCardDynamic = dynamic(() => import("@/components/hackathon-card")
   loading: () => <HackathonSkeleton />
 });
 
+function SectionLabel({ label }: { label: string }) {
+  return (
+    <span className="inline-block text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground/60">
+      {label}
+    </span>
+  );
+}
+
+function SectionDivider() {
+  return (
+    <div className="relative">
+      <div className="absolute inset-0 flex items-center">
+        <div className="w-full border-t border-border/40" />
+      </div>
+    </div>
+  );
+}
+
 export default function Page() {
   return (
     <>
-      <main className="flex min-h-[100dvh] flex-col space-y-12 sm:space-y-14">
+      <main className="flex min-h-[100dvh] flex-col space-y-10 sm:space-y-12">
         <PersonSchema />
+
+        {/* ─── HERO ─── */}
         <section id="hero">
           <div className="mx-auto w-full space-y-8">
             <div className="flex flex-col-reverse items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
@@ -97,7 +117,7 @@ export default function Page() {
                   <AgeCounter />
                 </BlurFade>
                 <BlurFadeText
-                  className="max-w-[600px] md:text-xl"
+                  className="max-w-[600px] text-muted-foreground md:text-xl"
                   delay={BLUR_FADE_DELAY}
                   text={DATA.description}
                 />
@@ -119,18 +139,8 @@ export default function Page() {
             </div>
           </div>
         </section>
-        
-        <section id="about">
-          <BlurFade delay={BLUR_FADE_DELAY * 3}>
-            <h2 className="text-xl font-bold">About</h2>
-          </BlurFade>
-          <BlurFade delay={BLUR_FADE_DELAY * 4}>
-            <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
-              {DATA.summary}
-            </Markdown>
-          </BlurFade>
-        </section>
 
+        {/* ─── CONNECT ─── */}
         <section id="connect">
           <BlurFade delay={BLUR_FADE_DELAY * 4.5}>
             <div className="flex flex-wrap items-center gap-3">
@@ -158,65 +168,103 @@ export default function Page() {
           </BlurFade>
         </section>
 
+        <SectionDivider />
+
+        {/* ─── ABOUT ─── */}
+        <section id="about">
+          <BlurFade delay={BLUR_FADE_DELAY * 3}>
+            <div className="rounded-xl border border-border/50 bg-card/20 p-5 sm:p-6">
+              <SectionLabel label="About me" />
+              <h2 className="mt-1.5 text-xl font-bold tracking-tight">About</h2>
+              <div className="mt-3">
+                <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
+                  {DATA.summary}
+                </Markdown>
+              </div>
+            </div>
+          </BlurFade>
+        </section>
+
+        <SectionDivider />
+
+        {/* ─── SKILLS ─── */}
         <section id="skills">
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade delay={BLUR_FADE_DELAY * 9}>
-              <h2 className="text-xl font-bold tracking-tight">Skills</h2>
+              <SectionLabel label="Technologies" />
+              <h2 className="mt-1.5 text-xl font-bold tracking-tight">Skills</h2>
             </BlurFade>
-            <div className="flex flex-wrap gap-1">
+            <div className="flex flex-wrap gap-1.5">
               {DATA.skills.map((skill, id) => (
                 <BlurFade key={skill} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
-                  <Badge key={skill}>{skill}</Badge>
+                  <Badge key={skill} variant="secondary" className="border border-border/50">{skill}</Badge>
                 </BlurFade>
               ))}
             </div>
           </div>
         </section>
 
+        <SectionDivider />
+
+        {/* ─── WORK ─── */}
         <section id="work">
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade delay={BLUR_FADE_DELAY * 5}>
-              <h2 className="text-xl font-bold tracking-tight">Work Experience</h2>
+              <SectionLabel label="Career" />
+              <h2 className="mt-1.5 text-xl font-bold tracking-tight">Work Experience</h2>
             </BlurFade>
-            {DATA.work.map((work, id) => (
-              <BlurFade
-                key={work.company}
-                delay={BLUR_FADE_DELAY * 6 + id * 0.05}
-              >
-                <ResumeCard
+            <div className="space-y-3">
+              {DATA.work.map((work, id) => (
+                <BlurFade
                   key={work.company}
-                  logoUrl={work.logoUrl}
-                  altText={work.company}
-                  title={work.company}
-                  subtitle={work.title}
-                  href={work.href}
-                  badges={work.badges}
-                  period={`${work.start} - ${work.end}`}
-                  description={work.description}
-                  redacted={(work as any).redacted}
-                />
-              </BlurFade>
-            ))}
+                  delay={BLUR_FADE_DELAY * 6 + id * 0.05}
+                >
+                  <ResumeCard
+                    key={work.company}
+                    logoUrl={work.logoUrl}
+                    altText={work.company}
+                    title={work.company}
+                    subtitle={work.title}
+                    href={work.href}
+                    badges={work.badges}
+                    period={`${work.start} - ${work.end}`}
+                    description={work.description}
+                    redacted={(work as any).redacted}
+                  />
+                </BlurFade>
+              ))}
+            </div>
           </div>
         </section>
 
+        <SectionDivider />
+
+        {/* ─── GITHUB ─── */}
         <section id="contributions">
           <BlurFade delay={BLUR_FADE_DELAY * 10}>
-            <h2 className="text-xl font-bold tracking-tight">GitHub Contributions</h2>
-            <GithubContributions />
+            <SectionLabel label="Open Source" />
+            <h2 className="mt-1.5 text-xl font-bold tracking-tight">GitHub Contributions</h2>
+            <div className="mt-3">
+              <GithubContributions />
+            </div>
           </BlurFade>
         </section>
 
+        {/* ─── SPONSORS ─── */}
         <section id="sponsors">
           <BlurFade delay={BLUR_FADE_DELAY * 11}>
             <GitHubSponsors />
           </BlurFade>
         </section>
 
+        <SectionDivider />
+
+        {/* ─── PROJECTS ─── */}
         <section id="projects">
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade delay={BLUR_FADE_DELAY * 7}>
-              <h2 className="text-xl font-bold tracking-tight">Featured Projects</h2>
+              <SectionLabel label="Portfolio" />
+              <h2 className="mt-1.5 text-xl font-bold tracking-tight">Featured Projects</h2>
             </BlurFade>
             <BlurFade delay={BLUR_FADE_DELAY * 8}>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -247,10 +295,14 @@ export default function Page() {
           </div>
         </section>
 
+        <SectionDivider />
+
+        {/* ─── EDUCATION ─── */}
         <section id="education">
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade delay={BLUR_FADE_DELAY * 7}>
-              <h2 className="text-xl font-bold tracking-tight">Education</h2>
+              <SectionLabel label="Academic" />
+              <h2 className="mt-1.5 text-xl font-bold tracking-tight">Education</h2>
             </BlurFade>
             {DATA.education.map((education, id) => (
               <BlurFade
@@ -271,31 +323,32 @@ export default function Page() {
           </div>
         </section>
 
+        <SectionDivider />
+
+        {/* ─── SETUP ─── */}
         <section id="setup">
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade delay={BLUR_FADE_DELAY * 9}>
-              <div className="space-y-1">
-                <p className="text-sm text-muted-foreground">Development</p>
-                <h2 className="text-xl font-bold tracking-tight">Setup</h2>
-              </div>
+              <SectionLabel label="Development" />
+              <h2 className="mt-1.5 text-xl font-bold tracking-tight">Setup</h2>
             </BlurFade>
-            <div className="flex flex-col gap-2">
+            <div className="grid gap-2 sm:grid-cols-2">
               {DATA.setup.map((item, idx) => (
                 <BlurFade key={item.title} delay={BLUR_FADE_DELAY * 9.5 + idx * 0.05}>
                   <Link
                     href={item.href}
                     target={item.href.startsWith('http') ? '_blank' : undefined}
                     rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="flex items-center gap-4 p-4 rounded-xl border border-border/50 bg-card/30 hover:bg-card/60 transition-colors group"
+                    className="flex items-center gap-4 rounded-xl border border-border/50 bg-card/20 p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-border hover:bg-card/50 group"
                   >
-                    <div className="p-2.5 rounded-lg bg-muted">
+                    <div className="rounded-lg border border-border/50 bg-muted/50 p-2.5">
                       <item.icon className="size-5 text-muted-foreground" />
                     </div>
-                    <div className="flex-1">
-                      <h3 className="font-medium group-hover:text-primary transition-colors">{item.title}</h3>
-                      <p className="text-sm text-muted-foreground">{item.description}</p>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-medium text-sm group-hover:text-primary transition-colors">{item.title}</h3>
+                      <p className="text-xs text-muted-foreground truncate">{item.description}</p>
                     </div>
-                    <ArrowUpRight className="size-4 text-muted-foreground group-hover:text-foreground transition-colors" />
+                    <ArrowUpRight className="size-4 shrink-0 text-muted-foreground/40 group-hover:text-foreground transition-colors" />
                   </Link>
                 </BlurFade>
               ))}
@@ -303,12 +356,18 @@ export default function Page() {
           </div>
         </section>
 
+        <SectionDivider />
+
+        {/* ─── TESTIMONIALS ─── */}
         <section id="testimonials">
           <BlurFade delay={BLUR_FADE_DELAY * 15}>
             <TwitterTestimonials />
           </BlurFade>
         </section>
 
+        <SectionDivider />
+
+        {/* ─── CONTACT ─── */}
         <section id="contact">
           <BlurFade delay={BLUR_FADE_DELAY * 16}>
             <div className="relative overflow-hidden rounded-2xl border border-border/50 bg-gradient-to-b from-card/60 via-card/40 to-card/20 py-12 text-center">
@@ -326,6 +385,7 @@ export default function Page() {
                 className="pointer-events-none absolute -top-24 left-1/2 h-56 w-56 -translate-x-1/2 rounded-full bg-foreground/10 blur-3xl"
               />
               <div className="relative z-10 flex flex-col items-center justify-center space-y-6">
+              <SectionLabel label="Get in touch" />
               <p className="text-xl text-muted-foreground">
                I'd love to hear from you.
               </p>
@@ -343,44 +403,68 @@ export default function Page() {
             </div>
           </BlurFade>
         </section>
-        <footer className="mt-20 border-t py-8">
+
+        {/* ─── FOOTER ─── */}
+        <footer className="border-t border-border/40 pt-8 pb-4">
           <BlurFade delay={BLUR_FADE_DELAY * 15}>
-            <div className="container mx-auto px-4">
-              <div className="flex flex-col justify-between gap-4 md:flex-row md:items-center">
-                <div className="space-y-2 text-sm text-muted-foreground">
-                  <p>© {new Date().getFullYear()} {DATA.name}. All rights reserved.</p>
-                  <p>
-                    Open source under{' '}
-                    <a 
-                      href="https://opensource.org/licenses/MIT" 
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="underline hover:text-foreground"
+            <div className="grid gap-8 sm:grid-cols-3">
+              <div className="space-y-2">
+                <p className="text-sm font-medium">{DATA.name}</p>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Frontend Developer from India.
+                  <br />Building modern web applications.
+                </p>
+              </div>
+
+              <div className="space-y-2">
+                <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground/60">Links</p>
+                <div className="flex flex-col gap-1.5">
+                  {DATA.navbar.slice(1).map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="text-xs text-muted-foreground hover:text-foreground transition-colors w-fit"
                     >
-                      MIT License
-                    </a>
-                    {' '}and available on{' '}
-                    <a 
-                      href="https://github.com/StarKnightt/prasendev" 
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="underline hover:text-foreground"
-                    >
-                      GitHub
-                    </a>
-                  </p>
-                </div>
-                <div className="flex flex-wrap items-center gap-3 text-sm">
-                  <VisitorCounter />
-                  <span className="text-muted-foreground/30">|</span>
-                  <Link href="/sitemap.xml" className="text-sm text-muted-foreground hover:text-foreground">
-                    Sitemap
-                  </Link>
-                  <Link href="/rss.xml" className="text-sm text-muted-foreground hover:text-foreground">
-                    RSS
-                  </Link>
+                      {item.label}
+                    </Link>
+                  ))}
                 </div>
               </div>
+
+              <div className="space-y-2">
+                <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground/60">Meta</p>
+                <div className="flex flex-col gap-1.5">
+                  <Link href="/sitemap.xml" className="text-xs text-muted-foreground hover:text-foreground transition-colors w-fit">
+                    Sitemap
+                  </Link>
+                  <Link href="/rss.xml" className="text-xs text-muted-foreground hover:text-foreground transition-colors w-fit">
+                    RSS Feed
+                  </Link>
+                  <a
+                    href="https://github.com/StarKnightt/prasendev"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-muted-foreground hover:text-foreground transition-colors w-fit"
+                  >
+                    Source Code
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8 flex flex-col gap-3 border-t border-border/30 pt-6 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-xs text-muted-foreground/60">
+                © {new Date().getFullYear()} {DATA.name}. Open source under{' '}
+                <a
+                  href="https://opensource.org/licenses/MIT"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:text-foreground transition-colors"
+                >
+                  MIT
+                </a>
+              </p>
+              <VisitorCounter />
             </div>
           </BlurFade>
         </footer>
