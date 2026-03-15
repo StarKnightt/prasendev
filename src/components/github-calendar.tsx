@@ -39,7 +39,7 @@ export function GithubContributions() {
         {!mounted ? (
           <div className="w-full h-[160px] rounded-lg bg-muted/50 animate-pulse" />
         ) : (
-          <div className="p-4">
+          <div className="overflow-x-auto p-4 -mx-1">
             <GitHubCalendar
               username="StarKnightt"
               colorScheme={resolvedTheme as "light" | "dark"}

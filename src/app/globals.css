@@ -286,8 +286,19 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
   display: none !important;
 }
 
+/* Blog article - prevent overflow on mobile */
+.prose {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.prose pre {
+  max-width: 100%;
+}
+
 /* Blog article images - clickable with hover effect */
 .prose img {
+  max-width: 100%;
   cursor: zoom-in;
   border-radius: 0.75rem;
   border: 1px solid hsl(var(--border) / 0.5);
@@ -299,7 +310,9 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
-html {
+html,
+body {
+  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
