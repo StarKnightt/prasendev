@@ -285,3 +285,31 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 .clean-tweet time {
   display: none !important;
 }
+
+/* Blog article images - clickable with hover effect */
+.prose img {
+  cursor: zoom-in;
+  border-radius: 0.75rem;
+  border: 1px solid hsl(var(--border) / 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.prose img:hover {
+  transform: scale(1.01);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

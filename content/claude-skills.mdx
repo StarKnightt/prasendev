@@ -1,0 +1,97 @@
+---
+title: "Claude Skills Are Basically Custom Modes for AI. And They're Sick"
+publishedAt: "2026-01-10"
+summary: "Anthropic just dropped Skills for Claude. Think of them as reusable instruction packs that make Claude way better at specific tasks."
+tags: ["ai", "claude", "skills", "productivity"]
+---
+# Claude Skills Are Basically Custom Modes for AI. And They're Sick
+
+Alright so Anthropic quietly shipped this feature called Skills and I don't think enough people are talking about it.
+
+Imagine if you could teach Claude your exact workflow once, and then it just... remembers. Every time. Without you having to repeat yourself.
+
+That's Skills.
+
+## What Are Skills?
+
+In simple terms: Skills are folders of instructions and scripts that Claude loads when it needs them.
+
+Instead of pasting your company's coding guidelines into every conversation, you create a Skill for it. Next time you ask Claude to write code, it automatically loads those guidelines.
+
+Instead of explaining your preferred writing style every time, you make a Skill. Claude just knows.
+
+It's like having presets on a camera. You set it up once, then just click.
+
+## How They Actually Work
+
+When you ask Claude to do something, it looks at your available Skills and goes "oh, this task matches that Skill" and loads the relevant instructions automatically.
+
+![How Claude Skills Work: You ask > Claude checks library > Auto-loads the right Skill > Response](/blog/skills-flow.png)
+
+The cool part? It doesn't load ALL your Skills at once. It picks the ones that are relevant. So you can have 20 Skills and it won't slow things down or confuse the AI.
+
+Anthropic calls this "progressive disclosure" which is a fancy way of saying "it only loads what it needs."
+
+## Types of Skills
+
+### Anthropic's Built-in Skills
+
+These come out of the box. Better document creation for Excel, Word, PowerPoint, PDFs. They just work, you don't need to set up anything.
+
+### Custom Skills (This Is Where It Gets Good)
+
+You write your own. And here's the kicker, you write them in Markdown. Not Python. Not JavaScript. Just plain Markdown instructions.
+
+Some ideas for custom Skills:
+
+- **Code Review Skill**: Your team's specific style guide, common anti-patterns to catch, PR template format
+- **Blog Writing Skill**: Your tone of voice, SEO requirements, formatting preferences
+- **Meeting Notes Skill**: Your company's template, action item format, who-does-what structure
+- **Data Analysis Skill**: Your org's specific metrics, dashboard formats, reporting style
+
+### Partner Skills
+
+Notion, Figma, Atlassian and others have built Skills that work with their MCP connectors. So you can literally manage your Jira tickets through Claude using the right Skill + MCP combo.
+
+## My Favorite Part: It's an Open Standard
+
+Skills aren't locked to Claude. Anthropic published the spec as an open standard at [agentskills.io](https://agentskills.io). Any AI platform can adopt the same format.
+
+So the Skills you create today could potentially work on other AI platforms tomorrow. That's actually huge and I respect Anthropic for not locking this down.
+
+## Skills vs Other Claude Features
+
+Quick comparison because I was confused at first:
+
+![Skills vs Projects vs Custom Instructions vs MCP](/blog/skills-comparison.png)
+
+They all work together. MCP gives Claude hands. Skills teach it what to do with those hands.
+
+## Should You Make Your Own?
+
+If you find yourself copy-pasting the same instructions into Claude conversations, yes, make a Skill.
+
+If you have team workflows that everyone needs to follow, yes, make a Skill and share it.
+
+If you just use Claude casually for random questions, probably don't need it yet.
+
+## How to Get Started
+
+1. Open Claude
+2. Go to your Skills section
+3. Create a new one
+4. Write instructions in Markdown
+5. That's literally it
+
+You don't need code execution for basic Skills. Just write what you want Claude to know and do. If you want to get fancy, you can attach scripts too.
+
+The barrier to entry is basically zero. If you can write a README, you can write a Skill.
+
+## Resources
+
+- [What Are Skills?](https://support.claude.com/en/articles/12512176-what-are-skills) - Anthropic's official explainer
+- [How to Create Custom Skills](https://support.claude.com/en/articles/12512182-how-to-create-custom-skills) - Step by step guide
+- [Agent Skills Open Standard](https://agentskills.io) - The open spec so Skills work across platforms
+- [Claude Skills Directory](https://claude.ai/skills) - Browse and install partner Skills from Notion, Figma, Atlassian, and more
+
+*- Prasenjit*

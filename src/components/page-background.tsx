@@ -15,6 +15,10 @@ export function PageBackground() {
   if (isGadgetsPage) {
     return <GridPattern className="w-full h-full" />;
   }
-  // Show meteors on blog and other pages
+
+  if (isBlogPage) {
+    return null;
+  }
+
   return <MeteorsBackground />;
 }
