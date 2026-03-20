@@ -50,7 +50,6 @@ export function ProjectCard({
   const [showVideo, setShowVideo] = useState(false);
 
   const handleCardClick = (e: React.MouseEvent) => {
-    // If there is a video, prevent default link behavior and open modal
     if (video) {
       e.preventDefault();
       setIsModalOpen(true);

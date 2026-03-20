@@ -39,10 +39,9 @@ export function VideoCard({ video }: VideoCardProps) {
             <Image
               src={video.thumbnail}
               alt={video.title}
-              width={500}
-              height={280}
-              className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-              priority
+              width={640}
+              height={360}
+              className="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             />
             <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <PlayIcon className="w-12 h-12 text-white" />

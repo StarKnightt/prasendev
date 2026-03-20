@@ -62,7 +62,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-1">
             {DATA.navbar.slice(1).map((item) => {
               const isActive = pathname === item.href;
               return (
@@ -70,20 +70,21 @@ export default function Navbar() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "relative py-1 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+                    "relative rounded-full px-3 py-1.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                     isActive 
                       ? "text-foreground" 
                       : "text-muted-foreground hover:text-foreground"
                   )}
                 >
-                  {item.label}
                   {isActive && (
                     <motion.span
-                      layoutId="navbar-underline"
-                      className="absolute left-0 right-0 bottom-0 h-[2px] bg-foreground"
-                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                      layoutId="navbar-pill"
+                      className="absolute inset-0 rounded-full bg-muted"
+                      style={{ zIndex: -1 }}
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
                     />
                   )}
+                  {item.label}
                 </Link>
               );
             })}
