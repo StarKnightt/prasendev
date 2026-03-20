@@ -1,6 +1,8 @@
 import BlurFade from "@/components/magicui/blur-fade";
-import { DATA } from "@/data/resume";
 import { VideosList } from "@/components/videos-list";
+import { fetchYouTubeVideos } from "@/lib/youtube";
+
+export const revalidate = 3600;
 
 export const metadata = {
   title: "Videos",
@@ -9,7 +11,9 @@ export const metadata = {
 
 const BLUR_FADE_DELAY = 0.04;
 
-export default function VideosPage() {
+export default async function VideosPage() {
+  const videos = await fetchYouTubeVideos();
+
   return (
     <main className="flex flex-col min-h-[100dvh] space-y-10">
       <section id="videos">
@@ -29,7 +33,7 @@ export default function VideosPage() {
           </div>
         </BlurFade>
         
-        <VideosList videos={DATA.videos} />
+        <VideosList videos={videos} />
       </section>
     </main>
   );

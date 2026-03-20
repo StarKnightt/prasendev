@@ -23,7 +23,7 @@ export function AgeCounter() {
     return () => clearInterval(interval);
   }, []);
 
-  // Show placeholder until mounted to prevent hydration mismatch
+  // show placeholder until mounted to prevent hydration mismatch
   if (years === null) {
     return (
       <div className="text-sm font-bold min-h-[20px]">

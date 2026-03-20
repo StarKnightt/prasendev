@@ -1,7 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   transpilePackages: ['three'],
-  // Your other config settings
+  images: {
+    remotePatterns: [
+      { protocol: 'https', hostname: 'i.ytimg.com' },
+      { protocol: 'https', hostname: 'img.youtube.com' },
+    ],
+  },
   async rewrites() {
     return [
       {

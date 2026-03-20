@@ -26,7 +26,7 @@ interface Video {
 }
 
 interface VideosListProps {
-  videos: readonly Video[];
+  videos: readonly Video[] | Video[];
 }
 
 const BLUR_FADE_DELAY = 0.04;
