@@ -9,11 +9,10 @@ export function BackToTop() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show button when scrolled down 400px
       setIsVisible(window.scrollY > 400);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -33,7 +32,7 @@ export function BackToTop() {
           exit={{ opacity: 0, scale: 0.8, y: 20 }}
           transition={{ duration: 0.2 }}
           onClick={scrollToTop}
-          className="fixed bottom-6 left-6 z-40 p-2.5 rounded-full 
+          className="fixed bottom-20 right-4 z-40 p-2.5 rounded-full 
             bg-foreground/90 text-background 
             shadow-lg hover:shadow-xl
             hover:scale-110 active:scale-95
