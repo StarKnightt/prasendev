@@ -15,6 +15,7 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import { CommandPalette } from "@/components/command-palette";
 import { SoundProvider } from "@/components/sound-provider";
 import { BackToTop } from "@/components/back-to-top";
+import { SmoothCursor } from "@/components/ui/smooth-cursor";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -145,6 +146,7 @@ export default function RootLayout({
                 <Navbar />
                 <CommandPalette />
                 <BackToTop />
+                <SmoothCursor />
               </TooltipProvider>
             </SoundProvider>
           </ThemeProvider>

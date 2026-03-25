@@ -18,6 +18,12 @@ export interface SmoothCursorProps {
   }
 }
 
+const DESKTOP_POINTER_QUERY = "(any-hover: hover) and (any-pointer: fine)"
+
+function isTrackablePointer(pointerType: string) {
+  return pointerType !== "touch"
+}
+
 const DefaultCursorSVG: FC = () => {
   return (
     <svg
@@ -83,25 +89,26 @@ const DefaultCursorSVG: FC = () => {
 export function SmoothCursor({
   cursor = <DefaultCursorSVG />,
   springConfig = {
-    damping: 20,
-    stiffness: 1000,
-    mass: 0.1,
+    damping: 45,
+    stiffness: 400,
+    mass: 1,
     restDelta: 0.001,
   },
 }: SmoothCursorProps) {
-  const [isMoving, setIsMoving] = useState(false)
   const lastMousePos = useRef<Position>({ x: 0, y: 0 })
   const velocity = useRef<Position>({ x: 0, y: 0 })
   const lastUpdateTime = useRef(Date.now())
   const previousAngle = useRef(0)
   const accumulatedRotation = useRef(0)
+  const [isEnabled, setIsEnabled] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
 
   const cursorX = useSpring(0, springConfig)
   const cursorY = useSpring(0, springConfig)
   const rotation = useSpring(0, {
     ...springConfig,
-    damping: 25,
-    stiffness: 800,
+    damping: 60,
+    stiffness: 300,
   })
   const scale = useSpring(1, {
     ...springConfig,
@@ -110,6 +117,32 @@ export function SmoothCursor({
   })
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia(DESKTOP_POINTER_QUERY)
+
+    const updateEnabled = () => {
+      const nextIsEnabled = mediaQuery.matches
+      setIsEnabled(nextIsEnabled)
+
+      if (!nextIsEnabled) {
+        setIsVisible(false)
+      }
+    }
+
+    updateEnabled()
+    mediaQuery.addEventListener("change", updateEnabled)
+
+    return () => {
+      mediaQuery.removeEventListener("change", updateEnabled)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!isEnabled) {
+      return
+    }
+
+    let timeout: ReturnType<typeof setTimeout> | null = null
+
     const updateVelocity = (currentPos: Position) => {
       const currentTime = Date.now()
       const deltaTime = currentTime - lastUpdateTime.current
@@ -125,7 +158,13 @@ export function SmoothCursor({
       lastMousePos.current = currentPos
     }
 
-    const smoothMouseMove = (e: MouseEvent) => {
+    const smoothPointerMove = (e: PointerEvent) => {
+      if (!isTrackablePointer(e.pointerType)) {
+        return
+      }
+
+      setIsVisible(true)
+
       const currentPos = { x: e.clientX, y: e.clientY }
       updateVelocity(currentPos)
 
@@ -149,60 +188,78 @@ export function SmoothCursor({
         previousAngle.current = currentAngle
 
         scale.set(0.95)
-        setIsMoving(true)
 
-        const timeout = setTimeout(() => {
+        if (timeout !== null) {
+          clearTimeout(timeout)
+        }
+
+        timeout = setTimeout(() => {
           scale.set(1)
-          setIsMoving(false)
         }, 150)
-
-        return () => clearTimeout(timeout)
       }
     }
 
-    let rafId: number
-    const throttledMouseMove = (e: MouseEvent) => {
+    let rafId = 0
+    const throttledPointerMove = (e: PointerEvent) => {
+      if (!isTrackablePointer(e.pointerType)) {
+        return
+      }
+
       if (rafId) return
 
       rafId = requestAnimationFrame(() => {
-        smoothMouseMove(e)
+        smoothPointerMove(e)
         rafId = 0
       })
     }
 
-    document.body.style.cursor = "none"
-    window.addEventListener("mousemove", throttledMouseMove)
+    const style = document.createElement("style")
+    style.id = "smooth-cursor-hide"
+    style.textContent = "*, *::before, *::after { cursor: none !important; }"
+    document.head.appendChild(style)
+
+    window.addEventListener("pointermove", throttledPointerMove, {
+      passive: true,
+    })
 
     return () => {
-      window.removeEventListener("mousemove", throttledMouseMove)
-      document.body.style.cursor = "auto"
+      window.removeEventListener("pointermove", throttledPointerMove)
+      style.remove()
       if (rafId) cancelAnimationFrame(rafId)
+      if (timeout !== null) {
+        clearTimeout(timeout)
+      }
     }
-  }, [cursorX, cursorY, rotation, scale])
+  }, [cursorX, cursorY, rotation, scale, isEnabled])
+
+  if (!isEnabled) {
+    return null
+  }
 
   return (
-    <motion.div
-      style={{
-        position: "fixed",
-        left: cursorX,
-        top: cursorY,
-        translateX: "-50%",
-        translateY: "-50%",
-        rotate: rotation,
-        scale: scale,
-        zIndex: 100,
-        pointerEvents: "none",
-        willChange: "transform",
+    <>
+      <motion.div
+        style={{
+          position: "fixed",
+          left: cursorX,
+          top: cursorY,
+          translateX: "-50%",
+          translateY: "-50%",
+          rotate: rotation,
+          scale: scale,
+          zIndex: 100,
+          pointerEvents: "none",
+          willChange: "transform",
+        opacity: isVisible ? 1 : 0,
       }}
-      initial={{ scale: 0 }}
-      animate={{ scale: 1 }}
-      transition={{
-        type: "spring",
-        stiffness: 400,
-        damping: 30,
-      }}
-    >
-      {cursor}
-    </motion.div>
+      initial={false}
+      animate={{ opacity: isVisible ? 1 : 0 }}
+        transition={{
+          duration: 0.15,
+        }}
+      >
+        {cursor}
+      </motion.div>
+    </>
   )
 }
