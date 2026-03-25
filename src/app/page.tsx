@@ -312,13 +312,11 @@ export default function Page() {
               <SectionLabel label="Development" />
               <h2 className="mt-1.5 text-xl font-bold tracking-tight">Setup</h2>
             </BlurFade>
-            <div className="flex flex-col gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {DATA.setup.map((item, idx) => (
                 <BlurFade key={item.title} delay={BLUR_FADE_DELAY * 9.5 + idx * 0.05}>
                   <Link
                     href={item.href}
-                    target={item.href.startsWith('http') ? '_blank' : undefined}
-                    rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                     className="flex items-center gap-4 rounded-xl border border-border/50 bg-card/20 p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-border hover:bg-card/50 group"
                   >
                     <div className="rounded-lg border border-border/50 bg-muted/50 p-2.5">

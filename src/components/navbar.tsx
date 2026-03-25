@@ -74,8 +74,8 @@ export default function Navbar() {
             transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="fixed top-0 left-0 right-0 z-50"
           >
-            <div className="mx-auto max-w-4xl px-4 sm:px-6">
-              <div className="mt-3 flex items-center justify-between rounded-2xl px-4 py-2">
+            <div className="mx-auto max-w-4xl px-6">
+              <div className="mt-3 flex items-center justify-between rounded-2xl py-2">
                 <Link
                   href="/"
                   className="rounded-lg p-1.5 text-muted-foreground transition-colors hover:text-foreground hover:bg-muted/60"
