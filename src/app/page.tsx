@@ -86,10 +86,6 @@ function SectionLabel({ label }: { label: string }) {
   );
 }
 
-function SectionDivider() {
-  return <div className="w-full border-t border-border/40" />;
-}
-
 export default function Page() {
   return (
     <>
@@ -162,12 +158,11 @@ export default function Page() {
           </BlurFade>
         </section>
 
-        <SectionDivider />
 
         {/* ─── ABOUT ─── */}
         <section id="about">
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
-            <div className="rounded-xl border border-border/50 bg-card/20 p-5 sm:p-6">
+            <div className="rounded-xl bg-card/20 p-5 sm:p-6">
               <SectionLabel label="About me" />
               <h2 className="mt-1.5 text-xl font-bold tracking-tight">About</h2>
               <div className="mt-3">
@@ -179,7 +174,6 @@ export default function Page() {
           </BlurFade>
         </section>
 
-        <SectionDivider />
 
         {/* ─── SKILLS ─── */}
         <section id="skills">
@@ -198,7 +192,6 @@ export default function Page() {
           </div>
         </section>
 
-        <SectionDivider />
 
         {/* ─── WORK ─── */}
         <section id="work">
@@ -231,7 +224,6 @@ export default function Page() {
           </div>
         </section>
 
-        <SectionDivider />
 
         {/* ─── GITHUB ─── */}
         <section id="contributions">
@@ -251,7 +243,6 @@ export default function Page() {
           </BlurFade>
         </section>
 
-        <SectionDivider />
 
         {/* ─── PROJECTS ─── */}
         <section id="projects">
@@ -289,7 +280,6 @@ export default function Page() {
           </div>
         </section>
 
-        <SectionDivider />
 
         {/* ─── EDUCATION ─── */}
         <section id="education">
@@ -317,7 +307,6 @@ export default function Page() {
           </div>
         </section>
 
-        <SectionDivider />
 
         {/* ─── SETUP ─── */}
         <section id="setup">
@@ -350,7 +339,6 @@ export default function Page() {
           </div>
         </section>
 
-        <SectionDivider />
 
         {/* ─── TESTIMONIALS ─── */}
         <section id="testimonials">
@@ -359,7 +347,6 @@ export default function Page() {
           </BlurFade>
         </section>
 
-        <SectionDivider />
 
         {/* ─── CONTACT ─── */}
         <section id="contact">
