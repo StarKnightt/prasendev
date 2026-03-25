@@ -231,7 +231,7 @@ export const MagicTweet = ({
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        "relative flex h-fit w-full max-w-lg flex-col gap-4 overflow-hidden rounded-xl border border-border/60 dark:border-border/40 hover:border-border dark:hover:border-border/70 p-5 transition-all hover:shadow-lg",
+        "relative flex h-fit w-full max-w-lg flex-col gap-4 overflow-hidden rounded-xl border border-border/60 bg-card/50 dark:border-border/30 dark:bg-card/40 hover:border-border dark:hover:border-border/60 p-5 transition-all hover:shadow-lg dark:hover:bg-card/60",
         className
       )}
     >

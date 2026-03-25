@@ -65,7 +65,7 @@ export function TwitterTestimonials() {
 
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
-      const scrollAmount = 340; // card width + gap
+      const scrollAmount = 340;
       scrollRef.current.scrollBy({
         left: direction === "left" ? -scrollAmount : scrollAmount,
         behavior: "smooth",
@@ -86,7 +86,7 @@ export function TwitterTestimonials() {
         <h2 className="text-xl font-bold">Thanks for all of your love 💖</h2>
       </div>
 
-      <div className="group relative rounded-2xl border border-border/50 bg-card/30 p-3 sm:p-4">
+      <div className="group relative">
         {/* Left Arrow */}
         <button
           onClick={() => scroll("left")}
