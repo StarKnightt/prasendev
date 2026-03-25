@@ -1,7 +1,7 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, NotebookIcon, VideoIcon, FolderIcon, Settings } from "lucide-react";
-import { faReact, faNodeJs, faGitAlt, faTypescript, faTailwindCss } from "@fortawesome/free-brands-svg-icons";
-import { faLeaf, faPlug, faBolt } from "@fortawesome/free-solid-svg-icons";
+import { HomeIcon, NotebookIcon, VideoIcon, FolderIcon, Settings, Wrench } from "lucide-react";
+import { faReact, faNodeJs, faGitAlt, faTypescript, faTailwindCss, faDocker, faFigma, faGithub, faFirefoxBrowser, faBrave, faNotion } from "@fortawesome/free-brands-svg-icons";
+import { faLeaf, faPlug, faBolt, faTerminal, faRocket, faServer } from "@fortawesome/free-solid-svg-icons";
 
 export const DATA = {
   name: "Prasenjit Nayak",
@@ -32,6 +32,86 @@ export const DATA = {
       description: "Productivity tools and gadgets I use daily.",
       href: "/gadgets",
       icon: Settings,
+    },
+    {
+      title: "Tools I Use",
+      description: "Software and apps I code with daily.",
+      href: "/gadgets#tools",
+      icon: Wrench,
+    },
+  ],
+  tools: [
+    {
+      name: "Cursor",
+      description: "AI-powered code editor built on VS Code — my primary IDE for all projects.",
+      href: "https://cursor.com/home",
+      customIcon: Icons.cursor,
+    },
+    {
+      name: "VS Code",
+      description: "The classic. I still use it for quick edits and when I need specific extensions.",
+      href: "https://code.visualstudio.com",
+      customIcon: Icons.vscode,
+    },
+    {
+      name: "Git Bash",
+      description: "My go-to terminal on Windows for all git operations and shell scripting.",
+      href: "https://gitforwindows.org",
+      icon: faTerminal,
+    },
+    {
+      name: "Postman",
+      description: "API testing and documentation — essential for building and debugging REST APIs.",
+      href: "https://www.postman.com",
+      icon: faRocket,
+    },
+    {
+      name: "Docker",
+      description: "Containerization for consistent dev environments and easy deployments.",
+      href: "https://www.docker.com",
+      icon: faDocker,
+    },
+    {
+      name: "Hostinger",
+      description: "Reliable and affordable hosting for my projects and client sites.",
+      href: "https://www.hostinger.com/in?REFERRALCODE=NP4PRASENELF",
+      icon: faServer,
+    },
+    {
+      name: "Firefox",
+      description: "Privacy-first browser I use for everyday browsing and web development.",
+      href: "https://www.mozilla.org/firefox",
+      icon: faFirefoxBrowser,
+    },
+    {
+      name: "Brave",
+      description: "Fast, ad-free browser — my secondary pick for a clean browsing experience.",
+      href: "https://brave.com",
+      icon: faBrave,
+    },
+    {
+      name: "Figma",
+      description: "Design tool for UI mockups, prototyping, and collaborating on layouts.",
+      href: "https://www.figma.com",
+      icon: faFigma,
+    },
+    {
+      name: "GitHub",
+      description: "Where all my code lives — version control, CI/CD, and open source contributions.",
+      href: "https://github.com",
+      icon: faGithub,
+    },
+    {
+      name: "Vercel",
+      description: "One-click deploys for all my Next.js apps with instant previews.",
+      href: "https://vercel.com",
+      icon: faRocket,
+    },
+    {
+      name: "Notion",
+      description: "Notes, task management, and documentation — my second brain.",
+      href: "https://www.notion.so",
+      icon: faNotion,
     },
   ],
   navbar: [
