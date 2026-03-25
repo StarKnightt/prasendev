@@ -1,5 +1,7 @@
 import { Icons } from "@/components/icons";
 import { HomeIcon, NotebookIcon, VideoIcon, FolderIcon, Settings } from "lucide-react";
+import { faReact, faNodeJs, faGitAlt, faTypescript, faTailwindCss } from "@fortawesome/free-brands-svg-icons";
+import { faN, faLeaf, faPlug, faBolt } from "@fortawesome/free-solid-svg-icons";
 
 export const DATA = {
   name: "Prasenjit Nayak",
@@ -10,19 +12,19 @@ export const DATA = {
   description:
     "",
   summary:
-    "Currently **freelancing** and **collaborating** with new people on exciting projects.\n\nI love playing [video games](https://www.youtube.com/@StarKnight-12) and share thoughts on tech [here](https://www.youtube.com/@Star_Knight12).\n\nHere's what I think about the [future of computer science](https://www.prasen.dev/blog/hello-world).\n\nI also enjoy [touch typing](https://monkeytype.com/profile/prasenj4551R) in my free time.",
+    "Currently **freelancing** and **collaborating** with new people on exciting projects.\n\nI love playing [video games](https://www.youtube.com/@StarKnight-12) and share thoughts on tech [here](https://www.youtube.com/@Star_Knight12).\n\nHere's what I think about the [future of computer science](https://www.prasen.dev/blog/hello-world).\n\nI also enjoy [touch typing](https://monkeytype.com/profile/prasenj4551R) in my free time, bullish on AI and future technologies",
 
   avatarUrl: "/hi.webp",
   skills: [
-    "React",
-    "Next.js",
-    "TypeScript",
-    "Node.js",
-    "MongoDB",
-    "TailwindCSS",
-    "Git",
-    "REST APIs",
-    "Framer Motion"
+    { name: "React", icon: faReact },
+    { name: "Next.js", icon: faN },
+    { name: "TypeScript", icon: faTypescript },
+    { name: "Node.js", icon: faNodeJs },
+    { name: "MongoDB", icon: faLeaf },
+    { name: "TailwindCSS", icon: faTailwindCss },
+    { name: "Git", icon: faGitAlt },
+    { name: "REST APIs", icon: faPlug },
+    { name: "Framer Motion", icon: faBolt },
   ],
   setup: [
     {

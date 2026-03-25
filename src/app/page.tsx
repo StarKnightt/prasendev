@@ -23,6 +23,7 @@ import { GhibliSkyBackground } from "@/components/ghibli-elements";
 import { GitHubSponsors } from "@/components/github-sponsors";
 import { TwitterTestimonials } from "@/components/twitter-testimonials";
 import { AgeCounter } from "@/components/age-counter";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ArrowUpRight } from "lucide-react";
 
 const VisitorCounter = dynamic(() => import("@/components/visitor-counter"), {
@@ -171,10 +172,13 @@ export default function Page() {
               <SectionLabel label="Technologies" />
               <h2 className="mt-1.5 text-xl font-bold tracking-tight">Skills</h2>
             </BlurFade>
-            <div className="flex flex-wrap gap-1.5">
+            <div className="flex flex-wrap gap-2">
               {DATA.skills.map((skill, id) => (
-                <BlurFade key={skill} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
-                  <Badge key={skill} variant="secondary" className="border border-border/50">{skill}</Badge>
+                <BlurFade key={skill.name} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
+                  <Badge variant="secondary" className="inline-flex items-center gap-1.5 border border-border/50 px-3 py-1.5 text-sm">
+                    <FontAwesomeIcon icon={skill.icon} className="size-4" />
+                    {skill.name}
+                  </Badge>
                 </BlurFade>
               ))}
             </div>
