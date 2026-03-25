@@ -176,7 +176,11 @@ export default function Page() {
               {DATA.skills.map((skill, id) => (
                 <BlurFade key={skill.name} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
                   <Badge variant="secondary" className="inline-flex items-center gap-1.5 border border-border/50 px-3 py-1.5 text-sm">
-                    <FontAwesomeIcon icon={skill.icon} className="size-4" />
+                    {"customIcon" in skill ? (
+                      <skill.customIcon className="size-4" />
+                    ) : (
+                      <FontAwesomeIcon icon={skill.icon} className="size-4" />
+                    )}
                     {skill.name}
                   </Badge>
                 </BlurFade>

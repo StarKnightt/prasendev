@@ -1,7 +1,7 @@
 import { Icons } from "@/components/icons";
 import { HomeIcon, NotebookIcon, VideoIcon, FolderIcon, Settings } from "lucide-react";
 import { faReact, faNodeJs, faGitAlt, faTypescript, faTailwindCss } from "@fortawesome/free-brands-svg-icons";
-import { faN, faLeaf, faPlug, faBolt } from "@fortawesome/free-solid-svg-icons";
+import { faLeaf, faPlug, faBolt } from "@fortawesome/free-solid-svg-icons";
 
 export const DATA = {
   name: "Prasenjit Nayak",
@@ -17,7 +17,7 @@ export const DATA = {
   avatarUrl: "/hi.webp",
   skills: [
     { name: "React", icon: faReact },
-    { name: "Next.js", icon: faN },
+    { name: "Next.js", customIcon: Icons.nextjs },
     { name: "TypeScript", icon: faTypescript },
     { name: "Node.js", icon: faNodeJs },
     { name: "MongoDB", icon: faLeaf },
