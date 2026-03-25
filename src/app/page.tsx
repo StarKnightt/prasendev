@@ -127,51 +127,40 @@ export default function Page() {
                 </div>
               </BlurFade>
             </div>
-          </div>
-        </section>
 
-        {/* ─── CONNECT ─── */}
-        <section id="connect">
-          <BlurFade delay={BLUR_FADE_DELAY * 4.5}>
-            <div className="flex flex-wrap items-center gap-3">
-              {Object.entries(DATA.contact.social)
-                .filter(([_, social]) => social.navbar !== false)
-                .map(([name, social]) => (
-                  <Tooltip key={name}>
-                    <TooltipTrigger asChild>
-                      <a
-                        href={social.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="rounded-full border border-border/60 bg-card/40 p-2.5 text-muted-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-border hover:bg-card hover:text-foreground"
-                        aria-label={name}
-                      >
-                        <social.icon className="size-5" />
-                      </a>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>{social.name}</p>
-                    </TooltipContent>
-                  </Tooltip>
-                ))}
-            </div>
-          </BlurFade>
-        </section>
+            {/* About */}
+            <BlurFade delay={BLUR_FADE_DELAY * 3}>
+              <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
+                {DATA.summary}
+              </Markdown>
+            </BlurFade>
 
-
-        {/* ─── ABOUT ─── */}
-        <section id="about">
-          <BlurFade delay={BLUR_FADE_DELAY * 3}>
-            <div className="rounded-xl bg-card/20 p-5 sm:p-6">
-              <SectionLabel label="About me" />
-              <h2 className="mt-1.5 text-xl font-bold tracking-tight">About</h2>
-              <div className="mt-3">
-                <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
-                  {DATA.summary}
-                </Markdown>
+            {/* Social links */}
+            <BlurFade delay={BLUR_FADE_DELAY * 4.5}>
+              <div className="flex flex-wrap items-center gap-3">
+                {Object.entries(DATA.contact.social)
+                  .filter(([_, social]) => social.navbar !== false)
+                  .map(([name, social]) => (
+                    <Tooltip key={name}>
+                      <TooltipTrigger asChild>
+                        <a
+                          href={social.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="rounded-full border border-border/60 bg-card/40 p-2.5 text-muted-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-border hover:bg-card hover:text-foreground"
+                          aria-label={name}
+                        >
+                          <social.icon className="size-5" />
+                        </a>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>{social.name}</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  ))}
               </div>
-            </div>
-          </BlurFade>
+            </BlurFade>
+          </div>
         </section>
 
 
