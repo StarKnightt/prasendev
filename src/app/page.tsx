@@ -25,6 +25,7 @@ import { TwitterTestimonials } from "@/components/twitter-testimonials";
 import { AgeCounter } from "@/components/age-counter";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ArrowUpRight } from "lucide-react";
+import { GitHubHoverCard } from "@/components/github-hover-card";
 
 const VisitorCounter = dynamic(() => import("@/components/visitor-counter"), {
   ssr: false,
@@ -141,24 +142,38 @@ export default function Page() {
               <div className="flex flex-wrap items-center gap-3">
                 {Object.entries(DATA.contact.social)
                   .filter(([_, social]) => social.navbar !== false)
-                  .map(([name, social]) => (
-                    <Tooltip key={name}>
-                      <TooltipTrigger asChild>
-                        <a
-                          href={social.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="rounded-full border border-border/60 bg-card/40 p-2.5 text-muted-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-border hover:bg-card hover:text-foreground"
-                          aria-label={name}
-                        >
-                          <social.icon className="size-5" />
-                        </a>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>{social.name}</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  ))}
+                  .map(([name, social]) => {
+                    const socialLink = (
+                      <a
+                        href={social.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="rounded-full border border-border/60 bg-card/40 p-2.5 text-muted-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-border hover:bg-card hover:text-foreground"
+                        aria-label={name}
+                      >
+                        <social.icon className="size-5" />
+                      </a>
+                    );
+
+                    if (name === "GitHub") {
+                      return (
+                        <GitHubHoverCard key={name}>
+                          {socialLink}
+                        </GitHubHoverCard>
+                      );
+                    }
+
+                    return (
+                      <Tooltip key={name}>
+                        <TooltipTrigger asChild>
+                          {socialLink}
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>{social.name}</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    );
+                  })}
               </div>
             </BlurFade>
           </div>
