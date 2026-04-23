@@ -25,6 +25,8 @@ export const DATA = {
     { name: "Git", icon: faGitAlt },
     { name: "REST APIs", icon: faPlug },
     { name: "Framer Motion", icon: faBolt },
+    { name: "Claude", customIcon: Icons.claude },
+    { name: "Cursor", customIcon: Icons.cursor },
   ],
   setup: [
     {

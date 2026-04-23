@@ -212,11 +212,11 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
     linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
-  animation: rotate 8s linear infinite; /* slowed down from 4s */
+  animation: rotate 8s linear infinite;
 }
 
 .profile-wrapper:hover::before {
-  animation: rotate 4s linear infinite; /* slowed down from 2s */
+  animation: rotate 4s linear infinite;
 }
 
 @keyframes rotate {
