@@ -18,6 +18,7 @@ A modern, responsive portfolio website built with Next.js 14, TypeScript, Tailwi
 - **SEO Optimized**: Meta tags and OpenGraph support
 - **Performance Focused**: Optimized for Core Web Vitals
 - **Visitor Counter**: Real-time unique visitor tracking with Upstash Redis
+- **Social Hover Cards**: Live GitHub profile and Steam status hover cards on social icons
 
 ## 🚀 Tech Stack
 
@@ -66,6 +67,9 @@ GITHUB_TOKEN=your_github_personal_access_token
 # Upstash Redis (Required for Visitor Counter)
 UPSTASH_REDIS_REST_URL=your_upstash_redis_url
 UPSTASH_REDIS_REST_TOKEN=your_upstash_redis_token
+
+# Steam Web API (Required for Steam Hover Card)
+STEAM_API_KEY=your_steam_web_api_key
 ```
 
 ### Setting up GitHub Token
@@ -80,6 +84,17 @@ UPSTASH_REDIS_REST_TOKEN=your_upstash_redis_token
 6. Add it to your `.env.local` file
 
 > **Note**: The token is used to fetch your GitHub sponsors. Without it, the sponsors section will show an error.
+
+### Setting up Steam Web API Key
+
+1. Go to [Steam Web API Key Registration](https://steamcommunity.com/dev/apikey)
+2. Sign in with your Steam account
+3. Enter your domain name and register
+4. Copy the API key
+5. Add it to your `.env.local` file
+6. Update `VANITY_URL` in `src/app/api/steam-stats/route.ts` with your Steam vanity URL
+
+> **Note**: The Steam API key is used for the Steam hover card which shows your live profile status, current game, level, and games count. Your Steam profile must be public for this to work.
 
 ## 🐦 Twitter/X Testimonials
 

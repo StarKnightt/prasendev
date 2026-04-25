@@ -26,6 +26,7 @@ import { AgeCounter } from "@/components/age-counter";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ArrowUpRight } from "lucide-react";
 import { GitHubHoverCard } from "@/components/github-hover-card";
+import { SteamHoverCard } from "@/components/steam-hover-card";
 
 const VisitorCounter = dynamic(() => import("@/components/visitor-counter"), {
   ssr: false,
@@ -160,6 +161,14 @@ export default function Page() {
                         <GitHubHoverCard key={name}>
                           {socialLink}
                         </GitHubHoverCard>
+                      );
+                    }
+
+                    if (name === "Steam") {
+                      return (
+                        <SteamHoverCard key={name}>
+                          {socialLink}
+                        </SteamHoverCard>
                       );
                     }
 
