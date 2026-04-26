@@ -27,6 +27,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ArrowUpRight } from "lucide-react";
 import { GitHubHoverCard } from "@/components/github-hover-card";
 import { SteamHoverCard } from "@/components/steam-hover-card";
+import { SteamNowPlaying } from "@/components/steam-now-playing";
 
 const VisitorCounter = dynamic(() => import("@/components/visitor-counter"), {
   ssr: false,
@@ -138,53 +139,58 @@ export default function Page() {
               </Markdown>
             </BlurFade>
 
-            {/* Social links */}
-            <BlurFade delay={BLUR_FADE_DELAY * 4.5}>
-              <div className="flex flex-wrap items-center gap-3">
-                {Object.entries(DATA.contact.social)
-                  .filter(([_, social]) => social.navbar !== false)
-                  .map(([name, social]) => {
-                    const socialLink = (
-                      <a
-                        href={social.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="rounded-full border border-border/60 bg-card/40 p-2.5 text-muted-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-border hover:bg-card hover:text-foreground"
-                        aria-label={name}
-                      >
-                        <social.icon className="size-5" />
-                      </a>
-                    );
-
-                    if (name === "GitHub") {
-                      return (
-                        <GitHubHoverCard key={name}>
-                          {socialLink}
-                        </GitHubHoverCard>
+            {/* Social links + Now Playing */}
+            <div className="inline-flex flex-col gap-3 items-start">
+              <BlurFade delay={BLUR_FADE_DELAY * 4.5}>
+                <div className="flex flex-wrap items-center gap-3">
+                  {Object.entries(DATA.contact.social)
+                    .filter(([_, social]) => social.navbar !== false)
+                    .map(([name, social]) => {
+                      const socialLink = (
+                        <a
+                          href={social.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="rounded-full border border-border/60 bg-card/40 p-2.5 text-muted-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-border hover:bg-card hover:text-foreground"
+                          aria-label={name}
+                        >
+                          <social.icon className="size-5" />
+                        </a>
                       );
-                    }
 
-                    if (name === "Steam") {
+                      if (name === "GitHub") {
+                        return (
+                          <GitHubHoverCard key={name}>
+                            {socialLink}
+                          </GitHubHoverCard>
+                        );
+                      }
+
+                      if (name === "Steam") {
+                        return (
+                          <SteamHoverCard key={name}>
+                            {socialLink}
+                          </SteamHoverCard>
+                        );
+                      }
+
                       return (
-                        <SteamHoverCard key={name}>
-                          {socialLink}
-                        </SteamHoverCard>
+                        <Tooltip key={name}>
+                          <TooltipTrigger asChild>
+                            {socialLink}
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>{social.name}</p>
+                          </TooltipContent>
+                        </Tooltip>
                       );
-                    }
-
-                    return (
-                      <Tooltip key={name}>
-                        <TooltipTrigger asChild>
-                          {socialLink}
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p>{social.name}</p>
-                        </TooltipContent>
-                      </Tooltip>
-                    );
-                  })}
-              </div>
-            </BlurFade>
+                    })}
+                </div>
+              </BlurFade>
+              <BlurFade delay={BLUR_FADE_DELAY * 5} className="w-full">
+                <SteamNowPlaying />
+              </BlurFade>
+            </div>
           </div>
         </section>
 

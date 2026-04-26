@@ -49,8 +49,8 @@ export async function GET() {
         { cache: "no-store" }
       ),
       fetch(
-        `https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=${STEAM_API_KEY}&steamid=${steamId}&include_played_free_games=true`,
-        { next: { revalidate: 3600 } }
+        `https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=${STEAM_API_KEY}&steamid=${steamId}&include_played_free_games=true&include_appinfo=true`,
+        { cache: "no-store" }
       ),
       fetch(
         `https://api.steampowered.com/IPlayerService/GetSteamLevel/v1/?key=${STEAM_API_KEY}&steamid=${steamId}`,
@@ -72,6 +72,11 @@ export async function GET() {
       );
     }
 
+    const allGames = gamesData.response?.games ?? [];
+    const lastPlayedGame = allGames
+      .filter((g: { rtime_last_played?: number }) => g.rtime_last_played && g.rtime_last_played > 0)
+      .sort((a: { rtime_last_played: number }, b: { rtime_last_played: number }) => b.rtime_last_played - a.rtime_last_played)[0] ?? null;
+
     return NextResponse.json(
       {
         name: player.personaname,
@@ -80,8 +85,15 @@ export async function GET() {
         personastate: player.personastate,
         gameextrainfo: player.gameextrainfo ?? null,
         gameid: player.gameid ?? null,
+        lastPlayed: lastPlayedGame
+          ? {
+              name: lastPlayedGame.name,
+              appid: String(lastPlayedGame.appid),
+              playtime_forever: lastPlayedGame.playtime_forever ?? 0,
+            }
+          : null,
         level: levelData.response?.player_level ?? 0,
-        gamesCount: gamesData.response?.game_count ?? 0,
+        gamesCount: allGames.length,
         profileUrl: player.profileurl,
       },
       {
