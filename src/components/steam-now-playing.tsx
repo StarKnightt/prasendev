@@ -72,7 +72,7 @@ export function SteamNowPlaying() {
       className="group relative flex w-full overflow-hidden rounded-xl border border-border/40 bg-card/30 transition-all duration-300 hover:border-border/60 hover:bg-card/50"
     >
       {/* Game art */}
-      <div className="relative w-20 sm:w-24 shrink-0 bg-muted/30">
+      <div className="relative w-20 aspect-[3/4] shrink-0 bg-muted/30">
         {gameId ? (
           <Image
             src={`https://cdn.cloudflare.steamstatic.com/steam/apps/${gameId}/library_600x900.jpg`}
@@ -83,18 +83,19 @@ export function SteamNowPlaying() {
           />
         ) : (
           <div className="size-full flex items-center justify-center">
-            <Gamepad2 className="size-6 text-muted-foreground" />
+            <Gamepad2 className="size-5 text-muted-foreground" />
           </div>
         )}
       </div>
+
       {/* Content */}
-        <div className="flex flex-1 items-center justify-between gap-3 px-3.5 py-3 min-w-0">
+      <div className="flex flex-1 items-center justify-between gap-2 px-3 py-2.5 sm:px-3.5 sm:py-3 min-w-0">
         <div className="flex flex-col gap-1.5 min-w-0">
           {/* Name + Status */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5">
             <p className="text-xs font-medium truncate">{data.name}</p>
-              {isPlaying ? (
-              <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-1.5 py-0.5 text-[9px] uppercase tracking-wider font-semibold text-emerald-500">
+            {isPlaying ? (
+              <span className="inline-flex items-center gap-1 shrink-0 rounded-full bg-emerald-500/10 px-1.5 py-0.5 text-[9px] uppercase tracking-wider font-semibold text-emerald-500">
                 <span className="relative flex size-1.5">
                   <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-75" />
                   <span className="relative inline-flex size-1.5 rounded-full bg-emerald-500" />
@@ -102,12 +103,12 @@ export function SteamNowPlaying() {
                 In Game
               </span>
             ) : data.personastate >= 1 ? (
-              <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-1.5 py-0.5 text-[9px] uppercase tracking-wider font-semibold text-emerald-500">
+              <span className="inline-flex items-center gap-1 shrink-0 rounded-full bg-emerald-500/10 px-1.5 py-0.5 text-[9px] uppercase tracking-wider font-semibold text-emerald-500">
                 <span className="size-1.5 rounded-full bg-emerald-500" />
-                {data.status}
+                Online
               </span>
             ) : (
-              <span className="inline-flex items-center gap-1 rounded-full bg-red-500/10 px-1.5 py-0.5 text-[9px] uppercase tracking-wider font-semibold text-red-500">
+              <span className="inline-flex items-center gap-1 shrink-0 rounded-full bg-red-500/10 px-1.5 py-0.5 text-[9px] uppercase tracking-wider font-semibold text-red-500">
                 <span className="size-1.5 rounded-full bg-red-500" />
                 Offline
               </span>
@@ -115,8 +116,11 @@ export function SteamNowPlaying() {
           </div>
 
           {/* Game name */}
-          <p className="text-sm font-semibold truncate leading-tight group-hover:text-primary transition-colors">
+          <p className="text-sm font-semibold truncate leading-tight group-hover:text-primary transition-colors min-w-0">
             {gameName}
+            {!isPlaying && (
+              <span className="text-[10px] font-normal text-muted-foreground/50"> (recently)</span>
+            )}
           </p>
 
           {/* Stats row */}
@@ -132,7 +136,7 @@ export function SteamNowPlaying() {
             {!isPlaying && hoursPlayed !== null && hoursPlayed > 0 && (
               <div className="flex items-center gap-1 text-[11px] text-muted-foreground">
                 <Clock className="size-3" />
-                <span>{hoursPlayed}h total</span>
+                <span>{hoursPlayed}h</span>
               </div>
             )}
           </div>
