@@ -33,7 +33,6 @@ const tweetIds = [
   "1862093344395886593", // @raimonvibe
   "1862460639069052951", // @SanjayTomar_
   "1862154797786288236", // @AbdulSonaike
-  "1864869169809731964", // @bonnienewman
   "1862217676028092752", // @ShajahanArham
   "1897308522733559891", // @SaidAitmbarek
   "1897271067116495138", // @CornelisseJoran
