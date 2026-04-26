@@ -116,12 +116,14 @@ export function SteamNowPlaying() {
           </div>
 
           {/* Game name */}
-          <p className="text-sm font-semibold truncate leading-tight group-hover:text-primary transition-colors min-w-0">
-            {gameName}
+          <div className="min-w-0">
+            <p className="text-sm font-semibold truncate leading-tight group-hover:text-primary transition-colors">
+              {gameName}
+            </p>
             {!isPlaying && (
-              <span className="text-[10px] font-normal text-muted-foreground/50"> (recently)</span>
+              <p className="text-[10px] text-muted-foreground/50">(last played)</p>
             )}
-          </p>
+          </div>
 
           {/* Stats row */}
           <div className="flex items-center gap-3">
