@@ -69,18 +69,28 @@ export function SteamNowPlaying() {
       href={data.profileUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="group relative flex w-full overflow-hidden rounded-xl border border-border/40 bg-card/30 transition-all duration-300 hover:border-border/60 hover:bg-card/50"
+      className={`group relative flex w-full overflow-hidden rounded-xl border bg-card/30 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg ${
+        isPlaying
+          ? "border-emerald-500/30 hover:border-emerald-500/50 hover:shadow-emerald-500/5"
+          : data.personastate >= 1
+            ? "border-border/40 hover:border-border/60"
+            : "border-red-500/30 hover:border-red-500/50 hover:shadow-red-500/5"
+      }`}
     >
-      {/* Game art */}
-      <div className="relative w-20 aspect-[3/4] shrink-0 bg-muted/30">
+      {/* Game art with hover zoom + shimmer */}
+      <div className="relative w-20 aspect-[3/4] shrink-0 bg-muted/30 overflow-hidden">
         {gameId ? (
-          <Image
-            src={`https://cdn.cloudflare.steamstatic.com/steam/apps/${gameId}/library_600x900.jpg`}
-            alt={gameName}
-            fill
-            className="object-cover"
-            unoptimized
-          />
+          <>
+            <Image
+              src={`https://cdn.cloudflare.steamstatic.com/steam/apps/${gameId}/library_600x900.jpg`}
+              alt={gameName}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-110"
+              unoptimized
+            />
+            {/* Shimmer overlay */}
+            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+          </>
         ) : (
           <div className="size-full flex items-center justify-center">
             <Gamepad2 className="size-5 text-muted-foreground" />
