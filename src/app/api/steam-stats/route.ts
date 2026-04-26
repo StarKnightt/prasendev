@@ -4,7 +4,7 @@ export const dynamic = "force-dynamic";
 
 const STEAM_API_KEY = process.env.STEAM_API_KEY;
 const VANITY_URL = "StarKnight__";
-const CACHE_MAX_AGE = 300; // 5 minutes
+const CACHE_MAX_AGE = 120; // 2 minutes
 
 const STATUS_MAP: Record<number, string> = {
   0: "Offline",
