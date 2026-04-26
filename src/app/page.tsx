@@ -25,6 +25,7 @@ import { TwitterTestimonials } from "@/components/twitter-testimonials";
 import { AgeCounter } from "@/components/age-counter";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ArrowUpRight } from "lucide-react";
+import { FlipAvatar } from "@/components/flip-avatar";
 import { GitHubHoverCard } from "@/components/github-hover-card";
 import { SteamHoverCard } from "@/components/steam-hover-card";
 import { SteamNowPlaying } from "@/components/steam-now-playing";
@@ -118,16 +119,12 @@ export default function Page() {
               </div>
               <BlurFade delay={BLUR_FADE_DELAY}>
                 <div className="profile-wrapper">
-                  <Avatar className="size-28 relative z-10">
-                    <AvatarImage
-                      alt={DATA.name}
-                      src={DATA.avatarUrl}
-                      width={112}
-                      height={112}
-                      loading="eager"
-                    />
-                    <AvatarFallback>{DATA.initials}</AvatarFallback>
-                  </Avatar>
+                  <FlipAvatar
+                    src={DATA.avatarUrl}
+                    hoverSrc="/hi2.webp"
+                    alt={DATA.name}
+                    fallback={DATA.initials}
+                  />
                 </div>
               </BlurFade>
             </div>
