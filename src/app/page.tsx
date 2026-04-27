@@ -184,9 +184,6 @@ export default function Page() {
                     })}
                 </div>
               </BlurFade>
-              <BlurFade delay={BLUR_FADE_DELAY * 5} className="w-full">
-                <SteamNowPlaying />
-              </BlurFade>
             </div>
           </div>
         </section>
@@ -304,7 +301,6 @@ export default function Page() {
           </div>
         </section>
 
-
         {/* ─── EDUCATION ─── */}
         <section id="education">
           <div className="flex min-h-0 flex-col gap-y-3">
@@ -361,6 +357,10 @@ export default function Page() {
           </div>
         </section>
 
+        {/* ─── NOW PLAYING ─── */}
+        <BlurFade delay={BLUR_FADE_DELAY * 10}>
+          <SteamNowPlaying />
+        </BlurFade>
 
         {/* ─── TESTIMONIALS ─── */}
         <section id="testimonials">
