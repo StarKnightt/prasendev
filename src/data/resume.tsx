@@ -262,6 +262,33 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "Dateup",
+      href: "https://dateup.in",
+      dates: "April 2026 - Present",
+      active: true,
+      description:
+        "An AI-powered dating profile optimizer that helps you get more matches. Features AI photo enhancement, a rizz assistant for conversation starters, and a profile reviewer for actionable feedback.",
+      technologies: [
+        "Next.js",
+        "Supabase",
+        "TypeScript",
+        "TailwindCSS",
+        "xAI Grok",
+        "OpenAI",
+        "Groq",
+        "Stripe",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://dateup.in",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/dateup.webp",
+      video: "",
+    },
+    {
       title: "CleanType",
       href: "https://clean-type.vercel.app/",
       dates: "March 2025 - April 2025",
