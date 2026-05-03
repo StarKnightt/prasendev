@@ -285,8 +285,8 @@ export const DATA = {
           icon: <Icons.globe className="size-3" />,
         },
       ],
-      image: "/dateup.webp",
-      video: "",
+      image: "",
+      video: "https://video.gumlet.io/6745e593080b60408ca085f7/69f6ec821dfaccdc95768c5e/download.mp4",
     },
     {
       title: "CleanType",
