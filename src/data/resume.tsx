@@ -14,7 +14,7 @@ export const DATA = {
   summary:
     "Currently **freelancing** and **collaborating** with new people on exciting projects.\n\nI love playing [video games](https://www.youtube.com/@StarKnight-12) and share thoughts on tech [here](https://www.youtube.com/@Star_Knight12).\n\nHere's what I think about the [future of computer science](https://www.prasen.dev/blog/hello-world).\n\nI also enjoy [touch typing](https://monkeytype.com/profile/prasenj4551R) in my free time, bullish on AI and future technologies",
 
-  avatarUrl: "/hi.webp",
+  avatarUrl: "/prasen.webp",
   skills: [
     { name: "React", icon: faReact },
     { name: "Next.js", customIcon: Icons.nextjs },
@@ -286,7 +286,7 @@ export const DATA = {
         },
       ],
       image: "",
-      video: "https://video.gumlet.io/6745e593080b60408ca085f7/69f6ec821dfaccdc95768c5e/download.mp4",
+      video: "https://video.gumlet.io/6745e593080b60408ca085f7/69fc6b4498a4e5006b3c5cb6/download.mp4",
     },
     {
       title: "CleanType",
