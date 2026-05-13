@@ -59,12 +59,11 @@ export function ProjectCard({
   return (
     <>
       <Card className={cn("group relative flex h-full flex-col overflow-hidden border border-border/60 bg-card/40 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-border hover:bg-card/80 hover:shadow-lg", className)}>
-        <Link
-          href={href || "#"}
-          className="block cursor-pointer relative overflow-hidden"
-          onClick={handleCardClick}
-        >
-          {video && (
+        {video ? (
+          <div
+            className="block cursor-pointer relative overflow-hidden"
+            onClick={handleCardClick}
+          >
             <video
               src={video}
               loop
@@ -72,24 +71,28 @@ export function ProjectCard({
               playsInline
               className="pointer-events-none mx-auto h-40 w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
             />
-          )}
-          {image && !video && (
-            <Image
-              src={image}
-              alt={title}
-              width={500}
-              height={300}
-              className="h-40 w-full overflow-hidden object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
-            />
-          )}
-          
-          {/* Hover Overlay with Play Button */}
-          <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-             <div className="rounded-full border border-white/20 bg-black/50 p-3 shadow-xl backdrop-blur-sm transition-transform duration-300 group-hover:scale-110">
-              <Play className="w-6 h-6 text-white fill-white" />
-             </div>
+            <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <div className="rounded-full border border-white/20 bg-black/50 p-3 shadow-xl backdrop-blur-sm transition-transform duration-300 group-hover:scale-110">
+                <Play className="w-6 h-6 text-white fill-white" />
+              </div>
+            </div>
           </div>
-        </Link>
+        ) : (
+          <Link
+            href={href || "#"}
+            className="block cursor-pointer relative overflow-hidden"
+          >
+            {image && (
+              <Image
+                src={image}
+                alt={title}
+                width={500}
+                height={300}
+                className="h-40 w-full overflow-hidden object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+              />
+            )}
+          </Link>
+        )}
         <CardHeader className="px-4 pt-4">
         <div className="space-y-1.5">
           <CardTitle className="mt-1 text-base">{title}</CardTitle>

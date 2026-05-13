@@ -25,13 +25,26 @@ export function FlipAvatar({ src, hoverSrc, alt, fallback }: FlipAvatarProps) {
       >
         {/* Front */}
         <Avatar className="absolute inset-0 size-28 [backface-visibility:hidden]">
-          <AvatarImage alt={alt} src={src} width={112} height={112} loading="eager" />
+          <AvatarImage
+            alt={alt}
+            src={src}
+            width={224}
+            height={224}
+            loading="eager"
+            className="object-cover"
+          />
           <AvatarFallback>{fallback}</AvatarFallback>
         </Avatar>
 
         {/* Back */}
         <Avatar className="absolute inset-0 size-28 [backface-visibility:hidden] [transform:rotateY(180deg)]">
-          <AvatarImage alt={`${alt} alternate`} src={hoverSrc} width={112} height={112} />
+          <AvatarImage
+            alt={`${alt} alternate`}
+            src={hoverSrc}
+            width={224}
+            height={224}
+            className="object-cover"
+          />
           <AvatarFallback>{fallback}</AvatarFallback>
         </Avatar>
       </div>
