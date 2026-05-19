@@ -28,6 +28,7 @@ import { ArrowUpRight } from "lucide-react";
 import { FlipAvatar } from "@/components/flip-avatar";
 import { GitHubHoverCard } from "@/components/github-hover-card";
 import { SteamHoverCard } from "@/components/steam-hover-card";
+import { YouTubeHoverCard } from "@/components/youtube-hover-card";
 import { SteamNowPlaying } from "@/components/steam-now-playing";
 
 const VisitorCounter = dynamic(() => import("@/components/visitor-counter"), {
@@ -168,6 +169,14 @@ export default function Page() {
                           <SteamHoverCard key={name}>
                             {socialLink}
                           </SteamHoverCard>
+                        );
+                      }
+
+                      if (name === "Youtube") {
+                        return (
+                          <YouTubeHoverCard key={name}>
+                            {socialLink}
+                          </YouTubeHoverCard>
                         );
                       }
 
