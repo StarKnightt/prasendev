@@ -132,7 +132,7 @@ export const TweetHeader = ({ tweet }: { tweet: EnrichedTweet }) => (
 
 export const TweetBody = ({ tweet }: { tweet: EnrichedTweet }) => (
   <div className="text-[15px] leading-relaxed tracking-normal wrap-break-word">
-    {tweet.entities.map((entity, idx) => {
+    {(tweet.entities ?? []).map((entity, idx) => {
       switch (entity.type) {
         case "url":
         case "symbol":
@@ -224,7 +224,13 @@ export const MagicTweet = ({
   tweet: Tweet
   className?: string
 }) => {
-  const enrichedTweet = enrichTweet(tweet)
+  let enrichedTweet: EnrichedTweet
+  try {
+    enrichedTweet = enrichTweet(tweet)
+  } catch {
+    return <TweetNotFound />
+  }
+
   return (
     <a
       href={enrichedTweet.url}
