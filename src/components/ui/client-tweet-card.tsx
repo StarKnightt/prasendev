@@ -1,5 +1,6 @@
 "use client"
 
+import { Component, ReactNode } from "react"
 import { TweetProps, useTweet } from "react-tweet"
 
 import {
@@ -8,7 +9,25 @@ import {
   TweetSkeleton,
 } from "@/components/ui/tweet-card"
 
-export const ClientTweetCard = ({
+class TweetErrorBoundary extends Component<
+  { children: ReactNode },
+  { hasError: boolean }
+> {
+  state = { hasError: false }
+
+  static getDerivedStateFromError() {
+    return { hasError: true }
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <TweetNotFound />
+    }
+    return this.props.children
+  }
+}
+
+const TweetCardInner = ({
   id,
   apiUrl,
   fallback = <TweetSkeleton />,
@@ -26,4 +45,12 @@ export const ClientTweetCard = ({
   }
 
   return <MagicTweet tweet={data} {...props} />
+}
+
+export const ClientTweetCard = (props: TweetProps & { className?: string }) => {
+  return (
+    <TweetErrorBoundary>
+      <TweetCardInner {...props} />
+    </TweetErrorBoundary>
+  )
 }
