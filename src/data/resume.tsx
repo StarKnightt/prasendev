@@ -262,6 +262,31 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "Next.js Learning",
+      href: "https://learn.prasen.dev/",
+      dates: "May 2026 - Present",
+      active: true,
+      description:
+        "A comprehensive Next.js learning platform with 17 chapters covering beginner to advanced topics. No fluff — just clear explanations, real code examples, and production patterns I wish someone told me from day one.",
+      technologies: [
+        "Next.js",
+        "TypeScript",
+        "TailwindCSS",
+        "App Router",
+        "MDX",
+        "Vercel",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://learn.prasen.dev/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "",
+      video: "https://video.gumlet.io/6745e593080b60408ca085f7/6a16bc92d99287327250b129/download.mp4",
+    },
+    {
       title: "Dateup",
       href: "https://dateup.in",
       dates: "April 2026 - Present",
