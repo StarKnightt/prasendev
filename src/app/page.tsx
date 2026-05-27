@@ -285,10 +285,10 @@ export default function Page() {
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {DATA.projects
                   .filter((project) => 
-                    ["Dateup", "Wallpaperz", "CleanType"].includes(project.title)
+                    ["Dateup", "Wallpaperz", "Next.js Learning"].includes(project.title)
                   )
                   .sort((a, b) => {
-                    const order = ["Dateup", "Wallpaperz", "CleanType"];
+                    const order = ["Dateup", "Wallpaperz", "Next.js Learning"];
                     return order.indexOf(a.title) - order.indexOf(b.title);
                   })
                   .map((project) => (
