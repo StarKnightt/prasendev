@@ -1,12 +1,12 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, NotebookIcon, VideoIcon, FolderIcon, Settings, Wrench } from "lucide-react";
+import { HomeIcon, NotebookIcon, VideoIcon, FolderIcon, Settings, Wrench, Zap } from "lucide-react";
 import { faReact, faNodeJs, faGitAlt, faTypescript, faTailwindCss, faDocker, faFigma, faGithub, faFirefoxBrowser, faBrave, faNotion } from "@fortawesome/free-brands-svg-icons";
 import { faLeaf, faPlug, faBolt, faTerminal, faRocket, faServer } from "@fortawesome/free-solid-svg-icons";
 
 export const DATA = {
   name: "Prasenjit Nayak",
   initials: "PN",
-  url: "https://github.com/StarKnightt/prasendev",
+  url: "https://www.prasen.dev",
   location: "Odisha, India",
   locationLink: "https://www.google.com/maps/place/odisha",
   description:
@@ -267,13 +267,13 @@ export const DATA = {
       dates: "May 2026 - Present",
       active: true,
       description:
-        "A comprehensive Next.js learning platform with 17 chapters covering beginner to advanced topics. No fluff — just clear explanations, real code examples, and production patterns I wish someone told me from day one.",
+        "A free, open-source interactive learning platform for mastering Next.js with 17 structured chapters from basics to production patterns. Features Ctrl+K search, in-site video player, interactive architecture diagrams, and neo-brutalism design.",
       technologies: [
-        "Next.js",
+        "Next.js 16",
+        "React 19",
         "TypeScript",
-        "TailwindCSS",
-        "App Router",
-        "MDX",
+        "Tailwind CSS v4",
+        "Framer Motion",
         "Vercel",
       ],
       links: [
@@ -281,6 +281,11 @@ export const DATA = {
           type: "Website",
           href: "https://learn.prasen.dev/",
           icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/StarKnightt/Next.JS-Learning",
+          icon: <Icons.github className="size-3" />,
         },
       ],
       image: "",

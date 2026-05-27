@@ -57,16 +57,17 @@ const nextConfig = {
           value: 'max-age=31536000; includeSubDomains'
         },
         {
-          key: 'Cache-Control',
-          value: 'public, max-age=31536000, immutable'
-        }
+          key: 'X-Content-Type-Options',
+          value: 'nosniff'
+        },
+        {
+          key: 'X-Robots-Tag',
+          value: 'index, follow'
+        },
       ]
     }
   ],
 
-  // Optimize builds
-  swcMinify: true,
-  
   // Compress outputs
   compress: true,
 
@@ -90,29 +91,6 @@ const nextConfig = {
         source: '/home',
         destination: '/',
         permanent: true,
-      }
-    ];
-  },
-
-  // Update headers for better SEO
-  async headers() {
-    return [
-      {
-        source: '/:path*',
-        headers: [
-          {
-            key: 'X-Robots-Tag',
-            value: 'index, follow'
-          },
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable'
-          },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff'
-          }
-        ]
       }
     ];
   },

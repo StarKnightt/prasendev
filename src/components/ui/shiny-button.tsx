@@ -5,7 +5,7 @@ import {
   motion,
   type AnimationProps,
   type HTMLMotionProps,
-} from "motion/react";
+} from "framer-motion";
 import { cn } from "@/lib/utils";
 
 const animationProps = {
