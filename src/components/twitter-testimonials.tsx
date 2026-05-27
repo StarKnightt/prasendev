@@ -1,7 +1,8 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import { ClientTweetCard } from "@/components/ui/client-tweet-card";
+import { TweetSkeleton } from "@/components/ui/tweet-card";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 // Just add tweet IDs from the URL: https://x.com/username/status/[ID]
@@ -63,10 +64,45 @@ const tweetIds = [
   "1900371624869720176", // @mvyk0l
 ];
 
+const EAGER_COUNT = 10;
+
+function LazyTweetCard({ id, className }: { id: string; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={ref}>
+      {visible ? (
+        <ClientTweetCard id={id} className={className} />
+      ) : (
+        <TweetSkeleton />
+      )}
+    </div>
+  );
+}
+
 export function TwitterTestimonials() {
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  const scroll = (direction: "left" | "right") => {
+  const scroll = useCallback((direction: "left" | "right") => {
     if (scrollRef.current) {
       const scrollAmount = 340;
       scrollRef.current.scrollBy({
@@ -74,7 +110,7 @@ export function TwitterTestimonials() {
         behavior: "smooth",
       });
     }
-  };
+  }, []);
 
   return (
     <div className="w-full space-y-6 overflow-hidden">
@@ -123,13 +159,17 @@ export function TwitterTestimonials() {
             {/* First set */}
             {tweetIds.map((id, idx) => (
               <div key={`tweet-a-${idx}`} className="w-[320px] shrink-0 clean-tweet">
-                <ClientTweetCard id={id} className="shadow-none" />
+                {idx < EAGER_COUNT ? (
+                  <ClientTweetCard id={id} className="shadow-none" />
+                ) : (
+                  <LazyTweetCard id={id} className="shadow-none" />
+                )}
               </div>
             ))}
             {/* Duplicate for seamless loop */}
             {tweetIds.map((id, idx) => (
               <div key={`tweet-b-${idx}`} className="w-[320px] shrink-0 clean-tweet">
-                <ClientTweetCard id={id} className="shadow-none" />
+                <LazyTweetCard id={id} className="shadow-none" />
               </div>
             ))}
           </div>
@@ -138,4 +178,3 @@ export function TwitterTestimonials() {
     </div>
   );
 }
-

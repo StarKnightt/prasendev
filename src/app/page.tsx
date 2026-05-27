@@ -13,13 +13,7 @@ import { PersonSchema } from "@/components/schema/person-schema";
 import { Metadata } from 'next';
 import { Icons } from "@/components/icons";
 import ShinyButton from "@/components/ui/shiny-button";
-import { RainbowButton } from "@/components/ui/rainbow-button";
-import { BlogSkeleton } from "@/components/skeletons/blog-skeleton";
 import { GithubSkeleton } from "@/components/skeletons/github-skeleton";
-import { ProjectSkeleton } from "@/components/skeletons/project-skeleton";
-import { HackathonSkeleton } from "@/components/skeletons/hackathon-skeleton";
-import { BorderBeam } from "@/components/magicui/border-beam";
-import { GhibliSkyBackground } from "@/components/ghibli-elements";
 import { GitHubSponsors } from "@/components/github-sponsors";
 import { TwitterTestimonials } from "@/components/twitter-testimonials";
 import { AgeCounter } from "@/components/age-counter";
@@ -64,24 +58,9 @@ export const metadata: Metadata = {
   },
 };
 
-const BlogCard = dynamic(() => import("@/components/blog-card").then(mod => mod.BlogCard), {
-  ssr: true,
-  loading: () => <BlogSkeleton />
-});
-
 const GithubContributions = dynamic(() => import("@/components/github-calendar").then(mod => mod.GithubContributions), {
   ssr: false,
   loading: () => <GithubSkeleton />
-});
-
-const ProjectCardDynamic = dynamic(() => import("@/components/project-card").then(mod => mod.ProjectCard), {
-  ssr: true,
-  loading: () => <ProjectSkeleton />
-});
-
-const HackathonCardDynamic = dynamic(() => import("@/components/hackathon-card").then(mod => mod.HackathonCard), {
-  ssr: true,
-  loading: () => <HackathonSkeleton />
 });
 
 function SectionLabel({ label }: { label: string }) {
@@ -427,7 +406,7 @@ export default function Page() {
               <div className="space-y-2">
                 <p className="text-sm font-medium">{DATA.name}</p>
                 <p className="text-xs text-muted-foreground leading-relaxed">
-                  Frontend Developer from India.
+                  Full Stack Developer from India.
                   <br />Building modern web applications.
                 </p>
               </div>

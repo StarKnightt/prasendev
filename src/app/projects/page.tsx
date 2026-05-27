@@ -1,8 +1,7 @@
 import BlurFade from "@/components/magicui/blur-fade";
-import dynamic from "next/dynamic";
 import { DATA } from "@/data/resume";
-import { ProjectSkeleton } from "@/components/skeletons/project-skeleton";
 import { BorderBeam } from "@/components/magicui/border-beam";
+import { ProjectCard } from "@/components/project-card";
 
 export const metadata = {
   title: "Projects",
@@ -10,10 +9,6 @@ export const metadata = {
 };
 
 const BLUR_FADE_DELAY = 0.04;
-
-const ProjectCard = dynamic(() => import("@/components/project-card").then(mod => mod.ProjectCard), {
-  loading: () => <ProjectSkeleton />
-});
 
 export default function ProjectsPage() {
   return (
