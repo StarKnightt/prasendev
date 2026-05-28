@@ -23,6 +23,7 @@ import { FlipAvatar } from "@/components/flip-avatar";
 import { GitHubHoverCard } from "@/components/github-hover-card";
 import { SteamHoverCard } from "@/components/steam-hover-card";
 import { YouTubeHoverCard } from "@/components/youtube-hover-card";
+import { XHoverCard } from "@/components/x-hover-card";
 import { SteamNowPlaying } from "@/components/steam-now-playing";
 
 const VisitorCounter = dynamic(() => import("@/components/visitor-counter"), {
@@ -156,6 +157,14 @@ export default function Page() {
                           <YouTubeHoverCard key={name}>
                             {socialLink}
                           </YouTubeHoverCard>
+                        );
+                      }
+
+                      if (name === "X") {
+                        return (
+                          <XHoverCard key={name}>
+                            {socialLink}
+                          </XHoverCard>
                         );
                       }
 
