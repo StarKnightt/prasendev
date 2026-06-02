@@ -1,7 +1,7 @@
 import { Icons } from "@/components/icons";
 import { HomeIcon, NotebookIcon, VideoIcon, FolderIcon, Settings, Wrench, Zap } from "lucide-react";
-import { faReact, faNodeJs, faGitAlt, faTypescript, faTailwindCss, faDocker, faFigma, faGithub, faFirefoxBrowser, faBrave, faNotion } from "@fortawesome/free-brands-svg-icons";
-import { faLeaf, faPlug, faBolt, faTerminal, faRocket, faServer } from "@fortawesome/free-solid-svg-icons";
+import { faReact, faNodeJs, faGitAlt, faTypescript, faTailwindCss, faDocker, faFigma, faGithub, faFirefoxBrowser, faBrave, faNotion, faPython, faJava, faJs, faHtml5, faCss3Alt } from "@fortawesome/free-brands-svg-icons";
+import { faLeaf, faPlug, faBolt, faTerminal, faRocket, faServer, faDatabase, faCode } from "@fortawesome/free-solid-svg-icons";
 
 export const DATA = {
   name: "Prasenjit Nayak",
@@ -16,17 +16,21 @@ export const DATA = {
 
   avatarUrl: "/prasen.webp",
   skills: [
-    { name: "React", icon: faReact },
-    { name: "Next.js", customIcon: Icons.nextjs },
-    { name: "TypeScript", icon: faTypescript },
-    { name: "Node.js", icon: faNodeJs },
-    { name: "MongoDB", icon: faLeaf },
-    { name: "TailwindCSS", icon: faTailwindCss },
-    { name: "Git", icon: faGitAlt },
-    { name: "REST APIs", icon: faPlug },
-    { name: "Framer Motion", icon: faBolt },
-    { name: "Claude", customIcon: Icons.claude },
-    { name: "Cursor", customIcon: Icons.cursor },
+    { name: "TypeScript", icon: faTypescript, category: "Languages" },
+    { name: "JavaScript", icon: faJs, category: "Languages" },
+    { name: "Python", icon: faPython, category: "Languages" },
+    { name: "React", icon: faReact, category: "Frontend" },
+    { name: "Next.js", customIcon: Icons.nextjs, category: "Frontend" },
+    { name: "TailwindCSS", icon: faTailwindCss, category: "Frontend" },
+    { name: "Framer Motion", icon: faBolt, category: "Frontend" },
+    { name: "Node.js", icon: faNodeJs, category: "Backend" },
+    { name: "MongoDB", icon: faLeaf, category: "Backend" },
+    { name: "PostgreSQL", icon: faDatabase, category: "Backend" },
+    { name: "Redis", icon: faDatabase, category: "Backend" },
+    { name: "Git", icon: faGitAlt, category: "Tools" },
+    { name: "Docker", icon: faDocker, category: "Tools" },
+    { name: "Cursor", customIcon: Icons.cursor, category: "Tools" },
+    { name: "Claude", customIcon: Icons.claude, category: "Tools" },
   ],
   setup: [
     {
@@ -46,7 +50,7 @@ export const DATA = {
     {
       name: "Cursor",
       description: "AI-powered code editor built on VS Code — my primary IDE for all projects.",
-      href: "https://cursor.com/home",
+      href: "https://cursor.com/referral?code=63BS4MRLZQQV",
       customIcon: Icons.cursor,
     },
     {
@@ -181,7 +185,7 @@ export const DATA = {
         name: "buyMeACoffee",
         url: "https://buymeacoffee.com/prasen",
         icon: Icons.buyMeACoffee,
-        navbar: true,
+        navbar: false,
       },
       email: {
         name: "Send Email",
@@ -306,7 +310,7 @@ export const DATA = {
         "xAI Grok",
         "OpenAI",
         "Groq",
-        "Stripe",
+        "Dodo Payments",
       ],
       links: [
         {

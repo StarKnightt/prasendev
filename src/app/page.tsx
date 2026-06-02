@@ -18,12 +18,16 @@ import { GitHubSponsors } from "@/components/github-sponsors";
 import { TwitterTestimonials } from "@/components/twitter-testimonials";
 import { AgeCounter } from "@/components/age-counter";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ArrowUpRight } from "lucide-react";
 import { FlipAvatar } from "@/components/flip-avatar";
 import { GitHubHoverCard } from "@/components/github-hover-card";
 import { SteamHoverCard } from "@/components/steam-hover-card";
 import { YouTubeHoverCard } from "@/components/youtube-hover-card";
 import { XHoverCard } from "@/components/x-hover-card";
+import { LinkedInHoverCard } from "@/components/linkedin-hover-card";
+import { InstagramHoverCard } from "@/components/instagram-hover-card";
+import { CodePenHoverCard } from "@/components/codepen-hover-card";
+import { VercelHoverCard } from "@/components/vercel-hover-card";
+import { BuyMeACoffeeHoverCard } from "@/components/bmc-hover-card";
 import { SteamNowPlaying } from "@/components/steam-now-playing";
 
 const VisitorCounter = dynamic(() => import("@/components/visitor-counter"), {
@@ -168,6 +172,46 @@ export default function Page() {
                         );
                       }
 
+                      if (name === "LinkedIn") {
+                        return (
+                          <LinkedInHoverCard key={name}>
+                            {socialLink}
+                          </LinkedInHoverCard>
+                        );
+                      }
+
+                      if (name === "Instagram") {
+                        return (
+                          <InstagramHoverCard key={name}>
+                            {socialLink}
+                          </InstagramHoverCard>
+                        );
+                      }
+
+                      if (name === "CodePen") {
+                        return (
+                          <CodePenHoverCard key={name}>
+                            {socialLink}
+                          </CodePenHoverCard>
+                        );
+                      }
+
+                      if (name === "Vercel") {
+                        return (
+                          <VercelHoverCard key={name}>
+                            {socialLink}
+                          </VercelHoverCard>
+                        );
+                      }
+
+                      if (name === "buyMeACoffee") {
+                        return (
+                          <BuyMeACoffeeHoverCard key={name}>
+                            {socialLink}
+                          </BuyMeACoffeeHoverCard>
+                        );
+                      }
+
                       return (
                         <Tooltip key={name}>
                           <TooltipTrigger asChild>
@@ -186,66 +230,9 @@ export default function Page() {
         </section>
 
 
-        {/* ─── SKILLS ─── */}
-        <section id="skills">
-          <div className="flex min-h-0 flex-col gap-y-3">
-            <BlurFade delay={BLUR_FADE_DELAY * 9}>
-              <SectionLabel label="Technologies" />
-              <h2 className="mt-1.5 text-xl font-bold tracking-tight">Skills</h2>
-            </BlurFade>
-            <div className="flex flex-wrap gap-2">
-              {DATA.skills.map((skill, id) => (
-                <BlurFade key={skill.name} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
-                  <Badge variant="secondary" className="inline-flex items-center gap-1.5 border border-border/50 px-3 py-1.5 text-sm">
-                    {"customIcon" in skill ? (
-                      <skill.customIcon className="size-4" />
-                    ) : (
-                      <FontAwesomeIcon icon={skill.icon} className="size-4" />
-                    )}
-                    {skill.name}
-                  </Badge>
-                </BlurFade>
-              ))}
-            </div>
-          </div>
-        </section>
-
-
-        {/* ─── WORK ─── */}
-        <section id="work">
-          <div className="flex min-h-0 flex-col gap-y-3">
-            <BlurFade delay={BLUR_FADE_DELAY * 5}>
-              <SectionLabel label="Career" />
-              <h2 className="mt-1.5 text-xl font-bold tracking-tight">Work Experience</h2>
-            </BlurFade>
-            <div className="space-y-3">
-              {DATA.work.map((work, id) => (
-                <BlurFade
-                  key={work.company}
-                  delay={BLUR_FADE_DELAY * 6 + id * 0.05}
-                >
-                  <ResumeCard
-                    key={work.company}
-                    logoUrl={work.logoUrl}
-                    altText={work.company}
-                    title={work.company}
-                    subtitle={work.title}
-                    href={work.href}
-                    badges={work.badges}
-                    period={`${work.start} - ${work.end}`}
-                    description={work.description}
-                    redacted={(work as any).redacted}
-                  />
-                </BlurFade>
-              ))}
-            </div>
-          </div>
-        </section>
-
-
         {/* ─── GITHUB ─── */}
         <section id="contributions">
-          <BlurFade delay={BLUR_FADE_DELAY * 10}>
+          <BlurFade delay={BLUR_FADE_DELAY * 9}>
             <SectionLabel label="Open Source" />
             <h2 className="mt-1.5 text-xl font-bold tracking-tight">GitHub Contributions</h2>
             <div className="mt-3">
@@ -254,22 +241,40 @@ export default function Page() {
           </BlurFade>
         </section>
 
-        {/* ─── SPONSORS ─── */}
-        <section id="sponsors">
-          <BlurFade delay={BLUR_FADE_DELAY * 11}>
-            <GitHubSponsors />
-          </BlurFade>
+
+        {/* ─── SKILLS ─── */}
+        <section id="skills">
+          <div className="flex min-h-0 flex-col gap-y-3">
+            <BlurFade delay={BLUR_FADE_DELAY * 10}>
+              <SectionLabel label="Technologies" />
+              <h2 className="mt-1.5 text-xl font-bold tracking-tight">Tech Stack</h2>
+            </BlurFade>
+            <BlurFade delay={BLUR_FADE_DELAY * 10.5}>
+              <div className="flex flex-wrap gap-2">
+                {DATA.skills.map((skill) => (
+                  <Badge key={skill.name} variant="secondary" className="inline-flex items-center gap-1.5 border border-border/50 px-3 py-1.5 text-sm">
+                    {"customIcon" in skill ? (
+                      <skill.customIcon className="size-4" />
+                    ) : (
+                      <FontAwesomeIcon icon={skill.icon} className="size-4" />
+                    )}
+                    {skill.name}
+                  </Badge>
+                ))}
+              </div>
+            </BlurFade>
+          </div>
         </section>
 
 
         {/* ─── PROJECTS ─── */}
         <section id="projects">
           <div className="flex min-h-0 flex-col gap-y-3">
-            <BlurFade delay={BLUR_FADE_DELAY * 7}>
+            <BlurFade delay={BLUR_FADE_DELAY * 11}>
               <SectionLabel label="Portfolio" />
               <h2 className="mt-1.5 text-xl font-bold tracking-tight">Featured Projects</h2>
             </BlurFade>
-            <BlurFade delay={BLUR_FADE_DELAY * 8}>
+            <BlurFade delay={BLUR_FADE_DELAY * 11.5}>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {DATA.projects
                   .filter((project) => 
@@ -302,17 +307,50 @@ export default function Page() {
           </div>
         </section>
 
+
+        {/* ─── WORK ─── */}
+        <section id="work">
+          <div className="flex min-h-0 flex-col gap-y-3">
+            <BlurFade delay={BLUR_FADE_DELAY * 12}>
+              <SectionLabel label="Career" />
+              <h2 className="mt-1.5 text-xl font-bold tracking-tight">Work Experience</h2>
+            </BlurFade>
+            <div className="space-y-3">
+              {DATA.work.map((work, id) => (
+                <BlurFade
+                  key={work.company}
+                  delay={BLUR_FADE_DELAY * 12.5 + id * 0.05}
+                >
+                  <ResumeCard
+                    key={work.company}
+                    logoUrl={work.logoUrl}
+                    altText={work.company}
+                    title={work.company}
+                    subtitle={work.title}
+                    href={work.href}
+                    badges={work.badges}
+                    period={`${work.start} - ${work.end}`}
+                    description={work.description}
+                    redacted={(work as any).redacted}
+                  />
+                </BlurFade>
+              ))}
+            </div>
+          </div>
+        </section>
+
+
         {/* ─── EDUCATION ─── */}
         <section id="education">
           <div className="flex min-h-0 flex-col gap-y-3">
-            <BlurFade delay={BLUR_FADE_DELAY * 7}>
+            <BlurFade delay={BLUR_FADE_DELAY * 13}>
               <SectionLabel label="Academic" />
               <h2 className="mt-1.5 text-xl font-bold tracking-tight">Education</h2>
             </BlurFade>
             {DATA.education.map((education, id) => (
               <BlurFade
                 key={education.school}
-                delay={BLUR_FADE_DELAY * 8 + id * 0.05}
+                delay={BLUR_FADE_DELAY * 13.5 + id * 0.05}
               >
                 <ResumeCard
                   key={education.school}
@@ -329,44 +367,22 @@ export default function Page() {
         </section>
 
 
-        {/* ─── SETUP ─── */}
-        <section id="setup">
-          <div className="flex min-h-0 flex-col gap-y-3">
-            <BlurFade delay={BLUR_FADE_DELAY * 9}>
-              <SectionLabel label="Development" />
-              <h2 className="mt-1.5 text-xl font-bold tracking-tight">Setup</h2>
-            </BlurFade>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              {DATA.setup.map((item, idx) => (
-                <BlurFade key={item.title} delay={BLUR_FADE_DELAY * 9.5 + idx * 0.05}>
-                  <Link
-                    href={item.href}
-                    className="flex items-center gap-4 rounded-xl border border-border/50 bg-card/20 p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-border hover:bg-card/50 group"
-                  >
-                    <div className="rounded-lg border border-border/50 bg-muted/50 p-2.5">
-                      <item.icon className="size-5 text-muted-foreground" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-medium text-sm group-hover:text-primary transition-colors">{item.title}</h3>
-                      <p className="text-xs text-muted-foreground">{item.description}</p>
-                    </div>
-                    <ArrowUpRight className="size-4 shrink-0 text-muted-foreground/40 group-hover:text-foreground transition-colors" />
-                  </Link>
-                </BlurFade>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* ─── NOW PLAYING ─── */}
-        <BlurFade delay={BLUR_FADE_DELAY * 10}>
+        <BlurFade delay={BLUR_FADE_DELAY * 13.5}>
           <SteamNowPlaying />
         </BlurFade>
 
         {/* ─── TESTIMONIALS ─── */}
         <section id="testimonials">
-          <BlurFade delay={BLUR_FADE_DELAY * 15}>
+          <BlurFade delay={BLUR_FADE_DELAY * 14}>
             <TwitterTestimonials />
+          </BlurFade>
+        </section>
+
+        {/* ─── SPONSORS ─── */}
+        <section id="sponsors">
+          <BlurFade delay={BLUR_FADE_DELAY * 15}>
+            <GitHubSponsors />
           </BlurFade>
         </section>
 
@@ -410,7 +426,7 @@ export default function Page() {
 
         {/* ─── FOOTER ─── */}
         <footer className="border-t border-border/40 pt-8 pb-4">
-          <BlurFade delay={BLUR_FADE_DELAY * 15}>
+          <BlurFade delay={BLUR_FADE_DELAY * 17}>
             <div className="grid gap-6 sm:grid-cols-3">
               <div className="space-y-2">
                 <p className="text-sm font-medium">{DATA.name}</p>
