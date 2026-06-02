@@ -10,11 +10,11 @@ import { ScrollProgress } from "@/components/scroll-progress";
 import { JsonLd } from "@/components/json-ld";
 import { PageBackground } from "@/components/page-background";
 import { Analytics } from "@vercel/analytics/react";
-import { GoogleAnalytics } from '@next/third-parties/google'
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { CommandPalette } from "@/components/command-palette";
 import { SoundProvider } from "@/components/sound-provider";
 import { BackToTop } from "@/components/back-to-top";
+import { DomainGuardedAnalytics } from "@/components/domain-guarded-analytics";
 import { SmoothCursor } from "@/components/ui/smooth-cursor";
 
 const fontSans = FontSans({
@@ -130,7 +130,7 @@ export default function RootLayout({
 
         {/* Main content */}
         <div className="relative z-10 max-w-4xl mx-auto pt-20 sm:pt-24 pb-24 px-6">
-          <GoogleAnalytics gaId="G-XVF0SFD4GW" />
+          <DomainGuardedAnalytics gaId="G-XVF0SFD4GW" />
           <JsonLd />
           <ScrollProgress />
           <ThemeProvider
