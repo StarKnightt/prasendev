@@ -21,7 +21,7 @@ class TweetErrorBoundary extends Component<
 
   render() {
     if (this.state.hasError) {
-      return <TweetNotFound />
+      return null
     }
     return this.props.children
   }
@@ -39,10 +39,7 @@ const TweetCardInner = ({
   const { data, error, isLoading } = useTweet(id, apiUrl, fetchOptions)
 
   if (isLoading) return fallback
-  if (error || !data) {
-    const NotFound = components?.TweetNotFound || TweetNotFound
-    return <NotFound error={onError ? onError(error) : error} />
-  }
+  if (error || !data) return null
 
   return <MagicTweet tweet={data} {...props} />
 }
