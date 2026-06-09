@@ -175,6 +175,12 @@ export const DATA = {
         icon: Icons.codepen,
         navbar: true,
       },
+      Discord: {
+        name: "Discord",
+        url: "https://discord.com/users/878205528570990602",
+        icon: Icons.discord,
+        navbar: true,
+      },
       Vercel: {
         name: "Vercel",
         url: "https://v0.link/prasenjit-nayak",
