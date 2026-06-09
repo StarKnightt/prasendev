@@ -28,6 +28,7 @@ import { InstagramHoverCard } from "@/components/instagram-hover-card";
 import { CodePenHoverCard } from "@/components/codepen-hover-card";
 import { VercelHoverCard } from "@/components/vercel-hover-card";
 import { BuyMeACoffeeHoverCard } from "@/components/bmc-hover-card";
+import { DiscordHoverCard } from "@/components/discord-hover-card";
 import { SteamNowPlaying } from "@/components/steam-now-playing";
 
 const VisitorCounter = dynamic(() => import("@/components/visitor-counter"), {
@@ -209,6 +210,14 @@ export default function Page() {
                           <BuyMeACoffeeHoverCard key={name}>
                             {socialLink}
                           </BuyMeACoffeeHoverCard>
+                        );
+                      }
+
+                      if (name === "Discord") {
+                        return (
+                          <DiscordHoverCard key={name}>
+                            {socialLink}
+                          </DiscordHoverCard>
                         );
                       }
 
