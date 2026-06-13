@@ -7,10 +7,27 @@ import { GadgetSkeleton } from "@/components/skeletons/gadget-skeleton";
 import { Cpu, Smartphone, Headphones, Wrench, ArrowUpRight } from 'lucide-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { GadgetsFilter } from '@/components/gadgets/gadgets-filter';
+import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
+import type { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Gadgets",
   description: "My tech setup - PC components, peripherals, and productivity tools I use daily as a developer.",
+  alternates: {
+    canonical: `${DATA.url}/gadgets`,
+  },
+  openGraph: {
+    title: "Gadgets & Setup | Prasenjit Nayak",
+    description: "PC components, peripherals, and productivity tools I use daily as a developer.",
+    url: `${DATA.url}/gadgets`,
+    images: [{ url: `${DATA.url}/api/og?title=Gadgets%20%26%20Setup&type=page`, width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Gadgets & Setup | Prasenjit Nayak",
+    description: "PC components, peripherals, and productivity tools I use daily as a developer.",
+    images: [`${DATA.url}/api/og?title=Gadgets%20%26%20Setup&type=page`],
+  },
 };
 
 const categoryConfig: Record<string, { icon: React.ElementType; order: number }> = {
@@ -117,6 +134,7 @@ export default function GadgetsPage() {
 
   return (
     <main className="container max-w-5xl mx-auto px-4 py-12">
+      <BreadcrumbJsonLd items={[{ name: "Gadgets", href: "/gadgets" }]} />
       <Suspense fallback={<GadgetSkeleton />}>
         <BlurFade>
           <div className="max-w-3xl mx-auto mb-12 text-center space-y-4">

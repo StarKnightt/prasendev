@@ -1,0 +1,40 @@
+# llms.txt - AI discoverability for prasen.dev
+
+> Prasenjit Nayak's personal portfolio and technical blog.
+
+## About
+
+Prasenjit Nayak is a Full Stack Developer from Odisha, India, specializing in React, Next.js, TypeScript, and Node.js. He builds modern web applications, contributes to open source, and writes about web development.
+
+## Pages
+
+- [Home](https://prasen.dev): Portfolio homepage with projects, skills, work experience, and social links.
+- [Blog](https://prasen.dev/blog): Technical articles about web development, React, Next.js, AI tools, and software engineering.
+- [Projects](https://prasen.dev/projects): Web applications and open source projects.
+- [Videos](https://prasen.dev/videos): YouTube videos about software development and technology.
+- [Gadgets](https://prasen.dev/gadgets): Developer tech setup, PC components, and productivity tools.
+
+## Key Projects
+
+- [Next.js Learning Platform](https://learn.prasen.dev): A free, open-source interactive learning platform for mastering Next.js with 17 structured chapters.
+- [RepoStar](https://github.com/StarKnightt/RepoStar): Browse trending GitHub repositories with filtering and search.
+- [CleanType](https://github.com/StarKnightt/CleanType): A modern typing practice application.
+- [DateUp](https://github.com/StarKnightt/DateUp): AI-powered dating profile enhancer.
+
+## Technical Stack
+
+Languages: TypeScript, JavaScript, Python
+Frontend: React, Next.js, TailwindCSS, Framer Motion
+Backend: Node.js, MongoDB, PostgreSQL, Redis
+Tools: Git, Docker, Cursor, Claude
+
+## Social
+
+- GitHub: https://github.com/StarKnightt
+- X (Twitter): https://x.com/Star_Knight12
+- LinkedIn: https://www.linkedin.com/in/prasenjitnayak/
+- YouTube: https://youtube.com/@Star_Knight12
+
+## RSS
+
+- Blog feed: https://prasen.dev/rss.xml
