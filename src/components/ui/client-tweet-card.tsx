@@ -40,6 +40,7 @@ const TweetCardInner = ({
 
   if (isLoading) return fallback
   if (error || !data) return null
+  if (!("text" in data) && !("__typename" in data)) return null
 
   return <MagicTweet tweet={data} {...props} />
 }
