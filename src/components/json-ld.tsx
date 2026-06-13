@@ -7,8 +7,17 @@ export function JsonLd() {
     givenName: 'Prasenjit',
     familyName: 'Nayak',
     url: 'https://prasen.dev',
-    image: 'https://prasen.dev/hi.webp',
+    image: 'https://prasen.dev/prasen.webp',
     jobTitle: 'Full Stack Developer',
+    nationality: {
+      '@type': 'Country',
+      name: 'India'
+    },
+    alumniOf: {
+      '@type': 'EducationalOrganization',
+      name: 'Trident Academy of Technology',
+      url: 'https://tat.ac.in'
+    },
     worksFor: {
       '@type': 'Organization',
       name: 'Freelance'
@@ -19,7 +28,8 @@ export function JsonLd() {
       'https://twitter.com/Star_Knight12',
       'https://youtube.com/@Star_Knight12',
       'https://www.instagram.com/starknight_143/',
-      'https://codepen.io/StarKnightt'
+      'https://codepen.io/StarKnightt',
+      'https://learn.prasen.dev'
     ],
     knowsAbout: [
       'Web Development',
@@ -29,9 +39,13 @@ export function JsonLd() {
       'Node.js',
       'Full Stack Development',
       'MongoDB',
-      'TailwindCSS'
+      'TailwindCSS',
+      'PostgreSQL',
+      'REST APIs',
+      'AI Integration'
     ],
-    description: 'Full Stack Developer specializing in React, Next.js, TypeScript, and Node.js. Building modern web applications.'
+    knowsLanguage: ['English', 'Hindi', 'Odia'],
+    description: 'Full Stack Developer specializing in React, Next.js, TypeScript, and Node.js. Building modern web applications and open-source tools.'
   },
   {
     '@context': 'https://schema.org',

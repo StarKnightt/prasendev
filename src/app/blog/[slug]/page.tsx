@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { BlogInteractions } from "@/components/blog-interactions";
 import { BlogArticle } from "@/components/blog-article";
+import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
 
 export async function generateStaticParams() {
   const posts = await getBlogPosts();
@@ -32,6 +33,9 @@ export async function generateMetadata({
   return {
     title,
     description,
+    alternates: {
+      canonical: `${DATA.url}/blog/${post.slug}`,
+    },
     openGraph: {
       title,
       description,
@@ -41,6 +45,8 @@ export async function generateMetadata({
       images: [
         {
           url: ogImage,
+          width: 1200,
+          height: 630,
         },
       ],
     },
@@ -49,6 +55,7 @@ export async function generateMetadata({
       title,
       description,
       images: [ogImage],
+      creator: "@Star_Knight12",
     },
   };
 }
@@ -68,6 +75,7 @@ export default async function Blog({
 
   return (
     <section id="blog">
+      <BreadcrumbJsonLd items={[{ name: "Blog", href: "/blog" }, { name: post.metadata.title, href: `/blog/${post.slug}` }]} />
       <script
         type="application/ld+json"
         suppressHydrationWarning

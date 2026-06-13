@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: `${DATA.url}/me.png`,
+        url: `${DATA.url}/api/og`,
         width: 1200,
         height: 630,
         alt: "Prasenjit Nayak - Full Stack Developer"
@@ -56,7 +56,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Prasenjit Nayak | Full Stack Developer',
     description: 'Full Stack Developer specializing in React, Next.js, TypeScript and Node.js',
-    images: [`${DATA.url}/me.png`],
+    images: [`${DATA.url}/api/og`],
+    creator: '@Star_Knight12',
   },
   robots: {
     index: true,

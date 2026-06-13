@@ -2,6 +2,7 @@ import BlurFade from "@/components/magicui/blur-fade";
 import { getBlogPosts } from "@/data/blog";
 import Link from "next/link";
 import { DATA } from "@/data/resume";
+import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
 
 export const metadata = {
   title: "Blog",
@@ -25,6 +26,7 @@ export default async function BlogPage() {
         backgroundSize: '30px 30px',
       }}
     >
+      <BreadcrumbJsonLd items={[{ name: "Blog", href: "/blog" }]} />
       <section>
         <BlurFade delay={BLUR_FADE_DELAY}>
           <h1 className="font-medium text-2xl mb-8 tracking-tighter">blog</h1>
