@@ -67,7 +67,7 @@ export async function GET(request: NextRequest) {
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
               <img
-                src="https://prasen.dev/prasen.webp"
+                src="https://avatars.githubusercontent.com/u/92244026?v=4"
                 width="48"
                 height="48"
                 style={{ borderRadius: '50%' }}
@@ -149,7 +149,7 @@ export async function GET(request: NextRequest) {
           }}
         >
           <img
-            src="https://prasen.dev/prasen.webp"
+            src="https://avatars.githubusercontent.com/u/92244026?v=4"
             width="100"
             height="100"
             style={{
