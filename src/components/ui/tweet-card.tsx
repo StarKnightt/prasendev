@@ -228,7 +228,7 @@ export const MagicTweet = ({
   try {
     enrichedTweet = enrichTweet(tweet)
   } catch {
-    return <TweetNotFound />
+    return null
   }
 
   return (
@@ -271,8 +271,7 @@ export const TweetCard = async ({
     : undefined
 
   if (!tweet) {
-    const NotFound = components?.TweetNotFound || TweetNotFound
-    return <NotFound className={className} />
+    return null
   }
 
   return (

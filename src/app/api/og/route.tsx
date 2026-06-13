@@ -7,7 +7,6 @@ export const runtime = 'edge';
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const title = searchParams.get('title');
-  const type = searchParams.get('type') || 'default';
 
   if (title) {
     return new ImageResponse(
@@ -19,79 +18,46 @@ export async function GET(request: NextRequest) {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
-            padding: '60px 80px',
-            background: 'linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 50%, #16213e 100%)',
+            padding: '80px',
+            backgroundColor: '#ffffff',
             fontFamily: 'system-ui, -apple-system, sans-serif',
+            borderBottom: '6px solid #000000',
           }}
         >
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '12px',
-              }}
-            >
-              <div
-                style={{
-                  width: '10px',
-                  height: '10px',
-                  borderRadius: '50%',
-                  background: '#22c55e',
-                }}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <img
+                src="https://avatars.githubusercontent.com/u/92244026?v=4"
+                width="40"
+                height="40"
+                style={{ borderRadius: '50%' }}
               />
-              <span style={{ color: '#a1a1aa', fontSize: '20px' }}>
-                prasen.dev/blog
+              <span style={{ color: '#000000', fontSize: '20px', fontWeight: 600 }}>
+                Prasenjit Nayak
               </span>
             </div>
             <h1
               style={{
-                fontSize: title.length > 60 ? '48px' : '56px',
-                fontWeight: 700,
-                color: '#fafafa',
-                lineHeight: 1.2,
+                fontSize: title.length > 50 ? '50px' : '62px',
+                fontWeight: 800,
+                color: '#000000',
+                lineHeight: 1.1,
                 margin: 0,
-                maxWidth: '900px',
+                maxWidth: '950px',
+                letterSpacing: '-1.5px',
               }}
             >
               {title}
             </h1>
           </div>
 
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-              <img
-                src="https://avatars.githubusercontent.com/u/92244026?v=4"
-                width="48"
-                height="48"
-                style={{ borderRadius: '50%' }}
-              />
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <span style={{ color: '#fafafa', fontSize: '20px', fontWeight: 600 }}>
-                  Prasenjit Nayak
-                </span>
-                <span style={{ color: '#71717a', fontSize: '16px' }}>
-                  Full Stack Developer
-                </span>
-              </div>
-            </div>
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '6px',
-                color: '#71717a',
-                fontSize: '16px',
-              }}
-            >
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <span style={{ color: '#666666', fontSize: '20px' }}>
               prasen.dev
-            </div>
+            </span>
+            <span style={{ color: '#666666', fontSize: '20px' }}>
+              Blog
+            </span>
           </div>
         </div>
       ),
@@ -106,105 +72,78 @@ export async function GET(request: NextRequest) {
           height: '100%',
           width: '100%',
           display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          background: 'linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 40%, #16213e 70%, #0f0f0f 100%)',
+          backgroundColor: '#ffffff',
           fontFamily: 'system-ui, -apple-system, sans-serif',
-          position: 'relative',
         }}
       >
-        {/* Subtle grid pattern */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            backgroundImage:
-              'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)',
-            backgroundSize: '60px 60px',
-          }}
-        />
-
-        {/* Glow accent */}
-        <div
-          style={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: '600px',
-            height: '300px',
-            borderRadius: '50%',
-            background: 'radial-gradient(ellipse, rgba(99, 102, 241, 0.15) 0%, transparent 70%)',
-          }}
-        />
-
+        {/* Left section */}
         <div
           style={{
             display: 'flex',
             flexDirection: 'column',
+            justifyContent: 'center',
+            padding: '80px',
+            flex: 1,
+          }}
+        >
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            <h1
+              style={{
+                fontSize: '56px',
+                fontWeight: 800,
+                color: '#000000',
+                margin: 0,
+                letterSpacing: '-2px',
+                lineHeight: 1.1,
+              }}
+            >
+              Prasenjit Nayak
+            </h1>
+
+            <p
+              style={{
+                fontSize: '26px',
+                color: '#555555',
+                margin: 0,
+                lineHeight: 1.4,
+              }}
+            >
+              Full Stack Developer building modern web apps with React, Next.js, and TypeScript.
+            </p>
+
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                marginTop: '12px',
+              }}
+            >
+              <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#22c55e' }} />
+              <span style={{ color: '#888888', fontSize: '18px' }}>
+                prasen.dev
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Right section - avatar */}
+        <div
+          style={{
+            display: 'flex',
             alignItems: 'center',
-            gap: '24px',
-            position: 'relative',
+            justifyContent: 'center',
+            width: '400px',
+            backgroundColor: '#f5f5f5',
+            borderLeft: '1px solid #e5e5e5',
           }}
         >
           <img
             src="https://avatars.githubusercontent.com/u/92244026?v=4"
-            width="100"
-            height="100"
-            style={{
-              borderRadius: '50%',
-              border: '3px solid rgba(255,255,255,0.1)',
-            }}
+            width="180"
+            height="180"
+            style={{ borderRadius: '50%' }}
           />
-
-          <h1
-            style={{
-              fontSize: '64px',
-              fontWeight: 700,
-              color: '#fafafa',
-              margin: 0,
-              letterSpacing: '-2px',
-            }}
-          >
-            Prasenjit Nayak
-          </h1>
-
-          <p
-            style={{
-              fontSize: '24px',
-              color: '#a1a1aa',
-              margin: 0,
-              textAlign: 'center',
-            }}
-          >
-            Full Stack Developer — React, Next.js, TypeScript
-          </p>
-
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              marginTop: '8px',
-              padding: '8px 20px',
-              borderRadius: '999px',
-              border: '1px solid rgba(255,255,255,0.1)',
-              background: 'rgba(255,255,255,0.05)',
-            }}
-          >
-            <div
-              style={{
-                width: '8px',
-                height: '8px',
-                borderRadius: '50%',
-                background: '#22c55e',
-              }}
-            />
-            <span style={{ color: '#d4d4d8', fontSize: '18px' }}>
-              prasen.dev
-            </span>
-          </div>
         </div>
       </div>
     ),
