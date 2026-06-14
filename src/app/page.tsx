@@ -15,7 +15,6 @@ import { Icons } from "@/components/icons";
 import ShinyButton from "@/components/ui/shiny-button";
 import { GithubSkeleton } from "@/components/skeletons/github-skeleton";
 import { GitHubSponsors } from "@/components/github-sponsors";
-import { TwitterTestimonials } from "@/components/twitter-testimonials";
 import { AgeCounter } from "@/components/age-counter";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FlipAvatar } from "@/components/flip-avatar";
@@ -380,13 +379,6 @@ export default function Page() {
         <BlurFade delay={BLUR_FADE_DELAY * 13.5}>
           <SteamNowPlaying />
         </BlurFade>
-
-        {/* ─── TESTIMONIALS ─── */}
-        <section id="testimonials">
-          <BlurFade delay={BLUR_FADE_DELAY * 14}>
-            <TwitterTestimonials />
-          </BlurFade>
-        </section>
 
         {/* ─── SPONSORS ─── */}
         <section id="sponsors">
