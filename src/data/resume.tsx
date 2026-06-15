@@ -302,6 +302,36 @@ export const DATA = {
       video: "https://video.gumlet.io/6745e593080b60408ca085f7/6a16bc92d99287327250b129/download.mp4",
     },
     {
+      title: "Backrooms: Level 0",
+      href: "https://backroom-escape.vercel.app/",
+      dates: "June 2026",
+      active: true,
+      description:
+        "A first-person survival horror game running entirely in the browser. Every asset, texture, sound, and the monster are generated procedurally at runtime. Features A* pathfinding AI, procedural PBR textures, synthesized audio, and custom post-processing shaders.",
+      technologies: [
+        "Next.js 16",
+        "Three.js",
+        "TypeScript",
+        "WebAudio API",
+        "GLSL Shaders",
+        "Procedural Generation",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://backroom-escape.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/StarKnightt/Backroom-Escape",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "",
+      video: "https://video.gumlet.io/6745e593080b60408ca085f7/6a2fb2faffbd5132b8c3d72a/download.mp4",
+    },
+    {
       title: "Dateup",
       href: "https://dateup.in",
       dates: "April 2026 - Present",
