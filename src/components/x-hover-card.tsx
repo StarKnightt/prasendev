@@ -14,7 +14,7 @@ const X_PROFILE = {
   handle: "Star_Knight12",
   avatar: "https://unavatar.io/x/Star_Knight12",
   description: "making code alive",
-  followers: 20700,
+  followers: 21000,
   verified: true,
 };
 
