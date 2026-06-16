@@ -92,6 +92,7 @@ export default function Page() {
                   className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
                   yOffset={8}
                   text={`hey, ${DATA.name.split(" ")[0]} here`}
+                  as="h1"
                 />
                 <BlurFade delay={BLUR_FADE_DELAY * 1.5}>
                   <AgeCounter />
