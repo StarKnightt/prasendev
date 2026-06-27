@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Image from "next/image";
+import { useState, useEffect, useMemo } from "react";
 import { Icons } from "@/components/icons";
 import { Gamepad2, Trophy, Clock } from "lucide-react";
 
@@ -12,6 +11,7 @@ interface SteamData {
   personastate: number;
   gameextrainfo: string | null;
   gameid: string | null;
+  gameImage: string | null;
   lastPlayed: {
     name: string;
     appid: string;
@@ -20,6 +20,52 @@ interface SteamData {
   level: number;
   gamesCount: number;
   profileUrl: string;
+}
+
+/**
+ * Tries the portrait library capsule first (great for older titles), then
+ * falls back to the official store header image, then a gamepad placeholder.
+ * Keyed by appid in the parent so it remounts (and resets) when the game changes.
+ */
+function GameArt({
+  appid,
+  headerImage,
+  alt,
+}: {
+  appid?: string;
+  headerImage: string | null;
+  alt: string;
+}) {
+  const sources = useMemo(() => {
+    const arr: string[] = [];
+    if (appid) {
+      arr.push(
+        `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/library_600x900.jpg`
+      );
+    }
+    if (headerImage) arr.push(headerImage);
+    return arr;
+  }, [appid, headerImage]);
+
+  const [idx, setIdx] = useState(0);
+
+  if (sources.length === 0 || idx >= sources.length) {
+    return (
+      <div className="size-full flex items-center justify-center">
+        <Gamepad2 className="size-5 text-muted-foreground" />
+      </div>
+    );
+  }
+
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={sources[idx]}
+      alt={alt}
+      className="absolute inset-0 size-full object-cover transition-transform duration-500 group-hover:scale-110"
+      onError={() => setIdx((i) => i + 1)}
+    />
+  );
 }
 
 export function SteamNowPlaying() {
@@ -79,23 +125,14 @@ export function SteamNowPlaying() {
     >
       {/* Game art with hover zoom + shimmer */}
       <div className="relative w-20 aspect-[3/4] shrink-0 bg-muted/30 overflow-hidden">
-        {gameId ? (
-          <>
-            <Image
-              src={`https://cdn.cloudflare.steamstatic.com/steam/apps/${gameId}/library_600x900.jpg`}
-              alt={gameName}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-110"
-              unoptimized
-            />
-            {/* Shimmer overlay */}
-            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-          </>
-        ) : (
-          <div className="size-full flex items-center justify-center">
-            <Gamepad2 className="size-5 text-muted-foreground" />
-          </div>
-        )}
+        <GameArt
+          key={gameId ?? "none"}
+          appid={gameId ?? undefined}
+          headerImage={data.gameImage}
+          alt={gameName}
+        />
+        {/* Shimmer overlay */}
+        <div className="pointer-events-none absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       </div>
 
       {/* Content */}

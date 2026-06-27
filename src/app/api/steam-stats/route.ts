@@ -26,6 +26,29 @@ async function resolveSteamId(): Promise<string | null> {
   return null;
 }
 
+/**
+ * The predictable library_600x900.jpg art path only exists for older titles.
+ * Newer games store assets behind a content hash, so we grab the official
+ * header_image from the store API as a guaranteed-valid fallback.
+ */
+async function getGameHeader(appid: string): Promise<string | null> {
+  try {
+    const res = await fetch(
+      `https://store.steampowered.com/api/appdetails?appids=${appid}&filters=basic`,
+      { next: { revalidate: 86400 } }
+    );
+    if (!res.ok) return null;
+    const data = await res.json();
+    const entry = data?.[appid];
+    if (entry?.success && entry.data?.header_image) {
+      return entry.data.header_image as string;
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
 export async function GET() {
   if (!STEAM_API_KEY) {
     return NextResponse.json(
@@ -77,6 +100,11 @@ export async function GET() {
       .filter((g: { rtime_last_played?: number }) => g.rtime_last_played && g.rtime_last_played > 0)
       .sort((a: { rtime_last_played: number }, b: { rtime_last_played: number }) => b.rtime_last_played - a.rtime_last_played)[0] ?? null;
 
+    const relevantAppId = player.gameid ?? lastPlayedGame?.appid ?? null;
+    const gameImage = relevantAppId
+      ? await getGameHeader(String(relevantAppId))
+      : null;
+
     return NextResponse.json(
       {
         name: player.personaname,
@@ -85,6 +113,7 @@ export async function GET() {
         personastate: player.personastate,
         gameextrainfo: player.gameextrainfo ?? null,
         gameid: player.gameid ?? null,
+        gameImage,
         lastPlayed: lastPlayedGame
           ? {
               name: lastPlayedGame.name,
