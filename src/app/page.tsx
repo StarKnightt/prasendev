@@ -30,6 +30,7 @@ import { BuyMeACoffeeHoverCard } from "@/components/bmc-hover-card";
 import { DiscordHoverCard } from "@/components/discord-hover-card";
 import { SteamNowPlaying } from "@/components/steam-now-playing";
 import { BirthdayFireworks } from "@/components/birthday-fireworks";
+import { BirthdayHat } from "@/components/birthday-hat";
 
 const VisitorCounter = dynamic(() => import("@/components/visitor-counter"), {
   ssr: false,
@@ -113,6 +114,7 @@ export default function Page() {
                     alt={DATA.name}
                     fallback={DATA.initials}
                   />
+                  <BirthdayHat />
                 </div>
               </BlurFade>
             </div>
