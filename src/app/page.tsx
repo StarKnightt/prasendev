@@ -29,6 +29,7 @@ import { VercelHoverCard } from "@/components/vercel-hover-card";
 import { BuyMeACoffeeHoverCard } from "@/components/bmc-hover-card";
 import { DiscordHoverCard } from "@/components/discord-hover-card";
 import { SteamNowPlaying } from "@/components/steam-now-playing";
+import { BirthdayFireworks } from "@/components/birthday-fireworks";
 
 const VisitorCounter = dynamic(() => import("@/components/visitor-counter"), {
   ssr: false,
@@ -79,6 +80,7 @@ function SectionLabel({ label }: { label: string }) {
 export default function Page() {
   return (
     <>
+      <BirthdayFireworks />
       <main className="flex min-h-[100dvh] flex-col space-y-12 sm:space-y-14">
         <PersonSchema />
 
