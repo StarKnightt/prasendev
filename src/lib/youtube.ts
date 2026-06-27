@@ -48,6 +48,48 @@ function getUploadsPlaylistId(channelId: string): string {
   return "UU" + channelId.slice(2);
 }
 
+// YouTube Shorts are capped at 3 minutes, so anything this length or shorter
+// is treated as a Short and excluded. Lower this if a legit short video is hidden.
+const MAX_SHORT_DURATION_SECONDS = 180;
+
+function parseISO8601Duration(iso: string): number {
+  const match = iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
+  if (!match) return 0;
+  const hours = parseInt(match[1] || "0", 10);
+  const minutes = parseInt(match[2] || "0", 10);
+  const seconds = parseInt(match[3] || "0", 10);
+  return hours * 3600 + minutes * 60 + seconds;
+}
+
+async function fetchDurations(
+  videoIds: string[],
+  apiKey: string
+): Promise<Map<string, number>> {
+  const durations = new Map<string, number>();
+
+  for (let i = 0; i < videoIds.length; i += 50) {
+    const chunk = videoIds.slice(i, i + 50);
+    const url = new URL("https://www.googleapis.com/youtube/v3/videos");
+    url.searchParams.set("part", "contentDetails");
+    url.searchParams.set("id", chunk.join(","));
+    url.searchParams.set("key", apiKey);
+
+    try {
+      const res = await fetch(url.toString(), { next: { revalidate: 3600 } });
+      if (!res.ok) continue;
+      const data = await res.json();
+      for (const item of data.items ?? []) {
+        const seconds = parseISO8601Duration(item.contentDetails?.duration ?? "PT0S");
+        durations.set(item.id, seconds);
+      }
+    } catch {
+      // ignore; videos with unknown duration are kept rather than hidden
+    }
+  }
+
+  return durations;
+}
+
 function truncateDescription(desc: string, maxLength = 150): string {
   const firstLine = desc.split("\n")[0];
   if (firstLine.length <= maxLength) return firstLine;
@@ -94,8 +136,24 @@ export async function fetchYouTubeVideos(maxResults = 50): Promise<YouTubeVideo[
       if (!pageToken) break;
     }
 
-    return allItems
-      .filter((item) => item.snippet.title !== "Private video" && item.snippet.title !== "Deleted video")
+    const validItems = allItems.filter(
+      (item) =>
+        item.snippet.title !== "Private video" &&
+        item.snippet.title !== "Deleted video"
+    );
+
+    // Filter out Shorts using each video's duration
+    const durations = await fetchDurations(
+      validItems.map((item) => item.snippet.resourceId.videoId),
+      apiKey
+    );
+
+    return validItems
+      .filter((item) => {
+        const seconds = durations.get(item.snippet.resourceId.videoId);
+        // keep videos longer than the Short cutoff; keep unknowns to avoid hiding real content
+        return seconds === undefined || seconds > MAX_SHORT_DURATION_SECONDS;
+      })
       .map((item) => ({
         title: item.snippet.title,
         description: truncateDescription(item.snippet.description),
