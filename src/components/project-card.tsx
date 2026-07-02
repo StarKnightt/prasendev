@@ -51,6 +51,14 @@ export function ProjectCard({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  // Gumlet auto-generates a thumbnail for every video; use it as the
+  // poster so cards don't show the video's raw first frame before playback.
+  const resolvedPoster =
+    poster ??
+    (video?.includes("video.gumlet.io")
+      ? video.replace(/download\.mp4$/, "thumbnail-1-0.png")
+      : undefined);
+
   const handleCardClick = (e: React.MouseEvent) => {
     if (video) {
       e.preventDefault();
@@ -89,7 +97,7 @@ export function ProjectCard({
             <video
               ref={videoRef}
               src={video}
-              poster={poster}
+              poster={resolvedPoster}
               loop
               muted
               playsInline
