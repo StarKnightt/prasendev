@@ -272,6 +272,31 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "PayBrackets",
+      href: "https://paybrackets.com",
+      dates: "June 2026 - Present",
+      active: true,
+      description:
+        "A free US take-home pay calculator for the 2026 tax year, covering all 50 states and D.C. Over 160 programmatic pages with federal and state tax breakdowns, hourly to salary conversion, and instant client-side paycheck math built from IRS and Tax Foundation data.",
+      technologies: [
+        "Next.js 16",
+        "React 19",
+        "TypeScript",
+        "Tailwind CSS v4",
+        "Programmatic SEO",
+        "Vercel",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://paybrackets.com",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "",
+      video: "https://video.gumlet.io/6745e593080b60408ca085f7/6a460104e4e7cc890ee9e003/download.mp4",
+    },
+    {
       title: "Next.js Learning",
       href: "https://learn.prasen.dev/",
       dates: "May 2026 - Present",

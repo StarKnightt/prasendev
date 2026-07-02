@@ -291,10 +291,10 @@ export default function Page() {
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {DATA.projects
                   .filter((project) => 
-                    ["Backrooms: Level 0", "Next.js Learning", "Dateup"].includes(project.title)
+                    ["PayBrackets", "Backrooms: Level 0", "Dateup"].includes(project.title)
                   )
                   .sort((a, b) => {
-                    const order = ["Backrooms: Level 0", "Next.js Learning", "Dateup"];
+                    const order = ["PayBrackets", "Backrooms: Level 0", "Dateup"];
                     return order.indexOf(a.title) - order.indexOf(b.title);
                   })
                   .map((project) => (

@@ -16,6 +16,7 @@ Prasenjit Nayak is a Full Stack Developer from Odisha, India, specializing in Re
 
 ## Key Projects
 
+- [PayBrackets](https://paybrackets.com): A free US take-home pay calculator for the 2026 tax year covering all 50 states and D.C., with federal and state tax breakdowns and hourly to salary conversion.
 - [Next.js Learning Platform](https://learn.prasen.dev): A free, open-source interactive learning platform for mastering Next.js with 17 structured chapters.
 - [RepoStar](https://github.com/StarKnightt/RepoStar): Browse trending GitHub repositories with filtering and search.
 - [CleanType](https://github.com/StarKnightt/CleanType): A modern typing practice application.
