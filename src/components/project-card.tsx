@@ -26,6 +26,7 @@ interface Props {
   link?: string;
   image?: string;
   video?: string;
+  poster?: string;
   links?: readonly {
     icon: React.ReactNode;
     type: string;
@@ -43,6 +44,7 @@ export function ProjectCard({
   link,
   image,
   video,
+  poster,
   links,
   className,
 }: Props) {
@@ -87,6 +89,7 @@ export function ProjectCard({
             <video
               ref={videoRef}
               src={video}
+              poster={poster}
               loop
               muted
               playsInline

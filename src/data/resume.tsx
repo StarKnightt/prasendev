@@ -295,6 +295,7 @@ export const DATA = {
       ],
       image: "",
       video: "https://video.gumlet.io/6745e593080b60408ca085f7/6a460104e4e7cc890ee9e003/download.mp4",
+      poster: "https://video.gumlet.io/6745e593080b60408ca085f7/6a460104e4e7cc890ee9e003/thumbnail-1-0.png?v=1782972766299",
     },
     {
       title: "Next.js Learning",
