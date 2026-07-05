@@ -12,7 +12,7 @@ export const DATA = {
   description:
     "",
   summary:
-    "Currently **freelancing** and **collaborating** with new people on exciting projects.\n\nI love playing [video games](https://www.youtube.com/@StarKnight-12) and share thoughts on tech [here](https://www.youtube.com/@Star_Knight12).\n\nHere's what I think about the [future of computer science](https://www.prasen.dev/blog/hello-world).\n\nI also enjoy [touch typing](https://monkeytype.com/profile/prasenj4551R) in my free time, bullish on AI and future technologies",
+    "Currently **freelancing** and **collaborating** with new people on exciting projects.\n\nI love playing [video games](https://www.youtube.com/@StarKnight-12) and share thoughts on tech [here](https://www.youtube.com/@prasendev).\n\nHere's what I think about the [future of computer science](https://www.prasen.dev/blog/hello-world).\n\nI also enjoy [touch typing](https://monkeytype.com/profile/prasenj4551R) in my free time, bullish on AI and future technologies",
 
   avatarUrl: "/prasen.webp",
   skills: [
@@ -153,7 +153,7 @@ export const DATA = {
       },
       Youtube: {
         name: "Youtube",
-        url: "https://youtube.com/@Star_Knight12",
+        url: "https://youtube.com/@prasendev",
         icon: Icons.youtube,
         navbar: true,
       },
