@@ -34,7 +34,7 @@ Tools: Git, Docker, Cursor, Claude
 - GitHub: https://github.com/StarKnightt
 - X (Twitter): https://x.com/Star_Knight12
 - LinkedIn: https://www.linkedin.com/in/prasenjitnayak/
-- YouTube: https://youtube.com/@Star_Knight12
+- YouTube: https://youtube.com/@prasendev
 
 ## RSS
 
