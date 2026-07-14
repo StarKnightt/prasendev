@@ -267,6 +267,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 Contact
 
-Your Name - [@Prasenjit](https://twitter.com/Star_Knight12)
+Your Name - [@Prasenjit](https://x.com/prasenx)
 
 Project Link: [Try it here](https://prasen.dev)
