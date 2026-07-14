@@ -7,14 +7,15 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Users } from "lucide-react";
+import { UserCheck, Users } from "lucide-react";
 
 const X_PROFILE = {
   name: "Prasenjit",
-  handle: "Star_Knight12",
-  avatar: "https://unavatar.io/x/Star_Knight12",
+  handle: "prasenx",
+  avatar: "https://unavatar.io/x/prasenx",
   description: "making code alive",
-  followers: 21000,
+  following: 606,
+  followers: 21700,
   verified: true,
 };
 
@@ -76,6 +77,7 @@ export function XHoverCard({ children }: { children: ReactNode }) {
             {X_PROFILE.description}
           </p>
           <div className="flex items-center gap-3 pt-0.5">
+            <StatPill icon={UserCheck} value={X_PROFILE.following} label="Following" />
             <StatPill icon={Users} value={X_PROFILE.followers} label="Followers" />
           </div>
         </div>

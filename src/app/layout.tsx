@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     title: 'Prasenjit Nayak | Full Stack Developer',
     description: 'Full Stack Developer specializing in React, Next.js, TypeScript and Node.js',
     images: [`${DATA.url}/og.png`],
-    creator: '@Star_Knight12',
+    creator: '@prasenx',
   },
   robots: {
     index: true,

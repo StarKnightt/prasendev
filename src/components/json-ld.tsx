@@ -25,7 +25,7 @@ export function JsonLd() {
     sameAs: [
       'https://github.com/StarKnightt',
       'https://www.linkedin.com/in/prasenjitnayak/',
-      'https://twitter.com/Star_Knight12',
+      'https://x.com/prasenx',
       'https://youtube.com/@prasendev',
       'https://www.instagram.com/starknight_143/',
       'https://codepen.io/StarKnightt',

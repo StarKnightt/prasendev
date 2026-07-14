@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: DATA.name,
     description: DATA.summary,
-    creator: '@' + 'Star_Knight12',
+    creator: '@prasenx',
     images: ['https://prasen.dev/portfolio.png'],
   },
 };

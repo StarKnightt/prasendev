@@ -287,7 +287,7 @@ export function CommandPalette() {
       description: "Visit X profile",
       icon: <Icons.x className="size-4" />,
       action: () => {
-        window.open("https://x.com/Star_Knight12", "_blank");
+        window.open("https://x.com/prasenx", "_blank");
         setOpen(false);
       },
       keywords: ["x", "twitter", "social"],
