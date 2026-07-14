@@ -37,6 +37,15 @@ const VisitorCounter = dynamic(() => import("@/components/visitor-counter"), {
 });
 
 const BLUR_FADE_DELAY = 0.04;
+
+// Brand hover colors for social icons; others fall back to foreground
+const SOCIAL_HOVER_COLORS: Record<string, string> = {
+  LinkedIn: "hover:text-[#0a66c2]",
+  Youtube: "hover:text-[#ff0000]",
+  Instagram: "hover:text-[#e4405f]",
+  Steam: "hover:text-[#00adee]",
+  Discord: "hover:text-[#5865f2]",
+};
 export const metadata: Metadata = {
   title: DATA.name,
   description: DATA.summary,
@@ -138,7 +147,7 @@ export default function Page() {
                           href={social.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="rounded-full border border-border/60 bg-card/40 p-2.5 text-muted-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-border hover:bg-card hover:text-foreground"
+                          className={`rounded-full border border-border/60 bg-card/40 p-2.5 text-muted-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-border hover:bg-card ${SOCIAL_HOVER_COLORS[name] ?? "hover:text-foreground"}`}
                           aria-label={name}
                         >
                           <social.icon className="size-5" />
