@@ -7,14 +7,15 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Users, Image } from "lucide-react";
+import { Users, UserCheck, Image } from "lucide-react";
 
 const INSTAGRAM_PROFILE = {
-  name: "Star Knight",
-  handle: "starknight_143",
-  avatar: "/hi2.webp",
-  bio: "22, Code 👨‍💻",
-  followers: 389,
+  name: "Prasenjit",
+  handle: "prasenn_x",
+  avatar: "/insta-avatar.webp",
+  bio: "23, Code 🧑🏻‍💻",
+  followers: 394,
+  following: 99,
   posts: 0,
 };
 
@@ -55,7 +56,7 @@ export function InstagramHoverCard({ children }: { children: ReactNode }) {
         sideOffset={8}
         align="center"
         collisionPadding={16}
-        className="w-fit max-w-[280px] min-w-0 border-border/60 bg-card/95 backdrop-blur-xl backdrop-saturate-150 shadow-xl"
+        className="w-fit max-w-[300px] min-w-0 border-border/60 bg-card/95 backdrop-blur-xl backdrop-saturate-150 shadow-xl"
       >
         <div className="flex flex-col gap-2.5">
           <div className="flex items-center gap-3">
@@ -74,8 +75,9 @@ export function InstagramHoverCard({ children }: { children: ReactNode }) {
           <p className="text-xs text-muted-foreground leading-relaxed">
             {INSTAGRAM_PROFILE.bio}
           </p>
-          <div className="flex items-center gap-3 pt-0.5">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 pt-0.5">
             <StatPill icon={Users} value={INSTAGRAM_PROFILE.followers} label="Followers" />
+            <StatPill icon={UserCheck} value={INSTAGRAM_PROFILE.following} label="Following" />
             <StatPill icon={Image} value={INSTAGRAM_PROFILE.posts} label="Posts" />
           </div>
         </div>
