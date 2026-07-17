@@ -159,7 +159,7 @@ export const DATA = {
       },
       Instagram: {
         name: "Instagram",
-        url: "https://www.instagram.com/starknight_143/",
+        url: "https://www.instagram.com/prasenn_x/",
         icon: Icons.instagram,
         navbar: true,
       },
