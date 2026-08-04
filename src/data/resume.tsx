@@ -272,6 +272,35 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "Jungle Trail",
+      href: "https://starknightt.github.io/jungle-trail/",
+      dates: "August 2026",
+      active: true,
+      description:
+        "A fully procedural first-person jungle in Three.js. Every texture, mesh, and sound is generated in code — zero external art assets. The debug overlay was a PR from the CTO of Xbox.",
+      technologies: [
+        "Three.js",
+        "JavaScript",
+        "WebAudio API",
+        "Procedural Generation",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://starknightt.github.io/jungle-trail/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/StarKnightt/jungle-trail",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "",
+      video: "https://video.gumlet.io/6745e593080b60408ca085f7/6a7223daec8c132ca29227c6/download.mp4",
+      poster: "https://video.gumlet.io/6745e593080b60408ca085f7/6a7223daec8c132ca29227c6/thumbnail-1-0.png?v=1785865438030",
+    },
+    {
       title: "PayBrackets",
       href: "https://paybrackets.com",
       dates: "June 2026 - Present",
