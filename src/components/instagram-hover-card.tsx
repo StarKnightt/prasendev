@@ -14,8 +14,8 @@ const INSTAGRAM_PROFILE = {
   handle: "prasenn_x",
   avatar: "/insta-avatar.webp",
   bio: "23, Code 🧑🏻‍💻",
-  followers: 394,
-  following: 99,
+  followers: 401,
+  following: 87,
   posts: 0,
 };
 

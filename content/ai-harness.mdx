@@ -1,0 +1,90 @@
+---
+title: "Your AI Isn't Dumb. Your Harness Is"
+publishedAt: "2026-08-07"
+summary: "Everyone's arguing about which model is smarter. Meanwhile the harness — the loop of tools, context and feedback wrapped around the model — is what decides whether AI ships code or just talks about it."
+image: "/blog/harness-cover.png"
+tags: ["ai", "agents", "harness", "developer-tools"]
+---
+
+# Your AI Isn't Dumb. Your Harness Is
+
+Quick question. Why does the same model feel like a genius in Cursor and like a confused intern in a random chat window?
+
+Same weights. Same training. Wildly different results.
+
+The answer is the harness. And once you see it, you can't unsee it.
+
+## What Even Is a Harness?
+
+The model is an engine. Incredibly powerful, but an engine on a table doesn't take you anywhere. The harness is the car built around it — the steering, the pedals, the fuel lines, the dashboard.
+
+In AI terms, the harness is everything wrapped around the model:
+
+- **Tools** it can call (read files, run commands, open a browser, query a database)
+- **Context management** (deciding what the model actually sees out of your giant messy project)
+- **The loop** (act, observe what happened, correct, repeat)
+- **Memory and rules** (your conventions, your preferences, loaded at the right time)
+- **Verification** (running tests and typechecks so the model catches its own lies)
+
+![The AI Harness: model at the center, tools, context, memory and verification around it](/blog/harness-anatomy.png)
+
+A chat window has almost none of this. You paste code, it guesses, you paste the error back, it guesses again. YOU are the harness. A bad, tired, manual harness.
+
+An agent has all of it. That's the whole difference.
+
+![Chat window vs Agent: you are the harness vs the harness works for you](/blog/harness-comparison.png)
+
+## The Loop Is the Magic Part
+
+Here's the thing nobody tells you. The model doesn't get smarter inside an agent. It gets to *check its work*.
+
+![The Loop: Write, Run, Observe, Fix, repeat](/blog/harness-loop.png)
+
+When I built [my jungle game](https://starknightt.github.io/jungle-trail/) (the Three.js one, fully procedural, the one where the CTO of Xbox [randomly sent a PR](https://github.com/StarKnightt/jungle-trail/pull/3) — yes, really, click it), the agent wasn't writing perfect code first try. Not even close. It wrote code, ran it, read the errors, took screenshots of the browser, saw the trees floating in mid-air, and fixed them. Over and over.
+
+That game took 3 days. The same project through a copy-paste chat workflow would have taken me weeks, because every one of those feedback cycles would've been me manually alt-tabbing, screenshotting, and re-explaining.
+
+The intelligence was the same. The loop was doing the heavy lifting.
+
+## You've Seen These Pieces Before
+
+If you've read my older posts, this will click fast:
+
+[MCP](/blog/what-is-mcp) is the hands. It's how the model touches real things — browsers, databases, GitHub.
+
+[Skills](/blog/claude-skills) are the muscle memory. Reusable instructions that load when relevant.
+
+The harness is the whole body. Hands, muscle memory, eyes, and the nervous system connecting it all. A model without a harness is a brain in a jar. Very smart. Can't do anything.
+
+## Why This Matters More Than the Next Model Drop
+
+Models are turning into commodities. The gap between the top labs keeps shrinking, and honestly, for most coding tasks, several models are "good enough" now.
+
+Harnesses are where the actual competition moved. It's why coding agents from different companies feel completely different even when they run the same model underneath. One gives the model your whole repo map, runs your tests automatically, and remembers your conventions. The other one dumps your prompt in raw and hopes.
+
+Benchmark people figured this out too. The same model scores wildly different on [SWE-bench](https://www.swebench.com/) depending on the harness it runs inside. Read that again. The leaderboard is partly a harness competition wearing a model costume.
+
+## You're Already Building One
+
+If you have a rules file in your repo, you're doing harness work. If you've added an MCP server, harness work. If your agent runs the typecheck before telling you it's done, that's the verification layer of a harness.
+
+My honest advice: spend one evening on your harness instead of reading another model comparison thread. Write down your project's conventions in a rules file. Connect the browser. Make the agent prove its work with a test run.
+
+It compounds. Every improvement makes every future task better, regardless of which model you're on.
+
+## My Hot Take
+
+Model releases are marketing events. Harness improvements are why your AI actually feels smarter this year.
+
+The next big leap in AI coding won't come from a trillion more parameters. It'll come from better loops — agents that verify more, remember better, and waste less context. The engine is already fast. Someone just has to keep building a better car.
+
+## Resources
+
+- [Building Effective Agents](https://www.anthropic.com/research/building-effective-agents) - Anthropic's essay on agent design, basically harness theory from the source
+- [MCP Official Docs](https://modelcontextprotocol.io/) - The standard for giving models tools
+- [Agent Skills Spec](https://agentskills.io) - The open standard for reusable agent instructions
+- [Cursor Docs](https://docs.cursor.com/) - Rules, MCP setup, and agent config — practical harness building
+- [Jungle Trail](https://github.com/StarKnightt/jungle-trail) - The 3-day procedural game from this post, Xbox CTO's PR included
+- [My MCP post](/blog/what-is-mcp) - If you want the tools layer explained simply
+
+*- Prasenjit*
