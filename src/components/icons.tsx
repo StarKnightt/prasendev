@@ -1,5 +1,4 @@
 import { GlobeIcon, MailIcon, FolderIcon } from "lucide-react";
-import { V0Icon } from "./v0-icon";
 
 export type IconProps = React.HTMLAttributes<SVGElement>;
 
@@ -370,7 +369,6 @@ export const Icons = {
       <path d="M18 12h3" />
     </svg>
   ),
-  vercel: () => <V0Icon />,
   shadcn: (props: IconProps) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" {...props}>
       <rect width="256" height="256" fill="none" />

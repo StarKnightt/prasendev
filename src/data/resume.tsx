@@ -181,12 +181,6 @@ export const DATA = {
         icon: Icons.discord,
         navbar: true,
       },
-      Vercel: {
-        name: "Vercel",
-        url: "https://v0.link/prasenjit-nayak",
-        icon: Icons.vercel,
-        navbar: true,
-      },
       buyMeACoffee: {
         name: "buyMeACoffee",
         url: "https://buymeacoffee.com/prasen",
@@ -211,9 +205,9 @@ export const DATA = {
       title: "Frontend Developer",
       logoUrl: "/company.png",
       start: "December 2025",
-      end: "Present",
+      end: "August 2026",
       description:
-        "Gatekeeping this one because of NDA. Working on exciting stuff though!",
+        "Gatekeeping this one because of NDA. Worked on exciting stuff though!",
       redacted: true,
     },
     {
@@ -248,8 +242,8 @@ export const DATA = {
       title: "v0 Ambassador",
       logoUrl: "/v0dev_logo.webp",
       start: "2025",
-      end: "Present",
-      description: "Community ambassador for Vercel's AI-powered UI generation tool. Creating and sharing projects, helping developers adopt v0 for rapid prototyping.",
+      end: "2026",
+      description: "Community ambassador for Vercel's AI-powered UI generation tool. Created and shared projects, helped developers adopt v0 for rapid prototyping.",
     },
   ],
   education: [
