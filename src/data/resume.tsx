@@ -211,18 +211,6 @@ export const DATA = {
       redacted: true,
     },
     {
-      company: "Stealth AI Startup",
-      href: "https://www.linkedin.com/company/stealthaistartup/",
-      badges: [],
-      location: "Remote",
-      title: "Full Stack Developer",
-      logoUrl: "/stealth-ai.webp",
-      start: "August 2025",
-      end: "September 2025",
-      description:
-        "Built and shipped features in a fast-paced startup environment. Worked on React frontend components, integrated REST APIs, and collaborated with cross-functional teams on product delivery.",
-    },
-    {
       company: "Freelance",
       href: "https://github.com/StarKnightt",
       badges: [],
