@@ -25,7 +25,6 @@ import { XHoverCard } from "@/components/x-hover-card";
 import { LinkedInHoverCard } from "@/components/linkedin-hover-card";
 import { InstagramHoverCard } from "@/components/instagram-hover-card";
 import { CodePenHoverCard } from "@/components/codepen-hover-card";
-import { VercelHoverCard } from "@/components/vercel-hover-card";
 import { BuyMeACoffeeHoverCard } from "@/components/bmc-hover-card";
 import { DiscordHoverCard } from "@/components/discord-hover-card";
 import { SteamNowPlaying } from "@/components/steam-now-playing";
@@ -207,14 +206,6 @@ export default function Page() {
                           <CodePenHoverCard key={name}>
                             {socialLink}
                           </CodePenHoverCard>
-                        );
-                      }
-
-                      if (name === "Vercel") {
-                        return (
-                          <VercelHoverCard key={name}>
-                            {socialLink}
-                          </VercelHoverCard>
                         );
                       }
 
