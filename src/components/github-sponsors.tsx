@@ -21,24 +21,17 @@ export function GitHubSponsors() {
   const [sponsors, setSponsors] = useState<Sponsor[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [debug, setDebug] = useState<any>(null);
 
   useEffect(() => {
     const fetchSponsors = async () => {
       try {
-        const response = await fetch('/api/sponsors', {
-          cache: 'no-store',
-        });
+        const response = await fetch('/api/sponsors');
         const data = await response.json();
-        console.log('🎯 Sponsors API response:', data);
         setSponsors(data.sponsors || []);
-        setDebug(data.debug);
-        // Only set error if we have an error and no sponsors
         if (data.error && (!data.sponsors || data.sponsors.length === 0)) {
           setError(data.error);
         }
       } catch (error) {
-        console.error('❌ Error fetching sponsors:', error);
         setError(error instanceof Error ? error.message : 'Failed to fetch sponsors');
       } finally {
         setLoading(false);
@@ -77,12 +70,6 @@ export function GitHubSponsors() {
         <p className="text-sm text-muted-foreground mb-2">
           {error}
         </p>
-        {debug && (
-          <details className="text-xs text-muted-foreground mt-2">
-            <summary className="cursor-pointer">Debug Info</summary>
-            <pre className="mt-2 p-2 bg-muted rounded">{JSON.stringify(debug, null, 2)}</pre>
-          </details>
-        )}
       </div>
     );
   }

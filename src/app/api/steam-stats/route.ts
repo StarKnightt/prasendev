@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 const STEAM_API_KEY = process.env.STEAM_API_KEY;
 const VANITY_URL = "StarKnight__";
-const CACHE_MAX_AGE = 120; // 2 minutes
+const CACHE_MAX_AGE = 300; // 5 minutes
 
 const STATUS_MAP: Record<number, string> = {
   0: "Offline",
@@ -69,11 +69,11 @@ export async function GET() {
     const [playerRes, gamesRes, levelRes] = await Promise.all([
       fetch(
         `https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/?key=${STEAM_API_KEY}&steamids=${steamId}`,
-        { cache: "no-store" }
+        { next: { revalidate: 300 } }
       ),
       fetch(
         `https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=${STEAM_API_KEY}&steamid=${steamId}&include_played_free_games=true&include_appinfo=true`,
-        { cache: "no-store" }
+        { next: { revalidate: 300 } }
       ),
       fetch(
         `https://api.steampowered.com/IPlayerService/GetSteamLevel/v1/?key=${STEAM_API_KEY}&steamid=${steamId}`,
@@ -127,7 +127,7 @@ export async function GET() {
       },
       {
         headers: {
-          "Cache-Control": `public, s-maxage=${CACHE_MAX_AGE}, stale-while-revalidate=120`,
+          "Cache-Control": `public, s-maxage=${CACHE_MAX_AGE}, stale-while-revalidate=300`,
         },
       }
     );

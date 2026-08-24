@@ -90,7 +90,7 @@ export function SteamNowPlaying() {
     }
 
     fetchStatus();
-    const interval = setInterval(fetchStatus, 120_000);
+    const interval = setInterval(fetchStatus, 300_000);
 
     return () => {
       mounted = false;
