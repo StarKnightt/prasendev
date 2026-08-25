@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Prasenjit Nayak | Full Stack Developer',
-    description: 'Full Stack Developer specializing in React, Next.js, TypeScript and Node.js',
+    description: 'Full Stack Developer specializing in React, Next.js, TypeScript and Node.js. Check out my portfolio, projects and blog posts.',
     images: [`${DATA.url}/og.png`],
     creator: '@prasenx',
   },

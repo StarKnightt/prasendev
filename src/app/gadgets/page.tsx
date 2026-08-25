@@ -12,20 +12,20 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Gadgets",
-  description: "My tech setup - PC components, peripherals, and productivity tools I use daily as a developer.",
+  description: "The gear behind my work — PC build, peripherals, and the software I use daily as a freelance full stack developer, with honest picks and recommendations.",
   alternates: {
     canonical: `${DATA.url}/gadgets`,
   },
   openGraph: {
     title: "Gadgets & Setup | Prasenjit Nayak",
-    description: "PC components, peripherals, and productivity tools I use daily as a developer.",
+    description: "The gear behind my work — PC build, peripherals, and the software I use daily as a freelance full stack developer, with honest picks and recommendations.",
     url: `${DATA.url}/gadgets`,
     images: [{ url: `${DATA.url}/api/og?title=Gadgets%20%26%20Setup&type=page`, width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Gadgets & Setup | Prasenjit Nayak",
-    description: "PC components, peripherals, and productivity tools I use daily as a developer.",
+    description: "The gear behind my work — PC build, peripherals, and the software I use daily as a freelance full stack developer, with honest picks and recommendations.",
     images: [`${DATA.url}/api/og?title=Gadgets%20%26%20Setup&type=page`],
   },
 };
