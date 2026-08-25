@@ -45,12 +45,16 @@ const SOCIAL_HOVER_COLORS: Record<string, string> = {
   Steam: "hover:text-[#00adee]",
   Discord: "hover:text-[#5865f2]",
 };
+// Plain-text description — DATA.summary is markdown and leaks syntax into meta tags
+const HOME_DESCRIPTION =
+  "Freelance full stack developer from Bhubaneswar, India. I build with Next.js, TypeScript and React — Outbuilt, Jungle Trail and more — open to DevRel work.";
+
 export const metadata: Metadata = {
   title: DATA.name,
-  description: DATA.summary,
+  description: HOME_DESCRIPTION,
   openGraph: {
     title: DATA.name,
-    description: DATA.summary,
+    description: HOME_DESCRIPTION,
     url: DATA.url,
     siteName: DATA.name,
     images: [
@@ -67,7 +71,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: DATA.name,
-    description: DATA.summary,
+    description: HOME_DESCRIPTION,
     creator: '@prasenx',
     images: ['https://prasen.dev/portfolio.png'],
   },
