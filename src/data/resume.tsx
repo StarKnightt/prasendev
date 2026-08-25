@@ -254,6 +254,31 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "Outbuilt",
+      href: "https://outbuilt.lol",
+      dates: "August 2026",
+      active: true,
+      description:
+        "A pay-to-rank public leaderboard. No logins, no algorithms — your rank is exactly what you paid for, and anyone can outbid you. Already generating revenue.",
+      technologies: [
+        "Next.js",
+        "React 19",
+        "TypeScript",
+        "Supabase",
+        "Dodo Payments",
+        "Tailwind CSS v4",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://outbuilt.lol",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "",
+      video: "",
+    },
+    {
       title: "Jungle Trail",
       href: "https://starknightt.github.io/jungle-trail/",
       dates: "August 2026",
@@ -490,127 +515,6 @@ export const DATA = {
       video:
         "https://video.gumlet.io/6745e593080b60408ca085f7/67912b93d696a7af3b2e38ef/download.mp4",
     },
-    {
-      title: "GitHub Buddy Finder",
-      href: "https://starknightt.github.io/Buddy-Finder/",
-      dates: "April 2023 - September 2023",
-      active: true,
-      description:
-        "This innovative web application helps developers connect with like-minded individuals based on their GitHub activity and language preferences.",
-      technologies: [
-        "React.js",
-        "Octokit",
-        "Rest API",
-        "TailwindCSS",
-        "react-icons",
-        "react-router-dom",
-        "Vite",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://starknightt.github.io/Buddy-Finder/",
-          icon: <Icons.globe className="size-3" />,
-        },
-        {
-          type: "Source",
-          href: "https://github.com/StarKnightt/Buddy-Finder",
-          icon: <Icons.github className="size-3" />,
-        },
-      ],
-      image: "",
-      video: "https://video.gumlet.io/6745e593080b60408ca085f7/6745ec82c84c6b7e105c3ee5/download.mp4",
-    },
-    {
-      title: "Solar System",
-      href: "https://starknightt.github.io/Solar-System/",
-      dates: "September 2024 - October 2024",
-      active: true,
-      description:
-        "This project is a visually stunning and interactive web application that provides information about the solar system and it's planet with music.",
-      technologies: [
-        "React.js",
-        "font-awesome",
-        "react-icons",
-        "react-dom",
-        "CSS3",
-        "Vite",
-        "Git",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://starknightt.github.io/Solar-System/",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
-      image: "",
-      video:
-        "https://video.gumlet.io/6745e593080b60408ca085f7/6745ef75b79a267f99668bda/download.mp4",
-    },
-    {
-      title: "Coffee-Website",
-      href: "https://starknightt.github.io/Coffee-Website/",
-      dates: "September 2024 - October 2024",
-      active: true,
-      description:
-        "A web app, with the futurisitc yet nostalgic design of a coffee shop, with a menu and blend of retro vibes.",
-      technologies: [
-        "React.js",
-        "Git",
-        "TailwindCSS",
-        "Framer-motion",
-        "React-icons",
-        "React-router-dom",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://starknightt.github.io/Coffee-Website/",
-          icon: <Icons.globe className="size-3" />,
-        },
-        {
-          type: "Source",
-          href: "https://github.com/StarKnightt/Coffee-Website",
-          icon: <Icons.github className="size-3" />,
-        },
-      ],
-      image: "",
-      video: "https://video.gumlet.io/6745e593080b60408ca085f7/6745ea2d080b60408ca0bc08/download.mp4",
-    },
-    {
-      title: "Resume Builder",
-      href: "https://resume-builder-ten-opal.vercel.app/",
-      dates: "May 2023 - Sept 2023",
-      active: true,
-      description:
-        "It was my final year [Project](https://github.com/StarKnightt/ResumeBuilder) in our college, It is a interactive and versatile Dynamic CV Builder, completely build from scratch with backend functionallity .",
-      technologies: [
-        "CSS",
-        "javascript",
-        "MongoDB",
-        "Express.js",
-        "HTML",
-        "Regex",
-        "Node.js",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://builddresume.vercel.app/",
-          icon: <Icons.globe className="size-3" />,
-        },
-        {
-          type: "Source",
-          href: "https://github.com/StarKnightt/ResumeBuilder",
-          icon: <Icons.github className="size-3" />,
-        },
-      ],
-      
-      image: "",
-      video:
-        "https://video.gumlet.io/6745e593080b60408ca085f7/6745e5e5080b60408ca08984/download.mp4",
-    }
   ],
   hackathons: [
     {
