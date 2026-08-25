@@ -492,7 +492,7 @@ export const DATA = {
     },
     {
       title: "GitHub Buddy Finder",
-      href: "https://buddy-find.vercel.app/",
+      href: "https://starknightt.github.io/Buddy-Finder/",
       dates: "April 2023 - September 2023",
       active: true,
       description:
@@ -509,7 +509,7 @@ export const DATA = {
       links: [
         {
           type: "Website",
-          href: "https://buddy-find.vercel.app/",
+          href: "https://starknightt.github.io/Buddy-Finder/",
           icon: <Icons.globe className="size-3" />,
         },
         {
@@ -523,7 +523,7 @@ export const DATA = {
     },
     {
       title: "Solar System",
-      href: "https://solarrsystem.vercel.app/",
+      href: "https://starknightt.github.io/Solar-System/",
       dates: "September 2024 - October 2024",
       active: true,
       description:
@@ -540,7 +540,7 @@ export const DATA = {
       links: [
         {
           type: "Website",
-          href: "https://solarrsystem.vercel.app/",
+          href: "https://starknightt.github.io/Solar-System/",
           icon: <Icons.globe className="size-3" />,
         },
       ],
@@ -550,7 +550,7 @@ export const DATA = {
     },
     {
       title: "Coffee-Website",
-      href: "https://coffee-websitee.vercel.app/",
+      href: "https://starknightt.github.io/Coffee-Website/",
       dates: "September 2024 - October 2024",
       active: true,
       description:
@@ -566,7 +566,7 @@ export const DATA = {
       links: [
         {
           type: "Website",
-          href: "https://coffee-websitee.vercel.app/",
+          href: "https://starknightt.github.io/Coffee-Website/",
           icon: <Icons.globe className="size-3" />,
         },
         {
