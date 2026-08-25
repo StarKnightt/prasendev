@@ -254,31 +254,6 @@ export const DATA = {
   ],
   projects: [
     {
-      title: "Outbuilt",
-      href: "https://outbuilt.lol",
-      dates: "August 2026",
-      active: true,
-      description:
-        "A pay-to-rank public leaderboard. No logins, no algorithms — your rank is exactly what you paid for, and anyone can outbid you. Already generating revenue.",
-      technologies: [
-        "Next.js",
-        "React 19",
-        "TypeScript",
-        "Supabase",
-        "Dodo Payments",
-        "Tailwind CSS v4",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://outbuilt.lol",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
-      image: "",
-      video: "",
-    },
-    {
       title: "Jungle Trail",
       href: "https://starknightt.github.io/jungle-trail/",
       dates: "August 2026",
@@ -306,6 +281,36 @@ export const DATA = {
       image: "",
       video: "https://video.gumlet.io/6745e593080b60408ca085f7/6a7223daec8c132ca29227c6/download.mp4",
       poster: "https://video.gumlet.io/6745e593080b60408ca085f7/6a7223daec8c132ca29227c6/thumbnail-1-0.png?v=1785865438030",
+    },
+    {
+      title: "Night Street",
+      href: "https://night-street.vercel.app/",
+      dates: "August 2026",
+      active: true,
+      description:
+        "A photorealistic city street at golden hour you can walk through in the browser. Zero external assets — every texture, mesh, and sound is generated in code. Featured by the official Claude account on X.",
+      technologies: [
+        "Three.js",
+        "React Three Fiber",
+        "TypeScript",
+        "GLSL Shaders",
+        "WebAudio API",
+        "Procedural Generation",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://night-street.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/StarKnightt/night-street",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "",
+      video: "",
     },
     {
       title: "PayBrackets",
