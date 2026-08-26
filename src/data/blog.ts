@@ -15,6 +15,46 @@ type Metadata = {
   tags?: string[];
 };
 
+export type TocEntry = {
+  id: string;
+  text: string;
+  level: 2 | 3;
+};
+
+function slugify(text: string) {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/[\s_]+/g, "-");
+}
+
+function getNodeText(node: any): string {
+  if (node.type === "text") return node.value;
+  return (node.children ?? []).map(getNodeText).join("");
+}
+
+function rehypeHeadingIds(toc: TocEntry[]) {
+  return () => (tree: any) => {
+    const counts = new Map<string, number>();
+    const visit = (node: any) => {
+      if (node.tagName === "h2" || node.tagName === "h3") {
+        const text = getNodeText(node).trim();
+        if (text) {
+          const base = slugify(text) || "section";
+          const count = counts.get(base) ?? 0;
+          counts.set(base, count + 1);
+          const id = count === 0 ? base : `${base}-${count}`;
+          node.properties = { ...node.properties, id };
+          toc.push({ id, text, level: node.tagName === "h2" ? 2 : 3 });
+        }
+      }
+      (node.children ?? []).forEach(visit);
+    };
+    visit(tree);
+  };
+}
+
 function calculateReadingTime(content: string): string {
   const words = content.trim().split(/\s+/).length;
   const minutes = Math.ceil(words / 200);
@@ -26,9 +66,11 @@ function getMDXFiles(dir: string) {
 }
 
 export async function markdownToHTML(markdown: string) {
+  const toc: TocEntry[] = [];
   const p = await unified()
     .use(remarkParse)
     .use(remarkRehype)
+    .use(rehypeHeadingIds(toc))
     .use(rehypePrettyCode, {
       // https://rehype-pretty.pages.dev/#usage
       theme: {
@@ -40,17 +82,18 @@ export async function markdownToHTML(markdown: string) {
     .use(rehypeStringify)
     .process(markdown);
 
-  return p.toString();
+  return { html: p.toString(), toc };
 }
 
 export async function getPost(slug: string) {
   const filePath = path.join("content", `${slug}.mdx`);
   let source = fs.readFileSync(filePath, "utf-8");
   const { content: rawContent, data: metadata } = matter(source);
-  const content = await markdownToHTML(rawContent);
+  const { html: content, toc } = await markdownToHTML(rawContent);
   const readingTime = calculateReadingTime(rawContent);
   return {
     source: content,
+    toc,
     metadata: { ...metadata, readingTime } as Metadata & { readingTime: string },
     slug,
   };
