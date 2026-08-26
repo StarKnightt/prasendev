@@ -7,6 +7,7 @@ import { Suspense } from "react";
 import { BlogInteractions } from "@/components/blog-interactions";
 import { BlogArticle } from "@/components/blog-article";
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
+import { TableOfContents } from "@/components/table-of-contents";
 
 export async function generateStaticParams() {
   const posts = await getBlogPosts();
@@ -108,7 +109,10 @@ export default async function Blog({
           </p>
         </Suspense>
       </div>
-      <BlogArticle html={post.source} />
+      <div className="relative">
+        <BlogArticle html={post.source} />
+        {post.toc.length >= 2 && <TableOfContents headings={post.toc} />}
+      </div>
       <BlogInteractions slug={params.slug} />
     </section>
   );

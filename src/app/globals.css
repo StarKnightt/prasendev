@@ -298,6 +298,11 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
   word-break: break-word;
 }
 
+.prose h2,
+.prose h3 {
+  scroll-margin-top: 6rem;
+}
+
 .prose pre {
   max-width: 100%;
 }
@@ -318,8 +323,11 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 
 html,
 body {
-  overflow-x: hidden;
   scroll-behavior: smooth;
+}
+
+html {
+  overflow-x: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {
