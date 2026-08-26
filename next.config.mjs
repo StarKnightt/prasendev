@@ -75,6 +75,17 @@ const nextConfig = {
   experimental: {
     optimizeCss: true,
     scrollRestoration: true,
+    // Next 14 only traces index.node.js for next/og; the OpenNext Cloudflare
+    // adapter also needs the wasm + font files from @vercel/og at build time.
+    // Harmless on Vercel (files already ship there).
+    outputFileTracingIncludes: {
+      '/api/og': ['./node_modules/next/dist/compiled/@vercel/og/**/*'],
+      // Blog/sitemap/rss read ./content/*.mdx via fs at render time; bundle
+      // the files so request-time rendering works on Cloudflare Workers.
+      '/blog/**': ['./content/**/*'],
+      '/rss.xml': ['./content/**/*'],
+      '/sitemap.xml': ['./content/**/*'],
+    },
   },
 
   // Configure webpack if needed

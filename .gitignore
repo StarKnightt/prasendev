@@ -33,6 +33,12 @@ yarn-error.log*
 # vercel
 .vercel
 
+# cloudflare / opennext
+.open-next
+.wrangler
+.dev.vars
+cloudflare-env.d.ts
+
 # cursor rules (personal context)
 .cursorrules
 
