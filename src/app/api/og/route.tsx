@@ -2,7 +2,10 @@
 import { ImageResponse } from 'next/og';
 import { NextRequest } from 'next/server';
 
-export const runtime = 'edge';
+// Note: `export const runtime = 'edge'` was removed for the Cloudflare
+// OpenNext adapter, which only supports the Node.js runtime (the worker
+// itself already runs at the edge). Safe on Vercel too: next/og works in
+// the Node runtime.
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);

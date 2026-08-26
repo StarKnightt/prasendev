@@ -1,0 +1,63 @@
+# Push-to-deploy for the Cloudflare Worker (Vercel-like experience).
+name: Deploy to Cloudflare Workers
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+# Never run two deploys at once; a newer push supersedes an in-flight run.
+concurrency:
+  group: deploy-cloudflare
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Node 22+: required by wrangler 4.126 (Node 20 makes it exit with a
+      # version error, which the OpenNext deploy surfaces as a login failure).
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # Plain `opennextjs-cloudflare build` (runs `next build` itself).
+      # Locally on Windows we use `npm run build:worker` instead, which
+      # pre-patches the @vercel/og node->edge import because the adapter's
+      # patchVercelOgLibrary has a path-separator bug on Windows; on Linux
+      # the adapter's own patching works, so the workaround is not needed.
+      #
+      # Build-time env: sponsors/github-stats/steam-stats/youtube-stats are
+      # ISR route handlers prerendered during the build, so their API keys
+      # must be present here. (Runtime values live as wrangler secrets on
+      # the worker and are NOT touched by deploys.)
+      # GH_PAT holds the GitHub PAT (the name GITHUB_TOKEN is reserved by
+      # GitHub Actions) and is exposed to the build as GITHUB_TOKEN.
+      - name: Build worker
+        run: npx opennextjs-cloudflare build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          YOUTUBE_CHANNEL_ID: ${{ secrets.YOUTUBE_CHANNEL_ID }}
+          UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL }}
+          UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
+
+      # `opennextjs-cloudflare deploy` populates the R2 incremental cache
+      # with the build-time ISR entries and then runs `wrangler deploy`,
+      # using the repo's own wrangler version. (cloudflare/wrangler-action
+      # was tried first but its pinned wrangler broke the OpenNext CLI's
+      # `import { unstable_readConfig } from "wrangler"`.)
+      # Worker runtime secrets are set via `wrangler secret put` and are
+      # not affected by deploys.
+      - name: Deploy
+        run: npx opennextjs-cloudflare deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

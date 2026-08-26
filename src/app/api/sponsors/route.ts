@@ -53,6 +53,9 @@ export async function GET() {
       headers: {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json',
+        // GitHub rejects requests without a User-Agent with 403. Node's fetch
+        // sends one implicitly; the Cloudflare Workers runtime does not.
+        'User-Agent': 'prasen.dev',
       },
       body: JSON.stringify({ query }),
       next: { revalidate: 3600 },

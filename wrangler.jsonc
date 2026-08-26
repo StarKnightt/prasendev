@@ -1,0 +1,44 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "prasendev",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-08-25",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  // R2 incremental cache: makes time-based ISR revalidation work at runtime
+  // (the previous static-assets cache was read-only, so ISR data was frozen
+  // at build time until the next deploy).
+  "r2_buckets": [
+    {
+      "binding": "NEXT_INC_CACHE_R2_BUCKET",
+      "bucket_name": "prasendev-cache"
+    }
+  ],
+  // Required by the DO revalidation queue to re-render stale routes.
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "prasendev"
+    }
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "NEXT_CACHE_DO_QUEUE",
+        "class_name": "DOQueueHandler"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["DOQueueHandler"]
+    }
+  ],
+  "observability": {
+    "enabled": true
+  }
+}
