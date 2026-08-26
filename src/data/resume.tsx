@@ -254,6 +254,32 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "Outbuilt",
+      href: "https://outbuilt.lol",
+      dates: "August 2026",
+      active: true,
+      description:
+        "A pay-to-rank public leaderboard. No logins, no algorithms. Your rank is exactly what you paid for, and anyone can outbid you. Already generating revenue.",
+      technologies: [
+        "Next.js",
+        "React 19",
+        "TypeScript",
+        "Supabase",
+        "Dodo Payments",
+        "Tailwind CSS v4",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://outbuilt.lol",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "",
+      video: "https://video.gumlet.io/6745e593080b60408ca085f7/6a8ef3e50784f723ea1a0908/download.mp4",
+      poster: "https://video.gumlet.io/6745e593080b60408ca085f7/6a8ef3e50784f723ea1a0908/thumbnail-1-0.png?v=1787753505658",
+    },
+    {
       title: "Jungle Trail",
       href: "https://starknightt.github.io/jungle-trail/",
       dates: "August 2026",
