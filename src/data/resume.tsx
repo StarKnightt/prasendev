@@ -310,7 +310,8 @@ export const DATA = {
         },
       ],
       image: "",
-      video: "",
+      video: "https://video.gumlet.io/6745e593080b60408ca085f7/6a8eedb10784f723ea19e7df/download.mp4",
+      poster: "https://video.gumlet.io/6745e593080b60408ca085f7/6a8eedb10784f723ea19e7df/thumbnail-1-0.png?v=1787752082926",
     },
     {
       title: "PayBrackets",
