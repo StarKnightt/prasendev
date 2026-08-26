@@ -21,9 +21,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Node 22+: required by wrangler 4.126 (Node 20 makes it exit with a
+      # version error, which the OpenNext deploy surfaces as a login failure).
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
       - run: npm ci
