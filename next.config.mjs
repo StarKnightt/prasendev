@@ -1,6 +1,18 @@
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+
+  // Bundle shiki through webpack (it is in Next's default server-external
+  // list) so the alias below applies and only the fine-grained langs used in
+  // src/data/blog.ts end up in the server bundle. Without this, the full
+  // ~9 MB grammar set gets pulled into the Cloudflare Worker and exceeds the
+  // Workers size limit.
+  transpilePackages: ['shiki'],
   
   images: {
     remotePatterns: [
@@ -91,6 +103,13 @@ const nextConfig = {
   // Configure webpack if needed
   webpack: (config) => {
     config.optimization.minimize = true;
+    // Exact-match alias: only the bare `shiki` full-bundle import (used by
+    // rehype-pretty-code) is shimmed; `shiki/core`, `shiki/langs/*` etc.
+    // still resolve normally for the fine-grained highlighter in blog.ts.
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      'shiki$': path.join(__dirname, 'src/lib/shiki-shim.ts'),
+    };
     return config;
   },
 

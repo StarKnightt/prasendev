@@ -5,7 +5,32 @@ import rehypePrettyCode from "rehype-pretty-code";
 import rehypeStringify from "rehype-stringify";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
+import { createHighlighterCore } from "shiki/core";
+import { createJavaScriptRegexEngine } from "shiki/engine/javascript";
 import { unified } from "unified";
+
+// Fine-grained shiki bundle instead of the default full bundle: the full
+// bundle inlines every grammar (~10 MB) into the server build, which blows
+// past the Cloudflare Workers size limit. Add languages here when a blog
+// post needs them; unlisted languages render as plain (unhighlighted) code.
+const highlighterPromise = createHighlighterCore({
+  themes: [
+    import("shiki/themes/min-light.mjs"),
+    import("shiki/themes/min-dark.mjs"),
+  ],
+  langs: [
+    import("shiki/langs/bash.mjs"),
+    import("shiki/langs/javascript.mjs"),
+    import("shiki/langs/typescript.mjs"),
+    import("shiki/langs/tsx.mjs"),
+    import("shiki/langs/json.mjs"),
+    import("shiki/langs/python.mjs"),
+    import("shiki/langs/diff.mjs"),
+    import("shiki/langs/markdown.mjs"),
+  ],
+  // Pure-JS regex engine: no oniguruma wasm needed, works in workerd.
+  engine: createJavaScriptRegexEngine(),
+});
 
 type Metadata = {
   title: string;
@@ -78,6 +103,7 @@ export async function markdownToHTML(markdown: string) {
         dark: "min-dark",
       },
       keepBackground: false,
+      getHighlighter: (() => highlighterPromise) as never,
     })
     .use(rehypeStringify)
     .process(markdown);
