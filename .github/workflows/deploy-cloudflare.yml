@@ -1,13 +1,10 @@
 # Push-to-deploy for the Cloudflare Worker (Vercel-like experience).
-#
-# NOTE: currently triggers on `cloudflare-pilot` while the migration is in
-# progress — switch `branches` to `main` once the migration merges.
 name: Deploy to Cloudflare Workers
 
 on:
   push:
     branches:
-      - cloudflare-pilot
+      - main
   workflow_dispatch:
 
 # Never run two deploys at once; a newer push supersedes an in-flight run.
