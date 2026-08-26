@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server";
 
+// Next 15 no longer caches GET route handlers by default; declare it.
+export const revalidate = 3600;
+
 const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
 const YOUTUBE_CHANNEL_ID = process.env.YOUTUBE_CHANNEL_ID;
 const CACHE_MAX_AGE = 3600;

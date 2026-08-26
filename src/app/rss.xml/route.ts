@@ -1,6 +1,11 @@
 import { getBlogPosts } from "@/data/blog";
 import { DATA } from "@/data/resume";
 
+// Next 15 no longer caches GET route handlers by default; keep the RSS feed
+// prerendered at build time (as it was on Next 14) so the OpenNext
+// static-assets cache can serve it on Cloudflare Workers.
+export const dynamic = "force-static";
+
 function truncateContent(content: string, maxLength: number = 280): string {
   if (content.length <= maxLength) return content;
   return content.slice(0, maxLength) + '... [Read More]';

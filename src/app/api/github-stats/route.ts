@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server";
 
+// Next 15 no longer caches GET route handlers by default; declare it.
+export const revalidate = 3600;
+
 const GITHUB_USERNAME = "StarKnightt";
 const CACHE_MAX_AGE = 3600; // 1 hour
 

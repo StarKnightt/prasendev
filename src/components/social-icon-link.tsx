@@ -1,6 +1,7 @@
 // components/social-icon-link.tsx
 'use client';
 
+import type { JSX } from 'react';
 import BlurFade from './magicui/blur-fade';
 import Link from 'next/link';
 

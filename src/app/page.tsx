@@ -1,4 +1,3 @@
-import dynamic from 'next/dynamic';
 import { DATA } from "@/data/resume";
 import Link from "next/link";
 import Markdown from "react-markdown";
@@ -13,7 +12,6 @@ import { PersonSchema } from "@/components/schema/person-schema";
 import { Metadata } from 'next';
 import { Icons } from "@/components/icons";
 import ShinyButton from "@/components/ui/shiny-button";
-import { GithubSkeleton } from "@/components/skeletons/github-skeleton";
 import { GitHubSponsors } from "@/components/github-sponsors";
 import { AgeCounter } from "@/components/age-counter";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -30,10 +28,7 @@ import { DiscordHoverCard } from "@/components/discord-hover-card";
 import { SteamNowPlaying } from "@/components/steam-now-playing";
 import { BirthdayFireworks } from "@/components/birthday-fireworks";
 import { BirthdayHat } from "@/components/birthday-hat";
-
-const VisitorCounter = dynamic(() => import("@/components/visitor-counter"), {
-  ssr: false,
-});
+import { VisitorCounter, GithubContributions } from "@/components/lazy-client";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -76,11 +71,6 @@ export const metadata: Metadata = {
     images: ['https://prasen.dev/portfolio.png'],
   },
 };
-
-const GithubContributions = dynamic(() => import("@/components/github-calendar").then(mod => mod.GithubContributions), {
-  ssr: false,
-  loading: () => <GithubSkeleton />
-});
 
 function SectionLabel({ label }: { label: string }) {
   return (

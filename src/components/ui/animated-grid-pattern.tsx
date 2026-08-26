@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useId, useRef, useState, RefObject, useCallback } from "react";
+import { useEffect, useId, useRef, useState, useCallback } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -37,7 +37,7 @@ export default function AnimatedGridPattern({
   ...props
 }: AnimatedGridPatternProps) {
   const id = useId();
-  const containerRef: RefObject<HTMLDivElement> = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [squares, setSquares] = useState<Square[]>([]);
 
