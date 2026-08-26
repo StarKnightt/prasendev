@@ -1,8 +1,0 @@
-name: CI smoke test
-on:
-  push:
-jobs:
-  hello:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo hello
