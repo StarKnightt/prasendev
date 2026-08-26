@@ -9,8 +9,6 @@ import "./globals.css";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { JsonLd } from "@/components/json-ld";
 import { PageBackground } from "@/components/page-background";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/react";
 import { CommandPalette } from "@/components/command-palette";
 import { SoundProvider } from "@/components/sound-provider";
 import { BackToTop } from "@/components/back-to-top";
@@ -142,8 +140,6 @@ export default function RootLayout({
             <SoundProvider>
               <TooltipProvider delayDuration={0}>
                 {children}
-                <Analytics />
-                <SpeedInsights />
                 <Navbar />
                 <CommandPalette />
                 <BackToTop />
