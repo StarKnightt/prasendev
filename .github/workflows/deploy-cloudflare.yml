@@ -1,0 +1,63 @@
+# Push-to-deploy for the Cloudflare Worker (Vercel-like experience).
+#
+# NOTE: currently triggers on `cloudflare-pilot` while the migration is in
+# progress — switch `branches` to `main` once the migration merges.
+name: Deploy to Cloudflare Workers
+
+on:
+  push:
+    branches:
+      - cloudflare-pilot
+  workflow_dispatch:
+
+# Never run two deploys at once; a newer push supersedes an in-flight run.
+concurrency:
+  group: deploy-cloudflare
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      # Plain `opennextjs-cloudflare build` (runs `next build` itself).
+      # Locally on Windows we use `npm run build:worker` instead, which
+      # pre-patches the @vercel/og node->edge import because the adapter's
+      # patchVercelOgLibrary has a path-separator bug on Windows; on Linux
+      # the adapter's own patching works, so the workaround is not needed.
+      #
+      # Build-time env: sponsors/github-stats/steam-stats/youtube-stats are
+      # ISR route handlers prerendered during the build, so their API keys
+      # must be present here. (Runtime values live as wrangler secrets on
+      # the worker and are NOT touched by deploys.)
+      # GH_PAT holds the GitHub PAT (the name GITHUB_TOKEN is reserved by
+      # GitHub Actions) and is exposed to the build as GITHUB_TOKEN.
+      - name: Build worker
+        run: npx opennextjs-cloudflare build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          YOUTUBE_CHANNEL_ID: ${{ secrets.YOUTUBE_CHANNEL_ID }}
+          UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL }}
+          UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
+
+      # Replicates `opennextjs-cloudflare deploy`, which is populateCache
+      # followed by `wrangler deploy`. The populate step uploads the
+      # build-time ISR entries to the R2 incremental cache; skipping it
+      # would leave stale cache entries from the previous build.
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          preCommands: npx opennextjs-cloudflare populateCache remote
+          command: deploy
