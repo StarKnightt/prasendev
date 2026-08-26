@@ -50,14 +50,15 @@ jobs:
           UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL }}
           UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
 
-      # Replicates `opennextjs-cloudflare deploy`, which is populateCache
-      # followed by `wrangler deploy`. The populate step uploads the
-      # build-time ISR entries to the R2 incremental cache; skipping it
-      # would leave stale cache entries from the previous build.
+      # `opennextjs-cloudflare deploy` populates the R2 incremental cache
+      # with the build-time ISR entries and then runs `wrangler deploy`,
+      # using the repo's own wrangler version. (cloudflare/wrangler-action
+      # was tried first but its pinned wrangler broke the OpenNext CLI's
+      # `import { unstable_readConfig } from "wrangler"`.)
+      # Worker runtime secrets are set via `wrangler secret put` and are
+      # not affected by deploys.
       - name: Deploy
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          preCommands: npx opennextjs-cloudflare populateCache remote
-          command: deploy
+        run: npx opennextjs-cloudflare deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
