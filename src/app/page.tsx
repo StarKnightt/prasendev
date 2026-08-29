@@ -410,7 +410,7 @@ export default function Page() {
                I'd love to hear from you.
               </p>
               <a
-                href="mailto:prasen.nayak@hotmail.com"
+                href="mailto:prasenjitt4e@gmail.com"
                 className="inline-flex items-center gap-2.5 rounded-full border border-border/70 bg-background/70 px-5 py-2.5 text-sm font-medium shadow-sm backdrop-blur transition-all hover:-translate-y-0.5 hover:bg-background"
               >
                 <Avatar className="size-6">

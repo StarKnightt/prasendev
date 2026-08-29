@@ -12,7 +12,7 @@ export const DATA = {
   description:
     "",
   summary:
-    "Currently **freelancing** and open to [**DevRel work**](mailto:prasen.nayak@hotmail.com), always up for collaborating on exciting projects.\n\nI love playing [video games](https://www.youtube.com/@StarKnight-12) and share thoughts on tech [here](https://www.youtube.com/@prasendev).\n\nHere's what I think about the [future of computer science](https://www.prasen.dev/blog/hello-world).\n\nI also enjoy [touch typing](https://monkeytype.com/profile/prasenx) in my free time, bullish on AI and future technologies",
+    "Currently **freelancing** and open to [**DevRel work**](mailto:prasenjitt4e@gmail.com), always up for collaborating on exciting projects.\n\nI love playing [video games](https://www.youtube.com/@StarKnight-12) and share thoughts on tech [here](https://www.youtube.com/@prasendev).\n\nHere's what I think about the [future of computer science](https://www.prasen.dev/blog/hello-world).\n\nI also enjoy [touch typing](https://monkeytype.com/profile/prasenx) in my free time, bullish on AI and future technologies",
 
   avatarUrl: "/prasen.webp",
   skills: [
@@ -128,7 +128,7 @@ export const DATA = {
     { href: "/gadgets", icon: Icons.shop, label: "Gadgets" },
   ],
   contact: {
-    email: "prasen.nayak@hotmail.com",
+    email: "prasenjitt4e@gmail.com",
     social: {
       GitHub: {
         name: "GitHub",
@@ -189,7 +189,7 @@ export const DATA = {
       },
       email: {
         name: "Send Email",
-        url: "mailto:prasen.nayak@hotmail.com",
+        url: "mailto:prasenjitt4e@gmail.com",
         icon: Icons.email,
         navbar: false,
       },

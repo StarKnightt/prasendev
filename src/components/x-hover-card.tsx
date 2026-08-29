@@ -14,8 +14,8 @@ const X_PROFILE = {
   handle: "prasenx",
   avatar: "https://unavatar.io/x/prasenx",
   description: "making code alive",
-  following: 606,
-  followers: 22100,
+  following: 595,
+  followers: 22400,
   verified: true,
 };
 
