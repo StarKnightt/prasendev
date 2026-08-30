@@ -251,9 +251,9 @@ export function CommandPalette() {
     {
       id: "copy-email",
       label: "Copy Email",
-      description: "prasenjitt4e@gmail.com",
+      description: "hi@prasen.dev",
       icon: copied ? <CheckIcon className="size-4" /> : <CopyIcon className="size-4" />,
-      action: () => copyToClipboard("prasenjitt4e@gmail.com"),
+      action: () => copyToClipboard("hi@prasen.dev"),
       keywords: ["copy", "email", "contact"],
       group: "Actions",
     },
