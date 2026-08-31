@@ -17,25 +17,23 @@
       "bucket_name": "prasendev-cache"
     }
   ],
-  // Required by the DO revalidation queue to re-render stale routes.
+  // Required by the memory queue to send revalidation requests to ourselves.
   "services": [
     {
       "binding": "WORKER_SELF_REFERENCE",
       "service": "prasendev"
     }
   ],
-  "durable_objects": {
-    "bindings": [
-      {
-        "name": "NEXT_CACHE_DO_QUEUE",
-        "class_name": "DOQueueHandler"
-      }
-    ]
-  },
+  // v1 created the DO revalidation queue; v2 deletes it (and its stored
+  // state) after the switch to the memory queue — see open-next.config.ts.
   "migrations": [
     {
       "tag": "v1",
       "new_sqlite_classes": ["DOQueueHandler"]
+    },
+    {
+      "tag": "v2",
+      "deleted_classes": ["DOQueueHandler"]
     }
   ],
   "observability": {
