@@ -7,20 +7,20 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Projects",
-  description: "Projects by Prasenjit Nayak — Outbuilt, a pay-to-rank leaderboard making revenue; Jungle Trail, a procedural Three.js jungle; Wallpaperz, CleanType and more.",
+  description: "Projects by Prasenjit Nayak: Outbuilt, a pay-to-rank leaderboard with 23 paid placements in its first 10 days; Jungle Trail, a procedural Three.js jungle with 290+ GitHub stars; Wallpaperz, CleanType and more.",
   alternates: {
     canonical: `${DATA.url}/projects`,
   },
   openGraph: {
     title: "Projects | Prasenjit Nayak",
-    description: "Projects by Prasenjit Nayak — Outbuilt, a pay-to-rank leaderboard making revenue; Jungle Trail, a procedural Three.js jungle; Wallpaperz, CleanType and more.",
+    description: "Projects by Prasenjit Nayak: Outbuilt, a pay-to-rank leaderboard with 23 paid placements in its first 10 days; Jungle Trail, a procedural Three.js jungle with 290+ GitHub stars; Wallpaperz, CleanType and more.",
     url: `${DATA.url}/projects`,
     images: [{ url: `${DATA.url}/api/og?title=Projects&type=page`, width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Projects | Prasenjit Nayak",
-    description: "Projects by Prasenjit Nayak — Outbuilt, a pay-to-rank leaderboard making revenue; Jungle Trail, a procedural Three.js jungle; Wallpaperz, CleanType and more.",
+    description: "Projects by Prasenjit Nayak: Outbuilt, a pay-to-rank leaderboard with 23 paid placements in its first 10 days; Jungle Trail, a procedural Three.js jungle with 290+ GitHub stars; Wallpaperz, CleanType and more.",
     images: [`${DATA.url}/api/og?title=Projects&type=page`],
   },
 };

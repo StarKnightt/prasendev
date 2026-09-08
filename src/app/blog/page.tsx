@@ -6,7 +6,7 @@ import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
 
 export const metadata = {
   title: "Blog",
-  description: "Blog by Prasenjit Nayak — honest takes on web development, Next.js, AI tools like Cursor and Claude, Linux, and what it's like shipping as a freelance dev.",
+  description: "Blog by Prasenjit Nayak: honest takes on web development, Next.js, AI tools like Cursor and Claude, Linux, and what it's like shipping as a freelance dev.",
   metadataBase: new URL(DATA.url),
   alternates: {
     canonical: `${DATA.url}/blog`,

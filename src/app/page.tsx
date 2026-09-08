@@ -1,6 +1,8 @@
 import { DATA } from "@/data/resume";
 import Link from "next/link";
-import Markdown from "react-markdown";
+import Markdown, { type Components } from "react-markdown";
+import { remarkMarks } from "@/lib/remark-marks";
+import { Highlight, type HighlightType } from "@/components/highlight";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { ProjectCard } from "@/components/project-card";
@@ -40,9 +42,9 @@ const SOCIAL_HOVER_COLORS: Record<string, string> = {
   Steam: "hover:text-[#00adee]",
   Discord: "hover:text-[#5865f2]",
 };
-// Plain-text description — DATA.summary is markdown and leaks syntax into meta tags
+// Plain-text description. DATA.summary is markdown and leaks syntax into meta tags
 const HOME_DESCRIPTION =
-  "Freelance full stack developer from Bhubaneswar, India. I build with Next.js, TypeScript and React — Outbuilt, Jungle Trail and more — open to DevRel work.";
+  "Freelance full stack developer from Bhubaneswar, India. I build with Next.js, TypeScript and React: Outbuilt, Jungle Trail, Night Street and more. Open to DevRel work.";
 
 export const metadata: Metadata = {
   title: DATA.name,
@@ -54,7 +56,7 @@ export const metadata: Metadata = {
     siteName: DATA.name,
     images: [
       {
-        url: 'https://prasen.dev/portfolio.png',
+        url: `${DATA.url}/portfolio.png`,
         width: 1200,
         height: 630,
         alt: `${DATA.name}'s Portfolio`,
@@ -68,7 +70,18 @@ export const metadata: Metadata = {
     title: DATA.name,
     description: HOME_DESCRIPTION,
     creator: '@prasenx',
-    images: ['https://prasen.dev/portfolio.png'],
+    images: [`${DATA.url}/portfolio.png`],
+  },
+};
+
+const summaryComponents: Components = {
+  mark: ({ node, children, ...props }) => {
+    const { "data-type": type, "data-order": order } = props as Record<string, string>;
+    return (
+      <Highlight type={type as HighlightType} order={Number(order)}>
+        {children}
+      </Highlight>
+    );
   },
 };
 
@@ -123,9 +136,37 @@ export default function Page() {
 
             {/* About */}
             <BlurFade delay={BLUR_FADE_DELAY * 3}>
-              <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
+              <Markdown
+                className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert [&_a:has(.rough-mark)]:no-underline"
+                remarkPlugins={[remarkMarks]}
+                components={summaryComponents}
+              >
                 {DATA.summary}
               </Markdown>
+            </BlurFade>
+
+            {/* Proof points */}
+            <BlurFade delay={BLUR_FADE_DELAY * 3.5}>
+              <ul className="flex flex-wrap items-baseline gap-x-3 gap-y-1 text-sm text-muted-foreground">
+                {DATA.stats.map((stat, i) => (
+                  <li key={stat.label} className="flex items-baseline gap-x-3">
+                    <a
+                      href={stat.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="whitespace-nowrap hover:underline"
+                    >
+                      <span className="font-medium tabular-nums text-foreground">{stat.value}</span>{" "}
+                      {stat.label}
+                    </a>
+                    {i < DATA.stats.length - 1 && (
+                      <span aria-hidden className="hidden text-muted-foreground/40 sm:inline">
+                        ·
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
             </BlurFade>
 
             {/* Social links + Now Playing */}
@@ -334,10 +375,12 @@ export default function Page() {
                     altText={work.company}
                     title={work.company}
                     subtitle={work.title}
+                    impact={work.impact}
                     href={work.href}
                     badges={work.badges}
                     period={`${work.start} - ${work.end}`}
                     description={work.description}
+                    links={"links" in work ? work.links : undefined}
                     redacted={(work as any).redacted}
                   />
                 </BlurFade>

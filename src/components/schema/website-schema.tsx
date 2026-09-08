@@ -1,4 +1,5 @@
 import { DATA } from "@/data/resume";
+import { stripMarks } from "@/lib/remark-marks";
 
 export function WebsiteSchema() {
   return (
@@ -10,7 +11,7 @@ export function WebsiteSchema() {
           "@type": "WebSite",
           name: DATA.name,
           url: DATA.url,
-          description: DATA.summary,
+          description: stripMarks(DATA.summary),
           potentialAction: {
             "@type": "SearchAction",
             "target": {

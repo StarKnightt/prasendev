@@ -4,7 +4,7 @@ import { DATA } from "@/data/resume";
 import fs from 'fs';
 import path from 'path';
 
-const baseUrl = 'https://prasen.dev';
+const baseUrl = DATA.url;
 export const revalidate = 86400; // Revalidate once per day
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

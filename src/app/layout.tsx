@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     default: "Prasenjit Nayak | Full Stack Developer",
     template: `%s | Prasenjit Nayak`,
   },
-  description: "Prasenjit Nayak — Full Stack Developer from India specializing in React, Next.js, TypeScript and Node.js. Explore my projects, blog, and open-source work.",
+  description: "Prasenjit Nayak, Full Stack Developer from India specializing in React, Next.js, TypeScript and Node.js. Explore my projects, blog, and open-source work.",
   keywords: ["Prasenjit Nayak", "Full Stack Developer", "React Developer", "Next.js Developer", "TypeScript Developer", "Node.js Developer", "Web Developer India", "Software Engineer"],
   authors: [{ name: "Prasenjit Nayak" }],
   creator: "Prasenjit Nayak",
