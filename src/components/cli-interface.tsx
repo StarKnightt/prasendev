@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { DATA } from '@/data/resume';
+import { stripMarks } from '@/lib/remark-marks';
 import { motion } from 'framer-motion';
 import { JetBrains_Mono } from 'next/font/google';
 import { useTheme } from 'next-themes';
@@ -66,7 +67,7 @@ const COMMANDS = {
     'clear          - Clear the terminal\n' +
     'gui      (g)    - Switch to GUI mode\n\n' +
     'Tip: Use Tab for command completion and ↑↓ for command history',
-  about: () => `${DATA.name}\n${DATA.description}\n\n${DATA.summary}`,
+  about: () => `${DATA.name}\n${DATA.description}\n\n${stripMarks(DATA.summary)}`,
   skills: () => `Skills:\n${DATA.skills.join(', ')}`,
   projects: () => DATA.projects.map(project => 
     `\n${project.title}\n${project.description}\nTech: ${project.technologies.join(', ')}\n`

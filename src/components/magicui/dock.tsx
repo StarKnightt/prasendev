@@ -44,7 +44,7 @@ function supportsLiquidGlass(): boolean {
 /**
  * Builds a displacement map shaped like a convex lens for the pill:
  * neutral gray (no refraction) in the center, with the bend concentrated
- * along the rim — red encodes X offset, green encodes Y offset.
+ * along the rim: red encodes X offset, green encodes Y offset.
  */
 function generateLensMap(width: number, height: number): string | null {
   if (typeof document === "undefined") return null;
@@ -108,7 +108,7 @@ interface LensState {
 /**
  * Refraction with chromatic aberration: the backdrop is displaced three
  * times at slightly different strengths, one per color channel, then the
- * channels are recombined — edges pick up a subtle prismatic fringe.
+ * channels are recombined, edges pick up a subtle prismatic fringe.
  */
 function LiquidGlassFilter({ id, lens }: { id: string; lens: LensState }) {
   const scale = 32;

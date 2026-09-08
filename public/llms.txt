@@ -8,21 +8,24 @@ Prasenjit Nayak is a Full Stack Developer from Odisha, India, specializing in Re
 
 ## Pages
 
-- [Home](https://prasen.dev): Portfolio homepage with projects, skills, work experience, and social links.
-- [Blog](https://prasen.dev/blog): Technical articles about web development, React, Next.js, AI tools, and software engineering.
-- [Projects](https://prasen.dev/projects): Web applications and open source projects.
-- [Videos](https://prasen.dev/videos): YouTube videos about software development and technology.
-- [Gadgets](https://prasen.dev/gadgets): Developer tech setup, PC components, and productivity tools.
+- [Home](https://www.prasen.dev): Portfolio homepage with projects, skills, work experience, and social links.
+- [Blog](https://www.prasen.dev/blog): Technical articles about web development, React, Next.js, AI tools, and software engineering.
+- [Projects](https://www.prasen.dev/projects): Web applications and open source projects.
+- [Videos](https://www.prasen.dev/videos): YouTube videos about software development and technology.
+- [Gadgets](https://www.prasen.dev/gadgets): Developer tech setup, PC components, and productivity tools.
 
 ## Key Projects
 
-- [Night Street](https://night-street.vercel.app): A photorealistic procedural city street at golden hour, walkable in the browser with zero external assets. Featured by the official Claude account on X.
-- [Outbuilt](https://outbuilt.lol): A pay-to-rank public leaderboard - no logins, no algorithms, your rank is what you paid for.
-- [PayBrackets](https://paybrackets.com): A free US take-home pay calculator for the 2026 tax year covering all 50 states and D.C., with federal and state tax breakdowns and hourly to salary conversion.
-- [Next.js Learning Platform](https://learn.prasen.dev): A free, open-source interactive learning platform for mastering Next.js with 17 structured chapters.
-- [RepoStar](https://github.com/StarKnightt/RepoStar): Browse trending GitHub repositories with filtering and search.
-- [CleanType](https://github.com/StarKnightt/CleanType): A modern typing practice application.
-- [DateUp](https://github.com/StarKnightt/DateUp): AI-powered dating profile enhancer.
+- [Outbuilt](https://outbuilt.lol): A pay-to-rank public leaderboard, no logins, no algorithms, your rank is what you paid for. 23 paid placements across 11 countries since launch on Aug 22, 2026, around 1,100 page views a day from 100+ countries.
+- [Jungle Trail](https://starknightt.github.io/jungle-trail/): A fully procedural first-person jungle in Three.js with zero external art assets. 292 GitHub stars, 46 forks. The performance debug overlay was a PR from the CTO of Xbox.
+- [Night Street](https://night-street.vercel.app): A photorealistic procedural city street at golden hour, walkable in the browser with zero external assets. 121 GitHub stars, 19 forks. Featured by the official Claude account on X.
+- [PayBrackets](https://paybrackets.com): A free US take-home pay calculator for the 2026 tax year covering all 50 states and D.C., 160+ programmatic pages. 777 users from 42 countries in the last 90 days.
+- [Next.js Learning Platform](https://learn.prasen.dev): A free, open source Next.js course with 17 structured chapters. 25 GitHub stars.
+- [Backrooms: Level 0](https://backroom-escape.vercel.app): A browser survival horror game with fully procedural assets and A* pathfinding AI. 24 GitHub stars, 11 forks. The prototype that led to Jungle Trail and Night Street.
+- [Dateup](https://dateup.in): AI dating profile optimizer on Grok, OpenAI and Groq. 137K Google impressions and 1K+ clicks in its first 4 months per Search Console, growing from 13K to 49K impressions a month.
+- [Wallpaperz](https://www.wallpaperz.in): Wallpaper discovery platform with AI generation, monetized with AdSense. 600 to 800 page views a day 20 months after launch, visitors from 110+ countries. 31 GitHub stars.
+- [CleanType](https://cleantype.is-a.software): A distraction-free Windows writing app in Rust and Tauri. 337 downloads across 4 releases, 21 GitHub stars.
+- [3D Carousel Gallery](https://3dcarousell.vercel.app): Interactive 3D carousel built with pure CSS 3D transforms, no Three.js. 43 GitHub stars, 6 forks.
 
 ## Technical Stack
 
@@ -40,4 +43,4 @@ Tools: Git, Docker, Cursor, Claude
 
 ## RSS
 
-- Blog feed: https://prasen.dev/rss.xml
+- Blog feed: https://www.prasen.dev/rss.xml

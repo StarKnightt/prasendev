@@ -12,9 +12,15 @@ export const DATA = {
   description:
     "",
   summary:
-    "Currently **freelancing** and open to [**DevRel work**](mailto:hi@prasen.dev), always up for collaborating on exciting projects.\n\nI love playing [video games](https://www.youtube.com/@StarKnight-12) and share thoughts on tech [here](https://www.youtube.com/@prasendev).\n\nHere's what I think about the [future of computer science](https://www.prasen.dev/blog/hello-world).\n\nI also enjoy [touch typing](https://monkeytype.com/profile/prasenx) in my free time, bullish on AI and future technologies",
+    "**[[highlight:Full Stack Developer]]**, currently freelancing and open to [**[[underline:DevRel work]]**](mailto:hi@prasen.dev). I share what I build with **[[circle:22.4K+ followers]]** on [X](https://x.com/prasenx), always up for collaborating on exciting projects.\n\nI love playing [video games](https://www.youtube.com/@StarKnight-12) and share thoughts on tech [here](https://www.youtube.com/@prasendev).\n\nHere's what I think about the [future of computer science](https://www.prasen.dev/blog/hello-world).\n\nI also enjoy [touch typing](https://monkeytype.com/profile/prasenx) in my free time, bullish on AI and future technologies",
 
   avatarUrl: "/prasen.webp",
+  // refresh periodically
+  stats: [
+    { value: "23", label: "paid placements on Outbuilt", href: "https://outbuilt.lol" },
+    { value: "137K", label: "search impressions on Dateup", href: "https://dateup.in" },
+    { value: "1.2K+", label: "uses of my v0 templates", href: "https://v0.app/@starknightt" },
+  ],
   skills: [
     { name: "TypeScript", icon: faTypescript, category: "Languages" },
     { name: "JavaScript", icon: faJs, category: "Languages" },
@@ -49,7 +55,7 @@ export const DATA = {
   tools: [
     {
       name: "Cursor",
-      description: "AI-powered code editor built on VS Code — my primary IDE for all projects.",
+      description: "AI-powered code editor built on VS Code, my primary IDE for all projects.",
       href: "https://cursor.com/referral?code=63BS4MRLZQQV",
       customIcon: Icons.cursor,
     },
@@ -67,7 +73,7 @@ export const DATA = {
     },
     {
       name: "Postman",
-      description: "API testing and documentation — essential for building and debugging REST APIs.",
+      description: "API testing and documentation, essential for building and debugging REST APIs.",
       href: "https://www.postman.com",
       icon: faRocket,
     },
@@ -91,7 +97,7 @@ export const DATA = {
     },
     {
       name: "Brave",
-      description: "Fast, ad-free browser — my secondary pick for a clean browsing experience.",
+      description: "Fast, ad-free browser, my secondary pick for a clean browsing experience.",
       href: "https://brave.com",
       icon: faBrave,
     },
@@ -103,7 +109,7 @@ export const DATA = {
     },
     {
       name: "GitHub",
-      description: "Where all my code lives — version control, CI/CD, and open source contributions.",
+      description: "Where all my code lives: version control, CI/CD, and open source contributions.",
       href: "https://github.com",
       icon: faGithub,
     },
@@ -115,7 +121,7 @@ export const DATA = {
     },
     {
       name: "Notion",
-      description: "Notes, task management, and documentation — my second brain.",
+      description: "Notes, task management, and documentation. My second brain.",
       href: "https://www.notion.so",
       icon: faNotion,
     },
@@ -198,16 +204,17 @@ export const DATA = {
 
   work: [
     {
-      company: "smart huh :)",
+      company: "Small web studio",
       href: "#",
       badges: ["NDA"],
       location: "",
-      title: "Frontend Developer",
+      title: "Frontend Developer (Contract)",
       logoUrl: "/company.png",
       start: "December 2025",
       end: "August 2026",
+      impact: "Websites for local shops and small businesses, frontend end to end",
       description:
-        "Gatekeeping this one because of NDA. Worked on exciting stuff though!",
+        "Contract frontend for a small studio building websites for local shops and small businesses. Owned the frontend end to end in React and Next.js: design handoff, responsive builds, performance and SEO, production deploys. Client names under NDA.",
       redacted: true,
     },
     {
@@ -219,8 +226,16 @@ export const DATA = {
       logoUrl: "/freelance.webp",
       start: "2025",
       end: "Present",
+      impact: "Short React and Next.js contracts through referrals",
       description:
-        "Delivering web solutions for startups and small businesses. Building responsive UIs with React/Next.js, integrating third-party APIs, and deploying production-ready applications.",
+        "Short contract engagements through referrals: React and Next.js frontends for startups and small businesses, from design handoff to production deploy on Vercel or Cloudflare.",
+      links: [
+        {
+          type: "Email",
+          href: "mailto:hi@prasen.dev",
+          icon: <Icons.email className="size-3" />,
+        },
+      ],
     },
     {
       company: "v0 by Vercel",
@@ -231,7 +246,26 @@ export const DATA = {
       logoUrl: "/v0dev_logo.webp",
       start: "2025",
       end: "2026",
-      description: "Community ambassador for Vercel's AI-powered UI generation tool. Created and shared projects, helped developers adopt v0 for rapid prototyping.",
+      impact: "4 public templates, 1.2K+ uses, 340+ likes",
+      description:
+        "Ambassador for Vercel's AI UI generation tool until the program ended in August 2026. Published 4 public v0 templates (a macOS simulator, a minimalist portfolio, a real-time earthquake monitor, an image to ASCII export tool) with 1.2K+ uses and 340+ likes combined. The macOS simulator launch post did 16K views on X.",
+      links: [
+        {
+          type: "Templates",
+          href: "https://v0.app/@starknightt",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "macOS simulator post",
+          href: "https://x.com/prasenx/status/1978141523553251514",
+          icon: <Icons.x className="size-3" />,
+        },
+        {
+          type: "Portfolio template post",
+          href: "https://x.com/prasenx/status/1989719459813364062",
+          icon: <Icons.x className="size-3" />,
+        },
+      ],
     },
   ],
   education: [
@@ -259,7 +293,7 @@ export const DATA = {
       dates: "August 2026",
       active: true,
       description:
-        "A pay-to-rank public leaderboard. No logins, no algorithms. Your rank is exactly what you paid for, and anyone can outbid you. Already generating revenue.",
+        "Ranking algorithms are opaque, so I built a public leaderboard where rank is exactly what you paid and anyone can outbid you. No logins, no feed, just Supabase and Dodo Payments checkout. 23 paid placements across 11 countries since launch on Aug 22, 2026, with around 1,100 page views a day from 100+ countries.",
       technologies: [
         "Next.js",
         "React 19",
@@ -285,7 +319,7 @@ export const DATA = {
       dates: "August 2026",
       active: true,
       description:
-        "A fully procedural first-person jungle in Three.js. Every texture, mesh, and sound is generated in code — zero external art assets. The debug overlay was a PR from the CTO of Xbox.",
+        "A first-person jungle in Three.js with no downloaded art: every texture, mesh and sound is generated in code, so the whole scene ships as a single JavaScript bundle. 292 stars and 46 forks on GitHub. The collapsible performance debug overlay came in as a PR from the CTO of Xbox, merged Aug 4, 2026.",
       technologies: [
         "Three.js",
         "JavaScript",
@@ -303,6 +337,16 @@ export const DATA = {
           href: "https://github.com/StarKnightt/jungle-trail",
           icon: <Icons.github className="size-3" />,
         },
+        {
+          type: "PR from Xbox CTO",
+          href: "https://github.com/StarKnightt/jungle-trail/pull/3",
+          icon: <Icons.github className="size-3" />,
+        },
+        {
+          type: "Launch post",
+          href: "https://x.com/prasenx/status/2084610743618682910",
+          icon: <Icons.x className="size-3" />,
+        },
       ],
       image: "",
       video: "https://video.gumlet.io/6745e593080b60408ca085f7/6a7223daec8c132ca29227c6/download.mp4",
@@ -314,7 +358,7 @@ export const DATA = {
       dates: "August 2026",
       active: true,
       description:
-        "A photorealistic city street at golden hour you can walk through in the browser. Zero external assets — every texture, mesh, and sound is generated in code. Featured by the official Claude account on X.",
+        "A photorealistic city street at golden hour you can walk through in the browser, built with React Three Fiber and custom GLSL. Zero external assets, every texture, mesh and sound is generated in code. 121 stars and 19 forks on GitHub, and featured by the official Claude account on X.",
       technologies: [
         "Three.js",
         "React Three Fiber",
@@ -334,6 +378,11 @@ export const DATA = {
           href: "https://github.com/StarKnightt/night-street",
           icon: <Icons.github className="size-3" />,
         },
+        {
+          type: "Featured by Claude",
+          href: "https://x.com/claudeai/status/2090557648567505222",
+          icon: <Icons.x className="size-3" />,
+        },
       ],
       image: "",
       video: "https://video.gumlet.io/6745e593080b60408ca085f7/6a8eedb10784f723ea19e7df/download.mp4",
@@ -345,7 +394,7 @@ export const DATA = {
       dates: "June 2026 - Present",
       active: true,
       description:
-        "A free US take-home pay calculator for the 2026 tax year, covering all 50 states and D.C. Over 160 programmatic pages with federal and state tax breakdowns, hourly to salary conversion, and instant client-side paycheck math built from IRS and Tax Foundation data.",
+        "Take-home pay math is different in every US state, so I built a free calculator for the 2026 tax year covering all 50 states and D.C. Over 160 programmatic pages with federal and state breakdowns, hourly to salary conversion, and instant client-side paycheck math from IRS and Tax Foundation data. 777 users from 42 countries in the last 90 days per Google Analytics, 68% of them in the US.",
       technologies: [
         "Next.js 16",
         "React 19",
@@ -371,7 +420,7 @@ export const DATA = {
       dates: "May 2026 - Present",
       active: true,
       description:
-        "A free, open-source interactive learning platform for mastering Next.js with 17 structured chapters from basics to production patterns. Features Ctrl+K search, in-site video player, interactive architecture diagrams, and neo-brutalism design.",
+        "A free open source Next.js course for people who want a path instead of reference docs: 17 structured chapters from basics to production patterns with Ctrl+K search, an in-site video player and interactive architecture diagrams. 25 stars and 2 forks on GitHub.",
       technologies: [
         "Next.js 16",
         "React 19",
@@ -401,7 +450,7 @@ export const DATA = {
       dates: "June 2026",
       active: true,
       description:
-        "A first-person survival horror game running entirely in the browser. Every asset, texture, sound, and the monster are generated procedurally at runtime. Features A* pathfinding AI, procedural PBR textures, synthesized audio, and custom post-processing shaders.",
+        "A first-person survival horror game running entirely in the browser. Every texture, sound and the monster are generated procedurally at runtime, with A* pathfinding AI, procedural PBR textures, synthesized audio and custom post-processing shaders. 24 stars and 11 forks on GitHub, and the prototype that led to Jungle Trail and Night Street.",
       technologies: [
         "Next.js 16",
         "Three.js",
@@ -431,7 +480,7 @@ export const DATA = {
       dates: "April 2026 - Present",
       active: true,
       description:
-        "An AI-powered dating profile optimizer that helps you get more matches. Features AI photo enhancement, a rizz assistant for conversation starters, and a profile reviewer for actionable feedback.",
+        "An AI dating profile optimizer: photo enhancement, a conversation starter assistant and a profile reviewer, running on Grok, OpenAI and Groq with Supabase auth and Dodo Payments. The SEO side worked better than the product: 137K Google impressions and 1K+ clicks in its first 4 months per Search Console, growing from 13K to 49K impressions a month, ranking for dating app comparison queries.",
       technologies: [
         "Next.js",
         "Supabase",
@@ -454,11 +503,11 @@ export const DATA = {
     },
     {
       title: "CleanType",
-      href: "https://clean-type.vercel.app/",
-      dates: "March 2025 - April 2025",
+      href: "https://cleantype.is-a.software/",
+      dates: "March 2025 - June 2026",
       active: true,
       description:
-        "A super minimalist write experience, type with minimalist, no noise and distraction, completely fresh Windows app, with a clean UI and no ads, just pure writing experience.",
+        "A distraction-free Windows writing app built in Rust and Tauri with a React UI: a blank page, no ads, no accounts. 337 downloads across 4 GitHub releases (v0.1.0 to v0.4.0) and 21 stars.",
       technologies: [
         "Rust",
         "Tauri",
@@ -471,7 +520,7 @@ export const DATA = {
       links: [
         {
           type: "Website",
-          href: "https://www.cleantype.software/",
+          href: "https://cleantype.is-a.software/",
           icon: <Icons.globe className="size-3" />,
         },
         {
@@ -486,10 +535,10 @@ export const DATA = {
     {
       title: "Wallpaperz",
       href: "https://www.wallpaperz.in/",
-      dates: "January 2025 - February 2025",
+      dates: "January 2025 - Present",
       active: true,
       description:
-        "A modern wallpaper discovery platform where you can find stunning wallpapers and generate images with AI.",
+        "A wallpaper discovery platform with AI image generation via Stability AI, monetized with Google AdSense. 20 months after launch it still does 600 to 800 page views a day with visitors from 110+ countries, and 31 stars on GitHub. Self-migrated from Vercel to Cloudflare Workers in August 2026.",
       technologies: [
         "Next.js",
         "Git",
@@ -522,7 +571,7 @@ export const DATA = {
       dates: "December 2024 - January 2025",
       active: true,
       description:
-        "A beautiful and interactive 3D carousel gallery built with Next.js, featuring image and video support with an integrated music player.",
+        "An interactive 3D carousel gallery built with pure CSS 3D transforms, no Three.js, with image and video support and a SoundCloud music player. 43 stars and 6 forks on GitHub.",
       technologies: [
         "Next.js",
         "CSS 3D Transform",
