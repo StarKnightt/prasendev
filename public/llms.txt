@@ -17,15 +17,20 @@ Prasenjit Nayak is a Full Stack Developer from Odisha, India, specializing in Re
 ## Key Projects
 
 - [Outbuilt](https://outbuilt.lol): A pay-to-rank public leaderboard, no logins, no algorithms, your rank is what you paid for. 23 paid placements across 11 countries since launch on Aug 22, 2026, around 1,100 page views a day from 100+ countries.
-- [Jungle Trail](https://starknightt.github.io/jungle-trail/): A fully procedural first-person jungle in Three.js with zero external art assets. 292 GitHub stars, 46 forks. The performance debug overlay was a PR from the CTO of Xbox.
-- [Night Street](https://night-street.vercel.app): A photorealistic procedural city street at golden hour, walkable in the browser with zero external assets. 121 GitHub stars, 19 forks. Featured by the official Claude account on X.
+- [Jungle Trail](https://starknightt.github.io/jungle-trail/): A fully procedural first-person jungle in Three.js with zero external art assets. 296+ GitHub stars, 44 forks. The performance debug overlay was a PR from the CTO of Xbox.
+- [Night Street](https://night-street.vercel.app): A photorealistic procedural city street at golden hour, walkable in the browser with zero external assets. 123+ GitHub stars, 19 forks. Featured by the official Claude account on X.
+- [Sedona Sunset](https://starknightt.github.io/sedona-sunset/): A first-person walk up a dry wash between red rock buttes at golden hour, plain Three.js with no build step, around 26,000 lines, every mesh, texture and sound generated in code, zero external assets. 35+ GitHub stars, 7 forks. Launch post 66K+ views, reposted by the official Claude account (75K+ views).
+- [Operation Ironhold](https://starknightt.github.io/operation-ironhold/): A complete first-person shooter in a single 290 KB HTML file, no build step, no asset files, Three.js from a CDN. 4 weapons with ADS, recoil and reloads, 10 AI enemies that flank and take cover, sniper scope with breath hold. Built with Claude Opus 5 from five prompts. 97+ GitHub stars, 25 forks. Launch post 80K+ views, 790+ likes.
+- [Gas Station at Dawn](https://starknightt.github.io/gas-station-highway/): A photorealistic first-person gas station at dawn, pump fuel, open the store door, grab a drink from the cooler. Three.js and TypeScript, 81 files, zero external assets, three quality tiers. 13+ GitHub stars. Launch post 20K+ views.
+- [Tactical FPS in the browser](https://starknightt.github.io/counter-strike-in-browser/): A Counter-Strike inspired bomb-site map in the browser with 5 bots, bomb plant and defuse, HUD, GTAO, bloom and sun shafts, on Three.js and three-mesh-bvh. The one project that uses real assets: map, weapons and hands modelled by scripts in Blender via Blender MCP and exported to GLB, Poly Haven textures, CC0 audio. Built with Claude Opus 5 and Fable 5.1. 11+ GitHub stars. Launch post 19K+ views.
+- [Parapet](https://starknightt.github.io/parapet/): First-person rooftop parkour, vault, slide, wall-run and wall-jump across a procedural brutalist city at golden hour. Three.js and TypeScript, around 4,800 lines, everything generated at runtime, city rendered in a handful of draw calls, 30-check Playwright playtest bot. Launch post 7.6K+ views.
 - [PayBrackets](https://paybrackets.com): A free US take-home pay calculator for the 2026 tax year covering all 50 states and D.C., 160+ programmatic pages. 777 users from 42 countries in the last 90 days.
-- [Next.js Learning Platform](https://learn.prasen.dev): A free, open source Next.js course with 17 structured chapters. 25 GitHub stars.
-- [Backrooms: Level 0](https://backroom-escape.vercel.app): A browser survival horror game with fully procedural assets and A* pathfinding AI. 24 GitHub stars, 11 forks. The prototype that led to Jungle Trail and Night Street.
-- [Dateup](https://dateup.in): AI dating profile optimizer on Grok, OpenAI and Groq. 137K Google impressions and 1K+ clicks in its first 4 months per Search Console, growing from 13K to 49K impressions a month.
-- [Wallpaperz](https://www.wallpaperz.in): Wallpaper discovery platform with AI generation, monetized with AdSense. 600 to 800 page views a day 20 months after launch, visitors from 110+ countries. 31 GitHub stars.
-- [CleanType](https://cleantype.is-a.software): A distraction-free Windows writing app in Rust and Tauri. 337 downloads across 4 releases, 21 GitHub stars.
-- [3D Carousel Gallery](https://3dcarousell.vercel.app): Interactive 3D carousel built with pure CSS 3D transforms, no Three.js. 43 GitHub stars, 6 forks.
+- [Next.js Learning Platform](https://learn.prasen.dev): A free, open source Next.js course with 17 structured chapters. 25+ GitHub stars.
+- [Backrooms: Level 0](https://backroom-escape.vercel.app): A browser survival horror game with fully procedural assets and A* pathfinding AI. 24+ GitHub stars, 10 forks. The prototype that led to Jungle Trail and Night Street.
+- [Dateup](https://dateup.in): AI dating profile optimizer on Grok, OpenAI and Groq. 155K+ Google impressions and 1.2K+ clicks in its first 4 months per Search Console, growing from 13K to 49K impressions a month.
+- [Wallpaperz](https://www.wallpaperz.in): Wallpaper discovery platform with AI generation, monetized with AdSense. 600 to 800 page views a day 20 months after launch, visitors from 110+ countries. 31+ GitHub stars.
+- [CleanType](https://cleantype.is-a.software): A distraction-free Windows writing app in Rust and Tauri. 337+ downloads across 4 releases, 21+ GitHub stars.
+- [3D Carousel Gallery](https://3dcarousell.vercel.app): Interactive 3D carousel built with pure CSS 3D transforms, no Three.js. 43+ GitHub stars, 6 forks.
 
 ## Technical Stack
 

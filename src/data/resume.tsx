@@ -2,6 +2,30 @@ import { Icons } from "@/components/icons";
 import { HomeIcon, NotebookIcon, VideoIcon, FolderIcon, Settings, Wrench, Zap } from "lucide-react";
 import { faReact, faNodeJs, faGitAlt, faTypescript, faTailwindCss, faDocker, faFigma, faGithub, faFirefoxBrowser, faBrave, faNotion, faPython, faJava, faJs, faHtml5, faCss3Alt } from "@fortawesome/free-brands-svg-icons";
 import { faLeaf, faPlug, faBolt, faTerminal, faRocket, faServer, faDatabase, faCode } from "@fortawesome/free-solid-svg-icons";
+import type { ReactNode } from "react";
+
+export type ProjectGroup = "products" | "procedural" | "interactions";
+
+export type ProjectPlay = {
+  url: string;
+  mode: "embed" | "external";
+  note?: string;
+};
+
+export type Project = {
+  title: string;
+  href: string;
+  dates: string;
+  active: boolean;
+  description: string;
+  technologies: readonly string[];
+  links: readonly { type: string; href: string; icon: ReactNode }[];
+  image: string;
+  video?: string;
+  poster?: string;
+  group?: ProjectGroup;
+  play?: ProjectPlay;
+};
 
 export const DATA = {
   name: "Prasenjit Nayak",
@@ -18,7 +42,7 @@ export const DATA = {
   // refresh periodically
   stats: [
     { value: "23", label: "paid placements on Outbuilt", href: "https://outbuilt.lol" },
-    { value: "137K", label: "search impressions on Dateup", href: "https://dateup.in" },
+    { value: "155K+", label: "search impressions on Dateup", href: "https://dateup.in" },
     { value: "1.2K+", label: "uses of my v0 templates", href: "https://v0.app/@starknightt" },
   ],
   skills: [
@@ -248,7 +272,7 @@ export const DATA = {
       end: "2026",
       impact: "4 public templates, 1.2K+ uses, 340+ likes",
       description:
-        "Ambassador for Vercel's AI UI generation tool until the program ended in August 2026. Published 4 public v0 templates (a macOS simulator, a minimalist portfolio, a real-time earthquake monitor, an image to ASCII export tool) with 1.2K+ uses and 340+ likes combined. The macOS simulator launch post did 16K views on X.",
+        "Ambassador for Vercel's AI UI generation tool until the program ended in August 2026. Published 4 public v0 templates (a macOS simulator, a minimalist portfolio, a real-time earthquake monitor, an image to ASCII export tool) with 1.2K+ uses and 340+ likes combined. The macOS simulator launch post did 16K+ views on X.",
       links: [
         {
           type: "Templates",
@@ -292,6 +316,7 @@ export const DATA = {
       href: "https://outbuilt.lol",
       dates: "August 2026",
       active: true,
+      group: "products",
       description:
         "Ranking algorithms are opaque, so I built a public leaderboard where rank is exactly what you paid and anyone can outbid you. No logins, no feed, just Supabase and Dodo Payments checkout. 23 paid placements across 11 countries since launch on Aug 22, 2026, with around 1,100 page views a day from 100+ countries.",
       technologies: [
@@ -318,8 +343,14 @@ export const DATA = {
       href: "https://starknightt.github.io/jungle-trail/",
       dates: "August 2026",
       active: true,
+      group: "procedural",
+      play: {
+        url: "https://starknightt.github.io/jungle-trail/",
+        mode: "embed",
+        note: "Desktop, keyboard and mouse.",
+      },
       description:
-        "A first-person jungle in Three.js with no downloaded art: every texture, mesh and sound is generated in code, so the whole scene ships as a single JavaScript bundle. 292 stars and 46 forks on GitHub. The collapsible performance debug overlay came in as a PR from the CTO of Xbox, merged Aug 4, 2026.",
+        "A first-person jungle in Three.js with no downloaded art: every texture, mesh and sound is generated in code, so the whole scene ships as a single JavaScript bundle. 296+ stars and 44 forks on GitHub. The collapsible performance debug overlay came in as a PR from the CTO of Xbox, merged Aug 4, 2026.",
       technologies: [
         "Three.js",
         "JavaScript",
@@ -357,8 +388,14 @@ export const DATA = {
       href: "https://night-street.vercel.app/",
       dates: "August 2026",
       active: true,
+      group: "procedural",
+      play: {
+        url: "https://night-street.vercel.app/",
+        mode: "embed",
+        note: "Desktop, keyboard and mouse.",
+      },
       description:
-        "A photorealistic city street at golden hour you can walk through in the browser, built with React Three Fiber and custom GLSL. Zero external assets, every texture, mesh and sound is generated in code. 121 stars and 19 forks on GitHub, and featured by the official Claude account on X.",
+        "A photorealistic city street at golden hour you can walk through in the browser, built with React Three Fiber and custom GLSL. Zero external assets, every texture, mesh and sound is generated in code. 123+ stars and 19 forks on GitHub, and featured by the official Claude account on X.",
       technologies: [
         "Three.js",
         "React Three Fiber",
@@ -389,10 +426,93 @@ export const DATA = {
       poster: "https://video.gumlet.io/6745e593080b60408ca085f7/6a8eedb10784f723ea19e7df/thumbnail-1-0.png?v=1787752082926",
     },
     {
+      title: "Sedona Sunset",
+      href: "https://starknightt.github.io/sedona-sunset/",
+      dates: "August 2026",
+      active: true,
+      group: "procedural",
+      play: {
+        url: "https://starknightt.github.io/sedona-sunset/",
+        mode: "embed",
+        note: "Desktop, keyboard and mouse. About a minute of generation on first load.",
+      },
+      description:
+        "A first-person walk up a dry wash between red rock buttes at golden hour, in plain Three.js with no build step. Around 26,000 lines where every mesh, texture and sound is generated in code, zero external assets. 35+ stars and 7 forks on GitHub, 66K+ views on the launch post, and reposted by the official Claude account for another 75K+ views.",
+      technologies: [
+        "Three.js",
+        "JavaScript",
+        "Web Audio API",
+        "Procedural Generation",
+        "Claude Fable 5.1",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://starknightt.github.io/sedona-sunset/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/StarKnightt/sedona-sunset",
+          icon: <Icons.github className="size-3" />,
+        },
+        {
+          type: "Featured by Claude",
+          href: "https://x.com/claudeai/status/2101017905462722619",
+          icon: <Icons.x className="size-3" />,
+        },
+        {
+          type: "Launch post",
+          href: "https://x.com/prasenx/status/2091551772880085268",
+          icon: <Icons.x className="size-3" />,
+        },
+      ],
+      image: "/projects/sedona-sunset.webp",
+    },
+    {
+      title: "Operation Ironhold",
+      href: "https://starknightt.github.io/operation-ironhold/",
+      dates: "July 2026",
+      active: true,
+      group: "procedural",
+      play: {
+        url: "https://starknightt.github.io/operation-ironhold/",
+        mode: "embed",
+        note: "Desktop only. Click to focus, WASD and mouse.",
+      },
+      description:
+        "A complete first-person shooter in a single 290 KB HTML file, no build step, no asset files, Three.js from a CDN: 4 weapons with ADS, recoil and reloads, 10 AI enemies that flank and take cover, and a sniper scope with breath hold. Built with Claude Opus 5 from five prompts, all of them in PROMPTS.md in the repo. 97+ stars and 25 forks on GitHub, 80K+ views and 790+ likes on the launch post.",
+      technologies: [
+        "Three.js",
+        "Single HTML file",
+        "Web Audio API",
+        "Claude Opus 5",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://starknightt.github.io/operation-ironhold/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/StarKnightt/operation-ironhold",
+          icon: <Icons.github className="size-3" />,
+        },
+        {
+          type: "Launch post",
+          href: "https://x.com/prasenx/status/2081022068561469715",
+          icon: <Icons.x className="size-3" />,
+        },
+      ],
+      image: "/projects/ironhold.webp",
+    },
+    {
       title: "PayBrackets",
       href: "https://paybrackets.com",
       dates: "June 2026 - Present",
       active: true,
+      group: "products",
       description:
         "Take-home pay math is different in every US state, so I built a free calculator for the 2026 tax year covering all 50 states and D.C. Over 160 programmatic pages with federal and state breakdowns, hourly to salary conversion, and instant client-side paycheck math from IRS and Tax Foundation data. 777 users from 42 countries in the last 90 days per Google Analytics, 68% of them in the US.",
       technologies: [
@@ -419,8 +539,9 @@ export const DATA = {
       href: "https://learn.prasen.dev/",
       dates: "May 2026 - Present",
       active: true,
+      group: "products",
       description:
-        "A free open source Next.js course for people who want a path instead of reference docs: 17 structured chapters from basics to production patterns with Ctrl+K search, an in-site video player and interactive architecture diagrams. 25 stars and 2 forks on GitHub.",
+        "A free open source Next.js course for people who want a path instead of reference docs: 17 structured chapters from basics to production patterns with Ctrl+K search, an in-site video player and interactive architecture diagrams. 25+ stars and 2 forks on GitHub.",
       technologies: [
         "Next.js 16",
         "React 19",
@@ -440,6 +561,11 @@ export const DATA = {
           href: "https://github.com/StarKnightt/Next.JS-Learning",
           icon: <Icons.github className="size-3" />,
         },
+        {
+          type: "Launch post",
+          href: "https://x.com/prasenx/status/2059561924027957711",
+          icon: <Icons.x className="size-3" />,
+        },
       ],
       image: "",
       video: "https://video.gumlet.io/6745e593080b60408ca085f7/6a16bc92d99287327250b129/download.mp4",
@@ -449,8 +575,14 @@ export const DATA = {
       href: "https://backroom-escape.vercel.app/",
       dates: "June 2026",
       active: true,
+      group: "procedural",
+      play: {
+        url: "https://backroom-escape.vercel.app/",
+        mode: "external",
+        note: "Opens in a new tab, desktop only.",
+      },
       description:
-        "A first-person survival horror game running entirely in the browser. Every texture, sound and the monster are generated procedurally at runtime, with A* pathfinding AI, procedural PBR textures, synthesized audio and custom post-processing shaders. 24 stars and 11 forks on GitHub, and the prototype that led to Jungle Trail and Night Street.",
+        "A first-person survival horror game running entirely in the browser. Every texture, sound and the monster are generated procedurally at runtime, with A* pathfinding AI, procedural PBR textures, synthesized audio and custom post-processing shaders. 24+ stars and 10 forks on GitHub, and the prototype that led to Jungle Trail and Night Street.",
       technologies: [
         "Next.js 16",
         "Three.js",
@@ -475,12 +607,130 @@ export const DATA = {
       video: "https://video.gumlet.io/6745e593080b60408ca085f7/6a2fb2faffbd5132b8c3d72a/download.mp4",
     },
     {
+      title: "Gas Station at Dawn",
+      href: "https://starknightt.github.io/gas-station-highway/",
+      dates: "August 2026",
+      active: true,
+      group: "procedural",
+      play: {
+        url: "https://starknightt.github.io/gas-station-highway/",
+        mode: "external",
+        note: "Heavy first load (shader compile). Opens in a new tab, desktop only.",
+      },
+      description:
+        "A photorealistic first-person gas station at dawn: pump fuel, open the store door, grab a drink from the cooler. Three.js and TypeScript across 81 files with zero external assets and three quality tiers. 13+ stars on GitHub and 20K+ views on the launch post.",
+      technologies: [
+        "Three.js",
+        "TypeScript",
+        "Vite",
+        "Procedural Generation",
+        "Claude",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://starknightt.github.io/gas-station-highway/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/StarKnightt/gas-station-highway",
+          icon: <Icons.github className="size-3" />,
+        },
+        {
+          type: "Launch post",
+          href: "https://x.com/prasenx/status/2093752709971382365",
+          icon: <Icons.x className="size-3" />,
+        },
+      ],
+      image: "/projects/gas-station.webp",
+    },
+    {
+      title: "Tactical FPS in the browser",
+      href: "https://starknightt.github.io/counter-strike-in-browser/",
+      dates: "September 2026",
+      active: true,
+      group: "procedural",
+      play: {
+        url: "https://starknightt.github.io/counter-strike-in-browser/",
+        mode: "embed",
+        note: "Desktop only, 34 MB map download.",
+      },
+      description:
+        "A Counter-Strike inspired bomb-site map in the browser with 5 bots, bomb plant and defuse and a full HUD, on Three.js and three-mesh-bvh with GTAO, bloom and sun shafts. The one project here that uses real assets: the map, weapons and hands were modelled by scripts in Blender through Blender MCP and exported to GLB, with Poly Haven textures and CC0 audio. Built with Claude Opus 5 and Fable 5.1, 11+ stars on GitHub and 19K+ views on the launch post.",
+      technologies: [
+        "Three.js",
+        "Blender MCP",
+        "three-mesh-bvh",
+        "Vite",
+        "Claude Opus 5",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://starknightt.github.io/counter-strike-in-browser/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/StarKnightt/counter-strike-in-browser",
+          icon: <Icons.github className="size-3" />,
+        },
+        {
+          type: "Launch post",
+          href: "https://x.com/prasenx/status/2097676061811339562",
+          icon: <Icons.x className="size-3" />,
+        },
+      ],
+      image: "/projects/counter-strike.webp",
+    },
+    {
+      title: "Parapet",
+      href: "https://starknightt.github.io/parapet/",
+      dates: "September 2026",
+      active: true,
+      group: "procedural",
+      play: {
+        url: "https://starknightt.github.io/parapet/",
+        mode: "embed",
+        note: "Desktop, WASD, Space to jump.",
+      },
+      description:
+        "First-person rooftop parkour: vault, slide, wall-run and wall-jump across a procedural brutalist city at golden hour. Three.js and TypeScript in about 4,800 lines, everything generated at runtime and the whole city rendered in a handful of draw calls, with a 30-check Playwright playtest bot. 7.6K+ views on the launch post.",
+      technologies: [
+        "Three.js",
+        "TypeScript",
+        "Vite",
+        "Procedural Generation",
+        "Claude Fable 5.1",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://starknightt.github.io/parapet/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/StarKnightt/parapet",
+          icon: <Icons.github className="size-3" />,
+        },
+        {
+          type: "Launch post",
+          href: "https://x.com/prasenx/status/2099480730271412270",
+          icon: <Icons.x className="size-3" />,
+        },
+      ],
+      image: "/projects/parapet.webp",
+    },
+    {
       title: "Dateup",
       href: "https://dateup.in",
       dates: "April 2026 - Present",
       active: true,
+      group: "products",
       description:
-        "An AI dating profile optimizer: photo enhancement, a conversation starter assistant and a profile reviewer, running on Grok, OpenAI and Groq with Supabase auth and Dodo Payments. The SEO side worked better than the product: 137K Google impressions and 1K+ clicks in its first 4 months per Search Console, growing from 13K to 49K impressions a month, ranking for dating app comparison queries.",
+        "An AI dating profile optimizer: photo enhancement, a conversation starter assistant and a profile reviewer, running on Grok, OpenAI and Groq with Supabase auth and Dodo Payments. The SEO side worked better than the product: 155K+ Google impressions and 1.2K+ clicks in its first 4 months per Search Console, growing from 13K to 49K impressions a month, ranking for dating app comparison queries.",
       technologies: [
         "Next.js",
         "Supabase",
@@ -506,8 +756,9 @@ export const DATA = {
       href: "https://cleantype.is-a.software/",
       dates: "March 2025 - June 2026",
       active: true,
+      group: "products",
       description:
-        "A distraction-free Windows writing app built in Rust and Tauri with a React UI: a blank page, no ads, no accounts. 337 downloads across 4 GitHub releases (v0.1.0 to v0.4.0) and 21 stars.",
+        "A distraction-free Windows writing app built in Rust and Tauri with a React UI: a blank page, no ads, no accounts. 337+ downloads across 4 GitHub releases (v0.1.0 to v0.4.0) and 21+ stars.",
       technologies: [
         "Rust",
         "Tauri",
@@ -537,8 +788,9 @@ export const DATA = {
       href: "https://www.wallpaperz.in/",
       dates: "January 2025 - Present",
       active: true,
+      group: "products",
       description:
-        "A wallpaper discovery platform with AI image generation via Stability AI, monetized with Google AdSense. 20 months after launch it still does 600 to 800 page views a day with visitors from 110+ countries, and 31 stars on GitHub. Self-migrated from Vercel to Cloudflare Workers in August 2026.",
+        "A wallpaper discovery platform with AI image generation via Stability AI, monetized with Google AdSense. 20 months after launch it still does 600 to 800 page views a day with visitors from 110+ countries, and 31+ stars on GitHub. Self-migrated from Vercel to Cloudflare Workers in August 2026.",
       technologies: [
         "Next.js",
         "Git",
@@ -561,6 +813,11 @@ export const DATA = {
           href: "https://github.com/StarKnightt/wallpaperz",
           icon: <Icons.github className="size-3" />,
         },
+        {
+          type: "Launch post",
+          href: "https://x.com/prasenx/status/1899462460551365084",
+          icon: <Icons.x className="size-3" />,
+        },
       ],
       image: "",
       video: "https://video.gumlet.io/6745e593080b60408ca085f7/67d5057eefcecbdea7560e35/download.mp4",
@@ -570,8 +827,9 @@ export const DATA = {
       href: "https://3dcarousell.vercel.app/",
       dates: "December 2024 - January 2025",
       active: true,
+      group: "procedural",
       description:
-        "An interactive 3D carousel gallery built with pure CSS 3D transforms, no Three.js, with image and video support and a SoundCloud music player. 43 stars and 6 forks on GitHub.",
+        "An interactive 3D carousel gallery built with pure CSS 3D transforms, no Three.js, with image and video support and a SoundCloud music player. 43+ stars and 6 forks on GitHub.",
       technologies: [
         "Next.js",
         "CSS 3D Transform",
