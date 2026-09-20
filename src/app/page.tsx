@@ -323,7 +323,7 @@ export default function Page() {
               <h2 className="mt-1.5 text-xl font-bold tracking-tight">Featured Projects</h2>
             </BlurFade>
             <BlurFade delay={BLUR_FADE_DELAY * 11.5}>
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-4 sm:grid-cols-2">
                 {DATA.projects
                   .filter((project) => 
                     ["Outbuilt", "Jungle Trail", "Night Street", "Sedona Sunset"].includes(project.title)
