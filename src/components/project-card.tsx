@@ -14,8 +14,10 @@ import Link from "next/link";
 import Markdown from "react-markdown";
 import { BorderBeam } from "@/components/magicui/border-beam";
 import { VideoPlayerModal } from "./video-player-modal";
+import { PlayButton } from "./play-button";
 import { useState, useRef } from "react";
 import { Play, ExternalLink } from "lucide-react";
+import type { ProjectPlay } from "@/data/resume";
 
 interface Props {
   title: string;
@@ -32,6 +34,7 @@ interface Props {
     type: string;
     href: string;
   }[];
+  play?: ProjectPlay;
   className?: string;
 }
 
@@ -46,6 +49,7 @@ export function ProjectCard({
   video,
   poster,
   links,
+  play,
   className,
 }: Props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -159,11 +163,12 @@ export function ProjectCard({
           )}
         </CardContent>
         <CardFooter className="px-4 pb-4">
-          {links && links.length > 0 && (
+          {((links && links.length > 0) || play) && (
             <div className="flex flex-row flex-wrap items-start gap-1">
+              {play && <PlayButton title={title} play={play} />}
               {links?.map((link, idx) => (
-                <Link href={link?.href} key={idx} target="_blank">
-                  <Badge key={idx} className="flex gap-2 px-2 py-1 text-[10px]">
+                <Link href={link?.href} key={idx} target="_blank" rel="noopener noreferrer">
+                  <Badge className="flex gap-2 px-2 py-1 text-[10px]">
                     {link.icon}
                     {link.type}
                   </Badge>
