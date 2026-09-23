@@ -60,7 +60,7 @@ export function ExperienceItem({
                       alt=""
                       width={16}
                       height={16}
-                      className="size-4 shrink-0 rounded-full bg-white object-cover"
+                      className="size-4 shrink-0 rounded-full bg-white object-cover dark:ring-1 dark:ring-white/25"
                     />
                   )
                 )}
