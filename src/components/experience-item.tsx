@@ -1,7 +1,8 @@
 "use client";
 
 import { useId, useState, type ReactNode } from "react";
-import { Plus } from "lucide-react";
+import Image from "next/image";
+import { Building2, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Receipt } from "@/components/receipt";
 
@@ -9,6 +10,7 @@ interface Props {
   company: string;
   title: string;
   period: string;
+  logoUrl?: string;
   impact?: string;
   description?: string;
   badges?: readonly string[];
@@ -20,6 +22,7 @@ export function ExperienceItem({
   company,
   title,
   period,
+  logoUrl,
   impact,
   description,
   badges,
@@ -42,7 +45,27 @@ export function ExperienceItem({
         >
           <span className="min-w-0">
             <span className="flex flex-wrap items-center gap-x-2 text-[15px] font-medium">
-              <span className={cn(redacted && "select-none blur-[3px]")}>{company}</span>
+              <span className="inline-flex items-center gap-1.5">
+                {redacted ? (
+                  <span
+                    aria-hidden
+                    className="flex size-4 shrink-0 items-center justify-center rounded-full bg-muted text-muted-foreground"
+                  >
+                    <Building2 className="size-2.5" strokeWidth={2} />
+                  </span>
+                ) : (
+                  logoUrl && (
+                    <Image
+                      src={logoUrl}
+                      alt=""
+                      width={16}
+                      height={16}
+                      className="size-4 shrink-0 rounded-full bg-white object-cover"
+                    />
+                  )
+                )}
+                <span className={cn(redacted && "select-none blur-[3px]")}>{company}</span>
+              </span>
               {badges?.map((badge) => (
                 <span
                   key={badge}

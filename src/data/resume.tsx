@@ -247,7 +247,7 @@ export const DATA = {
       badges: [],
       location: "Remote",
       title: "Frontend Developer",
-      logoUrl: "/freelance.webp",
+      logoUrl: "/prasen.webp",
       start: "2025",
       end: "Present",
       impact: "Short React and Next.js contracts through referrals",

@@ -405,6 +405,7 @@ export default async function Page() {
                     company={work.company}
                     title={work.title}
                     period={shortMonth(`${work.start} - ${work.end}`)}
+                    logoUrl={work.logoUrl}
                     impact={work.impact}
                     description={work.description}
                     badges={work.badges}
