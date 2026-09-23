@@ -438,7 +438,7 @@ export default async function Page() {
                           alt=""
                           width={16}
                           height={16}
-                          className="size-4 shrink-0 rounded-full bg-white object-contain"
+                          className="size-4 shrink-0 rounded-full bg-white object-contain dark:ring-1 dark:ring-white/25"
                         />
                         {edu.school}
                       </a>
