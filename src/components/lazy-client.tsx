@@ -11,6 +11,15 @@ export const VisitorCounter = dynamic(
   { ssr: false }
 );
 
+export const GithubContributionsPlain = dynamic(
+  () =>
+    import("@/components/github-calendar").then((mod) => {
+      const Plain = () => <mod.GithubContributions plain />;
+      return Plain;
+    }),
+  { ssr: false, loading: () => <div className="h-[150px] w-full rounded-lg bg-muted/50" /> }
+);
+
 export const GithubContributions = dynamic(
   () => import("@/components/github-calendar").then((mod) => mod.GithubContributions),
   { ssr: false, loading: () => <GithubSkeleton /> }

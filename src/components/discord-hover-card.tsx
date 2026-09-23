@@ -9,15 +9,25 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const DISCORD_USER_ID = "878205528570990602";
+const PROFILE_URL = `https://discord.com/users/${DISCORD_USER_ID}`;
 
 interface LanyardData {
   displayName: string;
   username: string;
   avatar: string;
-  status: string;
+  status: string | null;
   customStatus: string | null;
   activity: string | null;
 }
+
+const STATIC_PROFILE: LanyardData = {
+  displayName: "Prasen",
+  username: "prasen_x",
+  avatar: "https://unavatar.io/github/StarKnightt",
+  status: null,
+  customStatus: null,
+  activity: null,
+};
 
 const STATUS_COLORS: Record<string, string> = {
   online: "bg-emerald-500",
@@ -45,7 +55,6 @@ const CACHE_TTL = 30 * 1000;
 export function DiscordHoverCard({ children }: { children: ReactNode }) {
   const [data, setData] = useState<LanyardData | null>(cachedData);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
 
   const fetchData = useCallback(async () => {
     const isFresh = cachedData && Date.now() - cachedAt < CACHE_TTL;
@@ -56,11 +65,10 @@ export function DiscordHoverCard({ children }: { children: ReactNode }) {
     if (loading) return;
 
     setLoading(true);
-    setError(false);
     try {
       const res = await fetch(`https://api.lanyard.rest/v1/users/${DISCORD_USER_ID}`);
-      if (!res.ok) throw new Error("Failed");
       const json = await res.json();
+      if (!res.ok || !json.success) throw new Error("Failed");
       const d = json.data;
 
       const avatarHash = d.discord_user.avatar;
@@ -83,7 +91,9 @@ export function DiscordHoverCard({ children }: { children: ReactNode }) {
       cachedAt = Date.now();
       setData(result);
     } catch {
-      setError(true);
+      cachedData = STATIC_PROFILE;
+      cachedAt = Date.now();
+      setData(STATIC_PROFILE);
     } finally {
       setLoading(false);
     }
@@ -103,11 +113,6 @@ export function DiscordHoverCard({ children }: { children: ReactNode }) {
       >
         {loading && !data ? (
           <Skeleton />
-        ) : error && !data ? (
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <DiscordIcon />
-            <span>Could not load profile</span>
-          </div>
         ) : data ? (
           <div className="flex flex-col gap-2.5">
             <div className="flex items-center gap-3">
@@ -116,16 +121,18 @@ export function DiscordHoverCard({ children }: { children: ReactNode }) {
                   <AvatarImage src={data.avatar} alt={data.displayName} referrerPolicy="no-referrer" />
                   <AvatarFallback>P</AvatarFallback>
                 </Avatar>
-                <span
-                  className={`absolute -bottom-0.5 -right-0.5 size-3 rounded-full border-2 border-card ${STATUS_COLORS[data.status] ?? "bg-zinc-400"}`}
-                />
+                {data.status && (
+                  <span
+                    className={`absolute -bottom-0.5 -right-0.5 size-3 rounded-full border-2 border-card ${STATUS_COLORS[data.status] ?? "bg-zinc-400"}`}
+                  />
+                )}
               </div>
               <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-1.5">
                   <p className="text-sm font-semibold truncate">{data.displayName}</p>
                   <DiscordIcon />
                 </div>
-                <p className="text-xs text-muted-foreground truncate">{data.username}</p>
+                <p className="text-xs text-muted-foreground truncate">@{data.username}</p>
               </div>
             </div>
             {(data.customStatus || data.activity) && (
@@ -133,6 +140,14 @@ export function DiscordHoverCard({ children }: { children: ReactNode }) {
                 {data.customStatus || data.activity}
               </p>
             )}
+            <a
+              href={PROFILE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-medium text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
+            >
+              View profile
+            </a>
           </div>
         ) : null}
       </HoverCardContent>

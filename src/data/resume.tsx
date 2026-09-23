@@ -36,7 +36,7 @@ export const DATA = {
   description:
     "",
   summary:
-    "**[[highlight:Full Stack Developer]]**, currently freelancing and open to [**[[underline:DevRel work]]**](mailto:hi@prasen.dev). I share what I build with **[[circle:22.4K+ followers]]** on [X](https://x.com/prasenx), always up for collaborating on exciting projects.\n\nI love playing [video games](https://www.youtube.com/@StarKnight-12) and share thoughts on tech [here](https://www.youtube.com/@prasendev).\n\nHere's what I think about the [future of computer science](https://www.prasen.dev/blog/hello-world).\n\nI also enjoy [touch typing](https://monkeytype.com/profile/prasenx) in my free time, bullish on AI and future technologies",
+    "**[[highlight:Full Stack Developer]]** who builds in public, mostly with Next.js, TypeScript and React. Currently freelancing and open to [**[[underline:DevRel work]]**](mailto:hi@prasen.dev). Always up for collaborating on exciting projects.",
 
   avatarUrl: "/prasen.webp",
   // refresh periodically
@@ -238,7 +238,7 @@ export const DATA = {
       end: "August 2026",
       impact: "Websites for local shops and small businesses, frontend end to end",
       description:
-        "Contract frontend for a small studio building websites for local shops and small businesses. Owned the frontend end to end in React and Next.js: design handoff, responsive builds, performance and SEO, production deploys. Client names under NDA.",
+        "Built in React and Next.js, covering design handoff, responsive builds, performance and SEO, and production deploys. Client names under NDA.",
       redacted: true,
     },
     {
@@ -247,12 +247,12 @@ export const DATA = {
       badges: [],
       location: "Remote",
       title: "Frontend Developer",
-      logoUrl: "/freelance.webp",
+      logoUrl: "/prasen.webp",
       start: "2025",
       end: "Present",
       impact: "Short React and Next.js contracts through referrals",
       description:
-        "Short contract engagements through referrals: React and Next.js frontends for startups and small businesses, from design handoff to production deploy on Vercel or Cloudflare.",
+        "Frontends for startups and small businesses, from design handoff to production deploy on Vercel or Cloudflare.",
       links: [
         {
           type: "Email",
@@ -272,7 +272,7 @@ export const DATA = {
       end: "2026",
       impact: "4 public templates, 1.2K+ uses, 340+ likes",
       description:
-        "Ambassador for Vercel's AI UI generation tool until the program ended in August 2026. Published 4 public v0 templates (a macOS simulator, a minimalist portfolio, a real-time earthquake monitor, an image to ASCII export tool) with 1.2K+ uses and 340+ likes combined. The macOS simulator launch post did 16K+ views on X.",
+        "Ambassador for Vercel's AI UI generation tool until the program ended in August 2026. The templates: a macOS simulator, a minimalist portfolio, a real-time earthquake monitor and an image to ASCII export tool. The macOS simulator launch post did 16K+ views on X.",
       links: [
         {
           type: "Templates",
