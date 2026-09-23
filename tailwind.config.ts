@@ -112,6 +112,10 @@ const config = {
   				"0%": { transform: "translateX(-200%)" },
   				"100%": { transform: "translateX(200%)" },
   			},
+  			sheen: {
+  				"0%": { transform: "translateX(-100%) skewX(-20deg)" },
+  				"22%, 100%": { transform: "translateX(250%) skewX(-20deg)" },
+  			},
   			'aurora-border': {
   				'0%, 100%': {
   					borderRadius: '37% 29% 27% 27% / 28% 25% 41% 37%'
@@ -188,7 +192,8 @@ const config = {
   			'accordion-up': 'accordion-up 0.2s ease-out',
   			meteor: 'meteor 5s linear infinite',
   			rainbow: 'rainbow var(--speed, 2s) infinite linear',
-  			shine: 'shine 2s infinite'
+  			shine: 'shine 2s infinite',
+  			sheen: 'sheen 4.5s ease-in-out 1.5s infinite'
   		}
   	}
   },

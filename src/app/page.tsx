@@ -1,7 +1,8 @@
 import { DATA } from "@/data/resume";
 import { getBlogPosts } from "@/data/blog";
 import Link from "next/link";
-import { ArrowRight, Mail } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 import Markdown, { type Components } from "react-markdown";
 import { remarkMarks } from "@/lib/remark-marks";
 import { Highlight, type HighlightType } from "@/components/highlight";
@@ -9,6 +10,7 @@ import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { ProjectCard } from "@/components/project-card";
 import { ExperienceItem } from "@/components/experience-item";
+import { EmailButton } from "@/components/email-button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { PersonSchema } from "@/components/schema/person-schema";
@@ -48,7 +50,7 @@ const PROOF: {
   receipts: { label: string; href: string }[];
 }[] = [
   {
-    value: "22.4K+",
+    value: "22.5K+",
     label: "followers on X",
     receipts: [{ label: "@prasenx", href: DATA.contact.social.X.url }],
   },
@@ -93,7 +95,7 @@ function formatDate(iso: string) {
 function Row({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="grid gap-x-8 gap-y-2 py-5 sm:grid-cols-[9rem_1fr]">
-      <span className="pt-0.5 font-mono text-xs text-muted-foreground">{label}</span>
+      <span className="pt-0.5 text-sm text-muted-foreground">{label}</span>
       <div className="min-w-0">{children}</div>
     </div>
   );
@@ -217,7 +219,7 @@ export default async function Page() {
                     <dt className="sr-only">{item.label}</dt>
                     <dd className="text-xl font-medium tabular-nums tracking-tight">{item.value}</dd>
                     <dd className="mt-1 text-sm leading-snug text-muted-foreground">{item.label}</dd>
-                    <dd className="mt-2 flex flex-wrap gap-x-2 font-mono text-xs text-muted-foreground/80">
+                    <dd className="mt-2 flex flex-wrap gap-x-2 text-xs text-muted-foreground">
                       {item.receipts.map((r) => (
                         <a
                           key={r.href}
@@ -236,13 +238,7 @@ export default async function Page() {
             </BlurFade>
 
             <BlurFade delay={BLUR_FADE_DELAY * 4}>
-              <a
-                href="mailto:hi@prasen.dev"
-                className="inline-flex items-center gap-2 rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background transition-[transform,background-color] duration-150 ease-out hover:bg-foreground/85 active:scale-[0.97]"
-              >
-                <Mail className="size-4" />
-                Email me
-              </a>
+              <EmailButton />
             </BlurFade>
 
             {/* Social links + Now Playing */}
@@ -358,8 +354,17 @@ export default async function Page() {
         <section id="projects">
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade delay={BLUR_FADE_DELAY * 11}>
-              <SectionLabel label="Portfolio" />
-              <h2 className="mt-1.5 text-xl font-bold tracking-tight">Featured Projects</h2>
+              <div className="flex items-end justify-between gap-4">
+                <div>
+                  <SectionLabel label="Portfolio" />
+                  <h2 className="mt-1.5 text-xl font-bold tracking-tight">Selected Work</h2>
+                </div>
+                <Link href="/projects" className="shrink-0">
+                  <ShinyButton className="px-3 py-1.5 font-semibold transition-all duration-300 hover:shadow-lg active:scale-[0.98] [&>span]:text-xs">
+                    View All Projects →
+                  </ShinyButton>
+                </Link>
+              </div>
             </BlurFade>
             <BlurFade delay={BLUR_FADE_DELAY * 11.5}>
               <div className="grid gap-4 sm:grid-cols-2">
@@ -380,16 +385,6 @@ export default async function Page() {
                     </div>
                   ))}
               </div>
-              <Link
-                href="/projects"
-                className="mt-4 block"
-              >
-                <ShinyButton
-                  className="w-full sm:w-auto group transition-all duration-300 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] font-semibold"
-                >
-                  View All Projects →
-                </ShinyButton>
-              </Link>
             </BlurFade>
           </div>
         </section>
@@ -426,11 +421,26 @@ export default async function Page() {
                     key={edu.school}
                     className="grid gap-x-8 text-sm sm:grid-cols-[9rem_1fr]"
                   >
-                    <span className="font-mono text-xs leading-5 text-muted-foreground">
+                    <span className="whitespace-nowrap text-[13px] leading-5 tabular-nums text-muted-foreground">
                       {edu.start} - {edu.end}
                     </span>
                     <span className="text-muted-foreground">
-                      <span className="text-foreground/80">{edu.degree}</span>, {edu.school}
+                      <span className="text-foreground/80">{edu.degree}</span>,{" "}
+                      <a
+                        href={edu.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 align-bottom underline decoration-border underline-offset-4 transition-colors hover:text-foreground hover:decoration-foreground/40"
+                      >
+                        <Image
+                          src={edu.logoUrl}
+                          alt=""
+                          width={16}
+                          height={16}
+                          className="size-4 shrink-0 rounded-full bg-white object-contain"
+                        />
+                        {edu.school}
+                      </a>
                     </span>
                   </li>
                 ))}
@@ -464,7 +474,7 @@ export default async function Page() {
                 </Row>
               </div>
               <div className="mt-6">
-                <p className="mb-3 font-mono text-xs text-muted-foreground">GitHub contributions</p>
+                <p className="mb-3 text-sm text-muted-foreground">GitHub contributions</p>
                 <GithubContributionsPlain />
               </div>
             </BlurFade>
@@ -500,7 +510,7 @@ export default async function Page() {
                     >
                       <time
                         dateTime={post.metadata.publishedAt}
-                        className="font-mono text-xs leading-6 text-muted-foreground"
+                        className="whitespace-nowrap text-[13px] leading-6 tabular-nums text-muted-foreground"
                       >
                         {formatDate(post.metadata.publishedAt)}
                       </time>

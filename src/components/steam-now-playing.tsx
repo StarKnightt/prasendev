@@ -115,10 +115,10 @@ export function SteamNowPlaying() {
       href={data.profileUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className={`group relative flex w-full overflow-hidden rounded-xl border bg-card/30 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg ${
+      className={`group relative flex w-full overflow-hidden rounded-xl border bg-card shadow-sm transition-all dark:bg-card/30 dark:shadow-none duration-300 hover:-translate-y-0.5 hover:shadow-lg ${
         isPlaying
           ? "border-emerald-500/30 hover:border-emerald-500/50 hover:shadow-emerald-500/5"
-          : "border-border/60 hover:border-border"
+          : "border-border hover:border-foreground/20 dark:border-border/60 dark:hover:border-border"
       }`}
     >
       {/* Game art with hover zoom + shimmer */}
@@ -166,7 +166,7 @@ export function SteamNowPlaying() {
               {gameName}
             </p>
             {!isPlaying && (
-              <p className="text-[10px] text-muted-foreground/50">(last played)</p>
+              <p className="text-[10px] text-muted-foreground dark:text-muted-foreground/50">(last played)</p>
             )}
           </div>
 
@@ -190,7 +190,7 @@ export function SteamNowPlaying() {
         </div>
 
         {/* Steam icon */}
-        <Icons.steam className="size-5 text-muted-foreground/20 shrink-0 group-hover:text-muted-foreground/40 transition-colors" />
+        <Icons.steam className="size-5 text-muted-foreground/40 shrink-0 group-hover:text-muted-foreground/60 dark:text-muted-foreground/20 dark:group-hover:text-muted-foreground/40 transition-colors" />
       </div>
     </a>
   );

@@ -31,7 +31,7 @@ export function ExperienceItem({
 
   return (
     <li className="grid gap-x-8 gap-y-1 py-5 sm:grid-cols-[9rem_1fr]">
-      <span className="pt-0.5 font-mono text-xs text-muted-foreground">{period}</span>
+      <span className="whitespace-nowrap pt-0.5 text-[13px] tabular-nums text-muted-foreground">{period}</span>
       <div className="min-w-0">
         <button
           type="button"
@@ -46,7 +46,7 @@ export function ExperienceItem({
               {badges?.map((badge) => (
                 <span
                   key={badge}
-                  className="rounded-full border border-border px-1.5 py-px font-mono text-[10px] font-normal text-muted-foreground"
+                  className="rounded-full border border-border px-1.5 py-px text-[11px] font-normal text-muted-foreground"
                 >
                   {badge}
                 </span>

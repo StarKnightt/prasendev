@@ -44,7 +44,7 @@ function CompactSponsors({ sponsors, loading }: { sponsors: Sponsor[]; loading: 
         href={SPONSOR_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-1.5 underline-offset-4 transition-colors hover:text-foreground hover:underline"
+        className="inline-flex items-center gap-1.5 font-semibold underline-offset-4 transition-colors hover:text-foreground hover:underline"
       >
         <Heart className="size-3.5" />
         {!loading && sponsors.length > 0
