@@ -105,7 +105,7 @@ export function ProjectCard({
               loop
               muted
               playsInline
-              preload="metadata"
+              preload="none"
               className="pointer-events-none mx-auto h-44 w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
             />
             <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
