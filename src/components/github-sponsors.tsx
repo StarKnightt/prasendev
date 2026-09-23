@@ -17,7 +17,45 @@ interface Sponsor {
   isOneTime: boolean;
 }
 
-export function GitHubSponsors() {
+const SPONSOR_URL = "https://github.com/sponsors/StarKnightt";
+
+function CompactSponsors({ sponsors, loading }: { sponsors: Sponsor[]; loading: boolean }) {
+  return (
+    <div className="flex items-center gap-3 text-sm text-muted-foreground">
+      {!loading && sponsors.length > 0 && (
+        <div className="flex -space-x-1.5">
+          {sponsors.slice(0, 5).map((sponsor) => (
+            <a
+              key={sponsor.login}
+              href={sponsor.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={sponsor.name || sponsor.login}
+            >
+              <Avatar className="size-6 border-2 border-background">
+                <AvatarImage src={sponsor.avatarUrl} alt={sponsor.name || sponsor.login} />
+                <AvatarFallback className="text-[10px]">{sponsor.login[0].toUpperCase()}</AvatarFallback>
+              </Avatar>
+            </a>
+          ))}
+        </div>
+      )}
+      <a
+        href={SPONSOR_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-1.5 underline-offset-4 transition-colors hover:text-foreground hover:underline"
+      >
+        <Heart className="size-3.5" />
+        {!loading && sponsors.length > 0
+          ? `${sponsors.length} ${sponsors.length === 1 ? "sponsor" : "sponsors"} on GitHub`
+          : "Sponsor on GitHub"}
+      </a>
+    </div>
+  );
+}
+
+export function GitHubSponsors({ variant = "card" }: { variant?: "card" | "compact" }) {
   const [sponsors, setSponsors] = useState<Sponsor[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -40,6 +78,10 @@ export function GitHubSponsors() {
 
     fetchSponsors();
   }, []);
+
+  if (variant === "compact") {
+    return <CompactSponsors sponsors={sponsors} loading={loading} />;
+  }
 
   if (loading) {
     return (

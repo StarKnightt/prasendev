@@ -1,22 +1,21 @@
 import { DATA } from "@/data/resume";
+import { getBlogPosts } from "@/data/blog";
 import Link from "next/link";
+import { ArrowRight, Mail } from "lucide-react";
 import Markdown, { type Components } from "react-markdown";
 import { remarkMarks } from "@/lib/remark-marks";
 import { Highlight, type HighlightType } from "@/components/highlight";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { ProjectCard } from "@/components/project-card";
-import { ResumeCard } from "@/components/resume-card";
+import { ExperienceItem } from "@/components/experience-item";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { PersonSchema } from "@/components/schema/person-schema";
 import { Metadata } from 'next';
-import { Icons } from "@/components/icons";
 import ShinyButton from "@/components/ui/shiny-button";
 import { GitHubSponsors } from "@/components/github-sponsors";
 import { AgeCounter } from "@/components/age-counter";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FlipAvatar } from "@/components/flip-avatar";
 import { GitHubHoverCard } from "@/components/github-hover-card";
 import { SteamHoverCard } from "@/components/steam-hover-card";
@@ -30,7 +29,7 @@ import { DiscordHoverCard } from "@/components/discord-hover-card";
 import { SteamNowPlaying } from "@/components/steam-now-playing";
 import { BirthdayFireworks } from "@/components/birthday-fireworks";
 import { BirthdayHat } from "@/components/birthday-hat";
-import { VisitorCounter, GithubContributions } from "@/components/lazy-client";
+import { VisitorCounter, GithubContributionsPlain } from "@/components/lazy-client";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -42,6 +41,64 @@ const SOCIAL_HOVER_COLORS: Record<string, string> = {
   Steam: "hover:text-[#00adee]",
   Discord: "hover:text-[#5865f2]",
 };
+
+const PROOF: {
+  value: string;
+  label: string;
+  receipts: { label: string; href: string }[];
+}[] = [
+  {
+    value: "22.4K+",
+    label: "followers on X",
+    receipts: [{ label: "@prasenx", href: DATA.contact.social.X.url }],
+  },
+  {
+    value: "2x",
+    label: "featured by the official Claude account",
+    receipts: [
+      { label: "Night Street", href: "https://x.com/claudeai/status/2090557648567505222" },
+      { label: "Sedona Sunset", href: "https://x.com/claudeai/status/2101017905462722619" },
+    ],
+  },
+  {
+    value: "PR #3",
+    label: "merged from the Xbox CTO",
+    receipts: [
+      { label: "Jungle Trail", href: "https://github.com/StarKnightt/jungle-trail/pull/3" },
+    ],
+  },
+  {
+    value: "23",
+    label: "paid placements on Outbuilt",
+    receipts: [{ label: "outbuilt.lol", href: "https://outbuilt.lol" }],
+  },
+];
+
+function shortMonth(period: string) {
+  return period.replace(
+    /\b(January|February|March|April|May|June|July|August|September|October|November|December)\b/g,
+    (m) => m.slice(0, 3)
+  );
+}
+
+function formatDate(iso: string) {
+  return new Date(iso).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+}
+
+function Row({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div className="grid gap-x-8 gap-y-2 py-5 sm:grid-cols-[9rem_1fr]">
+      <span className="pt-0.5 font-mono text-xs text-muted-foreground">{label}</span>
+      <div className="min-w-0">{children}</div>
+    </div>
+  );
+}
+
 // Plain-text description. DATA.summary is markdown and leaks syntax into meta tags
 const HOME_DESCRIPTION =
   "Freelance full stack developer from Bhubaneswar, India. I build with Next.js, TypeScript and React: Outbuilt, Jungle Trail, Night Street and more. Open to DevRel work.";
@@ -93,7 +150,14 @@ function SectionLabel({ label }: { label: string }) {
   );
 }
 
-export default function Page() {
+export default async function Page() {
+  const posts = (await getBlogPosts())
+    .sort(
+      (a, b) =>
+        new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime()
+    )
+    .slice(0, 3);
+
   return (
     <>
       <BirthdayFireworks />
@@ -147,26 +211,38 @@ export default function Page() {
 
             {/* Proof points */}
             <BlurFade delay={BLUR_FADE_DELAY * 3.5}>
-              <ul className="flex flex-wrap items-baseline gap-x-3 gap-y-1 text-sm text-muted-foreground">
-                {DATA.stats.map((stat, i) => (
-                  <li key={stat.label} className="flex items-baseline gap-x-3">
-                    <a
-                      href={stat.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="whitespace-nowrap hover:underline"
-                    >
-                      <span className="font-medium tabular-nums text-foreground">{stat.value}</span>{" "}
-                      {stat.label}
-                    </a>
-                    {i < DATA.stats.length - 1 && (
-                      <span aria-hidden className="hidden text-muted-foreground/40 sm:inline">
-                        ·
-                      </span>
-                    )}
-                  </li>
+              <dl className="grid grid-cols-2 gap-x-6 gap-y-6 border-t border-border pt-6 sm:grid-cols-4">
+                {PROOF.map((item) => (
+                  <div key={item.label} className="flex flex-col">
+                    <dt className="sr-only">{item.label}</dt>
+                    <dd className="text-xl font-medium tabular-nums tracking-tight">{item.value}</dd>
+                    <dd className="mt-1 text-sm leading-snug text-muted-foreground">{item.label}</dd>
+                    <dd className="mt-2 flex flex-wrap gap-x-2 font-mono text-xs text-muted-foreground/80">
+                      {item.receipts.map((r) => (
+                        <a
+                          key={r.href}
+                          href={r.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline decoration-border underline-offset-4 transition-colors hover:text-foreground hover:decoration-foreground/40"
+                        >
+                          {r.label}
+                        </a>
+                      ))}
+                    </dd>
+                  </div>
                 ))}
-              </ul>
+              </dl>
+            </BlurFade>
+
+            <BlurFade delay={BLUR_FADE_DELAY * 4}>
+              <a
+                href="mailto:hi@prasen.dev"
+                className="inline-flex items-center gap-2 rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background transition-[transform,background-color] duration-150 ease-out hover:bg-foreground/85 active:scale-[0.97]"
+              >
+                <Mail className="size-4" />
+                Email me
+              </a>
             </BlurFade>
 
             {/* Social links + Now Playing */}
@@ -278,43 +354,6 @@ export default function Page() {
         </section>
 
 
-        {/* ─── GITHUB ─── */}
-        <section id="contributions">
-          <BlurFade delay={BLUR_FADE_DELAY * 9}>
-            <SectionLabel label="Open Source" />
-            <h2 className="mt-1.5 text-xl font-bold tracking-tight">GitHub Contributions</h2>
-            <div className="mt-3">
-              <GithubContributions />
-            </div>
-          </BlurFade>
-        </section>
-
-
-        {/* ─── SKILLS ─── */}
-        <section id="skills">
-          <div className="flex min-h-0 flex-col gap-y-3">
-            <BlurFade delay={BLUR_FADE_DELAY * 10}>
-              <SectionLabel label="Technologies" />
-              <h2 className="mt-1.5 text-xl font-bold tracking-tight">Tech Stack</h2>
-            </BlurFade>
-            <BlurFade delay={BLUR_FADE_DELAY * 10.5}>
-              <div className="flex flex-wrap gap-2">
-                {DATA.skills.map((skill) => (
-                  <Badge key={skill.name} variant="secondary" className="inline-flex items-center gap-1.5 border border-border/50 px-3 py-1.5 text-sm">
-                    {"customIcon" in skill ? (
-                      <skill.customIcon className="size-4" />
-                    ) : (
-                      <FontAwesomeIcon icon={skill.icon} className="size-4" />
-                    )}
-                    {skill.name}
-                  </Badge>
-                ))}
-              </div>
-            </BlurFade>
-          </div>
-        </section>
-
-
         {/* ─── PROJECTS ─── */}
         <section id="projects">
           <div className="flex min-h-0 flex-col gap-y-3">
@@ -361,72 +400,119 @@ export default function Page() {
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade delay={BLUR_FADE_DELAY * 12}>
               <SectionLabel label="Career" />
-              <h2 className="mt-1.5 text-xl font-bold tracking-tight">Work Experience</h2>
+              <h2 className="mt-1.5 text-xl font-bold tracking-tight">Experience</h2>
             </BlurFade>
-            <div className="space-y-3">
-              {DATA.work.map((work, id) => (
-                <BlurFade
-                  key={work.company}
-                  delay={BLUR_FADE_DELAY * 12.5 + id * 0.05}
-                >
-                  <ResumeCard
+            <BlurFade delay={BLUR_FADE_DELAY * 12.5}>
+              <ol className="divide-y divide-border border-y border-border">
+                {DATA.work.map((work) => (
+                  <ExperienceItem
                     key={work.company}
-                    logoUrl={work.logoUrl}
-                    altText={work.company}
-                    title={work.company}
-                    subtitle={work.title}
+                    company={work.company}
+                    title={work.title}
+                    period={shortMonth(`${work.start} - ${work.end}`)}
                     impact={work.impact}
-                    href={work.href}
-                    badges={work.badges}
-                    period={`${work.start} - ${work.end}`}
                     description={work.description}
+                    badges={work.badges}
                     links={"links" in work ? work.links : undefined}
-                    redacted={(work as any).redacted}
+                    redacted={"redacted" in work ? work.redacted : undefined}
                   />
-                </BlurFade>
-              ))}
-            </div>
-          </div>
-        </section>
-
-
-        {/* ─── EDUCATION ─── */}
-        <section id="education">
-          <div className="flex min-h-0 flex-col gap-y-3">
-            <BlurFade delay={BLUR_FADE_DELAY * 13}>
-              <SectionLabel label="Academic" />
-              <h2 className="mt-1.5 text-xl font-bold tracking-tight">Education</h2>
+                ))}
+              </ol>
             </BlurFade>
-            {DATA.education.map((education, id) => (
-              <BlurFade
-                key={education.school}
-                delay={BLUR_FADE_DELAY * 13.5 + id * 0.05}
-              >
-                <ResumeCard
-                  key={education.school}
-                  href={education.href}
-                  logoUrl={education.logoUrl}
-                  altText={education.school}
-                  title={education.school}
-                  subtitle={education.degree}
-                  period={`${education.start} - ${education.end}`}
-                />
-              </BlurFade>
-            ))}
+            <BlurFade delay={BLUR_FADE_DELAY * 13}>
+              <ul className="mt-3 space-y-2">
+                {DATA.education.map((edu) => (
+                  <li
+                    key={edu.school}
+                    className="grid gap-x-8 text-sm sm:grid-cols-[9rem_1fr]"
+                  >
+                    <span className="font-mono text-xs leading-5 text-muted-foreground">
+                      {edu.start} - {edu.end}
+                    </span>
+                    <span className="text-muted-foreground">
+                      <span className="text-foreground/80">{edu.degree}</span>, {edu.school}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </BlurFade>
           </div>
         </section>
 
 
-        {/* ─── NOW PLAYING ─── */}
-        <BlurFade delay={BLUR_FADE_DELAY * 13.5}>
-          <SteamNowPlaying />
-        </BlurFade>
+        {/* ─── ELSEWHERE ─── */}
+        <section id="elsewhere">
+          <div className="flex min-h-0 flex-col gap-y-3">
+            <BlurFade delay={BLUR_FADE_DELAY * 14}>
+              <SectionLabel label="More" />
+              <h2 className="mt-1.5 text-xl font-bold tracking-tight">Elsewhere</h2>
+            </BlurFade>
+            <BlurFade delay={BLUR_FADE_DELAY * 14.5}>
+              <div className="divide-y divide-border border-y border-border">
+                <Row label="Stack">
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    {DATA.skills.map((s) => s.name).join(", ")}
+                  </p>
+                </Row>
+                <Row label="Now playing">
+                  <div className="max-w-sm">
+                    <SteamNowPlaying />
+                  </div>
+                </Row>
+                <Row label="Support">
+                  <GitHubSponsors variant="compact" />
+                </Row>
+              </div>
+              <div className="mt-6">
+                <p className="mb-3 font-mono text-xs text-muted-foreground">GitHub contributions</p>
+                <GithubContributionsPlain />
+              </div>
+            </BlurFade>
+          </div>
+        </section>
 
-        {/* ─── SPONSORS ─── */}
-        <section id="sponsors">
-          <BlurFade delay={BLUR_FADE_DELAY * 15}>
-            <GitHubSponsors />
-          </BlurFade>
+
+        {/* ─── WRITING ─── */}
+        <section id="writing">
+          <div className="flex min-h-0 flex-col gap-y-3">
+            <BlurFade delay={BLUR_FADE_DELAY * 15}>
+              <div className="flex items-end justify-between gap-4">
+                <div>
+                  <SectionLabel label="Blog" />
+                  <h2 className="mt-1.5 text-xl font-bold tracking-tight">Writing</h2>
+                </div>
+                <Link
+                  href="/blog"
+                  className="group inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  All posts
+                  <ArrowRight className="size-3.5 transition-transform duration-150 ease-out group-hover:translate-x-0.5" />
+                </Link>
+              </div>
+            </BlurFade>
+            <BlurFade delay={BLUR_FADE_DELAY * 15.5}>
+              <ul className="-mx-3">
+                {posts.map((post) => (
+                  <li key={post.slug}>
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      className="group grid gap-x-8 gap-y-0.5 rounded-lg px-3 py-3 transition-colors duration-150 hover:bg-muted/60 sm:grid-cols-[9rem_1fr]"
+                    >
+                      <time
+                        dateTime={post.metadata.publishedAt}
+                        className="font-mono text-xs leading-6 text-muted-foreground"
+                      >
+                        {formatDate(post.metadata.publishedAt)}
+                      </time>
+                      <span className="text-[15px] leading-6 underline-offset-4 group-hover:underline">
+                        {post.metadata.title}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </BlurFade>
+          </div>
         </section>
 
 

@@ -6,13 +6,37 @@ import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
 import { BorderBeam } from "@/components/magicui/border-beam";
 
-export function GithubContributions() {
+const CALENDAR_THEME = {
+  dark: ['#161b22', '#3a3f47', '#6b7280', '#b0b8c4', '#e5e7eb'],
+  light: ['#ebedf0', '#9ca3af', '#6b7280', '#4b5563', '#374151'],
+};
+
+export function GithubContributions({ plain = false }: { plain?: boolean }) {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
     setMounted(true);
   }, []);
+
+  if (plain) {
+    return (
+      <div className="min-h-[150px] overflow-x-auto text-muted-foreground">
+        {mounted ? (
+          <GitHubCalendar
+            username="StarKnightt"
+            colorScheme={resolvedTheme as "light" | "dark"}
+            fontSize={11}
+            blockSize={11}
+            blockMargin={4}
+            theme={CALENDAR_THEME}
+          />
+        ) : (
+          <div className="h-[150px] w-full rounded-lg bg-muted/50" />
+        )}
+      </div>
+    );
+  }
 
   // Fixed container height to prevent layout shift
   const containerHeight = "min-h-[200px]";
@@ -46,10 +70,7 @@ export function GithubContributions() {
               fontSize={12}
               blockSize={12}
               blockMargin={4}
-              theme={{
-                dark: ['#161b22', '#3a3f47', '#6b7280', '#b0b8c4', '#e5e7eb'],
-                light: ['#ebedf0', '#9ca3af', '#6b7280', '#4b5563', '#374151'],
-              }}
+              theme={CALENDAR_THEME}
             />
           </div>
         )}

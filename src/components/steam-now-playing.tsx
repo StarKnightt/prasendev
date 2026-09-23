@@ -118,9 +118,7 @@ export function SteamNowPlaying() {
       className={`group relative flex w-full overflow-hidden rounded-xl border bg-card/30 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg ${
         isPlaying
           ? "border-emerald-500/30 hover:border-emerald-500/50 hover:shadow-emerald-500/5"
-          : data.personastate >= 1
-            ? "border-border/40 hover:border-border/60"
-            : "border-red-500/30 hover:border-red-500/50 hover:shadow-red-500/5"
+          : "border-border/60 hover:border-border"
       }`}
     >
       {/* Game art with hover zoom + shimmer */}
