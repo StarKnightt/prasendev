@@ -397,7 +397,8 @@ export default async function Page() {
                     company={work.company}
                     title={work.title}
                     period={shortMonth(`${work.start} - ${work.end}`)}
-                    logoUrl={work.logoUrl}
+                    logoUrl={"logoUrl" in work ? work.logoUrl : undefined}
+                    logoIcon={"logoIcon" in work ? work.logoIcon : undefined}
                     impact={work.impact}
                     description={work.description}
                     badges={work.badges}

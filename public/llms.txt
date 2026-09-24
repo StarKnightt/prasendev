@@ -6,6 +6,8 @@
 
 Prasenjit Nayak is a Full Stack Developer from Odisha, India, specializing in React, Next.js, TypeScript, and Node.js. He builds modern web applications, contributes to open source, and writes about web development.
 
+Since June 2025 he has run Grind n Shine, a 500+ member WhatsApp community for developers, community builders and recruiters. Invites on request via hi@prasen.dev.
+
 ## Pages
 
 - [Home](https://www.prasen.dev): Portfolio homepage with projects, skills, work experience, and social links.
