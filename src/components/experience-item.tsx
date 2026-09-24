@@ -2,7 +2,7 @@
 
 import { useId, useState, type ReactNode } from "react";
 import Image from "next/image";
-import { Building2, Plus } from "lucide-react";
+import { Building2, Plus, Users } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Receipt } from "@/components/receipt";
 
@@ -11,6 +11,7 @@ interface Props {
   title: string;
   period: string;
   logoUrl?: string;
+  logoIcon?: "users";
   impact?: string;
   description?: string;
   badges?: readonly string[];
@@ -23,6 +24,7 @@ export function ExperienceItem({
   title,
   period,
   logoUrl,
+  logoIcon,
   impact,
   description,
   badges,
@@ -46,12 +48,16 @@ export function ExperienceItem({
           <span className="min-w-0">
             <span className="flex flex-wrap items-center gap-x-2 text-[15px] font-medium">
               <span className="inline-flex items-center gap-1.5">
-                {redacted ? (
+                {redacted || logoIcon ? (
                   <span
                     aria-hidden
                     className="flex size-4 shrink-0 items-center justify-center rounded-full bg-muted text-muted-foreground"
                   >
-                    <Building2 className="size-2.5" strokeWidth={2} />
+                    {logoIcon === "users" ? (
+                      <Users className="size-2.5" strokeWidth={2} />
+                    ) : (
+                      <Building2 className="size-2.5" strokeWidth={2} />
+                    )}
                   </span>
                 ) : (
                   logoUrl && (

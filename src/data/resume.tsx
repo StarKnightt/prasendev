@@ -36,7 +36,7 @@ export const DATA = {
   description:
     "",
   summary:
-    "**[[highlight:Full Stack Developer]]** who builds in public, mostly with Next.js, TypeScript and React. Currently freelancing and open to [**[[underline:DevRel work]]**](mailto:hi@prasen.dev). Always up for collaborating on exciting projects.",
+    "**[[highlight:Full Stack Developer]]** who builds in public and runs a 500+ member developer community, mostly shipping with Next.js, TypeScript and React. Currently freelancing and open to [**[[underline:DevRel work]]**](mailto:hi@prasen.dev). Always up for collaborating on exciting projects.",
 
   avatarUrl: "/prasen.webp",
   // refresh periodically
@@ -240,6 +240,26 @@ export const DATA = {
       description:
         "Built in React and Next.js, covering design handoff, responsive builds, performance and SEO, and production deploys. Client names under NDA.",
       redacted: true,
+    },
+    {
+      company: "Grind n Shine",
+      href: "#",
+      badges: [],
+      location: "Remote",
+      title: "Community Lead",
+      logoIcon: "users",
+      start: "June 2025",
+      end: "Present",
+      impact: "Started and run a 500+ member community of developers, builders and recruiters",
+      description:
+        "A WhatsApp community I started in June 2025 for developers, community builders and recruiters to share work, jobs and help each other. I run it with two co-admins and keep it spam free.",
+      links: [
+        {
+          type: "Request an invite",
+          href: "mailto:hi@prasen.dev?subject=Grind%20n%20Shine%20invite&body=Hi%20Prasenjit%2C%20I%27d%20like%20to%20join%20Grind%20n%20Shine.%20A%20bit%20about%20me%3A%20",
+          icon: <Icons.email className="size-3" />,
+        },
+      ],
     },
     {
       company: "Freelance",
