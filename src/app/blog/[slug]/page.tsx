@@ -109,17 +109,14 @@ export default async function Blog(
       <div className="flex justify-between items-center mt-2 mb-8 text-sm max-w-[650px]">
         <Suspense fallback={<p className="h-5" />}>
           <p className="text-sm text-neutral-600 dark:text-neutral-400">
-            {formatDate(post.metadata.publishedAt)}
+            <time dateTime={post.metadata.publishedAt}>
+              {formatDate(post.metadata.publishedAt)}
+            </time>
             {post.metadata.updatedAt && (
               <>
                 {" "}&middot;{" "}
                 <time dateTime={post.metadata.updatedAt}>
-                  Updated{" "}
-                  {new Date(`${post.metadata.updatedAt}T00:00:00`).toLocaleDateString("en-US", {
-                    month: "short",
-                    day: "numeric",
-                    year: "numeric",
-                  })}
+                  Updated {formatDate(post.metadata.updatedAt)}
                 </time>
               </>
             )}{" "}

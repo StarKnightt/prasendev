@@ -19,8 +19,8 @@ export function BlogCard({ post }: { post: BlogPost }) {
           {post.title}
         </h2>
         <p className="line-clamp-2 text-sm text-muted-foreground">{post.summary}</p>
-        <time className="text-xs text-muted-foreground">
-          {post.publishedAt.split('T')[0]}
+        <time dateTime={post.publishedAt} className="text-xs text-muted-foreground">
+          {formatDate(post.publishedAt)}
         </time>
       </article>
     </Link>

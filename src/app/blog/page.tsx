@@ -3,6 +3,7 @@ import { getBlogPosts } from "@/data/blog";
 import Link from "next/link";
 import { DATA } from "@/data/resume";
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
+import { formatDate } from "@/lib/utils";
 
 export const metadata = {
   title: "Blog",
@@ -44,7 +45,10 @@ export default async function BlogPage() {
                 <div className="w-full flex flex-col">
                   <p className="tracking-tight">{post.metadata.title}</p>
                   <p className="h-6 text-xs text-muted-foreground">
-                    {post.metadata.publishedAt} &middot; {post.metadata.readingTime}
+                    <time dateTime={post.metadata.publishedAt}>
+                      {formatDate(post.metadata.publishedAt)}
+                    </time>{" "}
+                    &middot; {post.metadata.readingTime}
                   </p>
                 </div>
               </Link>
