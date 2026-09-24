@@ -35,6 +35,7 @@ const highlighterPromise = createHighlighterCore({
 type Metadata = {
   title: string;
   publishedAt: string;
+  updatedAt?: string;
   summary: string;
   image?: string;
   tags?: string[];

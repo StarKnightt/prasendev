@@ -27,6 +27,7 @@ export async function generateMetadata(
   let {
     title,
     publishedAt: publishedTime,
+    updatedAt: modifiedTime,
     summary: description,
     image,
   } = post.metadata;
@@ -43,6 +44,7 @@ export async function generateMetadata(
       description,
       type: "article",
       publishedTime,
+      ...(modifiedTime && { modifiedTime }),
       url: `${DATA.url}/blog/${post.slug}`,
       images: [
         {
@@ -88,7 +90,7 @@ export default async function Blog(
             "@type": "BlogPosting",
             headline: post.metadata.title,
             datePublished: post.metadata.publishedAt,
-            dateModified: post.metadata.publishedAt,
+            dateModified: post.metadata.updatedAt ?? post.metadata.publishedAt,
             description: post.metadata.summary,
             image: post.metadata.image
               ? `${DATA.url}${post.metadata.image}`
@@ -107,7 +109,21 @@ export default async function Blog(
       <div className="flex justify-between items-center mt-2 mb-8 text-sm max-w-[650px]">
         <Suspense fallback={<p className="h-5" />}>
           <p className="text-sm text-neutral-600 dark:text-neutral-400">
-            {formatDate(post.metadata.publishedAt)} &middot; {post.metadata.readingTime}
+            {formatDate(post.metadata.publishedAt)}
+            {post.metadata.updatedAt && (
+              <>
+                {" "}&middot;{" "}
+                <time dateTime={post.metadata.updatedAt}>
+                  Updated{" "}
+                  {new Date(`${post.metadata.updatedAt}T00:00:00`).toLocaleDateString("en-US", {
+                    month: "short",
+                    day: "numeric",
+                    year: "numeric",
+                  })}
+                </time>
+              </>
+            )}{" "}
+            &middot; {post.metadata.readingTime}
           </p>
         </Suspense>
       </div>

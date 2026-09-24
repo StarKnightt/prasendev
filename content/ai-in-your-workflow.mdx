@@ -1,7 +1,8 @@
 ---
 title: "How I Actually Use AI As a Developer (No BS Guide)"
 publishedAt: "2026-01-08"
-summary: "Not the 'AI will replace developers' take. Just the real ways I use AI tools every day to ship faster."
+updatedAt: "2026-09-24"
+summary: "Not the 'AI will replace developers' take. The real ways I use AI every day, the prompts that work, where it fails, and what the research says."
 image: "/blog/ai-workflow-cover.png"
 tags: ["ai", "developer", "productivity", "cursor"]
 ---
@@ -10,102 +11,167 @@ tags: ["ai", "developer", "productivity", "cursor"]
 
 Every other day there's a new tweet saying "AI will replace developers" or "if you're not using AI you're already dead" and honestly? Both takes are trash.
 
-Here's what's actually happening: AI is a tool. A really good tool. But it's not magic and it's not replacing anyone who actually knows what they're doing.
+AI is a tool. A really good tool. But it's not magic, and it doesn't replace knowing what you're doing.
 
-Let me show you how I actually use it. No hype, no fear.
+This post is how I actually use it: my setup, the tasks where it saves me real time, a before and after prompt you can steal, where it falls apart, and what the one serious study on this found (spoiler: it should make all of us a bit humble).
 
 ## My Daily Setup
 
-I use Cursor as my code editor. It's VS Code but with AI baked in. I also use Claude directly for longer conversations and planning.
+I use Cursor as my code editor. It's VS Code with AI built in, and most of my work now goes through its agent: I describe a task, it reads the relevant files, makes the change, runs things, and I review. I also use Claude directly for longer conversations, planning and thinking out loud.
 
 That's it. I don't have 17 AI subscriptions. Two tools, used well.
 
+What changed since I first wrote this is less about the tools and more about the setup around them. A rules file with my project conventions, a browser the agent can check its work in, tests it can run. I wrote a whole post on why that matters: [your AI isn't dumb, your harness is](/blog/ai-harness).
+
 ## What AI Is Great At (and Bad At)
 
-![AI Strengths vs Danger Zones](/blog/ai-strengths-weaknesses.png)
+![AI Strengths vs Danger Zones](/blog/ai-strengths-weaknesses.webp)
 
 ### 1. Boilerplate Code
 
-This is the most obvious one. Setting up a new component, writing types, creating API routes. Stuff that's repetitive and you've done a hundred times.
+The most obvious one. Setting up a new component, writing types, creating API routes. Stuff you've done a hundred times.
 
-I don't write boilerplate anymore. I describe what I need and the AI generates it. Then I review it, tweak it, and move on.
-
-Time saved: like 40% of my day honestly.
+I don't write boilerplate anymore. I describe what I need, the AI generates it, I review it, tweak it, and move on. On boilerplate-heavy days it feels like it saves me something like 40% of the day.
 
 ### 2. Understanding Unfamiliar Code
 
-Joined a new project? Got assigned a codebase you've never seen? Instead of spending 3 hours reading through files, I paste the code and ask "what does this do and why?"
+Got a codebase you've never seen? Instead of spending three hours clicking through files, I ask "what does this module do, what calls it, and why is it built this way?"
 
-The AI explains it better than most documentation.
+With an agent that can read the whole repo, this got way better. It follows the imports for you. The answer is usually better than the docs, and it's a great first pass before you read the code yourself.
 
 ### 3. Debugging
 
-"Hey, this function returns undefined when the input is an empty array, here's the code" and 90% of the time I get the fix immediately.
+"This function returns undefined when the input is an empty array, here's the code" and most of the time the fix is right there.
 
-The key is giving context. Don't just paste an error message. Paste the code, the error, and what you expected to happen. AI needs the same context a human would need.
+The key is context. Don't paste just an error message. Paste the code, the error, and what you expected to happen. AI needs the same context a human would need. More on that in the next section, because this is where most people go wrong.
 
 ### 4. Writing Tests
 
-Nobody likes writing tests. I said it. AI makes it bearable. I describe what the function should do, and it writes the test cases. Including edge cases I sometimes wouldn't think of.
+Nobody likes writing tests. I said it. AI makes it bearable. I describe what the function should do, and it writes the cases, including edge cases I wouldn't always think of.
+
+One warning: read the assertions. AI loves writing tests that pass by testing nothing, like checking that a function "returns something" instead of returning the right thing.
 
 ### 5. Git Commit Messages and PRs
 
-Small thing but I let AI write my commit messages and PR descriptions now. They come out cleaner and more descriptive than what I'd write at 2am.
+Small thing, but I let AI draft my commit messages and PR descriptions. They come out cleaner than what I'd write at 2am. I still read them, because a wrong PR description is worse than a short one.
+
+## The Prompt That Actually Works
+
+Most "AI is useless" complaints I see come from prompts like this:
+
+```markdown
+fix this
+TypeError: Cannot read properties of undefined (reading 'map')
+```
+
+The AI has no idea what "this" is. It will guess, and the guess will be generic.
+
+Here's the same request with context:
+
+```markdown
+In src/components/OrderList.tsx, the page crashes with:
+TypeError: Cannot read properties of undefined (reading 'map')
+
+It happens on first load, before the fetch in useOrders() finishes.
+orders should be an empty array until data arrives, then the list.
+Don't change the API or the hook's return type.
+Fix it with the smallest change and tell me why it crashed.
+```
+
+Four things changed:
+
+- **Where**: the exact file
+- **When**: first load, before the fetch finishes. That's basically the diagnosis
+- **Expected**: what should happen instead
+- **Limits**: what it's not allowed to touch, and "smallest change"
+
+That last part matters a lot. Without limits, AI tends to "fix" things by rewriting half the component. With limits, you usually get a one-line default value and an explanation you can check.
 
 ## What AI Is Bad At
 
 ### Architecture Decisions
 
-"Should I use a monorepo?" "Should I pick Postgres or MongoDB?" AI will give you an answer but it doesn't know YOUR specific situation. Team size, scale requirements, existing infrastructure. These decisions need human judgment.
+"Should I use a monorepo?" "Postgres or MongoDB?" AI will give you an answer, but it doesn't know YOUR situation: team size, scale, budget, what's already running.
 
 I use AI to explore options and understand trade-offs. But I make the call.
 
 ### Complex Business Logic
 
-If the logic involves understanding your specific business domain deeply, AI struggles. It can implement what you describe, but it can't decide what the business rules should be.
+If the logic depends on deep knowledge of your business, AI struggles. It can implement what you describe, but it can't decide what the rules should be.
 
 ### Security
 
-Never blindly trust AI-generated code for authentication, authorization, or data handling. Always review security-critical code manually. Always.
+Never blindly trust AI-generated code for authentication, authorization, payments, or data handling. Review security-critical code by hand. Always. AI is very good at producing code that looks right and quietly skips a permission check.
 
 ### Replacing Thinking
 
-The worst thing you can do is stop thinking and just accept whatever AI gives you. If you don't understand the code it wrote, you can't debug it when it breaks. And it will break.
+The worst thing you can do is stop thinking and accept whatever comes back. If you don't understand the code, you can't debug it when it breaks. And it will break.
 
 ## My Rules
 
-1. **Always read what AI writes.** Don't just accept and move on. Read it like you'd read a junior dev's PR.
+1. **Always read what AI writes.** Read it like a junior dev's PR.
 
-2. **Small prompts > big prompts.** Don't try to build an entire feature in one shot. Break it into steps.
+2. **Small prompts beat big prompts.** Don't build a whole feature in one shot. Break it into steps you can review.
 
-3. **Give context, get quality.** The more specific you are, the better the output. "Make a button" vs "Make a primary CTA button with loading state, disabled state, and size variants using our existing design tokens."
+3. **Give context, get quality.** "Make a button" vs "Make a primary CTA button with loading, disabled and size variants using our existing design tokens."
 
-4. **Use it for the boring stuff.** Save your brain energy for the hard problems. Let AI handle the repetitive work.
+4. **Use it for the boring stuff.** Save your brain for the hard problems.
 
-5. **Don't fight the tool.** If AI keeps getting something wrong after 3 attempts, just write it yourself. Know when to stop prompting and start coding.
+5. **Don't fight the tool.** If it's still wrong after 3 attempts, write it yourself. Know when to stop prompting and start coding.
 
 Put together, those rules make a loop:
 
 ![How I use AI on a task: describe it with context, AI drafts it, I read it like a junior dev's PR, ship it; if it's wrong add context and retry, and after 3 tries write it myself](/blog/ai-review-loop.webp)
 
-## The Reality
+## The Reality (and What the Research Says)
 
-![The Reality of AI Speed: Hype vs actual compounding gains over time](/blog/ai-speed-reality.png)
+![The Reality of AI Speed: Hype vs actual compounding gains over time](/blog/ai-speed-reality.webp)
 
-AI made me maybe 30-40% faster. Not 10x. Not 100x. But 30-40% faster on a consistent basis, every single day.
+My gut says AI makes me maybe 30 to 40% faster. Not 10x. Not 100x. That's a feeling, not a measurement, and here's why I hold it loosely.
 
-That compounds. Over a month, that's significant. Over a year, that's a massive advantage.
+In 2025, a research group called METR ran a proper randomized study. They took 16 experienced open source developers working on their own big, mature repos, and randomly allowed or banned AI tools on 246 real tasks. The tools were mostly Cursor Pro with Claude 3.5 and 3.7 Sonnet.
 
-But it only works if you already know what you're doing. AI amplifies skill. If you're good, AI makes you great. If you don't understand the fundamentals, AI gives you code you can't maintain.
+The result:
+
+- Before starting, developers **expected** AI to make them 24% faster
+- After finishing, they **believed** it had made them 20% faster
+- Measured, they were actually **19% slower** with AI
+
+![METR's 2025 study: developers expected AI to make them 24% faster and felt 20% faster afterwards, but measured completion times were 19% slower](/blog/ai-perception-gap.webp)
+
+That gap between feeling fast and being fast is the most useful thing I've read about AI coding.
+
+To be fair, it's one setting: experts on codebases they already know deeply, with early-2025 tools. METR ran a follow-up with more developers in late 2025 and saw signs of speedup this time, but they said themselves the results were hard to trust because of how people selected into the study. So nobody has a clean answer yet.
+
+What I take from it:
+
+- **Feeling productive is not the same as being productive.** Waiting for the AI, reviewing, re-prompting and fixing its mistakes all cost time you don't notice.
+- **The gains are biggest where you know the least.** Boilerplate, unfamiliar code, new libraries. On code you know by heart, you might just be faster yourself.
+- **Measure your own work.** Pick a few similar tasks, do some with AI and some without, and time them. It's humbling.
+
+It still compounds when you use it in the right places. But it only works if you already know what you're doing. AI amplifies skill. If you're good, it makes you faster. If you don't understand the fundamentals, it gives you code you can't maintain.
 
 Learn the craft first. Then use AI to accelerate it.
+
+## What I'd Actually Do
+
+If you're starting out with AI in your workflow:
+
+1. Pick one editor with an agent and one chat tool. Stop there
+2. Write a short rules file for your project: stack, conventions, what not to touch
+3. Use AI first for boilerplate, tests and explaining unfamiliar code
+4. Use the "where, when, expected, limits" prompt shape for every bug
+5. Review everything, and hand-review anything touching auth, payments or user data
+6. Every few weeks, time a couple of tasks with and without AI and be honest about the result
 
 ## Resources
 
 - [Cursor](https://cursor.com/) - The AI code editor I use daily
 - [Claude](https://claude.ai/) - For longer conversations and planning
-- [Vercel AI SDK](https://sdk.vercel.ai/) - If you want to build AI features into your own apps
+- [METR: early-2025 AI and experienced developers](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/) - The study from this post
+- [METR: follow-up update (Feb 2026)](https://metr.org/blog/2026-02-24-uplift-update/) - Why the second study is harder to read
+- [AI SDK](https://ai-sdk.dev/) - If you want to build AI features into your own apps
 - [Anthropic Courses](https://github.com/anthropics/courses) - Free courses on prompt engineering
-- [r/cursor](https://reddit.com/r/cursor) - Community tips and workflows
+- [My harness post](/blog/ai-harness) - Why the setup around the model matters more than the model
 
 *- Prasenjit*
