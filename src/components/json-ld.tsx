@@ -29,6 +29,7 @@ export function JsonLd() {
       'https://www.linkedin.com/in/prasenjitnayak/',
       'https://x.com/prasenx',
       'https://youtube.com/@prasendev',
+      'https://medium.com/@prasenx',
       'https://www.instagram.com/prasenn_x/',
       'https://codepen.io/StarKnightt',
       'https://learn.prasen.dev'

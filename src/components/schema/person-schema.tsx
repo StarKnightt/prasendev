@@ -18,6 +18,7 @@ export function PersonSchema() {
             DATA.contact.social.LinkedIn.url,
             DATA.contact.social.X.url,
             DATA.contact.social.Youtube.url,
+            DATA.contact.social.Medium.url,
             DATA.contact.social.CodePen.url,
           ],
           jobTitle: "Full Stack Developer",
