@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import Markdown, { type Components } from "react-markdown";
 import { remarkMarks } from "@/lib/remark-marks";
+import { formatDate } from "@/lib/utils";
 import { Highlight, type HighlightType } from "@/components/highlight";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
@@ -81,15 +82,6 @@ function shortMonth(period: string) {
     /\b(January|February|March|April|May|June|July|August|September|October|November|December)\b/g,
     (m) => m.slice(0, 3)
   );
-}
-
-function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-    timeZone: "UTC",
-  });
 }
 
 function Row({ label, children }: { label: string; children: React.ReactNode }) {
