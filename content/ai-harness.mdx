@@ -1,7 +1,7 @@
 ---
 title: "Your AI Isn't Dumb. Your Harness Is"
 publishedAt: "2026-08-07"
-summary: "Everyone's arguing about which model is smarter. Meanwhile the harness — the loop of tools, context and feedback wrapped around the model — is what decides whether AI ships code or just talks about it."
+summary: "Everyone's arguing about which model is smarter. Meanwhile the harness (the loop of tools, context and feedback wrapped around the model) is what decides whether AI ships code or just talks about it."
 image: "/blog/harness-cover.png"
 tags: ["ai", "agents", "harness", "developer-tools"]
 ---
@@ -16,7 +16,7 @@ The answer is the harness. And once you see it, you can't unsee it.
 
 ## What Even Is a Harness?
 
-The model is an engine. Incredibly powerful, but an engine on a table doesn't take you anywhere. The harness is the car built around it — the steering, the pedals, the fuel lines, the dashboard.
+The model is an engine. Incredibly powerful, but an engine on a table doesn't take you anywhere. The harness is the car built around it: the steering, the pedals, the fuel lines, the dashboard.
 
 In AI terms, the harness is everything wrapped around the model:
 
@@ -40,7 +40,7 @@ Here's the thing nobody tells you. The model doesn't get smarter inside an agent
 
 ![The Loop: Write, Run, Observe, Fix, repeat](/blog/harness-loop.png)
 
-When I built [my jungle game](https://starknightt.github.io/jungle-trail/) (the Three.js one, fully procedural, the one where the CTO of Xbox [randomly sent a PR](https://github.com/StarKnightt/jungle-trail/pull/3) — yes, really, click it), the agent wasn't writing perfect code first try. Not even close. It wrote code, ran it, read the errors, took screenshots of the browser, saw the trees floating in mid-air, and fixed them. Over and over.
+When I built [my jungle game](https://starknightt.github.io/jungle-trail/) (the Three.js one, fully procedural, the one where the CTO of Xbox [randomly sent a PR](https://github.com/StarKnightt/jungle-trail/pull/3), yes, really, click it), the agent wasn't writing perfect code first try. Not even close. It wrote code, ran it, read the errors, took screenshots of the browser, saw the trees floating in mid-air, and fixed them. Over and over.
 
 That game took 3 days. The same project through a copy-paste chat workflow would have taken me weeks, because every one of those feedback cycles would've been me manually alt-tabbing, screenshotting, and re-explaining.
 
@@ -50,7 +50,7 @@ The intelligence was the same. The loop was doing the heavy lifting.
 
 If you've read my older posts, this will click fast:
 
-[MCP](/blog/what-is-mcp) is the hands. It's how the model touches real things — browsers, databases, GitHub.
+[MCP](/blog/what-is-mcp) is the hands. It's how the model touches real things: browsers, databases, GitHub.
 
 [Skills](/blog/claude-skills) are the muscle memory. Reusable instructions that load when relevant.
 
@@ -76,14 +76,14 @@ It compounds. Every improvement makes every future task better, regardless of wh
 
 Model releases are marketing events. Harness improvements are why your AI actually feels smarter this year.
 
-The next big leap in AI coding won't come from a trillion more parameters. It'll come from better loops — agents that verify more, remember better, and waste less context. The engine is already fast. Someone just has to keep building a better car.
+The next big leap in AI coding won't come from a trillion more parameters. It'll come from better loops: agents that verify more, remember better, and waste less context. The engine is already fast. Someone just has to keep building a better car.
 
 ## Resources
 
 - [Building Effective Agents](https://www.anthropic.com/research/building-effective-agents) - Anthropic's essay on agent design, basically harness theory from the source
 - [MCP Official Docs](https://modelcontextprotocol.io/) - The standard for giving models tools
 - [Agent Skills Spec](https://agentskills.io) - The open standard for reusable agent instructions
-- [Cursor Docs](https://docs.cursor.com/) - Rules, MCP setup, and agent config — practical harness building
+- [Cursor Docs](https://docs.cursor.com/) - Rules, MCP setup, and agent config, practical harness building
 - [Jungle Trail](https://github.com/StarKnightt/jungle-trail) - The 3-day procedural game from this post, Xbox CTO's PR included
 - [My MCP post](/blog/what-is-mcp) - If you want the tools layer explained simply
 

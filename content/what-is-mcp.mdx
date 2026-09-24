@@ -2,6 +2,7 @@
 title: "MCP Changed How I Use AI. Here's What It Actually Is"
 publishedAt: "2026-01-14"
 summary: "Model Context Protocol sounds fancy but it's basically giving AI tools superpowers. Here's how I actually use it."
+image: "/blog/mcp-cover.png"
 tags: ["ai", "mcp", "cursor", "developer-tools"]
 ---
 
@@ -55,7 +56,11 @@ In Cursor, you basically:
 3. Add a server (there are tons of pre-built ones)
 4. Done
 
-Most MCP servers are just a JSON config with a command to run. That's it. No Docker containers, no Kubernetes clusters, no 47-step deployment pipeline.
+Most MCP servers are just a JSON config with a command to run. That's it.
+
+Under the hood it looks like this. The app you use runs one MCP client per server, and each server exposes a few tools the model can call:
+
+![What's inside MCP: the AI app runs one MCP client per server, each server exposes tools like navigate, create PR or run a query, and talks to the real thing](/blog/mcp-architecture.webp) No Docker containers, no Kubernetes clusters, no 47-step deployment pipeline.
 
 ## The Part Nobody Talks About
 
