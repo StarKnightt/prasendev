@@ -40,6 +40,7 @@ const BLUR_FADE_DELAY = 0.04;
 const SOCIAL_HOVER_COLORS: Record<string, string> = {
   LinkedIn: "hover:text-[#0a66c2]",
   Youtube: "hover:text-[#ff0000]",
+  Medium: "hover:text-black dark:hover:text-white",
   Instagram: "hover:text-[#e4405f]",
   Steam: "hover:text-[#00adee]",
   Discord: "hover:text-[#5865f2]",

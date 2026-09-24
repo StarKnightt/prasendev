@@ -187,6 +187,12 @@ export const DATA = {
         icon: Icons.youtube,
         navbar: true,
       },
+      Medium: {
+        name: "Medium",
+        url: "https://medium.com/@prasenx",
+        icon: Icons.medium,
+        navbar: true,
+      },
       Instagram: {
         name: "Instagram",
         url: "https://www.instagram.com/prasenn_x/",

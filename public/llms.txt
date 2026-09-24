@@ -47,6 +47,7 @@ Tools: Git, Docker, Cursor, Claude
 - X (Twitter): https://x.com/prasenx
 - LinkedIn: https://www.linkedin.com/in/prasenjitnayak/
 - YouTube: https://youtube.com/@prasendev
+- Medium: https://medium.com/@prasenx
 
 ## RSS
 
