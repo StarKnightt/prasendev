@@ -330,6 +330,232 @@ html {
   overflow-x: hidden;
 }
 
+/* Motion accents (src/components/motion). Driven by [data-inview], set once by IntersectionObserver */
+:root {
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-draw: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.motion-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  opacity: 0;
+}
+
+[data-inview] .motion-draw {
+  animation: motion-draw var(--draw-dur, 600ms) var(--draw-ease, var(--ease-draw)) var(--draw-delay, 0ms) both;
+}
+
+@keyframes motion-draw {
+  0% { stroke-dashoffset: 1; opacity: 0; }
+  1% { opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 1; }
+}
+
+.motion-pop {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+[data-inview] .motion-pop {
+  animation: motion-pop 380ms var(--ease-out-strong) var(--draw-delay, 0ms) both;
+}
+
+@keyframes motion-pop {
+  0% { opacity: 0; transform: scale(0.4); }
+  60% { opacity: 1; transform: scale(1.15); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* Signature: fills any sub-pixel slivers the pen mask missed once the writing is done */
+.signature-settle {
+  opacity: 0;
+}
+
+[data-inview] .signature-settle {
+  animation: signature-settle 240ms ease var(--draw-delay, 0ms) both;
+}
+
+@keyframes signature-settle {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Proof row glyphs: a small replay when the stat is hovered */
+.glyph-claude-in,
+.glyph-claude-spin {
+  transform-box: view-box;
+  transform-origin: 12px 12px;
+}
+
+.glyph-claude-in {
+  opacity: 0;
+}
+
+[data-inview] .glyph-claude-in {
+  animation: claude-in 900ms cubic-bezier(0.34, 1.35, 0.64, 1) var(--draw-delay, 0ms) both;
+}
+
+@keyframes claude-in {
+  0% { opacity: 0; transform: scale(0.6) rotate(-60deg); }
+  35% { opacity: 1; }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+@keyframes claude-spin {
+  to { transform: rotate(360deg); }
+}
+
+.glyph-merge-dot,
+.glyph-bar {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.glyph-bar {
+  transform-origin: bottom;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .proof-stat:hover .glyph-claude-spin { animation: claude-spin 1.2s ease-in-out; }
+  .proof-stat:hover .glyph-signal-arc { animation: signal-pulse 900ms ease-out both; }
+  .proof-stat:hover .glyph-signal-arc:nth-child(3) { animation-delay: 120ms; }
+  .proof-stat:hover .glyph-signal-arc:nth-child(4) { animation-delay: 240ms; }
+  .proof-stat:hover .glyph-merge-dot { animation: merge-pulse 600ms var(--ease-out-strong); }
+  .proof-stat:hover .glyph-bar { animation: bar-bounce 560ms var(--ease-out-strong) both; }
+  .proof-stat:hover .glyph-bar:nth-child(3) { animation-delay: 70ms; }
+  .proof-stat:hover .glyph-bar:nth-child(4) { animation-delay: 140ms; }
+}
+
+@keyframes signal-pulse {
+  0%, 100% { opacity: 1; }
+  40% { opacity: 0.2; }
+}
+
+@keyframes merge-pulse {
+  0%, 100% { transform: scale(1); }
+  45% { transform: scale(1.6); }
+}
+
+@keyframes bar-bounce {
+  0%, 100% { transform: scaleY(1); }
+  40% { transform: scaleY(0.55); }
+  75% { transform: scaleY(1.08); }
+}
+
+/* Experience timeline */
+.timeline-dot {
+  transition: background-color 200ms ease, border-color 200ms ease;
+}
+
+.timeline-dot[data-reached] {
+  background-color: hsl(var(--foreground) / 0.8);
+  border-color: transparent;
+  animation: timeline-dot-pop 420ms var(--ease-out-strong);
+}
+
+@keyframes timeline-dot-pop {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  45% { transform: translate(-50%, -50%) scale(1.6); }
+}
+
+/* GitHub contributions: one diagonal wave on first view */
+.contrib-wave[data-wave]:not([data-wave-done]) .react-activity-calendar__calendar rect {
+  opacity: 0;
+}
+
+.contrib-wave[data-wave][data-inview]:not([data-wave-done]) .react-activity-calendar__calendar rect {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: contrib-cell-in 420ms var(--ease-out-strong) var(--wave-d, 0ms) both;
+}
+
+@keyframes contrib-cell-in {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Steam "In Game" equalizer */
+.equalizer > span {
+  transform: scaleY(0.5);
+  animation: equalizer-bob 900ms ease-in-out infinite alternate;
+}
+
+.equalizer > span:nth-child(2) {
+  transform: scaleY(1);
+  animation-duration: 700ms;
+  animation-delay: -300ms;
+}
+
+.equalizer > span:nth-child(3) {
+  transform: scaleY(0.7);
+  animation-duration: 1100ms;
+  animation-delay: -600ms;
+}
+
+@keyframes equalizer-bob {
+  from { transform: scaleY(0.3); }
+  to { transform: scaleY(1); }
+}
+
+/* Avatar doodles: only while hovered */
+.avatar-doodle {
+  opacity: 0;
+  transform: scale(0.6) rotate(-25deg);
+  transition: opacity 150ms ease, transform 150ms ease;
+}
+
+.avatar-doodle-drift {
+  animation: doodle-drift 3.2s ease-in-out infinite alternate paused;
+}
+
+.avatar-doodle:nth-child(2) .avatar-doodle-drift { animation-duration: 2.6s; animation-delay: -1s; }
+.avatar-doodle:nth-child(3) .avatar-doodle-drift { animation-duration: 3.8s; animation-delay: -2s; }
+.avatar-doodle:nth-child(4) .avatar-doodle-drift { animation-duration: 2.9s; animation-delay: -0.5s; }
+
+@media (hover: hover) and (pointer: fine) {
+  .profile-wrapper:hover .avatar-doodle {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    transition: opacity 300ms ease, transform 520ms var(--ease-out-strong);
+  }
+  .profile-wrapper:hover .avatar-doodle:nth-child(2) { transition-delay: 60ms; }
+  .profile-wrapper:hover .avatar-doodle:nth-child(3) { transition-delay: 120ms; }
+  .profile-wrapper:hover .avatar-doodle:nth-child(4) { transition-delay: 180ms; }
+  .profile-wrapper:hover .avatar-doodle-drift { animation-play-state: running; }
+}
+
+@keyframes doodle-drift {
+  from { transform: translate(0, 0) rotate(0deg); }
+  to { transform: translate(3px, -4px) rotate(18deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-draw,
+  .motion-pop,
+  .signature-settle {
+    opacity: 1;
+    stroke-dashoffset: 0;
+    transform: none;
+    animation: none !important;
+  }
+  .contrib-wave .react-activity-calendar__calendar rect {
+    opacity: 1 !important;
+    animation: none !important;
+  }
+  .glyph-claude-in {
+    opacity: 1;
+    transform: none;
+  }
+  .equalizer > span,
+  .avatar-doodle-drift,
+  .glyph-claude-in,
+  .glyph-claude-spin {
+    animation: none !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

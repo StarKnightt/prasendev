@@ -34,6 +34,13 @@ import { SteamNowPlaying } from "@/components/steam-now-playing";
 import { BirthdayFireworks } from "@/components/birthday-fireworks";
 import { BirthdayHat } from "@/components/birthday-hat";
 import { VisitorCounter, GithubContributionsPlain } from "@/components/lazy-client";
+import { StatGlyph, type StatGlyphKind } from "@/components/motion/stat-glyph";
+import { CountUp } from "@/components/motion/count-up";
+import { HeadingScribble } from "@/components/motion/heading-scribble";
+import { ExperienceTimeline } from "@/components/motion/experience-timeline";
+import { ContributionsWave } from "@/components/motion/contributions-wave";
+import { Signature } from "@/components/motion/signature";
+import { AvatarDoodles } from "@/components/motion/avatar-doodles";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -50,15 +57,19 @@ const SOCIAL_HOVER_COLORS: Record<string, string> = {
 const PROOF: {
   value: string;
   label: string;
+  labelLinks?: { text: string; href: string }[];
+  glyph: StatGlyphKind;
   receipts: { label: string; href: string }[];
 }[] = [
   {
     value: "22.5K+",
+    glyph: "signal",
     label: "followers on X",
     receipts: [{ label: "@prasenx", href: DATA.contact.social.X.url }],
   },
   {
     value: "2x",
+    glyph: "claude",
     label: "featured by the official Claude account",
     receipts: [
       { label: "Night Street", href: "https://x.com/claudeai/status/2090557648567505222" },
@@ -67,13 +78,19 @@ const PROOF: {
   },
   {
     value: "PR #3",
-    label: "merged from the Xbox CTO",
+    glyph: "merge",
+    label: "merged from the Xbox CTO, and a reply from the Xbox CEO",
+    labelLinks: [
+      { text: "Xbox CTO", href: "https://x.com/scottvanvliet/status/2084630828437414113" },
+      { text: "Xbox CEO", href: "https://x.com/asha_shar/status/2085838960744701971" },
+    ],
     receipts: [
       { label: "Jungle Trail", href: "https://github.com/StarKnightt/jungle-trail/pull/3" },
     ],
   },
   {
     value: "23",
+    glyph: "bars",
     label: "paid placements on Outbuilt",
     receipts: [{ label: "outbuilt.lol", href: "https://outbuilt.lol" }],
   },
@@ -84,6 +101,30 @@ function shortMonth(period: string) {
     /\b(January|February|March|April|May|June|July|August|September|October|November|December)\b/g,
     (m) => m.slice(0, 3)
   );
+}
+
+function LinkedLabel({ label, links = [] }: { label: string; links?: { text: string; href: string }[] }) {
+  const parts: React.ReactNode[] = [];
+  let rest = label;
+  for (const link of links) {
+    const at = rest.indexOf(link.text);
+    if (at < 0) continue;
+    parts.push(
+      rest.slice(0, at),
+      <a
+        key={link.href}
+        href={link.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="whitespace-nowrap underline decoration-border underline-offset-4 transition-colors hover:text-foreground hover:decoration-foreground/40"
+      >
+        {link.text}
+      </a>
+    );
+    rest = rest.slice(at + link.text.length);
+  }
+  parts.push(rest);
+  return <>{parts}</>;
 }
 
 function Row({ label, children }: { label: string; children: React.ReactNode }) {
@@ -190,6 +231,7 @@ export default async function Page() {
                     fallback={DATA.initials}
                   />
                   <BirthdayHat />
+                  <AvatarDoodles />
                 </div>
               </BlurFade>
             </div>
@@ -209,10 +251,15 @@ export default async function Page() {
             <BlurFade delay={BLUR_FADE_DELAY * 3.5}>
               <dl className="grid grid-cols-2 gap-x-6 gap-y-6 border-t border-border pt-6 sm:grid-cols-4">
                 {PROOF.map((item) => (
-                  <div key={item.label} className="flex flex-col">
+                  <div key={item.label} className="proof-stat flex flex-col">
                     <dt className="sr-only">{item.label}</dt>
-                    <dd className="text-xl font-medium tabular-nums tracking-tight">{item.value}</dd>
-                    <dd className="mt-1 text-sm leading-snug text-muted-foreground">{item.label}</dd>
+                    <dd className="flex items-center gap-2 text-xl font-medium tabular-nums tracking-tight">
+                      <StatGlyph kind={item.glyph} />
+                      <CountUp value={item.value} />
+                    </dd>
+                    <dd className="mt-1 text-sm leading-snug text-muted-foreground">
+                      <LinkedLabel label={item.label} links={item.labelLinks} />
+                    </dd>
                     <dd className="mt-2 flex flex-wrap gap-x-2 text-xs text-muted-foreground">
                       {item.receipts.map((r) => (
                         <a
@@ -359,7 +406,10 @@ export default async function Page() {
               <div className="flex items-end justify-between gap-4">
                 <div>
                   <SectionLabel label="Portfolio" />
-                  <h2 className="mt-1.5 text-xl font-bold tracking-tight">Selected Work</h2>
+                  <h2 className="relative mt-1.5 w-fit text-xl font-bold tracking-tight">
+                    Selected Work
+                    <HeadingScribble kind="swoosh" />
+                  </h2>
                 </div>
                 <Link href="/projects" className="shrink-0">
                   <ShinyButton className="px-3 py-1.5 font-semibold transition-all duration-300 hover:shadow-lg active:scale-[0.98] [&>span]:text-xs">
@@ -397,26 +447,31 @@ export default async function Page() {
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade delay={BLUR_FADE_DELAY * 12}>
               <SectionLabel label="Career" />
-              <h2 className="mt-1.5 text-xl font-bold tracking-tight">Experience</h2>
+              <h2 className="relative mt-1.5 w-fit text-xl font-bold tracking-tight">
+                Experience
+                <HeadingScribble kind="flick" />
+              </h2>
             </BlurFade>
             <BlurFade delay={BLUR_FADE_DELAY * 12.5}>
-              <ol className="divide-y divide-border border-y border-border">
-                {DATA.work.map((work) => (
-                  <ExperienceItem
-                    key={work.company}
-                    company={work.company}
-                    title={work.title}
-                    period={shortMonth(`${work.start} - ${work.end}`)}
-                    logoUrl={"logoUrl" in work ? work.logoUrl : undefined}
-                    logoIcon={"logoIcon" in work ? work.logoIcon : undefined}
-                    impact={work.impact}
-                    description={work.description}
-                    badges={work.badges}
-                    links={"links" in work ? work.links : undefined}
-                    redacted={"redacted" in work ? work.redacted : undefined}
-                  />
-                ))}
-              </ol>
+              <ExperienceTimeline>
+                <ol className="divide-y divide-border border-y border-border">
+                  {DATA.work.map((work) => (
+                    <ExperienceItem
+                      key={work.company}
+                      company={work.company}
+                      title={work.title}
+                      period={shortMonth(`${work.start} - ${work.end}`)}
+                      logoUrl={"logoUrl" in work ? work.logoUrl : undefined}
+                      logoIcon={"logoIcon" in work ? work.logoIcon : undefined}
+                      impact={work.impact}
+                      description={work.description}
+                      badges={work.badges}
+                      links={"links" in work ? work.links : undefined}
+                      redacted={"redacted" in work ? work.redacted : undefined}
+                    />
+                  ))}
+                </ol>
+              </ExperienceTimeline>
             </BlurFade>
             <BlurFade delay={BLUR_FADE_DELAY * 13}>
               <ul className="mt-3 space-y-2">
@@ -459,7 +514,10 @@ export default async function Page() {
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade delay={BLUR_FADE_DELAY * 14}>
               <SectionLabel label="More" />
-              <h2 className="mt-1.5 text-xl font-bold tracking-tight">Behind the Scenes</h2>
+              <h2 className="relative mt-1.5 w-fit text-xl font-bold tracking-tight">
+                Behind the Scenes
+                <HeadingScribble kind="double" />
+              </h2>
             </BlurFade>
             <BlurFade delay={BLUR_FADE_DELAY * 14.5}>
               <div className="divide-y divide-border border-y border-border">
@@ -479,7 +537,9 @@ export default async function Page() {
               </div>
               <div className="mt-6">
                 <p className="mb-3 text-sm text-muted-foreground">GitHub contributions</p>
-                <GithubContributionsPlain />
+                <ContributionsWave>
+                  <GithubContributionsPlain />
+                </ContributionsWave>
               </div>
             </BlurFade>
           </div>
@@ -493,7 +553,10 @@ export default async function Page() {
               <div className="flex items-end justify-between gap-4">
                 <div>
                   <SectionLabel label="Blog" />
-                  <h2 className="mt-1.5 text-xl font-bold tracking-tight">Writing</h2>
+                  <h2 className="relative mt-1.5 w-fit text-xl font-bold tracking-tight">
+                    Writing
+                    <HeadingScribble kind="wave" />
+                  </h2>
                 </div>
                 <Link
                   href="/blog"
@@ -552,6 +615,7 @@ export default async function Page() {
               <p className="text-xl text-muted-foreground">
                I'd love to hear from you.
               </p>
+              <Signature className="!mt-1 w-[200px] text-foreground/90 sm:w-[250px]" />
               <a
                 href="mailto:hi@prasen.dev"
                 className="inline-flex items-center gap-2.5 rounded-full border border-border/70 bg-background/70 px-5 py-2.5 text-sm font-medium shadow-sm backdrop-blur transition-all hover:-translate-y-0.5 hover:bg-background"
@@ -563,6 +627,7 @@ export default async function Page() {
                 Let's talk
               </a>
               </div>
+
             </div>
           </BlurFade>
         </section>
