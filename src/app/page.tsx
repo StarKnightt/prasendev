@@ -57,6 +57,7 @@ const SOCIAL_HOVER_COLORS: Record<string, string> = {
 const PROOF: {
   value: string;
   label: string;
+  labelLink?: { text: string; href: string };
   glyph: StatGlyphKind;
   receipts: { label: string; href: string }[];
 }[] = [
@@ -79,6 +80,7 @@ const PROOF: {
     value: "PR #3",
     glyph: "merge",
     label: "merged from the Xbox CTO",
+    labelLink: { text: "Xbox CTO", href: "https://x.com/scottvanvliet/status/2084630828437414113" },
     receipts: [
       { label: "Jungle Trail", href: "https://github.com/StarKnightt/jungle-trail/pull/3" },
     ],
@@ -228,7 +230,24 @@ export default async function Page() {
                       <StatGlyph kind={item.glyph} />
                       <CountUp value={item.value} />
                     </dd>
-                    <dd className="mt-1 text-sm leading-snug text-muted-foreground">{item.label}</dd>
+                    <dd className="mt-1 text-sm leading-snug text-muted-foreground">
+                      {item.labelLink ? (
+                        <>
+                          {item.label.slice(0, item.label.indexOf(item.labelLink.text))}
+                          <a
+                            href={item.labelLink.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="underline decoration-border underline-offset-4 transition-colors hover:text-foreground hover:decoration-foreground/40"
+                          >
+                            {item.labelLink.text}
+                          </a>
+                          {item.label.slice(item.label.indexOf(item.labelLink.text) + item.labelLink.text.length)}
+                        </>
+                      ) : (
+                        item.label
+                      )}
+                    </dd>
                     <dd className="mt-2 flex flex-wrap gap-x-2 text-xs text-muted-foreground">
                       {item.receipts.map((r) => (
                         <a
