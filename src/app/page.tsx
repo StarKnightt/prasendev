@@ -57,7 +57,7 @@ const SOCIAL_HOVER_COLORS: Record<string, string> = {
 const PROOF: {
   value: string;
   label: string;
-  labelLink?: { text: string; href: string };
+  labelLinks?: { text: string; href: string }[];
   glyph: StatGlyphKind;
   receipts: { label: string; href: string }[];
 }[] = [
@@ -79,8 +79,11 @@ const PROOF: {
   {
     value: "PR #3",
     glyph: "merge",
-    label: "merged from the Xbox CTO",
-    labelLink: { text: "Xbox CTO", href: "https://x.com/scottvanvliet/status/2084630828437414113" },
+    label: "merged from the Xbox CTO, and a reply from the Xbox CEO",
+    labelLinks: [
+      { text: "Xbox CTO", href: "https://x.com/scottvanvliet/status/2084630828437414113" },
+      { text: "Xbox CEO", href: "https://x.com/asha_shar/status/2085838960744701971" },
+    ],
     receipts: [
       { label: "Jungle Trail", href: "https://github.com/StarKnightt/jungle-trail/pull/3" },
     ],
@@ -98,6 +101,30 @@ function shortMonth(period: string) {
     /\b(January|February|March|April|May|June|July|August|September|October|November|December)\b/g,
     (m) => m.slice(0, 3)
   );
+}
+
+function LinkedLabel({ label, links = [] }: { label: string; links?: { text: string; href: string }[] }) {
+  const parts: React.ReactNode[] = [];
+  let rest = label;
+  for (const link of links) {
+    const at = rest.indexOf(link.text);
+    if (at < 0) continue;
+    parts.push(
+      rest.slice(0, at),
+      <a
+        key={link.href}
+        href={link.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="whitespace-nowrap underline decoration-border underline-offset-4 transition-colors hover:text-foreground hover:decoration-foreground/40"
+      >
+        {link.text}
+      </a>
+    );
+    rest = rest.slice(at + link.text.length);
+  }
+  parts.push(rest);
+  return <>{parts}</>;
 }
 
 function Row({ label, children }: { label: string; children: React.ReactNode }) {
@@ -231,22 +258,7 @@ export default async function Page() {
                       <CountUp value={item.value} />
                     </dd>
                     <dd className="mt-1 text-sm leading-snug text-muted-foreground">
-                      {item.labelLink ? (
-                        <>
-                          {item.label.slice(0, item.label.indexOf(item.labelLink.text))}
-                          <a
-                            href={item.labelLink.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="underline decoration-border underline-offset-4 transition-colors hover:text-foreground hover:decoration-foreground/40"
-                          >
-                            {item.labelLink.text}
-                          </a>
-                          {item.label.slice(item.label.indexOf(item.labelLink.text) + item.labelLink.text.length)}
-                        </>
-                      ) : (
-                        item.label
-                      )}
+                      <LinkedLabel label={item.label} links={item.labelLinks} />
                     </dd>
                     <dd className="mt-2 flex flex-wrap gap-x-2 text-xs text-muted-foreground">
                       {item.receipts.map((r) => (
