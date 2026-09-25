@@ -29,6 +29,7 @@ import { InstagramHoverCard } from "@/components/instagram-hover-card";
 import { CodePenHoverCard } from "@/components/codepen-hover-card";
 import { BuyMeACoffeeHoverCard } from "@/components/bmc-hover-card";
 import { DiscordHoverCard } from "@/components/discord-hover-card";
+import { MediumHoverCard } from "@/components/medium-hover-card";
 import { SteamNowPlaying } from "@/components/steam-now-playing";
 import { BirthdayFireworks } from "@/components/birthday-fireworks";
 import { BirthdayHat } from "@/components/birthday-hat";
@@ -325,6 +326,14 @@ export default async function Page() {
                         );
                       }
 
+                      if (name === "Medium") {
+                        return (
+                          <MediumHoverCard key={name}>
+                            {socialLink}
+                          </MediumHoverCard>
+                        );
+                      }
+
                       return (
                         <Tooltip key={name}>
                           <TooltipTrigger asChild>
@@ -450,7 +459,7 @@ export default async function Page() {
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade delay={BLUR_FADE_DELAY * 14}>
               <SectionLabel label="More" />
-              <h2 className="mt-1.5 text-xl font-bold tracking-tight">Elsewhere</h2>
+              <h2 className="mt-1.5 text-xl font-bold tracking-tight">Behind the Scenes</h2>
             </BlurFade>
             <BlurFade delay={BLUR_FADE_DELAY * 14.5}>
               <div className="divide-y divide-border border-y border-border">
