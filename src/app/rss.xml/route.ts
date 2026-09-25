@@ -32,12 +32,12 @@ export async function GET() {
         <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
         <generator>Next.js</generator>
         <atom:link href="${DATA.url}/rss.xml" rel="self" type="application/rss+xml"/>
-        <webfeeds:cover image="${DATA.url}/og.png" />
+        <webfeeds:cover image="${DATA.url}/og/blog-2026-09.png" />
         <webfeeds:icon>${DATA.url}/favicon.ico</webfeeds:icon>
         <webfeeds:accentColor>2563EB</webfeeds:accentColor>
         <webfeeds:related layout="card" target="browser"/>
         <image>
-          <url>${DATA.url}/og.png</url>
+          <url>${DATA.url}/og/blog-2026-09.png</url>
           <title>${DATA.name}'s Blog</title>
           <link>${DATA.url}</link>
         </image>

@@ -149,10 +149,10 @@ export const metadata: Metadata = {
     siteName: DATA.name,
     images: [
       {
-        url: `${DATA.url}/portfolio.png`,
+        url: `${DATA.url}/og/home-2026-09.png`,
         width: 1200,
         height: 630,
-        alt: `${DATA.name}'s Portfolio`,
+        alt: `${DATA.name}, full stack developer open to DevRel roles`,
       },
     ],
     locale: 'en_US',
@@ -163,7 +163,14 @@ export const metadata: Metadata = {
     title: DATA.name,
     description: HOME_DESCRIPTION,
     creator: '@prasenx',
-    images: [`${DATA.url}/portfolio.png`],
+    images: [
+      {
+        url: `${DATA.url}/og/home-2026-09.png`,
+        width: 1200,
+        height: 630,
+        alt: `${DATA.name}, full stack developer open to DevRel roles`,
+      },
+    ],
   },
 };
 

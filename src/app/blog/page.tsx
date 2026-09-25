@@ -4,13 +4,41 @@ import Link from "next/link";
 import { DATA } from "@/data/resume";
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
 import { formatDate } from "@/lib/utils";
+import type { Metadata } from "next";
 
-export const metadata = {
+const BLOG_DESCRIPTION =
+  "Blog by Prasenjit Nayak: honest takes on web development, Next.js, AI tools like Cursor and Claude, Linux, and what it's like shipping as a freelance dev.";
+const BLOG_IMAGE = `${DATA.url}/og/blog-2026-09.png`;
+
+export const metadata: Metadata = {
   title: "Blog",
-  description: "Blog by Prasenjit Nayak: honest takes on web development, Next.js, AI tools like Cursor and Claude, Linux, and what it's like shipping as a freelance dev.",
+  description: BLOG_DESCRIPTION,
   metadataBase: new URL(DATA.url),
   alternates: {
     canonical: `${DATA.url}/blog`,
+  },
+  openGraph: {
+    title: "Blog | Prasenjit Nayak",
+    description: BLOG_DESCRIPTION,
+    url: `${DATA.url}/blog`,
+    siteName: "Prasenjit Nayak - Portfolio",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: BLOG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: "Blog by Prasenjit Nayak: building in public, AI tools and browser 3D",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog | Prasenjit Nayak",
+    description: BLOG_DESCRIPTION,
+    creator: "@prasenx",
+    images: [BLOG_IMAGE],
   },
 };
 
