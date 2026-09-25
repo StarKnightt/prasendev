@@ -15,13 +15,20 @@ export const metadata: Metadata = {
     title: "Projects | Prasenjit Nayak",
     description: "Projects by Prasenjit Nayak: Outbuilt, a pay-to-rank leaderboard with 23 paid placements in its first 10 days; Jungle Trail, a procedural Three.js jungle with 290+ GitHub stars; Wallpaperz, CleanType and more.",
     url: `${DATA.url}/projects`,
-    images: [{ url: `${DATA.url}/api/og?title=Projects&type=page`, width: 1200, height: 630 }],
+    images: [
+      {
+        url: `${DATA.url}/og/projects-2026-09.png`,
+        width: 1200,
+        height: 630,
+        alt: "Projects by Prasenjit Nayak: products and procedural 3D worlds you can play in the browser",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Projects | Prasenjit Nayak",
     description: "Projects by Prasenjit Nayak: Outbuilt, a pay-to-rank leaderboard with 23 paid placements in its first 10 days; Jungle Trail, a procedural Three.js jungle with 290+ GitHub stars; Wallpaperz, CleanType and more.",
-    images: [`${DATA.url}/api/og?title=Projects&type=page`],
+    images: [`${DATA.url}/og/projects-2026-09.png`],
   },
 };
 
