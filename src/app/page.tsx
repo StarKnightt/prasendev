@@ -79,10 +79,9 @@ const PROOF: {
   {
     value: "PR #3",
     glyph: "merge",
-    label: "merged from the Xbox CTO, and a reply from the Xbox CEO",
+    label: "merged from the Xbox CTO",
     labelLinks: [
       { text: "Xbox CTO", href: "https://x.com/scottvanvliet/status/2084630828437414113" },
-      { text: "Xbox CEO", href: "https://x.com/asha_shar/status/2085838960744701971" },
     ],
     receipts: [
       { label: "Jungle Trail", href: "https://github.com/StarKnightt/jungle-trail/pull/3" },
