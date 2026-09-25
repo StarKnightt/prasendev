@@ -3,6 +3,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { Icons } from "@/components/icons";
 import { Gamepad2, Trophy, Clock } from "lucide-react";
+import { Equalizer } from "@/components/motion/equalizer";
 
 interface SteamData {
   name: string;
@@ -141,10 +142,7 @@ export function SteamNowPlaying() {
             <p className="text-xs font-medium truncate">{data.name}</p>
             {isPlaying ? (
               <span className="inline-flex items-center gap-1 shrink-0 rounded-full bg-emerald-500/10 px-1.5 py-0.5 text-[9px] uppercase tracking-wider font-semibold text-emerald-500">
-                <span className="relative flex size-1.5">
-                  <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                  <span className="relative inline-flex size-1.5 rounded-full bg-emerald-500" />
-                </span>
+                <Equalizer />
                 In Game
               </span>
             ) : data.personastate >= 1 ? (

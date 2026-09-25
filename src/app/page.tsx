@@ -34,6 +34,13 @@ import { SteamNowPlaying } from "@/components/steam-now-playing";
 import { BirthdayFireworks } from "@/components/birthday-fireworks";
 import { BirthdayHat } from "@/components/birthday-hat";
 import { VisitorCounter, GithubContributionsPlain } from "@/components/lazy-client";
+import { StatGlyph, type StatGlyphKind } from "@/components/motion/stat-glyph";
+import { CountUp } from "@/components/motion/count-up";
+import { HeadingScribble } from "@/components/motion/heading-scribble";
+import { ExperienceTimeline } from "@/components/motion/experience-timeline";
+import { ContributionsWave } from "@/components/motion/contributions-wave";
+import { Signature } from "@/components/motion/signature";
+import { AvatarDoodles } from "@/components/motion/avatar-doodles";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -50,15 +57,18 @@ const SOCIAL_HOVER_COLORS: Record<string, string> = {
 const PROOF: {
   value: string;
   label: string;
+  glyph: StatGlyphKind;
   receipts: { label: string; href: string }[];
 }[] = [
   {
     value: "22.5K+",
+    glyph: "signal",
     label: "followers on X",
     receipts: [{ label: "@prasenx", href: DATA.contact.social.X.url }],
   },
   {
     value: "2x",
+    glyph: "spark",
     label: "featured by the official Claude account",
     receipts: [
       { label: "Night Street", href: "https://x.com/claudeai/status/2090557648567505222" },
@@ -67,6 +77,7 @@ const PROOF: {
   },
   {
     value: "PR #3",
+    glyph: "merge",
     label: "merged from the Xbox CTO",
     receipts: [
       { label: "Jungle Trail", href: "https://github.com/StarKnightt/jungle-trail/pull/3" },
@@ -74,6 +85,7 @@ const PROOF: {
   },
   {
     value: "23",
+    glyph: "bars",
     label: "paid placements on Outbuilt",
     receipts: [{ label: "outbuilt.lol", href: "https://outbuilt.lol" }],
   },
@@ -190,6 +202,7 @@ export default async function Page() {
                     fallback={DATA.initials}
                   />
                   <BirthdayHat />
+                  <AvatarDoodles />
                 </div>
               </BlurFade>
             </div>
@@ -209,9 +222,12 @@ export default async function Page() {
             <BlurFade delay={BLUR_FADE_DELAY * 3.5}>
               <dl className="grid grid-cols-2 gap-x-6 gap-y-6 border-t border-border pt-6 sm:grid-cols-4">
                 {PROOF.map((item) => (
-                  <div key={item.label} className="flex flex-col">
+                  <div key={item.label} className="proof-stat flex flex-col">
                     <dt className="sr-only">{item.label}</dt>
-                    <dd className="text-xl font-medium tabular-nums tracking-tight">{item.value}</dd>
+                    <dd className="flex items-center gap-2 text-xl font-medium tabular-nums tracking-tight">
+                      <StatGlyph kind={item.glyph} />
+                      <CountUp value={item.value} />
+                    </dd>
                     <dd className="mt-1 text-sm leading-snug text-muted-foreground">{item.label}</dd>
                     <dd className="mt-2 flex flex-wrap gap-x-2 text-xs text-muted-foreground">
                       {item.receipts.map((r) => (
@@ -359,7 +375,10 @@ export default async function Page() {
               <div className="flex items-end justify-between gap-4">
                 <div>
                   <SectionLabel label="Portfolio" />
-                  <h2 className="mt-1.5 text-xl font-bold tracking-tight">Selected Work</h2>
+                  <h2 className="relative mt-1.5 w-fit text-xl font-bold tracking-tight">
+                    Selected Work
+                    <HeadingScribble kind="swoosh" />
+                  </h2>
                 </div>
                 <Link href="/projects" className="shrink-0">
                   <ShinyButton className="px-3 py-1.5 font-semibold transition-all duration-300 hover:shadow-lg active:scale-[0.98] [&>span]:text-xs">
@@ -397,26 +416,31 @@ export default async function Page() {
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade delay={BLUR_FADE_DELAY * 12}>
               <SectionLabel label="Career" />
-              <h2 className="mt-1.5 text-xl font-bold tracking-tight">Experience</h2>
+              <h2 className="relative mt-1.5 w-fit text-xl font-bold tracking-tight">
+                Experience
+                <HeadingScribble kind="flick" />
+              </h2>
             </BlurFade>
             <BlurFade delay={BLUR_FADE_DELAY * 12.5}>
-              <ol className="divide-y divide-border border-y border-border">
-                {DATA.work.map((work) => (
-                  <ExperienceItem
-                    key={work.company}
-                    company={work.company}
-                    title={work.title}
-                    period={shortMonth(`${work.start} - ${work.end}`)}
-                    logoUrl={"logoUrl" in work ? work.logoUrl : undefined}
-                    logoIcon={"logoIcon" in work ? work.logoIcon : undefined}
-                    impact={work.impact}
-                    description={work.description}
-                    badges={work.badges}
-                    links={"links" in work ? work.links : undefined}
-                    redacted={"redacted" in work ? work.redacted : undefined}
-                  />
-                ))}
-              </ol>
+              <ExperienceTimeline>
+                <ol className="divide-y divide-border border-y border-border">
+                  {DATA.work.map((work) => (
+                    <ExperienceItem
+                      key={work.company}
+                      company={work.company}
+                      title={work.title}
+                      period={shortMonth(`${work.start} - ${work.end}`)}
+                      logoUrl={"logoUrl" in work ? work.logoUrl : undefined}
+                      logoIcon={"logoIcon" in work ? work.logoIcon : undefined}
+                      impact={work.impact}
+                      description={work.description}
+                      badges={work.badges}
+                      links={"links" in work ? work.links : undefined}
+                      redacted={"redacted" in work ? work.redacted : undefined}
+                    />
+                  ))}
+                </ol>
+              </ExperienceTimeline>
             </BlurFade>
             <BlurFade delay={BLUR_FADE_DELAY * 13}>
               <ul className="mt-3 space-y-2">
@@ -459,7 +483,10 @@ export default async function Page() {
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade delay={BLUR_FADE_DELAY * 14}>
               <SectionLabel label="More" />
-              <h2 className="mt-1.5 text-xl font-bold tracking-tight">Behind the Scenes</h2>
+              <h2 className="relative mt-1.5 w-fit text-xl font-bold tracking-tight">
+                Behind the Scenes
+                <HeadingScribble kind="double" />
+              </h2>
             </BlurFade>
             <BlurFade delay={BLUR_FADE_DELAY * 14.5}>
               <div className="divide-y divide-border border-y border-border">
@@ -479,7 +506,9 @@ export default async function Page() {
               </div>
               <div className="mt-6">
                 <p className="mb-3 text-sm text-muted-foreground">GitHub contributions</p>
-                <GithubContributionsPlain />
+                <ContributionsWave>
+                  <GithubContributionsPlain />
+                </ContributionsWave>
               </div>
             </BlurFade>
           </div>
@@ -493,7 +522,10 @@ export default async function Page() {
               <div className="flex items-end justify-between gap-4">
                 <div>
                   <SectionLabel label="Blog" />
-                  <h2 className="mt-1.5 text-xl font-bold tracking-tight">Writing</h2>
+                  <h2 className="relative mt-1.5 w-fit text-xl font-bold tracking-tight">
+                    Writing
+                    <HeadingScribble kind="wave" />
+                  </h2>
                 </div>
                 <Link
                   href="/blog"
@@ -563,6 +595,8 @@ export default async function Page() {
                 Let's talk
               </a>
               </div>
+              <Signature className="pointer-events-none absolute bottom-2 right-4 w-24 -rotate-6 text-muted-foreground/70 sm:bottom-3 sm:right-6 sm:w-36" />
+
             </div>
           </BlurFade>
         </section>
