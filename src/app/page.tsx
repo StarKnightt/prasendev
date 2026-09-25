@@ -68,7 +68,7 @@ const PROOF: {
   },
   {
     value: "2x",
-    glyph: "spark",
+    glyph: "claude",
     label: "featured by the official Claude account",
     receipts: [
       { label: "Night Street", href: "https://x.com/claudeai/status/2090557648567505222" },

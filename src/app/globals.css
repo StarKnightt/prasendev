@@ -383,10 +383,28 @@ html {
 }
 
 /* Proof row glyphs: a small replay when the stat is hovered */
-.glyph-spark {
+.glyph-claude-in,
+.glyph-claude-spin {
   transform-box: view-box;
-  transform-origin: 12px 12.2px;
-  transition: transform 700ms var(--ease-out-strong);
+  transform-origin: 12px 12px;
+}
+
+.glyph-claude-in {
+  opacity: 0;
+}
+
+[data-inview] .glyph-claude-in {
+  animation: claude-in 900ms cubic-bezier(0.34, 1.35, 0.64, 1) var(--draw-delay, 0ms) both;
+}
+
+@keyframes claude-in {
+  0% { opacity: 0; transform: scale(0.6) rotate(-60deg); }
+  35% { opacity: 1; }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+@keyframes claude-spin {
+  to { transform: rotate(360deg); }
 }
 
 .glyph-merge-dot,
@@ -400,7 +418,7 @@ html {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .proof-stat:hover .glyph-spark { transform: rotate(60deg); }
+  .proof-stat:hover .glyph-claude-spin { animation: claude-spin 1.2s ease-in-out; }
   .proof-stat:hover .glyph-signal-arc { animation: signal-pulse 900ms ease-out both; }
   .proof-stat:hover .glyph-signal-arc:nth-child(3) { animation-delay: 120ms; }
   .proof-stat:hover .glyph-signal-arc:nth-child(4) { animation-delay: 240ms; }
@@ -526,8 +544,14 @@ html {
     opacity: 1 !important;
     animation: none !important;
   }
+  .glyph-claude-in {
+    opacity: 1;
+    transform: none;
+  }
   .equalizer > span,
-  .avatar-doodle-drift {
+  .avatar-doodle-drift,
+  .glyph-claude-in,
+  .glyph-claude-spin {
     animation: none !important;
   }
 }
