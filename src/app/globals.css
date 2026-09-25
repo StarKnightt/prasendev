@@ -368,6 +368,20 @@ html {
   100% { opacity: 1; transform: scale(1); }
 }
 
+/* Signature: fills any sub-pixel slivers the pen mask missed once the writing is done */
+.signature-settle {
+  opacity: 0;
+}
+
+[data-inview] .signature-settle {
+  animation: signature-settle 240ms ease var(--draw-delay, 0ms) both;
+}
+
+@keyframes signature-settle {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 /* Proof row glyphs: a small replay when the stat is hovered */
 .glyph-spark {
   transform-box: view-box;
@@ -501,7 +515,8 @@ html {
 
 @media (prefers-reduced-motion: reduce) {
   .motion-draw,
-  .motion-pop {
+  .motion-pop,
+  .signature-settle {
     opacity: 1;
     stroke-dashoffset: 0;
     transform: none;

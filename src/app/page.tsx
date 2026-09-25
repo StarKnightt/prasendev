@@ -584,6 +584,7 @@ export default async function Page() {
               <p className="text-xl text-muted-foreground">
                I'd love to hear from you.
               </p>
+              <Signature className="!mt-1 w-[200px] text-foreground/90 sm:w-[250px]" />
               <a
                 href="mailto:hi@prasen.dev"
                 className="inline-flex items-center gap-2.5 rounded-full border border-border/70 bg-background/70 px-5 py-2.5 text-sm font-medium shadow-sm backdrop-blur transition-all hover:-translate-y-0.5 hover:bg-background"
@@ -595,7 +596,6 @@ export default async function Page() {
                 Let's talk
               </a>
               </div>
-              <Signature className="pointer-events-none absolute bottom-2 right-4 w-24 -rotate-6 text-muted-foreground/70 sm:bottom-3 sm:right-6 sm:w-36" />
 
             </div>
           </BlurFade>
