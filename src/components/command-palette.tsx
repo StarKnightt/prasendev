@@ -25,7 +25,7 @@ import {
 import { Icons } from "@/components/icons";
 import { cn } from "@/lib/utils";
 import { useSoundSettings } from "@/components/sound-provider";
-import { playSound } from "@/hooks/use-sound";
+import { playSound } from "@/lib/sound";
 
 interface Command {
   id: string;

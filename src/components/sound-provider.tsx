@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, createContext, useContext, useState, useCallback } from "react";
-import { playSound } from "@/hooks/use-sound";
+import { playSound } from "@/lib/sound";
 
 interface SoundContextType {
   enabled: boolean;
