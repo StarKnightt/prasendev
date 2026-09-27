@@ -42,6 +42,9 @@ cloudflare-env.d.ts
 # cursor rules (personal context)
 .cursorrules
 
+# local scratch work
+.scratch/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
