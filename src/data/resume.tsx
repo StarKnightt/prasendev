@@ -785,7 +785,7 @@ export const DATA = {
         },
       ],
       image: "",
-      video: "https://video.gumlet.io/6745e593080b60408ca085f7/69fc6b4498a4e5006b3c5cb6/download.mp4",
+      video: "https://video.gumlet.io/6745e593080b60408ca085f7/6ab8bc9dde5918773f50ce3d/download.mp4",
     },
     {
       title: "CleanType",
