@@ -457,6 +457,46 @@ export const DATA = {
       poster: "https://video.gumlet.io/6745e593080b60408ca085f7/6a8eedb10784f723ea19e7df/thumbnail-1-0.png?v=1787752082926",
     },
     {
+      title: "Summer Cycle",
+      href: "https://starknightt.github.io/summer-cycle/",
+      dates: "September 2026",
+      active: true,
+      group: "procedural",
+      play: {
+        url: "https://starknightt.github.io/summer-cycle/",
+        mode: "embed",
+        note: "Desktop GPU, Chromium browser. Click to start, W to pedal, F to hop off and walk.",
+      },
+      description:
+        "A bike ride down a Japanese country road on a late-summer afternoon, drawn like a Ghibli or Makoto Shinkai background painting in toon-shaded Three.js. No score, nothing to win: flooded paddies, old wooden shops, and a sun that sets if you let it. Every mesh, texture, shop sign and sound is generated in code. Splitting one giant shader into many small ones took it from 61 to 118 fps. 39+ stars and 14 forks on GitHub, 65K+ views and 1.2K+ likes on the launch post.",
+      technologies: [
+        "Three.js",
+        "TypeScript",
+        "Toon Shading",
+        "Web Audio API",
+        "Procedural Generation",
+        "Claude Opus 5.5",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://starknightt.github.io/summer-cycle/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/StarKnightt/summer-cycle",
+          icon: <Icons.github className="size-3" />,
+        },
+        {
+          type: "Launch post",
+          href: "https://x.com/prasenx/status/2102717687604633959",
+          icon: <Icons.x className="size-3" />,
+        },
+      ],
+      image: "/projects/summer-cycle.webp",
+    },
+    {
       title: "Sedona Sunset",
       href: "https://starknightt.github.io/sedona-sunset/",
       dates: "August 2026",
