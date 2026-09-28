@@ -137,7 +137,7 @@ function Row({ label, children }: { label: string; children: React.ReactNode }) 
 
 // Plain-text description. DATA.summary is markdown and leaks syntax into meta tags
 const HOME_DESCRIPTION =
-  "Freelance full stack developer from Bhubaneswar, India. I build with Next.js, TypeScript and React: Outbuilt, Jungle Trail, Night Street and more. Open to DevRel work.";
+  "Freelance full stack developer from Bhubaneswar, India. I build with Next.js, TypeScript and React: Outbuilt, Dateup, PayBrackets and more. Open to DevRel work.";
 
 export const metadata: Metadata = {
   title: DATA.name,
@@ -428,10 +428,10 @@ export default async function Page() {
               <div className="grid gap-4 sm:grid-cols-2">
                 {DATA.projects
                   .filter((project) => 
-                    ["Outbuilt", "Jungle Trail", "Night Street", "Sedona Sunset"].includes(project.title)
+                    ["Outbuilt", "Dateup", "PayBrackets", "Jungle Trail"].includes(project.title)
                   )
                   .sort((a, b) => {
-                    const order = ["Outbuilt", "Jungle Trail", "Night Street", "Sedona Sunset"];
+                    const order = ["Outbuilt", "Dateup", "PayBrackets", "Jungle Trail"];
                     return order.indexOf(a.title) - order.indexOf(b.title);
                   })
                   .map((project) => (
