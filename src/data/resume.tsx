@@ -4,7 +4,7 @@ import { faReact, faNodeJs, faGitAlt, faTypescript, faTailwindCss, faDocker, faF
 import { faLeaf, faPlug, faBolt, faTerminal, faRocket, faServer, faDatabase, faCode } from "@fortawesome/free-solid-svg-icons";
 import type { ReactNode } from "react";
 
-export type ProjectGroup = "products" | "procedural" | "interactions";
+export type ProjectGroup = "products" | "lab" | "interactions";
 
 export type ProjectPlay = {
   url: string;
@@ -18,6 +18,7 @@ export type Project = {
   dates: string;
   active: boolean;
   description: string;
+  tagline?: string;
   technologies: readonly string[];
   links: readonly { type: string; href: string; icon: ReactNode }[];
   image: string;
@@ -371,10 +372,11 @@ export const DATA = {
     },
     {
       title: "Jungle Trail",
+      tagline: "A walkable procedural jungle with zero external art. Got a debug-overlay PR from the Xbox CTO.",
       href: "https://starknightt.github.io/jungle-trail/",
       dates: "August 2026",
       active: true,
-      group: "procedural",
+      group: "lab",
       play: {
         url: "https://starknightt.github.io/jungle-trail/",
         mode: "embed",
@@ -387,6 +389,7 @@ export const DATA = {
         "JavaScript",
         "WebAudio API",
         "Procedural Generation",
+        "Claude",
       ],
       links: [
         {
@@ -410,16 +413,17 @@ export const DATA = {
           icon: <Icons.x className="size-3" />,
         },
       ],
-      image: "",
+      image: "/projects/jungle-trail.webp",
       video: "https://video.gumlet.io/6745e593080b60408ca085f7/6a7223daec8c132ca29227c6/download.mp4",
       poster: "https://video.gumlet.io/6745e593080b60408ca085f7/6a7223daec8c132ca29227c6/thumbnail-1-0.png?v=1785865438030",
     },
     {
       title: "Night Street",
+      tagline: "A photorealistic city street at golden hour you can walk through in the browser.",
       href: "https://night-street.vercel.app/",
       dates: "August 2026",
       active: true,
-      group: "procedural",
+      group: "lab",
       play: {
         url: "https://night-street.vercel.app/",
         mode: "embed",
@@ -434,6 +438,7 @@ export const DATA = {
         "GLSL Shaders",
         "WebAudio API",
         "Procedural Generation",
+        "Claude",
       ],
       links: [
         {
@@ -452,56 +457,17 @@ export const DATA = {
           icon: <Icons.x className="size-3" />,
         },
       ],
-      image: "",
+      image: "/projects/night-street.webp",
       video: "https://video.gumlet.io/6745e593080b60408ca085f7/6a8eedb10784f723ea19e7df/download.mp4",
       poster: "https://video.gumlet.io/6745e593080b60408ca085f7/6a8eedb10784f723ea19e7df/thumbnail-1-0.png?v=1787752082926",
     },
     {
-      title: "Summer Cycle",
-      href: "https://starknightt.github.io/summer-cycle/",
-      dates: "September 2026",
-      active: true,
-      group: "procedural",
-      play: {
-        url: "https://starknightt.github.io/summer-cycle/",
-        mode: "embed",
-        note: "Desktop GPU, Chromium browser. Click to start, W to pedal, F to hop off and walk.",
-      },
-      description:
-        "A bike ride down a Japanese country road on a late-summer afternoon, drawn like a Ghibli or Makoto Shinkai background painting in toon-shaded Three.js. No score, nothing to win: flooded paddies, old wooden shops, and a sun that sets if you let it. Every mesh, texture, shop sign and sound is generated in code. Splitting one giant shader into many small ones took it from 61 to 118 fps. 39+ stars and 14 forks on GitHub, 65K+ views and 1.2K+ likes on the launch post.",
-      technologies: [
-        "Three.js",
-        "TypeScript",
-        "Toon Shading",
-        "Web Audio API",
-        "Procedural Generation",
-        "Claude Opus 5.5",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://starknightt.github.io/summer-cycle/",
-          icon: <Icons.globe className="size-3" />,
-        },
-        {
-          type: "Source",
-          href: "https://github.com/StarKnightt/summer-cycle",
-          icon: <Icons.github className="size-3" />,
-        },
-        {
-          type: "Launch post",
-          href: "https://x.com/prasenx/status/2102717687604633959",
-          icon: <Icons.x className="size-3" />,
-        },
-      ],
-      image: "/projects/summer-cycle.webp",
-    },
-    {
       title: "Sedona Sunset",
+      tagline: "A golden-hour walk up a dry wash between red rock buttes.",
       href: "https://starknightt.github.io/sedona-sunset/",
       dates: "August 2026",
       active: true,
-      group: "procedural",
+      group: "lab",
       play: {
         url: "https://starknightt.github.io/sedona-sunset/",
         mode: "embed",
@@ -541,11 +507,84 @@ export const DATA = {
       image: "/projects/sedona-sunset.webp",
     },
     {
+      title: "PRESS START",
+      tagline: "A 2-minute trailer on the history of video games. Every frame and every note generated in code.",
+      href: "https://x.com/prasenx/status/2103851939457093635",
+      dates: "September 2026",
+      active: true,
+      group: "lab",
+      description:
+        "A 2-minute cinematic trailer on the history of video games where every frame and every note is generated in code: GLSL shaders drawn on the GPU, music synthesized in Python, stitched with ffmpeg, no footage, images or samples. Built with Claude Opus 5.5 in Cursor. Reposted by Elon Musk, and the post passed 512K+ views and 4K+ likes.",
+      technologies: [
+        "GLSL Shaders",
+        "Python",
+        "NumPy",
+        "moderngl",
+        "FFmpeg",
+        "Claude Opus 5.5",
+      ],
+      links: [
+        {
+          type: "Reposted by Elon Musk",
+          href: "https://x.com/prasenx/status/2103851939457093635",
+          icon: <Icons.x className="size-3" />,
+        },
+        {
+          type: "Making of",
+          href: "https://www.youtube.com/watch?v=YXl_BnG2hzs",
+          icon: <Icons.youtube className="size-3" />,
+        },
+      ],
+      image: "/projects/press-start.webp",
+    },
+    {
+      title: "Summer Cycle",
+      tagline: "A Ghibli-style bike ride down a Japanese country road at sunset.",
+      href: "https://starknightt.github.io/summer-cycle/",
+      dates: "September 2026",
+      active: true,
+      group: "lab",
+      play: {
+        url: "https://starknightt.github.io/summer-cycle/",
+        mode: "embed",
+        note: "Desktop GPU, Chromium browser. Click to start, W to pedal, F to hop off and walk.",
+      },
+      description:
+        "A bike ride down a Japanese country road on a late-summer afternoon, drawn like a Ghibli or Makoto Shinkai background painting in toon-shaded Three.js. No score, nothing to win: flooded paddies, old wooden shops, and a sun that sets if you let it. Every mesh, texture, shop sign and sound is generated in code. Splitting one giant shader into many small ones took it from 61 to 118 fps. 39+ stars and 14 forks on GitHub, 65K+ views and 1.2K+ likes on the launch post.",
+      technologies: [
+        "Three.js",
+        "TypeScript",
+        "Toon Shading",
+        "Web Audio API",
+        "Procedural Generation",
+        "Claude Opus 5.5",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://starknightt.github.io/summer-cycle/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/StarKnightt/summer-cycle",
+          icon: <Icons.github className="size-3" />,
+        },
+        {
+          type: "Launch post",
+          href: "https://x.com/prasenx/status/2102717687604633959",
+          icon: <Icons.x className="size-3" />,
+        },
+      ],
+      image: "/projects/summer-cycle.webp",
+    },
+    {
       title: "Operation Ironhold",
+      tagline: "A full first-person shooter in a single 290 KB HTML file, from five prompts.",
       href: "https://starknightt.github.io/operation-ironhold/",
       dates: "July 2026",
       active: true,
-      group: "procedural",
+      group: "lab",
       play: {
         url: "https://starknightt.github.io/operation-ironhold/",
         mode: "embed",
@@ -643,10 +682,11 @@ export const DATA = {
     },
     {
       title: "Backrooms: Level 0",
+      tagline: "A procedural survival horror maze with a pathfinding monster.",
       href: "https://backroom-escape.vercel.app/",
       dates: "June 2026",
       active: true,
-      group: "procedural",
+      group: "lab",
       play: {
         url: "https://backroom-escape.vercel.app/",
         mode: "external",
@@ -661,6 +701,7 @@ export const DATA = {
         "WebAudio API",
         "GLSL Shaders",
         "Procedural Generation",
+        "Claude Fable 5",
       ],
       links: [
         {
@@ -679,15 +720,16 @@ export const DATA = {
           icon: <Icons.x className="size-3" />,
         },
       ],
-      image: "",
+      image: "/projects/backrooms.webp",
       video: "https://video.gumlet.io/6745e593080b60408ca085f7/6a2fb2faffbd5132b8c3d72a/download.mp4",
     },
     {
       title: "Gas Station at Dawn",
+      tagline: "A photorealistic gas station at dawn. Pump fuel, grab a drink from the cooler.",
       href: "https://starknightt.github.io/gas-station-highway/",
       dates: "August 2026",
       active: true,
-      group: "procedural",
+      group: "lab",
       play: {
         url: "https://starknightt.github.io/gas-station-highway/",
         mode: "external",
@@ -723,10 +765,11 @@ export const DATA = {
     },
     {
       title: "Tactical FPS in the browser",
+      tagline: "A Counter-Strike style bomb-site map with 5 bots, modelled in Blender through Blender MCP.",
       href: "https://starknightt.github.io/counter-strike-in-browser/",
       dates: "September 2026",
       active: true,
-      group: "procedural",
+      group: "lab",
       play: {
         url: "https://starknightt.github.io/counter-strike-in-browser/",
         mode: "embed",
@@ -762,10 +805,11 @@ export const DATA = {
     },
     {
       title: "Parapet",
+      tagline: "Rooftop parkour across a procedural brutalist city at golden hour.",
       href: "https://starknightt.github.io/parapet/",
       dates: "September 2026",
       active: true,
-      group: "procedural",
+      group: "lab",
       play: {
         url: "https://starknightt.github.io/parapet/",
         mode: "embed",
@@ -905,10 +949,11 @@ export const DATA = {
     },
     {
       title: "3D Carousel Gallery",
+      tagline: "A 3D image and video carousel in pure CSS transforms, with a music player.",
       href: "https://3dcarousell.vercel.app/",
       dates: "December 2024 - January 2025",
       active: true,
-      group: "procedural",
+      group: "lab",
       description:
         "An interactive 3D carousel gallery built with pure CSS 3D transforms, no Three.js, with image and video support and a SoundCloud music player. 43+ stars and 6 forks on GitHub.",
       technologies: [
@@ -931,7 +976,7 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "",
+      image: "/projects/3d-carousel.webp",
       video:
         "https://video.gumlet.io/6745e593080b60408ca085f7/67912b93d696a7af3b2e38ef/download.mp4",
     },
