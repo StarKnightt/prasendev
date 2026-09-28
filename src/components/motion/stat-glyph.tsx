@@ -3,7 +3,7 @@
 import type { CSSProperties, ReactElement } from "react";
 import { useInViewOnce } from "./use-in-view-once";
 
-export type StatGlyphKind = "signal" | "claude" | "merge" | "bars";
+export type StatGlyphKind = "signal" | "claude" | "merge" | "repost";
 
 const d = (delay: number, dur = 420) =>
   ({ "--draw-delay": `${delay}ms`, "--draw-dur": `${dur}ms` }) as CSSProperties;
@@ -54,20 +54,16 @@ function Merge() {
   );
 }
 
-function Bars() {
+function Repost() {
   return (
-    <>
-      <path className="motion-draw" style={d(120, 360)} pathLength={1} d="M3.4 20.4c5.7-.3 11.4.2 17.2-.1" />
-      <g className="glyph-bar">
-        <path className="motion-draw" style={d(300, 240)} pathLength={1} d="M7 19.2c.1-1.5-.1-3 0-4.6" />
+    <g className="glyph-repost-spin">
+      <path className="motion-draw" style={d(120, 380)} pathLength={1} d="M4.4 11.6c-.2-2.7.3-4.6 2.9-4.7 3.6-.2 7.3.1 10.9-.1" />
+      <path className="motion-draw" style={d(460, 220)} pathLength={1} d="M15.5 4.3l2.8 2.5-2.7 2.8" />
+      <g className={ACCENT}>
+        <path className="motion-draw" style={d(560, 380)} pathLength={1} d="M19.6 12.4c.2 2.7-.3 4.6-2.9 4.7-3.6.2-7.3-.1-10.9.1" />
+        <path className="motion-draw" style={d(900, 220)} pathLength={1} d="M8.5 19.7l-2.8-2.5 2.7-2.8" />
       </g>
-      <g className="glyph-bar">
-        <path className="motion-draw" style={d(400, 280)} pathLength={1} d="M12 19.2c-.1-2.9.1-5.8 0-8.8" />
-      </g>
-      <g className={`glyph-bar ${ACCENT}`}>
-        <path className="motion-draw" style={d(500, 320)} pathLength={1} d="M17 19.2c.1-4.5-.1-9 .1-13.6" />
-      </g>
-    </>
+    </g>
   );
 }
 
@@ -75,7 +71,7 @@ const GLYPHS: Record<StatGlyphKind, () => ReactElement> = {
   signal: Signal,
   claude: Claude,
   merge: Merge,
-  bars: Bars,
+  repost: Repost,
 };
 
 export function StatGlyph({ kind }: { kind: StatGlyphKind }) {

@@ -370,6 +370,36 @@ export const DATA = {
       poster: "https://video.gumlet.io/6745e593080b60408ca085f7/6a8ef3e50784f723ea1a0908/thumbnail-1-0.png?v=1787753505658",
     },
     {
+      title: "PRESS START",
+      href: "https://x.com/prasenx/status/2103851939457093635",
+      dates: "September 2026",
+      active: true,
+      group: "procedural",
+      description:
+        "A 2-minute cinematic trailer on the history of video games where every frame and every note is generated in code: GLSL shaders drawn on the GPU, music synthesized in Python, stitched with ffmpeg, no footage, images or samples. Built with Claude Opus 5.5 in Cursor. Reposted by Elon Musk, and the post passed 512K+ views and 4K+ likes.",
+      technologies: [
+        "GLSL Shaders",
+        "Python",
+        "NumPy",
+        "moderngl",
+        "FFmpeg",
+        "Claude Opus 5.5",
+      ],
+      links: [
+        {
+          type: "Reposted by Elon Musk",
+          href: "https://x.com/prasenx/status/2103851939457093635",
+          icon: <Icons.x className="size-3" />,
+        },
+        {
+          type: "Making of",
+          href: "https://www.youtube.com/watch?v=YXl_BnG2hzs",
+          icon: <Icons.youtube className="size-3" />,
+        },
+      ],
+      image: "/projects/press-start.webp",
+    },
+    {
       title: "Jungle Trail",
       href: "https://starknightt.github.io/jungle-trail/",
       dates: "August 2026",
