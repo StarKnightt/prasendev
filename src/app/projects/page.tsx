@@ -3,6 +3,8 @@ import { DATA, type Project } from "@/data/resume";
 import { BorderBeam } from "@/components/magicui/border-beam";
 import { ProjectCard } from "@/components/project-card";
 import { LabTile } from "@/components/lab-tile";
+import { HeadingScribble } from "@/components/motion/heading-scribble";
+import { LabBeaker } from "@/components/motion/lab-beaker";
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
 import type { Metadata } from "next";
 
@@ -52,8 +54,11 @@ export default function ProjectsPage() {
       <div className="space-y-12">
         <div id="products">
           <BlurFade delay={BLUR_FADE_DELAY * 2}>
-            <h2 className="text-lg font-semibold tracking-tight">Projects</h2>
-            <p className="mt-1 mb-5 text-sm text-muted-foreground">Things people pay for or use every day</p>
+            <h2 className="relative w-fit text-lg font-semibold tracking-tight">
+              Projects
+              <HeadingScribble kind="lift" />
+            </h2>
+            <p className="mt-2 mb-5 text-sm text-muted-foreground">Things people pay for or use every day</p>
           </BlurFade>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {PRODUCTS.map((project, i) => (
@@ -74,8 +79,14 @@ export default function ProjectsPage() {
 
         <div id="lab">
           <BlurFade delay={BLUR_FADE_DELAY * 2 + (PRODUCTS.length + 1) * 0.05}>
-            <h2 className="text-lg font-semibold tracking-tight">Lab</h2>
-            <p className="mt-1 mb-5 text-sm text-muted-foreground">
+            <div className="flex items-center gap-2">
+              <h2 className="relative w-fit text-lg font-semibold tracking-tight">
+                Lab
+                <HeadingScribble kind="hook" />
+              </h2>
+              <LabBeaker />
+            </div>
+            <p className="mt-2 mb-5 text-sm text-muted-foreground">
               Things I directed AI to build and shared on X. Every texture, mesh and sound generated in code unless stated.
             </p>
           </BlurFade>

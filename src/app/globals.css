@@ -444,6 +444,24 @@ html {
   75% { transform: scaleY(1.08); }
 }
 
+/* Lab heading beaker */
+.lab-bubble {
+  fill: currentColor;
+  stroke: none;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: lab-bubble 3s ease-in-out infinite;
+}
+
+.lab-bubble:nth-of-type(2) { animation-delay: 1s; }
+.lab-bubble:nth-of-type(3) { animation-delay: 2s; }
+
+@keyframes lab-bubble {
+  0% { opacity: 0; transform: translateY(3px) scale(0.6); }
+  25% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-4px) scale(1); }
+}
+
 /* Experience timeline */
 .timeline-dot {
   transition: background-color 200ms ease, border-color 200ms ease;
@@ -551,7 +569,8 @@ html {
   .equalizer > span,
   .avatar-doodle-drift,
   .glyph-claude-in,
-  .glyph-claude-spin {
+  .glyph-claude-spin,
+  .lab-bubble {
     animation: none !important;
   }
 }
