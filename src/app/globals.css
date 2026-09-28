@@ -384,8 +384,7 @@ html {
 
 /* Proof row glyphs: a small replay when the stat is hovered */
 .glyph-claude-in,
-.glyph-claude-spin,
-.glyph-repost-spin {
+.glyph-claude-spin {
   transform-box: view-box;
   transform-origin: 12px 12px;
 }
@@ -408,9 +407,14 @@ html {
   to { transform: rotate(360deg); }
 }
 
-.glyph-merge-dot {
+.glyph-merge-dot,
+.glyph-bar {
   transform-box: fill-box;
   transform-origin: center;
+}
+
+.glyph-bar {
+  transform-origin: bottom;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -419,7 +423,9 @@ html {
   .proof-stat:hover .glyph-signal-arc:nth-child(3) { animation-delay: 120ms; }
   .proof-stat:hover .glyph-signal-arc:nth-child(4) { animation-delay: 240ms; }
   .proof-stat:hover .glyph-merge-dot { animation: merge-pulse 600ms var(--ease-out-strong); }
-  .proof-stat:hover .glyph-repost-spin { animation: repost-spin 700ms var(--ease-out-strong); }
+  .proof-stat:hover .glyph-bar { animation: bar-bounce 560ms var(--ease-out-strong) both; }
+  .proof-stat:hover .glyph-bar:nth-child(3) { animation-delay: 70ms; }
+  .proof-stat:hover .glyph-bar:nth-child(4) { animation-delay: 140ms; }
 }
 
 @keyframes signal-pulse {
@@ -432,8 +438,10 @@ html {
   45% { transform: scale(1.6); }
 }
 
-@keyframes repost-spin {
-  to { transform: rotate(180deg); }
+@keyframes bar-bounce {
+  0%, 100% { transform: scaleY(1); }
+  40% { transform: scaleY(0.55); }
+  75% { transform: scaleY(1.08); }
 }
 
 /* Experience timeline */
@@ -543,8 +551,7 @@ html {
   .equalizer > span,
   .avatar-doodle-drift,
   .glyph-claude-in,
-  .glyph-claude-spin,
-  .glyph-repost-spin {
+  .glyph-claude-spin {
     animation: none !important;
   }
 }

@@ -88,10 +88,10 @@ const PROOF: {
     ],
   },
   {
-    value: "512K+",
-    glyph: "repost",
-    label: "views on a video Elon Musk reposted",
-    receipts: [{ label: "PRESS START", href: "https://x.com/prasenx/status/2103851939457093635" }],
+    value: "23",
+    glyph: "bars",
+    label: "paid placements on Outbuilt",
+    receipts: [{ label: "outbuilt.lol", href: "https://outbuilt.lol" }],
   },
 ];
 
