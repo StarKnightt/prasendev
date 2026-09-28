@@ -389,6 +389,7 @@ export const DATA = {
         "JavaScript",
         "WebAudio API",
         "Procedural Generation",
+        "Claude",
       ],
       links: [
         {
@@ -437,6 +438,7 @@ export const DATA = {
         "GLSL Shaders",
         "WebAudio API",
         "Procedural Generation",
+        "Claude",
       ],
       links: [
         {
@@ -699,6 +701,7 @@ export const DATA = {
         "WebAudio API",
         "GLSL Shaders",
         "Procedural Generation",
+        "Claude Fable 5",
       ],
       links: [
         {
