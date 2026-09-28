@@ -428,10 +428,10 @@ export default async function Page() {
               <div className="grid gap-4 sm:grid-cols-2">
                 {DATA.projects
                   .filter((project) => 
-                    ["Outbuilt", "Dateup", "PayBrackets", "Jungle Trail"].includes(project.title)
+                    ["Outbuilt", "Dateup", "PayBrackets", "Wallpaperz"].includes(project.title)
                   )
                   .sort((a, b) => {
-                    const order = ["Outbuilt", "Dateup", "PayBrackets", "Jungle Trail"];
+                    const order = ["Outbuilt", "Dateup", "PayBrackets", "Wallpaperz"];
                     return order.indexOf(a.title) - order.indexOf(b.title);
                   })
                   .map((project) => (
