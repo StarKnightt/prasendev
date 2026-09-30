@@ -345,7 +345,7 @@ export const DATA = {
       active: true,
       group: "products",
       description:
-        "Ranking algorithms are opaque, so I built a public leaderboard where rank is exactly what you paid and anyone can outbid you. No logins, no feed, just Supabase and Dodo Payments checkout. 23 paid placements across 11 countries since launch on Aug 22, 2026, with around 1,100 page views a day from 100+ countries.",
+        "Ranking algorithms are opaque, so I built a public leaderboard where rank is exactly what you paid and anyone can outbid you. No logins, no feed, just Supabase and Dodo Payments checkout. 23 paid placements across 11 countries after launch on Aug 22, 2026.",
       technologies: [
         "Next.js",
         "React 19",
