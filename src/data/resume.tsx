@@ -37,7 +37,7 @@ export const DATA = {
   description:
     "",
   summary:
-    "**[[highlight:Full Stack Developer]]** who builds in public and runs a 500+ member developer community, mostly shipping with Next.js, TypeScript and React. Currently freelancing and open to [**[[underline:DevRel work]]**](mailto:hi@prasen.dev). Always up for collaborating on exciting projects.",
+    "**[[highlight:Full Stack Developer]]** who builds in public and runs a 500+ member developer community. Currently freelancing and open to [**[[underline:DevRel work]]**](mailto:hi@prasen.dev). Always up for collaborating on exciting projects.",
 
   avatarUrl: "/prasen.webp",
   // refresh periodically
