@@ -21,7 +21,7 @@ Since June 2025 he has run Grind n Shine, a 500+ member WhatsApp community for d
 Products Prasenjit built and runs.
 
 - [Outbuilt](https://outbuilt.lol): A pay-to-rank public leaderboard, no logins, no algorithms, your rank is what you paid for. 23 paid placements across 11 countries after launch on Aug 22, 2026.
-- [Dateup](https://dateup.in): AI dating profile optimizer on Grok, OpenAI and Groq. 155K+ Google impressions and 1.2K+ clicks in its first 4 months per Search Console, growing from 13K to 49K impressions a month.
+- [Dateup](https://dateup.in): AI dating profile optimizer: Grok generates the photos, OpenAI handles scoring and openers. 155K+ Google impressions and 1.2K+ clicks in its first 4 months per Search Console, growing from 13K to 49K impressions a month.
 - [PayBrackets](https://paybrackets.com): A free US take-home pay calculator for the 2026 tax year covering all 50 states and D.C., 160+ programmatic pages. 777 users from 42 countries in the last 90 days.
 - [Wallpaperz](https://www.wallpaperz.in): Wallpaper discovery platform with AI generation, monetized with AdSense. 600 to 800 page views a day 20 months after launch, visitors from 110+ countries. 31+ GitHub stars.
 - [CleanType](https://cleantype.is-a.software): A distraction-free Windows writing app in Rust and Tauri. 337+ downloads across 4 releases, 21+ GitHub stars.
