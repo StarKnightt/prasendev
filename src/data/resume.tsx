@@ -37,7 +37,7 @@ export const DATA = {
   description:
     "",
   summary:
-    "**[[highlight:Full Stack Developer]]** who builds in public and runs a 500+ member developer community, mostly shipping with Next.js, TypeScript and React. Currently freelancing and open to [**[[underline:DevRel work]]**](mailto:hi@prasen.dev). Always up for collaborating on exciting projects.",
+    "**[[highlight:Full Stack Developer]]** who builds in public and runs a 500+ member developer community. Currently freelancing and open to [**[[underline:DevRel work]]**](mailto:hi@prasen.dev). Always up for collaborating on exciting projects.",
 
   avatarUrl: "/prasen.webp",
   // refresh periodically
@@ -850,7 +850,7 @@ export const DATA = {
       active: true,
       group: "products",
       description:
-        "An AI dating profile optimizer: photo enhancement, a conversation starter assistant and a profile reviewer, running on Grok, OpenAI and Groq with Supabase auth and Dodo Payments. The SEO side worked better than the product: 155K+ Google impressions and 1.2K+ clicks in its first 4 months per Search Console, growing from 13K to 49K impressions a month, ranking for dating app comparison queries.",
+        "An AI dating profile optimizer that starts with the photo you already have: better light and a cleaner background in about 40 seconds, still 100% you, for Tinder, Bumble and Hinge. It also scores every profile photo out of 10 with exactly what to fix, and writes three openers from a screenshot of a match's profile. Pay once, no subscription. Grok generates the photos (OpenAI as fallback), OpenAI handles scoring and openers, with Supabase auth and Dodo Payments. 155K+ Google impressions and 1.2K+ clicks in its first 4 months per Search Console, growing from 13K to 49K impressions a month, ranking for dating app comparison queries.",
       technologies: [
         "Next.js",
         "Supabase",
@@ -858,7 +858,6 @@ export const DATA = {
         "TailwindCSS",
         "xAI Grok",
         "OpenAI",
-        "Groq",
         "Dodo Payments",
       ],
       links: [
