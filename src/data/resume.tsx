@@ -623,6 +623,49 @@ export const DATA = {
       poster: "https://video.gumlet.io/6745e593080b60408ca085f7/6ac52d566d6d4d08c60db098/thumbnail-1-0.png",
     },
     {
+      title: "Ocean Drive",
+      tagline: "Miami Beach at sunrise. Walk the Art Deco strip or take any car on the street down to the surf.",
+      href: "https://starknightt.github.io/ocean-drive/",
+      dates: "September 2026",
+      active: true,
+      group: "lab",
+      play: {
+        url: "https://starknightt.github.io/ocean-drive/",
+        mode: "embed",
+        note: "Best on a desktop GPU with keyboard and mouse. Also runs on phones on a lower tier.",
+      },
+      description:
+        "A first-person walk along Ocean Drive in Miami Beach at sunrise in Three.js: pastel Art Deco hotels lit gold, palms throwing long shadows and swash running in around your feet. Get into any car on the street and drive it anywhere, down the drive, over the park lawn and into the surf. A sandbox, no weapons. About forty invented hotels, 160 palms, the sky, the ocean and every sound are generated in code; the cars were modelled in Blender for the project and the people come from Mixamo. Built overnight in Cursor by AI agents in a builder and critic loop against real sunrise photos. 17+ stars and 6 forks on GitHub.",
+      technologies: [
+        "Three.js",
+        "JavaScript",
+        "Web Audio API",
+        "Blender",
+        "Mixamo",
+        "Procedural Generation",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://starknightt.github.io/ocean-drive/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/StarKnightt/ocean-drive",
+          icon: <Icons.github className="size-3" />,
+        },
+        {
+          type: "Launch post",
+          href: "https://x.com/prasenx/status/2104203568911966337",
+          icon: <Icons.x className="size-3" />,
+        },
+      ],
+      image: "/projects/ocean-drive.webp",
+      video: "https://video.gumlet.io/6745e593080b60408ca085f7/6ac53a976d6d4d08c60dc96d/download.mp4",
+      poster: "https://video.gumlet.io/6745e593080b60408ca085f7/6ac53a976d6d4d08c60dc96d/thumbnail-1-0.png",
+    },
+    {
       title: "Operation Ironhold",
       tagline: "A full first-person shooter in a single 290 KB HTML file, from five prompts.",
       href: "https://starknightt.github.io/operation-ironhold/",
