@@ -62,7 +62,7 @@ const PROOF: {
   receipts: { label: string; href: string }[];
 }[] = [
   {
-    value: "22.8K+",
+    value: "22.9K+",
     glyph: "signal",
     label: "followers on X",
     receipts: [{ label: "@prasenx", href: DATA.contact.social.X.url }],

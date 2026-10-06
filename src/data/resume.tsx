@@ -579,6 +579,50 @@ export const DATA = {
       image: "/projects/summer-cycle.webp",
     },
     {
+      title: "Bay Ride",
+      tagline: "A painted seaside bay. Walk the pier, then take a wooden skiff out to the lighthouse island.",
+      href: "https://starknightt.github.io/bay-ride/",
+      dates: "October 2026",
+      active: true,
+      group: "lab",
+      play: {
+        url: "https://starknightt.github.io/bay-ride/",
+        mode: "embed",
+        note: "Desktop GPU, keyboard and mouse. Up to a minute of shader compile on first load.",
+      },
+      description:
+        "A summer evening in a small painted seaside bay in Three.js: walk the timber pier and the beach, then take a wooden skiff out to the lighthouse island while the day runs from morning to a moonlit night. Nothing to win. The sea, sky, town, trees, birds, every sound and the piano score are generated in code at load time, with an ink and Kuwahara paint filter over the frame. The one authored model is the heroine, built by a Python script in Blender. Built with Claude Opus 5.5 in Cursor, and it holds 60+ fps at 1080p on an RTX 4060.",
+      technologies: [
+        "Three.js",
+        "TypeScript",
+        "Vite",
+        "Web Audio API",
+        "Blender",
+        "Procedural Generation",
+        "Claude Opus 5.5",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://starknightt.github.io/bay-ride/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/StarKnightt/bay-ride",
+          icon: <Icons.github className="size-3" />,
+        },
+        {
+          type: "Launch post",
+          href: "https://x.com/prasenx/status/2107451914954911838",
+          icon: <Icons.x className="size-3" />,
+        },
+      ],
+      image: "/projects/bay-ride.webp",
+      video: "https://video.gumlet.io/6745e593080b60408ca085f7/6ac52d566d6d4d08c60db098/download.mp4",
+      poster: "https://video.gumlet.io/6745e593080b60408ca085f7/6ac52d566d6d4d08c60db098/thumbnail-1-0.png",
+    },
+    {
       title: "Operation Ironhold",
       tagline: "A full first-person shooter in a single 290 KB HTML file, from five prompts.",
       href: "https://starknightt.github.io/operation-ironhold/",
