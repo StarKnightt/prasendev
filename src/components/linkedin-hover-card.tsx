@@ -12,7 +12,7 @@ import { Users, Briefcase } from "lucide-react";
 const LINKEDIN_PROFILE = {
   name: "Prasenjit Nayak",
   headline: "making code alive",
-  avatar: "https://unavatar.io/linkedin/prasenjitnayak",
+  avatar: "https://unavatar.io/linkedin/prasenx",
   connections: "500+",
   followers: 2116,
 };
