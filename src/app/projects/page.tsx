@@ -7,6 +7,7 @@ import { HeadingScribble } from "@/components/motion/heading-scribble";
 import { LabBeaker } from "@/components/motion/lab-beaker";
 import { LabHashRedirect } from "@/components/lab-hash-redirect";
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
+import { ProjectSortGrid, ProjectSortProvider, ProjectSortSelect } from "@/components/project-sort";
 import type { Metadata } from "next";
 
 const PAGE_DESCRIPTION =
@@ -44,6 +45,7 @@ const BLUR_FADE_DELAY = 0.04;
 const PROJECTS: readonly Project[] = DATA.projects;
 const PRODUCTS = PROJECTS.filter((p) => (p.group ?? "products") === "products");
 const LAB_COUNT = PROJECTS.filter((p) => p.group === "lab").length;
+const SORT_ITEMS = PRODUCTS.map((p) => ({ key: p.title, title: p.title, dates: p.dates }));
 
 export default function ProjectsPage() {
   return (
@@ -54,30 +56,35 @@ export default function ProjectsPage() {
         <h1 className="font-medium text-2xl mb-8 tracking-tighter">projects</h1>
       </BlurFade>
       <div className="space-y-12">
-        <div id="products">
-          <BlurFade delay={BLUR_FADE_DELAY * 2}>
-            <h2 className="relative w-fit text-lg font-semibold tracking-tight">
-              Projects
-              <HeadingScribble kind="lift" />
-            </h2>
-            <p className="mt-2 mb-5 text-sm text-muted-foreground">Things people pay for or use every day</p>
-          </BlurFade>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {PRODUCTS.map((project, i) => (
-              <BlurFade key={project.title} delay={BLUR_FADE_DELAY * 2 + (i + 1) * 0.05}>
-                <div className="relative overflow-hidden rounded-xl">
-                  <BorderBeam
-                    duration={4}
-                    size={300}
-                    reverse
-                    className="from-transparent via-purple-500 to-transparent"
-                  />
-                  <ProjectCard {...project} tags={project.technologies} />
-                </div>
-              </BlurFade>
-            ))}
+        <ProjectSortProvider>
+          <div id="products">
+            <BlurFade delay={BLUR_FADE_DELAY * 2}>
+              <div className="flex items-center justify-between gap-3">
+                <h2 className="relative w-fit text-lg font-semibold tracking-tight">
+                  Projects
+                  <HeadingScribble kind="lift" />
+                </h2>
+                <ProjectSortSelect />
+              </div>
+              <p className="mt-2 mb-5 text-sm text-muted-foreground">Things people pay for or use every day</p>
+            </BlurFade>
+            <ProjectSortGrid items={SORT_ITEMS} className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {PRODUCTS.map((project, i) => (
+                <BlurFade key={project.title} delay={BLUR_FADE_DELAY * 2 + (i + 1) * 0.05}>
+                  <div className="relative overflow-hidden rounded-xl">
+                    <BorderBeam
+                      duration={4}
+                      size={300}
+                      reverse
+                      className="from-transparent via-purple-500 to-transparent"
+                    />
+                    <ProjectCard {...project} tags={project.technologies} />
+                  </div>
+                </BlurFade>
+              ))}
+            </ProjectSortGrid>
           </div>
-        </div>
+        </ProjectSortProvider>
 
         <BlurFade delay={BLUR_FADE_DELAY * 2 + (PRODUCTS.length + 1) * 0.05}>
           <Link
