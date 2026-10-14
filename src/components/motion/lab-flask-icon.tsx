@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-/** Lucide flask-conical that tilts and bubbles while its parent link is hovered or focused. */
+/** Lucide flask-conical that tilts and lets bubbles rise from its mouth while its parent link is hovered or focused. */
 export function LabFlaskIcon({ className }: { className?: string }) {
   return (
     <svg
@@ -19,8 +19,11 @@ export function LabFlaskIcon({ className }: { className?: string }) {
         <path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2" />
         <path d="M6.453 15h11.094" />
         <path d="M8.5 2h7" />
-        <circle className="lab-flask-bubble" cx="10.5" cy="18.5" r="1" />
-        <circle className="lab-flask-bubble" cx="13.5" cy="18" r="0.75" />
+      </g>
+      <g strokeWidth={1.5}>
+        <circle className="lab-flask-bubble" cx="12" cy="-1" r="2" />
+        <circle className="lab-flask-bubble" cx="14.5" cy="-1.5" r="1.5" />
+        <circle className="lab-flask-bubble" cx="9.75" cy="-0.5" r="1.25" />
       </g>
     </svg>
   );
