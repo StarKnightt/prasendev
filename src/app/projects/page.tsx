@@ -1,15 +1,16 @@
+import Link from "next/link";
 import BlurFade from "@/components/magicui/blur-fade";
 import { DATA, type Project } from "@/data/resume";
 import { BorderBeam } from "@/components/magicui/border-beam";
 import { ProjectCard } from "@/components/project-card";
-import { LabTile } from "@/components/lab-tile";
 import { HeadingScribble } from "@/components/motion/heading-scribble";
 import { LabBeaker } from "@/components/motion/lab-beaker";
+import { LabHashRedirect } from "@/components/lab-hash-redirect";
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
 import type { Metadata } from "next";
 
 const PAGE_DESCRIPTION =
-  "Projects by Prasenjit Nayak: Outbuilt, a pay-to-rank leaderboard with 23 paid placements in its first 10 days; Dateup, PayBrackets, Wallpaperz, CleanType and more, plus a Lab of AI-built browser 3D demos.";
+  "Projects by Prasenjit Nayak: Outbuilt, a pay-to-rank leaderboard with 23 paid placements in its first 10 days; Dateup, PayBrackets, Wallpaperz, CleanType and Next.js Learning.";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
         url: `${DATA.url}/og/projects-2026-09.png`,
         width: 1200,
         height: 630,
-        alt: "Projects by Prasenjit Nayak: products and a Lab of AI-built browser 3D demos",
+        alt: "Projects by Prasenjit Nayak",
       },
     ],
   },
@@ -42,11 +43,12 @@ const BLUR_FADE_DELAY = 0.04;
 
 const PROJECTS: readonly Project[] = DATA.projects;
 const PRODUCTS = PROJECTS.filter((p) => (p.group ?? "products") === "products");
-const LAB = PROJECTS.filter((p) => p.group === "lab");
+const LAB_COUNT = PROJECTS.filter((p) => p.group === "lab").length;
 
 export default function ProjectsPage() {
   return (
     <section>
+      <LabHashRedirect />
       <BreadcrumbJsonLd items={[{ name: "Projects", href: "/projects" }]} />
       <BlurFade delay={BLUR_FADE_DELAY}>
         <h1 className="font-medium text-2xl mb-8 tracking-tighter">projects</h1>
@@ -77,27 +79,22 @@ export default function ProjectsPage() {
           </div>
         </div>
 
-        <div id="lab">
-          <BlurFade delay={BLUR_FADE_DELAY * 2 + (PRODUCTS.length + 1) * 0.05}>
-            <div className="flex items-center gap-2">
-              <h2 className="relative w-fit text-lg font-semibold tracking-tight">
-                Lab
-                <HeadingScribble kind="hook" />
-              </h2>
-              <LabBeaker />
-            </div>
-            <p className="mt-2 mb-5 text-sm text-muted-foreground">
-              Things I directed AI to build and shared on X. Every texture, mesh and sound generated in code unless stated.
+        <BlurFade delay={BLUR_FADE_DELAY * 2 + (PRODUCTS.length + 1) * 0.05}>
+          <Link
+            href="/lab"
+            className="group flex items-center gap-3 rounded-xl border border-border/60 px-4 py-3 transition-colors hover:bg-muted/40"
+          >
+            <LabBeaker />
+            <p className="flex-1 text-sm text-muted-foreground">
+              <span className="font-medium text-foreground">Lab</span>
+              <span className="mx-2 text-border">/</span>
+              {LAB_COUNT} experiments built with Claude, from procedural 3D worlds to a code-generated trailer
             </p>
-          </BlurFade>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-8">
-            {LAB.map((project, i) => (
-              <BlurFade key={project.title} delay={BLUR_FADE_DELAY * 2 + (PRODUCTS.length + i + 2) * 0.05}>
-                <LabTile {...project} />
-              </BlurFade>
-            ))}
-          </div>
-        </div>
+            <span className="shrink-0 text-sm font-medium transition-transform group-hover:translate-x-0.5">
+              See the Lab →
+            </span>
+          </Link>
+        </BlurFade>
       </div>
     </section>
   );

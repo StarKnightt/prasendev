@@ -9,6 +9,7 @@ import {
   NotebookIcon,
   VideoIcon,
   FolderIcon,
+  FlaskConicalIcon,
   MoonIcon,
   SunIcon,
   MonitorIcon,
@@ -137,6 +138,18 @@ export function CommandPalette() {
         router.push("/projects");
       },
       keywords: ["projects", "work", "portfolio"],
+      group: "Pages",
+    },
+    {
+      id: "lab",
+      label: "Lab",
+      description: "Experiments built with Claude",
+      icon: <FlaskConicalIcon className="size-4" />,
+      action: () => {
+        setOpen(false);
+        router.push("/lab");
+      },
+      keywords: ["lab", "labs", "experiments", "3d", "demos", "claude", "ai", "three.js"],
       group: "Pages",
     },
     {

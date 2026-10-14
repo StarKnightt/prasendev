@@ -123,6 +123,11 @@ const nextConfig = {
         source: '/home',
         destination: '/',
         permanent: true,
+      },
+      {
+        source: '/labs',
+        destination: '/lab',
+        permanent: true,
       }
     ];
   },
