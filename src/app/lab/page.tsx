@@ -5,6 +5,7 @@ import { LabTile } from "@/components/lab-tile";
 import { HeadingScribble } from "@/components/motion/heading-scribble";
 import { LabBeaker } from "@/components/motion/lab-beaker";
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
+import { ProjectSortGrid, ProjectSortProvider, ProjectSortSelect } from "@/components/project-sort";
 import type { Metadata } from "next";
 
 const PAGE_DESCRIPTION =
@@ -42,6 +43,7 @@ export const metadata: Metadata = {
 const BLUR_FADE_DELAY = 0.04;
 
 const LAB: readonly Project[] = DATA.projects.filter((p) => p.group === "lab");
+const SORT_ITEMS = LAB.map((p) => ({ key: p.title, title: p.title, dates: p.dates }));
 
 export default function LabPage() {
   return (
@@ -58,27 +60,30 @@ export default function LabPage() {
           .
         </p>
       </BlurFade>
-      <div id="lab">
-        <BlurFade delay={BLUR_FADE_DELAY * 2}>
-          <div className="flex items-center gap-2">
-            <h2 className="relative w-fit text-lg font-semibold tracking-tight">
-              Lab
-              <HeadingScribble kind="hook" />
-            </h2>
-            <LabBeaker />
-          </div>
-          <p className="mt-2 mb-5 text-sm text-muted-foreground">
-            Things I directed AI to build and shared on X. Every texture, mesh and sound generated in code unless stated.
-          </p>
-        </BlurFade>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-8">
-          {LAB.map((project, i) => (
-            <BlurFade key={project.title} delay={BLUR_FADE_DELAY * 2 + (i + 1) * 0.05}>
-              <LabTile {...project} />
-            </BlurFade>
-          ))}
+      <ProjectSortProvider>
+        <div id="lab">
+          <BlurFade delay={BLUR_FADE_DELAY * 2}>
+            <div className="flex items-center gap-2">
+              <h2 className="relative w-fit text-lg font-semibold tracking-tight">
+                Lab
+                <HeadingScribble kind="hook" />
+              </h2>
+              <LabBeaker />
+              <ProjectSortSelect label="Sort the Lab" className="ml-auto" />
+            </div>
+            <p className="mt-2 mb-5 text-sm text-muted-foreground">
+              Things I directed AI to build and shared on X. Every texture, mesh and sound generated in code unless stated.
+            </p>
+          </BlurFade>
+          <ProjectSortGrid items={SORT_ITEMS} className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-8">
+            {LAB.map((project, i) => (
+              <BlurFade key={project.title} delay={BLUR_FADE_DELAY * 2 + (i + 1) * 0.05}>
+                <LabTile {...project} />
+              </BlurFade>
+            ))}
+          </ProjectSortGrid>
         </div>
-      </div>
+      </ProjectSortProvider>
     </section>
   );
 }

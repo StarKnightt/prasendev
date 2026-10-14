@@ -469,21 +469,23 @@ html {
 }
 
 .lab-flask-bubble {
-  fill: currentColor;
-  stroke: none;
   opacity: 0;
   transform-box: fill-box;
   transform-origin: center;
 }
 
+.lab-flask-bubble:nth-of-type(2) { --bubble-drift: 1.5px; animation-delay: 120ms !important; }
+.lab-flask-bubble:nth-of-type(3) { --bubble-drift: -1.5px; animation-delay: 240ms !important; }
+
 @media (hover: hover) and (pointer: fine) {
   a:hover .lab-flask-body { animation: flask-tilt 600ms var(--ease-out-strong); }
-  a:hover .lab-flask-bubble { animation: flask-bubble 700ms ease-out; }
-  a:hover .lab-flask-bubble:nth-of-type(2) { animation-delay: 140ms; animation-fill-mode: backwards; }
+  a:hover .lab-flask-bubble { animation: flask-bubble 850ms ease-out backwards; }
 }
 
-a:focus-visible .lab-flask-body { animation: flask-tilt 600ms var(--ease-out-strong); }
-a:focus-visible .lab-flask-bubble { animation: flask-bubble 700ms ease-out; }
+a:focus-visible .lab-flask-body,
+a:active .lab-flask-body { animation: flask-tilt 600ms var(--ease-out-strong); }
+a:focus-visible .lab-flask-bubble,
+a:active .lab-flask-bubble { animation: flask-bubble 850ms ease-out backwards; }
 
 @keyframes flask-tilt {
   0%, 100% { transform: rotate(0deg); }
@@ -493,9 +495,10 @@ a:focus-visible .lab-flask-bubble { animation: flask-bubble 700ms ease-out; }
 }
 
 @keyframes flask-bubble {
-  0% { opacity: 0; transform: translateY(0) scale(0.5); }
-  30% { opacity: 1; }
-  100% { opacity: 0; transform: translateY(-9px) scale(1); }
+  0% { opacity: 0; transform: translate(0, 4px) scale(0.4); }
+  20% { opacity: 1; transform: translate(0, 0) scale(1); }
+  70% { opacity: 1; }
+  100% { opacity: 0; transform: translate(var(--bubble-drift, 0px), -9px) scale(1.1); }
 }
 
 /* Experience timeline */
