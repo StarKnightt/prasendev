@@ -93,6 +93,13 @@ export function JsonLd() {
         name: 'Gadgets',
         description: 'Tech setup, PC components, and productivity tools I use daily',
         url: `${DATA.url}/gadgets`
+      },
+      {
+        '@type': 'ListItem',
+        position: 5,
+        name: 'Lab',
+        description: 'Browser 3D worlds, games and a code-generated trailer built with Claude',
+        url: `${DATA.url}/lab`
       }
     ]
   }];
