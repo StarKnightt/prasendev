@@ -7,16 +7,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
-import { Menu, X, Terminal, Home, FlaskConical } from "lucide-react";
+import { Menu, X, Terminal, Home } from "lucide-react";
 import { Dock, DockIcon } from "@/components/magicui/dock";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { buttonVariants } from "@/components/ui/button";
-
-// Top navbar only; the Dock keeps rendering DATA.navbar as is.
-type NavItem = { href: string; icon: React.ComponentType<{ className?: string }>; label: string };
-const TOP_NAV: NavItem[] = DATA.navbar.flatMap((item): NavItem[] =>
-  item.href === "/projects" ? [item, { href: "/lab", icon: FlaskConical, label: "Lab" }] : [item]
-);
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -46,7 +40,7 @@ export default function Navbar() {
 
   useEffect(() => {
     if (isScrolled) return;
-    const navItems = TOP_NAV.slice(1);
+    const navItems = DATA.navbar.slice(1);
     const activeIndex = navItems.findIndex((item) => item.href === pathname);
     if (activeIndex !== -1 && itemRefs.current[activeIndex] && navRef.current) {
       const itemEl = itemRefs.current[activeIndex]!;
@@ -66,7 +60,7 @@ export default function Navbar() {
     return null;
   }
 
-  const navItems = TOP_NAV.slice(1);
+  const navItems = DATA.navbar.slice(1);
 
   return (
     <>
@@ -211,7 +205,7 @@ export default function Navbar() {
                     className="relative z-50 mx-4 mt-2 overflow-hidden rounded-2xl border border-border/40 bg-background/95 shadow-lg backdrop-blur-xl md:hidden"
                   >
                     <div className="p-2">
-                      {TOP_NAV.map((item, index) => {
+                      {DATA.navbar.map((item, index) => {
                         const isActive = pathname === item.href;
                         return (
                           <motion.div
@@ -239,7 +233,7 @@ export default function Navbar() {
                       <motion.div
                         initial={{ opacity: 0, x: -12 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: TOP_NAV.length * 0.04, duration: 0.2 }}
+                        transition={{ delay: DATA.navbar.length * 0.04, duration: 0.2 }}
                       >
                         <Link
                           href="/cli"

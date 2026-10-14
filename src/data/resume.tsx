@@ -1,4 +1,5 @@
 import { Icons } from "@/components/icons";
+import { LabFlaskIcon } from "@/components/motion/lab-flask-icon";
 import { HomeIcon, NotebookIcon, VideoIcon, FolderIcon, Settings, Wrench, Zap } from "lucide-react";
 import { faReact, faNodeJs, faGitAlt, faTypescript, faTailwindCss, faDocker, faFigma, faGithub, faFirefoxBrowser, faBrave, faNotion, faPython, faJava, faJs, faHtml5, faCss3Alt } from "@fortawesome/free-brands-svg-icons";
 import { faLeaf, faPlug, faBolt, faTerminal, faRocket, faServer, faDatabase, faCode } from "@fortawesome/free-solid-svg-icons";
@@ -156,6 +157,7 @@ export const DATA = {
     { href: "/blog", icon: NotebookIcon, label: "Blog" },
     { href: "/videos", icon: VideoIcon, label: "Videos" },
     { href: "/projects", icon: FolderIcon, label: "Projects" },
+    { href: "/lab", icon: LabFlaskIcon, label: "Lab" },
     { href: "/gadgets", icon: Icons.shop, label: "Gadgets" },
   ],
   contact: {

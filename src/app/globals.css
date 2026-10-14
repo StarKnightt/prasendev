@@ -462,6 +462,42 @@ html {
   100% { opacity: 0; transform: translateY(-4px) scale(1); }
 }
 
+/* Lab nav icon: tilt and bubbles while its link is hovered */
+.lab-flask-body {
+  transform-box: view-box;
+  transform-origin: 12px 22px;
+}
+
+.lab-flask-bubble {
+  fill: currentColor;
+  stroke: none;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a:hover .lab-flask-body { animation: flask-tilt 600ms var(--ease-out-strong); }
+  a:hover .lab-flask-bubble { animation: flask-bubble 700ms ease-out; }
+  a:hover .lab-flask-bubble:nth-of-type(2) { animation-delay: 140ms; animation-fill-mode: backwards; }
+}
+
+a:focus-visible .lab-flask-body { animation: flask-tilt 600ms var(--ease-out-strong); }
+a:focus-visible .lab-flask-bubble { animation: flask-bubble 700ms ease-out; }
+
+@keyframes flask-tilt {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-12deg); }
+  55% { transform: rotate(8deg); }
+  80% { transform: rotate(-3deg); }
+}
+
+@keyframes flask-bubble {
+  0% { opacity: 0; transform: translateY(0) scale(0.5); }
+  30% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-9px) scale(1); }
+}
+
 /* Experience timeline */
 .timeline-dot {
   transition: background-color 200ms ease, border-color 200ms ease;
@@ -570,7 +606,9 @@ html {
   .avatar-doodle-drift,
   .glyph-claude-in,
   .glyph-claude-spin,
-  .lab-bubble {
+  .lab-bubble,
+  .lab-flask-body,
+  .lab-flask-bubble {
     animation: none !important;
   }
 }
