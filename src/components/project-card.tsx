@@ -35,6 +35,7 @@ interface Props {
     href: string;
   }[];
   play?: ProjectPlay;
+  badge?: string;
   className?: string;
 }
 
@@ -50,6 +51,7 @@ export function ProjectCard({
   poster,
   links,
   play,
+  badge,
   className,
 }: Props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -132,10 +134,17 @@ export function ProjectCard({
         )}
         <CardHeader className="px-4 pt-4">
           <div className="space-y-1.5">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between gap-2">
               <CardTitle className="text-base font-semibold">{title}</CardTitle>
-              {href && !video && (
-                <ExternalLink className="size-3.5 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
+              {badge ? (
+                <span className="shrink-0 rounded-full border border-border px-1.5 py-0.5 text-[10px] text-muted-foreground">
+                  {badge}
+                </span>
+              ) : (
+                href &&
+                !video && (
+                  <ExternalLink className="size-3.5 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
+                )
               )}
             </div>
             <time className="font-sans text-xs text-muted-foreground">{dates}</time>

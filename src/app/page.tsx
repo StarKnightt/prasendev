@@ -1,4 +1,4 @@
-import { DATA } from "@/data/resume";
+import { DATA, type Project } from "@/data/resume";
 import { getBlogPosts } from "@/data/blog";
 import Link from "next/link";
 import Image from "next/image";
@@ -43,6 +43,7 @@ import { Signature } from "@/components/motion/signature";
 import { AvatarDoodles } from "@/components/motion/avatar-doodles";
 
 const BLUR_FADE_DELAY = 0.04;
+const SELECTED_WORK = ["Dateup", "Wallpaperz", "Jungle Trail", "Bay Ride"];
 
 // Brand hover colors for social icons; others fall back to foreground
 const SOCIAL_HOVER_COLORS: Record<string, string> = {
@@ -417,31 +418,36 @@ export default async function Page() {
                     <HeadingScribble kind="swoosh" />
                   </h2>
                 </div>
-                <Link href="/projects" className="shrink-0">
-                  <ShinyButton className="px-3 py-1.5 font-semibold transition-all duration-300 hover:shadow-lg active:scale-[0.98] [&>span]:text-xs">
-                    View All Projects →
-                  </ShinyButton>
-                </Link>
+                <div className="flex shrink-0 items-center gap-3">
+                  <Link
+                    href="/lab"
+                    className="hidden text-xs text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline sm:inline"
+                  >
+                    See the Lab
+                  </Link>
+                  <Link href="/projects" className="shrink-0">
+                    <ShinyButton className="px-3 py-1.5 font-semibold transition-all duration-300 hover:shadow-lg active:scale-[0.98] [&>span]:text-xs">
+                      View All Projects →
+                    </ShinyButton>
+                  </Link>
+                </div>
               </div>
             </BlurFade>
             <BlurFade delay={BLUR_FADE_DELAY * 11.5}>
               <div className="grid gap-4 sm:grid-cols-2">
-                {DATA.projects
-                  .filter((project) => 
-                    ["Outbuilt", "Dateup", "PayBrackets", "Wallpaperz"].includes(project.title)
-                  )
-                  .sort((a, b) => {
-                    const order = ["Outbuilt", "Dateup", "PayBrackets", "Wallpaperz"];
-                    return order.indexOf(a.title) - order.indexOf(b.title);
-                  })
-                  .map((project) => (
+                {SELECTED_WORK.flatMap((title) => DATA.projects.filter((p) => p.title === title)).map((project: Project) => {
+                  const isLab = project.group === "lab";
+                  return (
                     <div key={project.title} className="relative overflow-hidden rounded-xl">
                       <ProjectCard
                         {...project}
+                        description={isLab ? project.tagline ?? project.description : project.description}
+                        badge={isLab ? "Built with Claude" : undefined}
                         tags={Array.from(project.technologies)}
                       />
                     </div>
-                  ))}
+                  );
+                })}
               </div>
             </BlurFade>
           </div>
