@@ -20,6 +20,7 @@ export type Project = {
   active: boolean;
   description: string;
   tagline?: string;
+  proof?: string;
   technologies: readonly string[];
   links: readonly { type: string; href: string; icon: ReactNode }[];
   image: string;
@@ -417,6 +418,7 @@ export const DATA = {
     {
       title: "Jungle Trail",
       tagline: "A walkable procedural jungle with zero external art. Got a debug-overlay PR from the Xbox CTO.",
+      proof: "296+ stars on GitHub",
       href: "https://starknightt.github.io/jungle-trail/",
       dates: "August 2026",
       active: true,
@@ -625,6 +627,7 @@ export const DATA = {
     {
       title: "Bay Ride",
       tagline: "A painted seaside bay. Walk the pier, then take a wooden skiff out to the lighthouse island.",
+      proof: "341K views on X",
       href: "https://starknightt.github.io/bay-ride/",
       dates: "October 2026",
       active: true,
@@ -635,7 +638,7 @@ export const DATA = {
         note: "Desktop GPU, keyboard and mouse. Up to a minute of shader compile on first load.",
       },
       description:
-        "A summer evening in a small painted seaside bay in Three.js: walk the timber pier and the beach, then take a wooden skiff out to the lighthouse island while the day runs from morning to a moonlit night. Nothing to win. The sea, sky, town, trees, birds, every sound and the piano score are generated in code at load time, with an ink and Kuwahara paint filter over the frame. The one authored model is the heroine, built by a Python script in Blender. Built with Claude Opus 5.5 in Cursor, and it holds 60+ fps at 1080p on an RTX 4060.",
+        "A summer evening in a small painted seaside bay in Three.js: walk the timber pier and the beach, then take a wooden skiff out to the lighthouse island while the day runs from morning to a moonlit night. Nothing to win. The sea, sky, town, trees, birds, every sound and the piano score are generated in code at load time, with an ink and Kuwahara paint filter over the frame. The one authored model is the heroine, built by a Python script in Blender. Built with Claude Opus 5.5 in Cursor, and it holds 60+ fps at 1080p on an RTX 4060. The launch post passed 341K views and 4.1K likes on X.",
       technologies: [
         "Three.js",
         "TypeScript",

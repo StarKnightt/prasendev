@@ -36,6 +36,7 @@ interface Props {
   }[];
   play?: ProjectPlay;
   badge?: string;
+  proof?: string;
   className?: string;
 }
 
@@ -52,6 +53,7 @@ export function ProjectCard({
   links,
   play,
   badge,
+  proof,
   className,
 }: Props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -154,6 +156,7 @@ export function ProjectCard({
             <Markdown className="prose max-w-full text-pretty font-sans text-xs text-muted-foreground dark:prose-invert line-clamp-3">
               {description}
             </Markdown>
+            {proof && <p className="font-sans text-xs font-medium text-foreground/80">{proof}</p>}
           </div>
         </CardHeader>
         <CardContent className="mt-auto flex flex-col px-4">
