@@ -373,6 +373,48 @@ export const DATA = {
       poster: "https://video.gumlet.io/6745e593080b60408ca085f7/6a8ef3e50784f723ea1a0908/thumbnail-1-0.png?v=1787753505658",
     },
     {
+      title: "River Morning",
+      tagline: "A quiet morning of fishing on a clear mountain river. Cast, play a trout, then let it go.",
+      href: "https://starknightt.github.io/river-morning/",
+      dates: "October 2026",
+      active: true,
+      group: "lab",
+      play: {
+        url: "https://starknightt.github.io/river-morning/",
+        mode: "embed",
+        note: "Desktop GPU with WebGPU (Chrome or Edge), keyboard and mouse. First visit downloads about 91 MB, around 45 seconds.",
+      },
+      description:
+        "A quiet morning of fishing by a clear mountain river in Three.js with WebGPU, after the slow moments of Red Dead Redemption 2. Walk the gravel bank below a log cabin, cast a float into the deep pool, strike when a trout takes it, play it on a split-cane rod, then lift it out and let it go. Nothing to win, only a tally of fish caught and the biggest one. 43 trout of four species, about 6,800 swaying conifers, mist on the water, a walk-in cabin and four times of day from dawn to a moonlit night. The water, mist, trout and fishing are code; the rocks, ground textures and skies are Poly Haven scans, the angler is a MakeHuman body animated with CMU motion capture and Quaternius clips, the trout skins come from public-domain U.S. government fish paintings and the sounds are CC0 and CC BY recordings. The cabin, camp and rod were modelled in Blender for the project. Built in Cursor by AI agents, with a critic checking each part against real reference photos.",
+      technologies: [
+        "Three.js",
+        "TypeScript",
+        "WebGPU",
+        "Vite",
+        "Web Audio API",
+        "Blender",
+        "Poly Haven",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://starknightt.github.io/river-morning/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/StarKnightt/river-morning",
+          icon: <Icons.github className="size-3" />,
+        },
+        {
+          type: "Launch post",
+          href: "https://x.com/prasenx/status/2108905413467079026",
+          icon: <Icons.x className="size-3" />,
+        },
+      ],
+      image: "/projects/river-morning.webp",
+    },
+    {
       title: "Jungle Trail",
       tagline: "A walkable procedural jungle with zero external art. Got a debug-overlay PR from the Xbox CTO.",
       href: "https://starknightt.github.io/jungle-trail/",
