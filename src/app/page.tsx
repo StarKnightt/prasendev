@@ -233,7 +233,6 @@ export default async function Page() {
                 <div className="profile-wrapper">
                   <FlipAvatar
                     src={DATA.avatarUrl}
-                    hoverSrc="/hi2.webp"
                     alt={DATA.name}
                     fallback={DATA.initials}
                   />
