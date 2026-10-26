@@ -84,9 +84,9 @@ export const products: Product[] = [
   {
     id: '9',
     title: 'iPhone 17 (White)',
-    description: 'My daily driver - amazing cameras and an all-rounder phone for productivity and media.',
-    imageUrl: '/images/products/S23.webp',
-    amazonLink: 'https://amzn.to/3GQiwsB',
+    description: 'My daily driver, in a clear MagSafe case. Great cameras and an all-rounder for work and media.',
+    imageUrl: '/images/products/iphone-17.webp',
+    amazonLink: 'https://www.amazon.in/s?k=iPhone+17',
     category: 'Mobile',
     featured: false,
   },
@@ -116,6 +116,15 @@ export const products: Product[] = [
     amazonLink: 'https://amzn.to/44Pq9ZN',
     category: 'Peripherals',
     featured: true,
+  },
+  {
+    id: '14',
+    title: 'Razer Basilisk V3',
+    description: 'My daily mouse. Comfy ergonomic grip, free-spinning scroll wheel and handy side buttons.',
+    imageUrl: '/images/products/razer-basilisk-v3.webp',
+    amazonLink: 'https://www.amazon.in/s?k=Razer+Basilisk+V3',
+    category: 'Peripherals',
+    featured: false,
   },
   {
     id: '13',

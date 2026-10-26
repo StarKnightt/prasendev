@@ -1,8 +1,8 @@
 import { Icons } from "@/components/icons";
 import { LabFlaskIcon } from "@/components/motion/lab-flask-icon";
 import { HomeIcon, NotebookIcon, VideoIcon, FolderIcon, Settings, Wrench, Zap } from "lucide-react";
-import { faReact, faNodeJs, faGitAlt, faTypescript, faTailwindCss, faDocker, faFigma, faGithub, faFirefoxBrowser, faBrave, faNotion, faPython, faJava, faJs, faHtml5, faCss3Alt } from "@fortawesome/free-brands-svg-icons";
-import { faLeaf, faPlug, faBolt, faTerminal, faRocket, faServer, faDatabase, faCode } from "@fortawesome/free-solid-svg-icons";
+import { faReact, faNodeJs, faGitAlt, faTypescript, faTailwindCss, faDocker, faFigma, faGithub, faFirefoxBrowser, faBrave, faNotion, faPython, faJava, faJs, faHtml5, faCss3Alt, faCloudflare, faChrome, faApple } from "@fortawesome/free-brands-svg-icons";
+import { faLeaf, faPlug, faBolt, faTerminal, faRocket, faServer, faDatabase, faCode, faArrowRightArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import type { ReactNode } from "react";
 
 export type ProjectGroup = "products" | "lab" | "interactions";
@@ -85,72 +85,119 @@ export const DATA = {
       description: "AI-powered code editor built on VS Code, my primary IDE for all projects.",
       href: "https://cursor.com/referral?code=63BS4MRLZQQV",
       customIcon: Icons.cursor,
+      category: "Coding",
+    },
+    {
+      name: "Claude",
+      description: "My go-to AI for coding and building, from quick fixes to whole features.",
+      href: "https://claude.ai",
+      customIcon: Icons.claude,
+      category: "Coding",
     },
     {
       name: "VS Code",
       description: "The classic. I still use it for quick edits and when I need specific extensions.",
       href: "https://code.visualstudio.com",
       customIcon: Icons.vscode,
+      category: "Coding",
     },
     {
       name: "Git Bash",
       description: "My go-to terminal on Windows for all git operations and shell scripting.",
       href: "https://gitforwindows.org",
       icon: faTerminal,
-    },
-    {
-      name: "Postman",
-      description: "API testing and documentation, essential for building and debugging REST APIs.",
-      href: "https://www.postman.com",
-      icon: faRocket,
-    },
-    {
-      name: "Docker",
-      description: "Containerization for consistent dev environments and easy deployments.",
-      href: "https://www.docker.com",
-      icon: faDocker,
-    },
-    {
-      name: "Hostinger",
-      description: "Reliable and affordable hosting for my projects and client sites.",
-      href: "https://www.hostinger.com/in?REFERRALCODE=NP4PRASENELF",
-      icon: faServer,
-    },
-    {
-      name: "Firefox",
-      description: "Privacy-first browser I use for everyday browsing and web development.",
-      href: "https://www.mozilla.org/firefox",
-      icon: faFirefoxBrowser,
-    },
-    {
-      name: "Brave",
-      description: "Fast, ad-free browser, my secondary pick for a clean browsing experience.",
-      href: "https://brave.com",
-      icon: faBrave,
-    },
-    {
-      name: "Figma",
-      description: "Design tool for UI mockups, prototyping, and collaborating on layouts.",
-      href: "https://www.figma.com",
-      icon: faFigma,
+      category: "Coding",
     },
     {
       name: "GitHub",
       description: "Where all my code lives: version control, CI/CD, and open source contributions.",
       href: "https://github.com",
       icon: faGithub,
+      category: "Coding",
+    },
+    {
+      name: "Postman",
+      description: "API testing and documentation, essential for building and debugging REST APIs.",
+      href: "https://www.postman.com",
+      icon: faRocket,
+      category: "Coding",
+    },
+    {
+      name: "Docker",
+      description: "Containerization for consistent dev environments and easy deployments.",
+      href: "https://www.docker.com",
+      icon: faDocker,
+      category: "Coding",
+    },
+    {
+      name: "Cloudflare",
+      description: "Hosts prasen.dev and my projects on Workers, plus DNS, email routing and R2.",
+      href: "https://www.cloudflare.com",
+      icon: faCloudflare,
+      category: "Hosting",
     },
     {
       name: "Vercel",
       description: "One-click deploys for all my Next.js apps with instant previews.",
       href: "https://vercel.com",
       icon: faRocket,
+      category: "Hosting",
+    },
+    {
+      name: "Hostinger",
+      description: "Reliable and affordable hosting for my projects and client sites.",
+      href: "https://www.hostinger.com/in?REFERRALCODE=NP4PRASENELF",
+      icon: faServer,
+      category: "Hosting",
+    },
+    {
+      name: "Google Chrome",
+      description: "My main browser for testing and DevTools, where every site gets checked first.",
+      href: "https://www.google.com/chrome/",
+      icon: faChrome,
+      category: "Browser",
+    },
+    {
+      name: "Firefox",
+      description: "Privacy-first browser I use for everyday browsing and web development.",
+      href: "https://www.mozilla.org/firefox",
+      icon: faFirefoxBrowser,
+      category: "Browser",
+    },
+    {
+      name: "Brave",
+      description: "Fast, ad-free browser, my secondary pick for a clean browsing experience.",
+      href: "https://brave.com",
+      icon: faBrave,
+      category: "Browser",
+    },
+    {
+      name: "LocalSend",
+      description: "Open source AirDrop alternative for sending files between my PC and phone.",
+      href: "https://localsend.org",
+      icon: faArrowRightArrowLeft,
+      category: "File transfer",
+    },
+    {
+      name: "AirDrop",
+      description: "Quick wireless transfers between Apple devices, now that I'm on an iPhone.",
+      href: "https://support.apple.com/en-in/102637",
+      icon: faApple,
+      category: "File transfer",
+    },
+    {
+      name: "Figma",
+      description: "Design tool for UI mockups, prototyping, and collaborating on layouts.",
+      href: "https://www.figma.com",
+      icon: faFigma,
+      category: "Design & notes",
     },
     {
       name: "Notion",
       description: "Notes, task management, and documentation. My second brain.",
       href: "https://www.notion.so",
       icon: faNotion,
+      category: "Design & notes",
     },
   ],
   navbar: [

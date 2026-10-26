@@ -36,6 +36,8 @@ const categoryConfig: Record<string, { icon: React.ElementType; order: number }>
   'Mobile': { icon: Smartphone, order: 3 },
 };
 
+const toolCategories = Array.from(new Set(DATA.tools.map((tool) => tool.category)));
+
 export default function GadgetsPage() {
   const productsByCategory = products.reduce((acc, product) => {
     if (!acc[product.category]) {
@@ -100,33 +102,42 @@ export default function GadgetsPage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {DATA.tools.map((tool, index) => (
-          <BlurFade key={tool.name} delay={0.04 * index} inView>
-            <a
-              href={tool.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-start gap-4 rounded-xl border border-border/60 bg-card p-4 shadow-sm dark:border-border/40 dark:bg-zinc-900/90 transition-all duration-200 hover:-translate-y-0.5 hover:border-border hover:shadow-md dark:hover:bg-zinc-800/90"
-            >
-              <div className="rounded-lg border border-border/50 bg-muted/50 p-2 shrink-0">
-                {"customIcon" in tool ? (
-                  <tool.customIcon className="size-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                ) : (
-                  <FontAwesomeIcon icon={tool.icon} className="size-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                )}
-              </div>
-              <div className="flex-1 min-w-0">
-                <h3 className="font-medium text-sm group-hover:text-primary transition-colors">
-                  {tool.name}
-                </h3>
-                <p className="mt-1 text-xs text-muted-foreground leading-relaxed">
-                  {tool.description}
-                </p>
-              </div>
-              <ArrowUpRight className="size-4 shrink-0 mt-0.5 text-muted-foreground/40 group-hover:text-foreground transition-colors" />
-            </a>
-          </BlurFade>
+      <div className="space-y-10">
+        {toolCategories.map((category) => (
+          <section key={category}>
+            <h3 className="mb-3 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+              {category}
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {DATA.tools.filter((tool) => tool.category === category).map((tool, index) => (
+                <BlurFade key={tool.name} delay={0.04 * index} inView>
+                  <a
+                    href={tool.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-start gap-4 rounded-xl border border-border/60 bg-card p-4 shadow-sm dark:border-border/40 dark:bg-zinc-900/90 transition-all duration-200 hover:-translate-y-0.5 hover:border-border hover:shadow-md dark:hover:bg-zinc-800/90"
+                  >
+                    <div className="rounded-lg border border-border/50 bg-muted/50 p-2 shrink-0">
+                      {"customIcon" in tool ? (
+                        <tool.customIcon className="size-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                      ) : (
+                        <FontAwesomeIcon icon={tool.icon} className="size-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                      )}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-medium text-sm group-hover:text-primary transition-colors">
+                        {tool.name}
+                      </h4>
+                      <p className="mt-1 text-xs text-muted-foreground leading-relaxed">
+                        {tool.description}
+                      </p>
+                    </div>
+                    <ArrowUpRight className="size-4 shrink-0 mt-0.5 text-muted-foreground/40 group-hover:text-foreground transition-colors" />
+                  </a>
+                </BlurFade>
+              ))}
+            </div>
+          </section>
         ))}
       </div>
     </div>
