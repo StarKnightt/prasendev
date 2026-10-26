@@ -42,4 +42,4 @@ for (const file of [
   }
 }
 
-run("npx opennextjs-cloudflare build --skipNextBuild");
+run("npx opennextjs-cloudflare build --skipNextBuild --dangerouslyUseUnsupportedNextVersion");

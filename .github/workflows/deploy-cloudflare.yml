@@ -40,7 +40,7 @@ jobs:
       # GH_PAT holds the GitHub PAT (the name GITHUB_TOKEN is reserved by
       # GitHub Actions) and is exposed to the build as GITHUB_TOKEN.
       - name: Build worker
-        run: npx opennextjs-cloudflare build
+        run: npx opennextjs-cloudflare build --dangerouslyUseUnsupportedNextVersion
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
