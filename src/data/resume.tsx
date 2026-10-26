@@ -44,7 +44,7 @@ export const DATA = {
   avatarUrl: "/prasen.webp",
   // refresh periodically
   stats: [
-    { value: "23", label: "paid placements on Outbuilt", href: "https://outbuilt.lol" },
+    { value: "25", label: "paid placements on Outbuilt", href: "https://outbuilt.lol" },
     { value: "155K+", label: "search impressions on Dateup", href: "https://dateup.in" },
     { value: "1.2K+", label: "uses of my v0 templates", href: "https://v0.app/@starknightt" },
   ],
@@ -348,7 +348,7 @@ export const DATA = {
       active: true,
       group: "products",
       description:
-        "Ranking algorithms are opaque, so I built a public leaderboard where rank is exactly what you paid and anyone can outbid you. No logins, no feed, just Supabase and Dodo Payments checkout. 23 paid placements across 11 countries after launch on Aug 22, 2026.",
+        "Ranking algorithms are opaque, so I built a public leaderboard where rank is exactly what you paid and anyone can outbid you. No logins, no feed, just Supabase and Dodo Payments checkout. 25 paid placements across 11+ countries after launch on Aug 22, 2026.",
       technologies: [
         "Next.js",
         "React 19",

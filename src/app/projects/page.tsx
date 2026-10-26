@@ -11,7 +11,7 @@ import { ProjectSortGrid, ProjectSortProvider, ProjectSortSelect } from "@/compo
 import type { Metadata } from "next";
 
 const PAGE_DESCRIPTION =
-  "Projects by Prasenjit Nayak: Outbuilt, a pay-to-rank leaderboard with 23 paid placements in its first 10 days; Dateup, PayBrackets, Wallpaperz, CleanType and Next.js Learning.";
+  "Projects by Prasenjit Nayak: Outbuilt, a pay-to-rank leaderboard with 25 paid placements since its Aug 2026 launch; Dateup, PayBrackets, Wallpaperz, CleanType and Next.js Learning.";
 
 export const metadata: Metadata = {
   title: "Projects",
