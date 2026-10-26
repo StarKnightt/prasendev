@@ -138,7 +138,7 @@ export const DATA = {
     },
     {
       name: "Vercel",
-      description: "One-click deploys for all my Next.js apps with instant previews.",
+      description: "Hosts my Next.js course and quick demos.",
       href: "https://vercel.com",
       icon: faRocket,
       category: "Hosting",
