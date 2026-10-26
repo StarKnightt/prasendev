@@ -83,7 +83,7 @@ export const products: Product[] = [
   },
   {
     id: '9',
-    title: 'Samsung Galaxy S23 (Cream)',
+    title: 'iPhone 17 (White)',
     description: 'My daily driver - amazing cameras and an all-rounder phone for productivity and media.',
     imageUrl: '/images/products/S23.webp',
     amazonLink: 'https://amzn.to/3GQiwsB',
