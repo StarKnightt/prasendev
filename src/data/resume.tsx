@@ -421,6 +421,48 @@ export const DATA = {
       poster: "https://video.gumlet.io/6745e593080b60408ca085f7/6a8ef3e50784f723ea1a0908/thumbnail-1-0.png?v=1787753505658",
     },
     {
+      title: "Golden Hour Skatepark",
+      tagline: "A beach skatepark at golden hour. Carve the bowls, flip, grind the rails and chain combos.",
+      href: "https://starknightt.github.io/skate-park/",
+      dates: "October 2026",
+      active: true,
+      group: "lab",
+      play: {
+        url: "https://starknightt.github.io/skate-park/",
+        mode: "embed",
+        note: "Keyboard, gamepad or touch, and it runs on phones. First visit downloads about 1.9 MB.",
+      },
+      description:
+        "A third-person skateboarding game in Three.js, set in a small flow park behind a beach boardwalk at golden hour. Skate it as Sol, an original character: push and carve, pump the transitions, drop in from the deck, ollie and flip, grind rails and ledges, manual, bail and get back up, then turn the sky to sunset, blue hour or noon. No levels, timers or goals, only trick names and a combo score that pop up and fade. Easy, Auto-ride and Pro controls on keyboard, gamepad or touch. The park, the beach town and the board are built in code and Sol's riding is animated procedurally with foot IK; Sol was modelled by a Python script and rigged in Blender, with Mixamo clips only for falls, get-ups and idles, and the sounds are CC0 recordings. Built in Cursor by AI agents in about 28 hours, with a critic checking each pass against real photos of beachside skateparks.",
+      technologies: [
+        "Three.js",
+        "TypeScript",
+        "Vite",
+        "three-mesh-bvh",
+        "Web Audio API",
+        "Blender",
+        "Mixamo",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://starknightt.github.io/skate-park/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/StarKnightt/skate-park",
+          icon: <Icons.github className="size-3" />,
+        },
+        {
+          type: "Launch post",
+          href: "https://x.com/prasenx/status/2110348464064471129",
+          icon: <Icons.x className="size-3" />,
+        },
+      ],
+      image: "/projects/skate-park.webp",
+    },
+    {
       title: "River Morning",
       tagline: "A quiet morning of fishing on a clear mountain river. Cast, play a trout, then let it go.",
       href: "https://starknightt.github.io/river-morning/",
