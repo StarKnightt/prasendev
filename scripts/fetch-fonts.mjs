@@ -2,13 +2,29 @@
 // Switzer and General Sans are under the ITF Free Font License: self-hosting on
 // prasen.dev is allowed, redistributing the files through a public repo is not,
 // so the woff2 files are fetched at install/build time instead of committed.
-import { existsSync, mkdirSync, writeFileSync } from "node:fs";
+//
+// Never fails the build: if Fontshare is unreachable, the slots are filled with
+// the committed OFL Inter from src/fonts-fallback/ and listed in .fallback, so
+// the next run retries the real download.
+import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { inflateRawSync } from "node:zlib";
 
 const OUT = "src/fonts";
+const FALLBACK_DIR = "src/fonts-fallback";
+const MARKER = `${OUT}/.fallback`;
+const BASE = process.env.FONTSHARE_BASE ?? "https://api.fontshare.com";
+const ATTEMPTS = 3;
+const TIMEOUT_MS = 15000;
+
 const FONTS = [
-  { slug: "switzer", files: ["Switzer-Variable.woff2", "Switzer-VariableItalic.woff2"] },
-  { slug: "general-sans", files: ["GeneralSans-Semibold.woff2"] },
+  {
+    slug: "switzer",
+    files: {
+      "Switzer-Variable.woff2": "Inter-Variable.woff2",
+      "Switzer-VariableItalic.woff2": "Inter-VariableItalic.woff2",
+    },
+  },
+  { slug: "general-sans", files: { "GeneralSans-Semibold.woff2": "Inter-Variable.woff2" } },
 ];
 
 function unzip(buf, wanted) {
@@ -37,15 +53,45 @@ function unzip(buf, wanted) {
   return found;
 }
 
-mkdirSync(OUT, { recursive: true });
-for (const { slug, files } of FONTS) {
-  if (files.every((f) => existsSync(`${OUT}/${f}`))) continue;
-  const res = await fetch(`https://api.fontshare.com/v2/fonts/download/${slug}`);
-  if (!res.ok) throw new Error(`Fontshare download failed for ${slug}: ${res.status}`);
-  const found = unzip(Buffer.from(await res.arrayBuffer()), files);
-  for (const f of files) {
-    if (!found[f]) throw new Error(`${f} missing from the ${slug} zip`);
-    writeFileSync(`${OUT}/${f}`, found[f]);
+async function download(slug, wanted) {
+  let lastError;
+  for (let attempt = 1; attempt <= ATTEMPTS; attempt++) {
+    try {
+      const res = await fetch(`${BASE}/v2/fonts/download/${slug}`, {
+        signal: AbortSignal.timeout(TIMEOUT_MS),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const found = unzip(Buffer.from(await res.arrayBuffer()), wanted);
+      const missing = wanted.filter((f) => !found[f]);
+      if (missing.length) throw new Error(`missing ${missing.join(", ")} in zip`);
+      return found;
+    } catch (error) {
+      lastError = error;
+      if (attempt < ATTEMPTS) await new Promise((r) => setTimeout(r, attempt * 1000));
+    }
   }
-  console.log(`fonts: fetched ${files.join(", ")}`);
+  throw lastError;
 }
+
+mkdirSync(OUT, { recursive: true });
+const pending = new Set(existsSync(MARKER) ? readFileSync(MARKER, "utf8").split("\n").filter(Boolean) : []);
+const stillFallback = [];
+
+for (const { slug, files } of FONTS) {
+  const names = Object.keys(files);
+  if (names.every((f) => existsSync(`${OUT}/${f}`) && !pending.has(f))) continue;
+  try {
+    const found = await download(slug, names);
+    for (const f of names) writeFileSync(`${OUT}/${f}`, found[f]);
+    console.log(`fonts: fetched ${names.join(", ")}`);
+  } catch (error) {
+    console.warn(`fonts: Fontshare unavailable for ${slug} (${error.message}), using Inter fallback`);
+    for (const [f, fallback] of Object.entries(files)) {
+      copyFileSync(`${FALLBACK_DIR}/${fallback}`, `${OUT}/${f}`);
+      stillFallback.push(f);
+    }
+  }
+}
+
+if (stillFallback.length) writeFileSync(MARKER, stillFallback.join("\n") + "\n");
+else rmSync(MARKER, { force: true });
