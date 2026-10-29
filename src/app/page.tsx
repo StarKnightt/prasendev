@@ -16,7 +16,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { PersonSchema } from "@/components/schema/person-schema";
 import { Metadata } from 'next';
-import ShinyButton from "@/components/ui/shiny-button";
 import { GitHubSponsors } from "@/components/github-sponsors";
 import { AgeCounter } from "@/components/age-counter";
 import { FlipAvatar } from "@/components/flip-avatar";
@@ -410,24 +409,23 @@ export default async function Page() {
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade delay={BLUR_FADE_DELAY * 11}>
               <div className="flex items-end justify-between gap-4">
-                <div>
-                  <SectionLabel label="Portfolio" />
-                  <h2 className="relative mt-1.5 w-fit text-xl font-bold tracking-tight">
-                    Selected Work
-                    <HeadingScribble kind="swoosh" />
-                  </h2>
-                </div>
-                <div className="flex shrink-0 items-center gap-3">
+                <h2 className="relative w-fit text-xl font-bold tracking-tight">
+                  Selected Work
+                  <HeadingScribble kind="swoosh" />
+                </h2>
+                <div className="flex shrink-0 items-center gap-4">
                   <Link
                     href="/lab"
-                    className="hidden text-xs text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline sm:inline"
+                    className="hidden text-sm text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline sm:inline"
                   >
                     See the Lab
                   </Link>
-                  <Link href="/projects" className="shrink-0">
-                    <ShinyButton className="px-3 py-1.5 font-semibold transition-all duration-300 hover:shadow-lg active:scale-[0.98] [&>span]:text-xs">
-                      View All Projects →
-                    </ShinyButton>
+                  <Link
+                    href="/projects"
+                    className="group inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    All projects
+                    <ArrowRight className="size-3.5 transition-transform duration-150 ease-out group-hover:translate-x-0.5" />
                   </Link>
                 </div>
               </div>
@@ -457,8 +455,7 @@ export default async function Page() {
         <section id="work">
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade delay={BLUR_FADE_DELAY * 12}>
-              <SectionLabel label="Career" />
-              <h2 className="relative mt-1.5 w-fit text-xl font-bold tracking-tight">
+              <h2 className="relative w-fit text-xl font-bold tracking-tight">
                 Experience
                 <HeadingScribble kind="flick" />
               </h2>
@@ -524,8 +521,7 @@ export default async function Page() {
         <section id="elsewhere">
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade delay={BLUR_FADE_DELAY * 14}>
-              <SectionLabel label="More" />
-              <h2 className="relative mt-1.5 w-fit text-xl font-bold tracking-tight">
+              <h2 className="relative w-fit text-xl font-bold tracking-tight">
                 Behind the Scenes
                 <HeadingScribble kind="double" />
               </h2>
@@ -562,13 +558,10 @@ export default async function Page() {
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade delay={BLUR_FADE_DELAY * 15}>
               <div className="flex items-end justify-between gap-4">
-                <div>
-                  <SectionLabel label="Blog" />
-                  <h2 className="relative mt-1.5 w-fit text-xl font-bold tracking-tight">
-                    Writing
-                    <HeadingScribble kind="wave" />
-                  </h2>
-                </div>
+                <h2 className="relative w-fit text-xl font-bold tracking-tight">
+                  Writing
+                  <HeadingScribble kind="wave" />
+                </h2>
                 <Link
                   href="/blog"
                   className="group inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
