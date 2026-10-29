@@ -23,6 +23,11 @@ const config = {
   			sans: [
   				'var(--font-sans)',
                     ...fontFamily.sans
+                ],
+  			display: [
+  				'var(--font-display)',
+  				'var(--font-sans)',
+                    ...fontFamily.sans
                 ]
   		},
   		colors: {

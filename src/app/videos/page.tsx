@@ -42,7 +42,7 @@ export default async function VideosPage() {
               <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
                 My Videos
               </div>
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+              <h1 className="text-3xl font-bold tracking-tight sm:text-5xl">
                 Latest Videos
               </h1>
               <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">

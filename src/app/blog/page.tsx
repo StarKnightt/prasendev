@@ -58,7 +58,7 @@ export default async function BlogPage() {
       <BreadcrumbJsonLd items={[{ name: "Blog", href: "/blog" }]} />
       <section>
         <BlurFade delay={BLUR_FADE_DELAY}>
-          <h1 className="font-medium text-2xl mb-8 tracking-tighter">blog</h1>
+          <h1 className="font-medium text-2xl mb-8 tracking-tight">blog</h1>
         </BlurFade>
         {posts
           .sort((a, b) =>

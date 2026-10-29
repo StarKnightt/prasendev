@@ -25,7 +25,25 @@ jobs:
           node-version: 22
           cache: npm
 
+      # Fontshare fonts (ITF FFL) are gitignored and fetched by
+      # scripts/fetch-fonts.mjs on postinstall. Cache them so CI rarely
+      # hits Fontshare; the script falls back to committed Inter if it must.
+      - name: Restore Fontshare fonts
+        id: fonts-cache
+        uses: actions/cache/restore@v4
+        with:
+          path: src/fonts
+          key: fontshare-${{ hashFiles('scripts/fetch-fonts.mjs') }}
+
       - run: npm ci
+
+      # Only cache real Fontshare files, never the Inter fallback.
+      - name: Save Fontshare fonts
+        if: steps.fonts-cache.outputs.cache-hit != 'true' && hashFiles('src/fonts/.fallback') == ''
+        uses: actions/cache/save@v4
+        with:
+          path: src/fonts
+          key: fontshare-${{ hashFiles('scripts/fetch-fonts.mjs') }}
 
       # Plain `opennextjs-cloudflare build` (runs `next build` itself).
       # Locally on Windows we use `npm run build:worker` instead, which

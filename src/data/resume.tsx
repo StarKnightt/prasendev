@@ -1,8 +1,8 @@
 import { Icons } from "@/components/icons";
 import { LabFlaskIcon } from "@/components/motion/lab-flask-icon";
-import { HomeIcon, NotebookIcon, VideoIcon, FolderIcon, Settings, Wrench, Zap } from "lucide-react";
+import { HomeIcon, NotebookIcon, VideoIcon, FolderIcon, Settings, Wrench, Zap, SquareTerminal, Send, Triangle, Server, ArrowLeftRight } from "lucide-react";
 import { faReact, faNodeJs, faGitAlt, faTypescript, faTailwindCss, faDocker, faFigma, faGithub, faFirefoxBrowser, faBrave, faNotion, faPython, faJava, faJs, faHtml5, faCss3Alt, faCloudflare, faChrome, faApple } from "@fortawesome/free-brands-svg-icons";
-import { faLeaf, faPlug, faBolt, faTerminal, faRocket, faServer, faDatabase, faCode, faArrowRightArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faLeaf, faPlug, faBolt, faDatabase, faCode } from "@fortawesome/free-solid-svg-icons";
 import type { ReactNode } from "react";
 
 export type ProjectGroup = "products" | "lab" | "interactions";
@@ -105,7 +105,7 @@ export const DATA = {
       name: "Git Bash",
       description: "My go-to terminal on Windows for all git operations and shell scripting.",
       href: "https://gitforwindows.org",
-      icon: faTerminal,
+      customIcon: SquareTerminal,
       category: "Coding",
     },
     {
@@ -119,7 +119,7 @@ export const DATA = {
       name: "Postman",
       description: "API testing and documentation, essential for building and debugging REST APIs.",
       href: "https://www.postman.com",
-      icon: faRocket,
+      customIcon: Send,
       category: "Coding",
     },
     {
@@ -140,14 +140,14 @@ export const DATA = {
       name: "Vercel",
       description: "Hosts my Next.js course and quick demos.",
       href: "https://vercel.com",
-      icon: faRocket,
+      customIcon: Triangle,
       category: "Hosting",
     },
     {
       name: "Hostinger",
       description: "Reliable and affordable hosting for my projects and client sites.",
       href: "https://www.hostinger.com/in?REFERRALCODE=NP4PRASENELF",
-      icon: faServer,
+      customIcon: Server,
       category: "Hosting",
     },
     {
@@ -175,7 +175,7 @@ export const DATA = {
       name: "LocalSend",
       description: "Open source AirDrop alternative for sending files between my PC and phone.",
       href: "https://localsend.org",
-      icon: faArrowRightArrowLeft,
+      customIcon: ArrowLeftRight,
       category: "File transfer",
     },
     {

@@ -6,7 +6,7 @@ export default function NotFound() {
     <div className="flex flex-col items-center justify-center min-h-[70vh] space-y-8 text-center">
       <BlurFade delay={0.04}>
         <div className="space-y-2">
-          <h1 className="text-7xl font-bold tracking-tighter sm:text-9xl">
+          <h1 className="text-7xl font-bold tracking-tight sm:text-9xl">
             404
           </h1>
           <p className="text-xl text-muted-foreground sm:text-2xl">

@@ -53,7 +53,7 @@ export default function ProjectsPage() {
       <LabHashRedirect />
       <BreadcrumbJsonLd items={[{ name: "Projects", href: "/projects" }]} />
       <BlurFade delay={BLUR_FADE_DELAY}>
-        <h1 className="font-medium text-2xl mb-8 tracking-tighter">projects</h1>
+        <h1 className="font-medium text-2xl mb-8 tracking-tight">projects</h1>
       </BlurFade>
       <div className="space-y-12">
         <ProjectSortProvider>
