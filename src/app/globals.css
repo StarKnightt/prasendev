@@ -49,9 +49,6 @@
       --color-4: 195 100% 63%;
 
       --color-5: 90 100% 63%;
-
-      --ghibli-element-fill: 210 11.1% 85%; /* Light gray for light mode */
-      --ghibli-element-opacity: 0.6;
     }
 
     .dark {
@@ -87,9 +84,6 @@
       --color-3: 210 100% 63%;
       --color-4: 195 100% 63%;
       --color-5: 90 100% 63%;
-
-      --ghibli-element-fill: 0 0% 100%; /* White for dark mode */
-      --ghibli-element-opacity: 0.9;
     }
   }
 
@@ -238,25 +232,6 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
   to {
     transform: rotate(360deg);
   }
-}
-
-/* Add these new styles */
-.text-mask {
-  position: relative;
-  mix-blend-mode: difference;
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-  background-image: linear-gradient(
-    to right,
-    hsl(var(--foreground)),
-    hsl(var(--foreground))
-  );
-}
-
-.cloud-container {
-  position: relative;
-  isolation: isolate;
 }
 
 .mix-blend-overlay {
