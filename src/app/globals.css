@@ -100,6 +100,12 @@
     body {
       @apply bg-background text-foreground;
     }
+    /* Only the 600 weight of General Sans ships, so never fake a bold */
+    h1,
+    h2 {
+      @apply font-display;
+      font-synthesis: none;
+    }
   }
 
   h3 code {

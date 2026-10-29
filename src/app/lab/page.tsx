@@ -50,7 +50,7 @@ export default function LabPage() {
     <section>
       <BreadcrumbJsonLd items={[{ name: "Lab", href: "/lab" }]} />
       <BlurFade delay={BLUR_FADE_DELAY}>
-        <h1 className="font-medium text-2xl mb-3 tracking-tighter">lab</h1>
+        <h1 className="font-medium text-2xl mb-3 tracking-tight">lab</h1>
         <p className="mb-8 text-sm text-muted-foreground">
           Browser worlds, games and one trailer, built with Claude while I directed and reviewed. For things people pay
           for or use every day, see{" "}

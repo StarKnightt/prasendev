@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { JsonLd } from "@/components/json-ld";
@@ -15,9 +15,20 @@ import { BackToTop } from "@/components/back-to-top";
 import { DomainGuardedAnalytics } from "@/components/domain-guarded-analytics";
 import { SmoothCursor } from "@/components/ui/smooth-cursor";
 
-const fontSans = FontSans({
-  subsets: ["latin"],
+const fontSans = localFont({
+  src: [
+    { path: "../fonts/Switzer-Variable.woff2", weight: "100 900", style: "normal" },
+    { path: "../fonts/Switzer-VariableItalic.woff2", weight: "100 900", style: "italic" },
+  ],
   variable: "--font-sans",
+  display: "swap",
+});
+
+const fontDisplay = localFont({
+  src: "../fonts/GeneralSans-Semibold.woff2",
+  weight: "600",
+  variable: "--font-display",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -120,7 +131,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn(fontSans.variable, "font-sans antialiased")}>
+      <body className={cn(fontSans.variable, fontDisplay.variable, "font-sans antialiased")}>
         {/* Background container */}
         <div className="fixed inset-0 z-[-1]">
           <PageBackground />
