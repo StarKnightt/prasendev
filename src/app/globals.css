@@ -10,83 +10,83 @@
 
 @layer base {
     :root {
-      --background: 0 0% 100%;
-      --foreground: 210 11.1% 3.53%;
+      --background: 36 33% 97.5%;
+      --foreground: 20 18% 8%;
 
-      --card: 0 0% 100%;
-      --card-foreground: 210 11.1% 3.53%;
+      --card: 36 30% 96.5%;
+      --card-foreground: 20 18% 8%;
 
-      --popover: 0 0% 100%;
-      --popover-foreground: 210 11.1% 3.53%;
+      --popover: 36 33% 97.5%;
+      --popover-foreground: 20 18% 8%;
 
-      --primary: 0 0% 9%;
-      --primary-foreground: 0 0% 98%;
+      --primary: 20 16% 10%;
+      --primary-foreground: 36 40% 98%;
 
-      --secondary: 0 0% 96.1%;
-      --secondary-foreground: 0 0% 9%;
+      --secondary: 32 24% 93.5%;
+      --secondary-foreground: 20 16% 10%;
 
-      --muted: 0 0% 96.1%;
-      --muted-foreground: 0 0% 45.1%;
+      --muted: 32 18% 93.5%;
+      --muted-foreground: 22 10% 40%;
 
-      --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
+      --accent: 28 42% 92.5%;
+      --accent-foreground: 20 16% 10%;
 
       --destructive: 0 84.2% 60.2%;
       --destructive-foreground: 0 0% 98%;
 
-      --border: 0 0% 89.8%;
-      --input: 0 0% 89.8%;
-      --ring: 0 0% 3.9%;
+      --border: 28 16% 85%;
+      --input: 28 16% 85%;
+      --ring: 24 88% 46%;
 
       --radius: 0.5rem;
 
-      --color-1: 0 100% 63%;
+      --color-1: 24 92% 52%;
 
-      --color-2: 270 100% 63%;
+      --color-2: 275 38% 46%;
 
-      --color-3: 210 100% 63%;
+      --color-3: 32 86% 50%;
 
-      --color-4: 195 100% 63%;
+      --color-4: 14 78% 46%;
 
-      --color-5: 90 100% 63%;
+      --color-5: 42 72% 48%;
 
       --ghibli-element-fill: 210 11.1% 85%; /* Light gray for light mode */
       --ghibli-element-opacity: 0.6;
     }
 
     .dark {
-      --background: 210 11.1% 3.53%;
-      --foreground: 0 0% 98%;
+      --background: 270 16% 3.2%;
+      --foreground: 36 18% 96%;
 
-      --card: 210 11.1% 3.53%;
-      --card-foreground: 0 0% 98%;
+      --card: 270 14% 5%;
+      --card-foreground: 36 18% 96%;
 
-      --popover: 210 11.1% 3.53%;
-      --popover-foreground: 0 0% 98%;
+      --popover: 270 14% 5%;
+      --popover-foreground: 36 18% 96%;
 
-      --primary: 0 0% 98%;
-      --primary-foreground: 0 0% 9%;
+      --primary: 36 22% 96%;
+      --primary-foreground: 270 16% 8%;
 
-      --secondary: 0 0% 14.9%;
-      --secondary-foreground: 0 0% 98%;
+      --secondary: 270 12% 12%;
+      --secondary-foreground: 36 18% 96%;
 
-      --muted: 0 0% 14.9%;
-      --muted-foreground: 0 0% 63.9%;
+      --muted: 270 10% 12%;
+      --muted-foreground: 30 10% 64%;
 
-      --accent: 0 0% 14.9%;
-      --accent-foreground: 0 0% 98%;
+      --accent: 24 22% 13%;
+      --accent-foreground: 36 24% 92%;
 
       --destructive: 0 62.8% 30.6%;
       --destructive-foreground: 0 0% 98%;
 
-      --border: 0 0% 14.9%;
-      --input: 0 0% 14.9%;
-      --ring: 0 0% 83.1%;
-      --color-1: 0 100% 63%;
-      --color-2: 270 100% 63%;
-      --color-3: 210 100% 63%;
-      --color-4: 195 100% 63%;
-      --color-5: 90 100% 63%;
+      --border: 270 10% 14%;
+      --input: 270 10% 14%;
+      --ring: 28 84% 52%;
+      --color-1: 24 92% 55%;
+      --color-2: 275 40% 56%;
+      --color-3: 32 86% 54%;
+      --color-4: 14 80% 50%;
+      --color-5: 42 74% 54%;
 
       --ghibli-element-fill: 0 0% 100%; /* White for dark mode */
       --ghibli-element-opacity: 0.9;
