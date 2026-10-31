@@ -7,8 +7,8 @@ import { motion } from "framer-motion";
 import { BorderBeam } from "@/components/magicui/border-beam";
 
 const CALENDAR_THEME = {
-  dark: ['#161b22', '#3a3f47', '#6b7280', '#b0b8c4', '#e5e7eb'],
-  light: ['#ebedf0', '#9ca3af', '#6b7280', '#4b5563', '#374151'],
+  dark: ['#1a1410', '#4a2410', '#9a3f12', '#e05a14', '#f5a524'],
+  light: ['#f3ebe3', '#f5c48a', '#e07820', '#c2410c', '#7c2d12'],
 };
 
 export function GithubContributions({ plain = false }: { plain?: boolean }) {
@@ -46,13 +46,13 @@ export function GithubContributions({ plain = false }: { plain?: boolean }) {
       <BorderBeam
         duration={6}
         size={400}
-        className="from-transparent via-zinc-400 to-transparent"
+        className="from-transparent via-orange-400 to-transparent"
       />
       <BorderBeam
         duration={6}
         delay={3}
         size={400}
-        className="from-transparent via-slate-300 to-transparent"
+        className="from-transparent via-amber-300 to-transparent"
       />
       <motion.div
         className={`w-full overflow-hidden rounded-xl border border-border/60 bg-card/40 p-4 transition-all duration-300 hover:border-border hover:bg-card/70 hover:shadow-lg ${containerHeight}`}
