@@ -14,6 +14,7 @@ import { SoundProvider } from "@/components/sound-provider";
 import { BackToTop } from "@/components/back-to-top";
 import { DomainGuardedAnalytics } from "@/components/domain-guarded-analytics";
 import { SmoothCursor } from "@/components/ui/smooth-cursor";
+import { HALLOWEEN_SEASON_SCRIPT } from "@/lib/season";
 
 const fontSans = localFont({
   src: [
@@ -131,6 +132,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: HALLOWEEN_SEASON_SCRIPT }} />
+      </head>
       <body className={cn(fontSans.variable, fontDisplay.variable, "font-sans antialiased")}>
         {/* Background container */}
         <div className="fixed inset-0 z-[-1]">
