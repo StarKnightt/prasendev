@@ -465,6 +465,50 @@ export const DATA = {
       poster: "https://video.gumlet.io/6745e593080b60408ca085f7/6aeb206a8fb76d4dec14e05d/thumbnail-1-0.png",
     },
     {
+      title: "Island",
+      tagline: "An open-world tropical island. Walk from the beach to the waterfall, the village and the lighthouse.",
+      href: "https://starknightt.github.io/island/?v=1",
+      dates: "October 2026",
+      active: true,
+      group: "lab",
+      play: {
+        url: "https://starknightt.github.io/island/?v=1",
+        mode: "embed",
+        note: "Desktop GPU, keyboard and mouse or a gamepad, Chrome or Edge with WebGPU. About 10 seconds to load on a first visit.",
+      },
+      description:
+        "A realistic open-world tropical island in Three.js with WebGPU. Wake on a beach at sunrise and walk anywhere you can see: a dense rainforest, a 20 m waterfall with a pool you can swim in, a fishing village of stilt huts and outrigger canoes, basalt sea cliffs and a lighthouse on the 214 m summit. Nothing to win. A 30-minute day runs from sunrise to a moonlit night, rain squalls roll in and clear, and the sound follows where you are, down to footsteps that change with the ground. The island is baked from a hand-written layout with hydraulic erosion, the sea is a WebGPU compute simulation, and there is a photo mode. The textures and props are Poly Haven scans, the character is Microsoft Rocketbox with Quaternius animations. Built with Claude Opus 5.5 in Cursor, with a critic comparing its frames against 341 real photos, and it holds 66 fps at 1080p on an RTX 4060.",
+      technologies: [
+        "Three.js",
+        "TypeScript",
+        "WebGPU",
+        "Vite",
+        "Web Audio API",
+        "Poly Haven",
+        "Claude Opus 5.5",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://starknightt.github.io/island/?v=1",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/StarKnightt/island",
+          icon: <Icons.github className="size-3" />,
+        },
+        {
+          type: "Launch post",
+          href: "https://x.com/prasenx/status/2114821178959565267",
+          icon: <Icons.x className="size-3" />,
+        },
+      ],
+      image: "/projects/island.webp",
+      video: "https://video.gumlet.io/6745e593080b60408ca085f7/6aeb23508fb76d4dec14eba8/download.mp4",
+      poster: "https://video.gumlet.io/6745e593080b60408ca085f7/6aeb23508fb76d4dec14eba8/thumbnail-1-0.png",
+    },
+    {
       title: "Golden Hour Skatepark",
       tagline: "A beach skatepark at golden hour. Carve the bowls, flip, grind the rails and chain combos.",
       href: "https://starknightt.github.io/skate-park/",
