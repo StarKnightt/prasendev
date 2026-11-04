@@ -421,6 +421,50 @@ export const DATA = {
       poster: "https://video.gumlet.io/6745e593080b60408ca085f7/6a8ef3e50784f723ea1a0908/thumbnail-1-0.png?v=1787753505658",
     },
     {
+      title: "Glass Break",
+      tagline: "Bottles on a backyard fence at golden hour. Shoot one and watch it shatter in slow motion.",
+      href: "https://starknightt.github.io/glass-break/",
+      dates: "November 2026",
+      active: true,
+      group: "lab",
+      play: {
+        url: "https://starknightt.github.io/glass-break/",
+        mode: "embed",
+        note: "Desktop GPU, keyboard and mouse, Chrome or Edge. First visit downloads about 34 MB.",
+      },
+      description:
+        "A first-person bottle shooting game in Three.js, set on an old wooden fence in a dry backyard at golden hour. Eight beer, soda and whiskey bottles stand on the rail, some half full. Shoot one and it cracks from the hit, drops into slow motion with a camera punch, and bursts into shards that catch the sun and bounce on the ground while the liquid splashes out. The glass refracts and tints the yard behind it, the fracture is a Voronoi split in a web worker, and every sound, from the gunshot to the shard tinkles, is synthesized with the Web Audio API with no audio files. The ground, grass, wood and sky are Poly Haven scans. Built with Claude Opus 5.5 in Cursor, with a critic checking each pass against real reference photos.",
+      technologies: [
+        "Three.js",
+        "TypeScript",
+        "Vite",
+        "Web Audio API",
+        "Web Workers",
+        "Poly Haven",
+        "Claude Opus 5.5",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://starknightt.github.io/glass-break/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/StarKnightt/glass-break",
+          icon: <Icons.github className="size-3" />,
+        },
+        {
+          type: "Launch post",
+          href: "https://x.com/prasenx/status/2116914502390480919",
+          icon: <Icons.x className="size-3" />,
+        },
+      ],
+      image: "/projects/glass-break.webp",
+      video: "https://video.gumlet.io/6745e593080b60408ca085f7/6aeb206a8fb76d4dec14e05d/download.mp4",
+      poster: "https://video.gumlet.io/6745e593080b60408ca085f7/6aeb206a8fb76d4dec14e05d/thumbnail-1-0.png",
+    },
+    {
       title: "Golden Hour Skatepark",
       tagline: "A beach skatepark at golden hour. Carve the bowls, flip, grind the rails and chain combos.",
       href: "https://starknightt.github.io/skate-park/",
