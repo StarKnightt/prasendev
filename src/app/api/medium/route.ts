@@ -6,6 +6,14 @@ export const revalidate = 3600;
 const FEED_URL = "https://medium.com/feed/@prasenx";
 const CACHE_MAX_AGE = 3600;
 
+/** Errors must never be cached, or a bad upstream response sticks for an hour. */
+function upstreamError(message: string, status: number) {
+  return NextResponse.json(
+    { error: message },
+    { status, headers: { "Cache-Control": "no-store" } }
+  );
+}
+
 function tag(item: string, name: string) {
   const match = item.match(new RegExp(`<${name}>([\\s\\S]*?)</${name}>`));
   if (!match) return "";
@@ -28,26 +36,28 @@ export async function GET() {
     });
 
     if (!res.ok) {
-      return NextResponse.json(
-        { error: "Medium feed error" },
-        { status: res.status }
-      );
+      return upstreamError("Medium feed error", 502);
     }
 
     const xml = await res.text();
+    // A bot-challenge page can come back as a 200; only a feed with items counts.
+    if (!/<rss[\s>]/.test(xml) || !/<channel[\s>]/.test(xml)) {
+      return upstreamError("Medium feed is not RSS", 502);
+    }
     const items = xml.match(/<item>[\s\S]*?<\/item>/g) ?? [];
     const first = items[0];
+    if (!first) {
+      return upstreamError("Medium feed has no items", 502);
+    }
 
     return NextResponse.json(
       {
         count: items.length,
-        latest: first
-          ? {
-              title: tag(first, "title"),
-              link: tag(first, "link").split("?")[0],
-              pubDate: tag(first, "pubDate"),
-            }
-          : null,
+        latest: {
+          title: tag(first, "title"),
+          link: tag(first, "link").split("?")[0],
+          pubDate: tag(first, "pubDate"),
+        },
       },
       {
         headers: {
@@ -56,9 +66,6 @@ export async function GET() {
       }
     );
   } catch {
-    return NextResponse.json(
-      { error: "Internal server error" },
-      { status: 500 }
-    );
+    return upstreamError("Internal server error", 500);
   }
 }
