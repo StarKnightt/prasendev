@@ -14,12 +14,20 @@ const redis = new Redis({
   token: process.env.UPSTASH_REDIS_REST_TOKEN!,
 });
 
+/** No count to report: a 503 the client hides, instead of a fake count of 0. */
+function unavailable(error: string) {
+  return NextResponse.json(
+    { error },
+    { status: 503, headers: { 'Cache-Control': 'no-store' } }
+  );
+}
+
 export async function GET(request: NextRequest) {
   try {
     // Check if Redis is configured
     if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
       console.warn('Upstash Redis not configured');
-      return NextResponse.json({ count: 0, error: 'Redis not configured' });
+      return unavailable('Redis not configured');
     }
 
     // Check if this visitor was already counted
@@ -47,6 +55,6 @@ export async function GET(request: NextRequest) {
     return response;
   } catch (error) {
     console.error('Visitor count error:', error);
-    return NextResponse.json({ count: 0, error: 'Failed to fetch count' });
+    return unavailable('Failed to fetch count');
   }
 }

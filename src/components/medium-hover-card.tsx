@@ -24,30 +24,51 @@ interface MediumData {
   latest: { title: string; link: string; pubDate: string } | null;
 }
 
+/** After a failed fetch, wait this long before trying again on the next hover. */
+const RETRY_AFTER_MS = 30_000;
+
+// Shared across mounts so a remount (client navigation) reuses the result.
 let cachedData: MediumData | null = null;
-let failed = false;
+let failedAt = 0;
+let inFlight: Promise<MediumData | null> | null = null;
+
+function loadMedium(): Promise<MediumData | null> {
+  if (inFlight) return inFlight;
+  inFlight = (async () => {
+    try {
+      const res = await fetch("/api/medium");
+      if (!res.ok) throw new Error("Failed");
+      const json: MediumData = await res.json();
+      if (typeof json.count !== "number" || json.count < 1) throw new Error("Failed");
+      cachedData = json;
+      failedAt = 0;
+      return json;
+    } catch {
+      failedAt = Date.now();
+      return null;
+    } finally {
+      inFlight = null;
+    }
+  })();
+  return inFlight;
+}
 
 export function MediumHoverCard({ children }: { children: ReactNode }) {
   const [data, setData] = useState<MediumData | null>(cachedData);
   const [loading, setLoading] = useState(false);
 
   const fetchData = useCallback(async () => {
-    if (cachedData || failed || loading) return;
+    if (cachedData) {
+      setData(cachedData);
+      return;
+    }
+    if (failedAt && Date.now() - failedAt < RETRY_AFTER_MS) return;
 
     setLoading(true);
-    try {
-      const res = await fetch("/api/medium");
-      if (!res.ok) throw new Error("Failed");
-      const json: MediumData = await res.json();
-      if (typeof json.count !== "number") throw new Error("Failed");
-      cachedData = json;
-      setData(json);
-    } catch {
-      failed = true;
-    } finally {
-      setLoading(false);
-    }
-  }, [loading]);
+    const json = await loadMedium();
+    if (json) setData(json);
+    setLoading(false);
+  }, []);
 
   const stories = data
     ? `${data.count >= FEED_CAP ? `${FEED_CAP}+` : data.count}`
