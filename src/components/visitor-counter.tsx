@@ -10,35 +10,47 @@ function getOrdinalSuffix(n: number): string {
   return s[(v - 20) % 10] || s[v] || s[0];
 }
 
+type CounterState =
+  | { status: 'loading' }
+  | { status: 'ready'; count: number }
+  | { status: 'error' };
+
 export default function VisitorCounter() {
-  const [count, setCount] = useState<number | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [state, setState] = useState<CounterState>({ status: 'loading' });
 
   useEffect(() => {
+    let active = true;
+
     const fetchVisitorCount = async () => {
       try {
         const response = await fetch('/api/visitor-count', {
           method: 'GET',
           credentials: 'include',
         });
-        
-        if (response.ok) {
-          const data = await response.json();
-          setCount(data.count);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+        const data = await response.json();
+        const count = data?.count;
+        if (typeof count !== 'number' || !Number.isFinite(count) || count < 1) {
+          throw new Error('Invalid visitor count');
         }
+        if (active) setState({ status: 'ready', count });
       } catch (error) {
         console.error('Error fetching visitor count:', error);
-        setCount(0);
-      } finally {
-        setIsLoading(false);
+        if (active) setState({ status: 'error' });
       }
     };
 
     fetchVisitorCount();
+    return () => {
+      active = false;
+    };
   }, []);
 
-  // Show placeholder until mounted
-  if (isLoading || count === null) {
+  // A failed count is hidden rather than shown as "0th visitor".
+  if (state.status === 'error') return null;
+
+  if (state.status === 'loading') {
     return (
       <div className="text-sm text-muted-foreground flex items-center gap-2">
         <Eye className="size-4" />
@@ -46,6 +58,8 @@ export default function VisitorCounter() {
       </div>
     );
   }
+
+  const { count } = state;
 
   return (
     <motion.div 

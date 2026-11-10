@@ -5,7 +5,6 @@ import { DATA } from '@/data/resume';
 import { stripMarks } from '@/lib/remark-marks';
 import { motion } from 'framer-motion';
 import { JetBrains_Mono } from 'next/font/google';
-import { useTheme } from 'next-themes';
 import { Copy, X, Minus, Maximize2, Monitor, SunIcon, MoonIcon, ArrowLeft } from 'lucide-react';
 import { Button } from './ui/button';
 import ShinyButton from './ui/shiny-button';
@@ -124,7 +123,6 @@ function formatCommandLine(line: string, currentTheme: string | undefined) {
 
 export function CliInterface({ onGuiCommand, onMinimize, onMaximize, onClose }: CliInterfaceProps) {
   const [input, setInput] = useState('');
-  const [isMobile, setIsMobile] = useState(false);
   const [output, setOutput] = useState<string[]>([]);
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
@@ -132,21 +130,13 @@ export function CliInterface({ onGuiCommand, onMinimize, onMaximize, onClose }: 
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const outputRef = useRef<HTMLDivElement>(null);
-  const { setTheme } = useTheme();
+  const guiTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Force dark theme
+  // The dark theme is forced for /cli by ThemeProvider, so the visitor's saved
+  // theme is left alone. The welcome banner is picked once on mount: resizing
+  // must not reset the session's output.
   useEffect(() => {
-    setTheme('dark');
-  }, [setTheme]);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
+    const isMobile = window.innerWidth < 768;
     setIsMounted(true);
     setOutput([
       isMobile ? 'Welcome to prasen.dev CLI! 👋' : ASCII_ART + '\nWelcome to my portfolio CLI! 👋',
@@ -155,10 +145,9 @@ export function CliInterface({ onGuiCommand, onMinimize, onMaximize, onClose }: 
     ]);
 
     return () => {
-      window.removeEventListener('resize', checkMobile);
-      setIsMounted(false);
+      if (guiTimerRef.current) clearTimeout(guiTimerRef.current);
     };
-  }, [isMobile]);
+  }, []);
 
   // Scroll to bottom when output changes
   useEffect(() => {
@@ -179,12 +168,12 @@ export function CliInterface({ onGuiCommand, onMinimize, onMaximize, onClose }: 
 
     if (resolvedCmd === 'gui') {
       setOutput(prev => [...prev, `$ ${cmd}`, 'Switching to GUI mode...', '']);
-      setTimeout(onGuiCommand, 500);
+      if (guiTimerRef.current) clearTimeout(guiTimerRef.current);
+      guiTimerRef.current = setTimeout(onGuiCommand, 500);
       return;
     }
 
     if (resolvedCmd === 'theme' || resolvedCmd === 't') {
-      setTheme('dark');
       setOutput(prev => [...prev, `$ ${cmd}`, 'Terminal is always in dark theme', '']);
       return;
     }
