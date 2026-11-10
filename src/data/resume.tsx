@@ -389,6 +389,43 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "Screentime",
+      href: "https://apps.microsoft.com/detail/9PBJ3RV1TPC5",
+      dates: "November 2026",
+      active: true,
+      group: "products",
+      description:
+        "Windows shows you almost nothing about where your day went, so I built a small, private screen time tracker in Rust with Claude Opus 5.5. Your day sits on a 24-hour dial with every app in its own colour, plus time per app and a week view. Idle and locked time is never counted, and it never stores window titles, URLs or keystrokes. It uses 9.6 MB of memory, about 0% CPU and makes zero network connections. Free on the Microsoft Store, with 39 GitHub downloads by Nov 10, 2026.",
+      technologies: [
+        "Rust",
+        "iced",
+        "SQLite",
+        "Win32",
+        "Microsoft Store",
+        "Claude Opus 5.5",
+      ],
+      links: [
+        {
+          type: "Microsoft Store",
+          href: "https://apps.microsoft.com/detail/9PBJ3RV1TPC5",
+          icon: <Icons.shop className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/StarKnightt/screentime",
+          icon: <Icons.github className="size-3" />,
+        },
+        {
+          type: "Launch post",
+          href: "https://x.com/prasenx/status/2119857013559836795",
+          icon: <Icons.x className="size-3" />,
+        },
+      ],
+      image: "",
+      video: "https://video.gumlet.io/6745e593080b60408ca085f7/6af334d3d49b889347606e3c/download.mp4",
+      poster: "https://video.gumlet.io/6745e593080b60408ca085f7/6af334d3d49b889347606e3c/thumbnail-1-0.png",
+    },
+    {
       title: "Outbuilt",
       href: "https://outbuilt.lol",
       dates: "August 2026",
