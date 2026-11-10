@@ -88,7 +88,7 @@ const PROOF: {
     ],
   },
   {
-    value: "25",
+    value: "27",
     glyph: "bars",
     label: "paid placements on Outbuilt",
     receipts: [{ label: "outbuilt.lol", href: "https://outbuilt.lol" }],
