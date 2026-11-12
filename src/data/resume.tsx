@@ -458,6 +458,49 @@ export const DATA = {
       poster: "https://video.gumlet.io/6745e593080b60408ca085f7/6a8ef3e50784f723ea1a0908/thumbnail-1-0.png?v=1787753505658",
     },
     {
+      title: "Valley Ride",
+      tagline: "A calm horse ride across a mountain valley, from sunrise to a campfire on the summit at sunset.",
+      href: "https://starknightt.github.io/valley-ride/",
+      dates: "November 2026",
+      active: true,
+      group: "lab",
+      play: {
+        url: "https://starknightt.github.io/valley-ride/",
+        mode: "embed",
+        note: "Desktop GPU, keyboard and mouse, Chrome or Edge with WebGPU.",
+      },
+      description:
+        "A calm horse ride across a 2 km mountain valley in Three.js with WebGPU. Follow the trail past four lanterns to a campfire on the summit and get there as the sun sets. No score, no fail state. Walk, trot or gallop past a herd of wild horses, through a river ford and pine woods, then climb to the top while the day runs from sunrise to sunset over about ten minutes. Jump logs, switch between first person and a chase camera, or stop for photo mode. The horse, its rig and its gallop were built in Blender by scripts through the Blender MCP, with the gallop checked frame by frame against Muybridge's The Horse in Motion, and the rider is built on a MakeHuman CC0 base. Rocks and textures are Poly Haven scans, with no AI-generated assets. Built in two days with Claude Opus 5.5 and Claude Fable 5.2 in Claude Code.",
+      technologies: [
+        "Three.js",
+        "TypeScript",
+        "WebGPU",
+        "Vite",
+        "Blender",
+        "Poly Haven",
+        "Claude Opus 5.5",
+        "Claude Fable 5.2",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://starknightt.github.io/valley-ride/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/StarKnightt/valley-ride",
+          icon: <Icons.github className="size-3" />,
+        },
+        {
+          type: "Launch post",
+          href: "https://x.com/prasenx/status/2120565971270459430",
+          icon: <Icons.x className="size-3" />,
+        },
+      ],
+      image: "/projects/valley-ride.webp",
+    },
+    {
       title: "Glass Break",
       tagline: "Bottles on a backyard fence at golden hour. Shoot one and watch it shatter in slow motion.",
       href: "https://starknightt.github.io/glass-break/",
