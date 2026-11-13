@@ -460,13 +460,13 @@ export const DATA = {
     {
       title: "Valley Ride",
       tagline: "A calm horse ride across a mountain valley, from sunrise to a campfire on the summit at sunset.",
-      href: "https://starknightt.github.io/valley-ride/",
+      href: "https://wavedash.com/games/valley-ride",
       dates: "November 2026",
       active: true,
       group: "lab",
       play: {
-        url: "https://starknightt.github.io/valley-ride/",
-        mode: "embed",
+        url: "https://wavedash.com/games/valley-ride",
+        mode: "external",
         note: "Desktop GPU, keyboard and mouse, Chrome or Edge with WebGPU.",
       },
       description:
@@ -484,7 +484,7 @@ export const DATA = {
       links: [
         {
           type: "Website",
-          href: "https://starknightt.github.io/valley-ride/",
+          href: "https://wavedash.com/games/valley-ride",
           icon: <Icons.globe className="size-3" />,
         },
         {
@@ -503,13 +503,13 @@ export const DATA = {
     {
       title: "Glass Break",
       tagline: "Bottles on a backyard fence at golden hour. Shoot one and watch it shatter in slow motion.",
-      href: "https://starknightt.github.io/glass-break/",
+      href: "https://wavedash.com/games/glass-break",
       dates: "November 2026",
       active: true,
       group: "lab",
       play: {
-        url: "https://starknightt.github.io/glass-break/",
-        mode: "embed",
+        url: "https://wavedash.com/games/glass-break",
+        mode: "external",
         note: "Desktop GPU, keyboard and mouse, Chrome or Edge. First visit downloads about 34 MB.",
       },
       description:
@@ -526,7 +526,7 @@ export const DATA = {
       links: [
         {
           type: "Website",
-          href: "https://starknightt.github.io/glass-break/",
+          href: "https://wavedash.com/games/glass-break",
           icon: <Icons.globe className="size-3" />,
         },
         {
@@ -547,13 +547,13 @@ export const DATA = {
     {
       title: "Island",
       tagline: "An open-world tropical island. Walk from the beach to the waterfall, the village and the lighthouse.",
-      href: "https://starknightt.github.io/island/?v=1",
+      href: "https://wavedash.com/games/island",
       dates: "October 2026",
       active: true,
       group: "lab",
       play: {
-        url: "https://starknightt.github.io/island/?v=1",
-        mode: "embed",
+        url: "https://wavedash.com/games/island",
+        mode: "external",
         note: "Desktop GPU, keyboard and mouse or a gamepad, Chrome or Edge with WebGPU. About 10 seconds to load on a first visit.",
       },
       description:
@@ -570,7 +570,7 @@ export const DATA = {
       links: [
         {
           type: "Website",
-          href: "https://starknightt.github.io/island/?v=1",
+          href: "https://wavedash.com/games/island",
           icon: <Icons.globe className="size-3" />,
         },
         {
@@ -591,13 +591,13 @@ export const DATA = {
     {
       title: "Golden Hour Skatepark",
       tagline: "A beach skatepark at golden hour. Carve the bowls, flip, grind the rails and chain combos.",
-      href: "https://starknightt.github.io/skate-park/",
+      href: "https://wavedash.com/games/golden-hour-skatepark",
       dates: "October 2026",
       active: true,
       group: "lab",
       play: {
-        url: "https://starknightt.github.io/skate-park/",
-        mode: "embed",
+        url: "https://wavedash.com/games/golden-hour-skatepark",
+        mode: "external",
         note: "Keyboard, gamepad or touch, and it runs on phones. First visit downloads about 1.9 MB.",
       },
       description:
@@ -614,7 +614,7 @@ export const DATA = {
       links: [
         {
           type: "Website",
-          href: "https://starknightt.github.io/skate-park/",
+          href: "https://wavedash.com/games/golden-hour-skatepark",
           icon: <Icons.globe className="size-3" />,
         },
         {
@@ -633,13 +633,13 @@ export const DATA = {
     {
       title: "River Morning",
       tagline: "A quiet morning of fishing on a clear mountain river. Cast, play a trout, then let it go.",
-      href: "https://starknightt.github.io/river-morning/",
+      href: "https://wavedash.com/games/river-morning",
       dates: "October 2026",
       active: true,
       group: "lab",
       play: {
-        url: "https://starknightt.github.io/river-morning/",
-        mode: "embed",
+        url: "https://wavedash.com/games/river-morning",
+        mode: "external",
         note: "Desktop GPU with WebGPU (Chrome or Edge), keyboard and mouse. First visit downloads about 91 MB, around 45 seconds.",
       },
       description:
@@ -656,7 +656,7 @@ export const DATA = {
       links: [
         {
           type: "Website",
-          href: "https://starknightt.github.io/river-morning/",
+          href: "https://wavedash.com/games/river-morning",
           icon: <Icons.globe className="size-3" />,
         },
         {
@@ -843,13 +843,13 @@ export const DATA = {
     {
       title: "Summer Cycle",
       tagline: "A Ghibli-style bike ride down a Japanese country road at sunset.",
-      href: "https://starknightt.github.io/summer-cycle/",
+      href: "https://wavedash.com/games/summer-cycle",
       dates: "September 2026",
       active: true,
       group: "lab",
       play: {
-        url: "https://starknightt.github.io/summer-cycle/",
-        mode: "embed",
+        url: "https://wavedash.com/games/summer-cycle",
+        mode: "external",
         note: "Desktop GPU, Chromium browser. Click to start, W to pedal, F to hop off and walk.",
       },
       description:
@@ -865,7 +865,7 @@ export const DATA = {
       links: [
         {
           type: "Website",
-          href: "https://starknightt.github.io/summer-cycle/",
+          href: "https://wavedash.com/games/summer-cycle",
           icon: <Icons.globe className="size-3" />,
         },
         {
@@ -885,13 +885,13 @@ export const DATA = {
       title: "Bay Ride",
       tagline: "A painted seaside bay. Walk the pier, then take a wooden skiff out to the lighthouse island.",
       proof: "341K views on X",
-      href: "https://starknightt.github.io/bay-ride/",
+      href: "https://wavedash.com/games/bay-ride",
       dates: "October 2026",
       active: true,
       group: "lab",
       play: {
-        url: "https://starknightt.github.io/bay-ride/",
-        mode: "embed",
+        url: "https://wavedash.com/games/bay-ride",
+        mode: "external",
         note: "Desktop GPU, keyboard and mouse. Up to a minute of shader compile on first load.",
       },
       description:
@@ -908,7 +908,7 @@ export const DATA = {
       links: [
         {
           type: "Website",
-          href: "https://starknightt.github.io/bay-ride/",
+          href: "https://wavedash.com/games/bay-ride",
           icon: <Icons.globe className="size-3" />,
         },
         {
@@ -929,13 +929,13 @@ export const DATA = {
     {
       title: "Ocean Drive",
       tagline: "Miami Beach at sunrise. Walk the Art Deco strip or take any car on the street down to the surf.",
-      href: "https://starknightt.github.io/ocean-drive/",
+      href: "https://wavedash.com/games/ocean-drive",
       dates: "September 2026",
       active: true,
       group: "lab",
       play: {
-        url: "https://starknightt.github.io/ocean-drive/",
-        mode: "embed",
+        url: "https://wavedash.com/games/ocean-drive",
+        mode: "external",
         note: "Best on a desktop GPU with keyboard and mouse. Also runs on phones on a lower tier.",
       },
       description:
@@ -951,7 +951,7 @@ export const DATA = {
       links: [
         {
           type: "Website",
-          href: "https://starknightt.github.io/ocean-drive/",
+          href: "https://wavedash.com/games/ocean-drive",
           icon: <Icons.globe className="size-3" />,
         },
         {
@@ -972,13 +972,13 @@ export const DATA = {
     {
       title: "Operation Ironhold",
       tagline: "A full first-person shooter in a single 290 KB HTML file, from five prompts.",
-      href: "https://starknightt.github.io/operation-ironhold/",
+      href: "https://wavedash.com/games/operation-ironhold",
       dates: "July 2026",
       active: true,
       group: "lab",
       play: {
-        url: "https://starknightt.github.io/operation-ironhold/",
-        mode: "embed",
+        url: "https://wavedash.com/games/operation-ironhold",
+        mode: "external",
         note: "Desktop only. Click to focus, WASD and mouse.",
       },
       description:
@@ -992,7 +992,7 @@ export const DATA = {
       links: [
         {
           type: "Website",
-          href: "https://starknightt.github.io/operation-ironhold/",
+          href: "https://wavedash.com/games/operation-ironhold",
           icon: <Icons.globe className="size-3" />,
         },
         {
@@ -1074,12 +1074,12 @@ export const DATA = {
     {
       title: "Backrooms: Level 0",
       tagline: "A procedural survival horror maze with a pathfinding monster.",
-      href: "https://backroom-escape.vercel.app/",
+      href: "https://wavedash.com/games/backrooms-level-0",
       dates: "June 2026",
       active: true,
       group: "lab",
       play: {
-        url: "https://backroom-escape.vercel.app/",
+        url: "https://wavedash.com/games/backrooms-level-0",
         mode: "external",
         note: "Opens in a new tab, desktop only.",
       },
@@ -1097,7 +1097,7 @@ export const DATA = {
       links: [
         {
           type: "Website",
-          href: "https://backroom-escape.vercel.app/",
+          href: "https://wavedash.com/games/backrooms-level-0",
           icon: <Icons.globe className="size-3" />,
         },
         {
@@ -1197,13 +1197,13 @@ export const DATA = {
     {
       title: "Parapet",
       tagline: "Rooftop parkour across a procedural brutalist city at golden hour.",
-      href: "https://starknightt.github.io/parapet/",
+      href: "https://wavedash.com/games/parapet",
       dates: "September 2026",
       active: true,
       group: "lab",
       play: {
-        url: "https://starknightt.github.io/parapet/",
-        mode: "embed",
+        url: "https://wavedash.com/games/parapet",
+        mode: "external",
         note: "Desktop, WASD, Space to jump.",
       },
       description:
@@ -1218,7 +1218,7 @@ export const DATA = {
       links: [
         {
           type: "Website",
-          href: "https://starknightt.github.io/parapet/",
+          href: "https://wavedash.com/games/parapet",
           icon: <Icons.globe className="size-3" />,
         },
         {
