@@ -458,6 +458,49 @@ export const DATA = {
       poster: "https://video.gumlet.io/6745e593080b60408ca085f7/6a8ef3e50784f723ea1a0908/thumbnail-1-0.png?v=1787753505658",
     },
     {
+      title: "Summer Festival",
+      tagline: "A seaside town on the night of its summer festival. Five stalls to play, then fireworks over the sea.",
+      href: "https://wavedash.com/games/summer-festival",
+      dates: "November 2026",
+      active: true,
+      group: "lab",
+      play: {
+        url: "https://wavedash.com/games/summer-festival",
+        mode: "external",
+        note: "Desktop GPU, keyboard and mouse, Chrome or Edge with WebGPU.",
+      },
+      description:
+        "An anime-style festival night in a seaside town, in Three.js with WebGPU and toon shading. Walk a street of stalls under paper lanterns in a summer yukata: scoop a goldfish, buy a candy apple, win the ring toss, pick a mask and light a lantern, and the fireworks go up over the sea. No score, no timer, no fail state. The town is busy around her, with festival-goers who chat and sit on benches, stall keepers who call out, a dog that follows her and three hidden cats. The heroine, the townspeople, the stalls and the animals were built in Blender by scripts through the Blender MCP, with Mixamo motion retargeted onto their rigs, and every sound is synthesized with the Web Audio API. Built in a day with Claude Opus 5.5 and Claude Fable 5.2 in Claude Code.",
+      technologies: [
+        "Three.js",
+        "TypeScript",
+        "WebGPU",
+        "Vite",
+        "Blender",
+        "Mixamo",
+        "Claude Opus 5.5",
+        "Claude Fable 5.2",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://wavedash.com/games/summer-festival",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/StarKnightt/summer-festival",
+          icon: <Icons.github className="size-3" />,
+        },
+        {
+          type: "Launch post",
+          href: "https://x.com/prasenx/status/2121961933540917658",
+          icon: <Icons.x className="size-3" />,
+        },
+      ],
+      image: "/projects/summer-festival.webp",
+    },
+    {
       title: "Valley Ride",
       tagline: "A calm horse ride across a mountain valley, from sunrise to a campfire on the summit at sunset.",
       href: "https://wavedash.com/games/valley-ride",
