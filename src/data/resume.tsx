@@ -499,6 +499,8 @@ export const DATA = {
         },
       ],
       image: "/projects/summer-festival.webp",
+      video: "https://video.gumlet.io/6745e593080b60408ca085f7/6af9bd63485a59fbc95e01c1/download.mp4",
+      poster: "https://video.gumlet.io/6745e593080b60408ca085f7/6af9bd63485a59fbc95e01c1/thumbnail-1-0.png",
     },
     {
       title: "Valley Ride",
