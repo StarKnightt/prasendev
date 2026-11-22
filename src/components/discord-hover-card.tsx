@@ -10,6 +10,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const DISCORD_USER_ID = "878205528570990602";
 const PROFILE_URL = `https://discord.com/users/${DISCORD_USER_ID}`;
+const SERVER_INVITE_URL = "https://discord.gg/ZHsD2shKvz";
 
 interface LanyardData {
   displayName: string;
@@ -140,14 +141,24 @@ export function DiscordHoverCard({ children }: { children: ReactNode }) {
                 {data.customStatus || data.activity}
               </p>
             )}
-            <a
-              href={PROFILE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs font-medium text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
-            >
-              View profile
-            </a>
+            <div className="flex items-center gap-3">
+              <a
+                href={SERVER_INVITE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-medium text-foreground underline-offset-4 transition-colors hover:text-[#5865F2] hover:underline"
+              >
+                Join the server
+              </a>
+              <a
+                href={PROFILE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-medium text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
+              >
+                View profile
+              </a>
+            </div>
           </div>
         ) : null}
       </HoverCardContent>
