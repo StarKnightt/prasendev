@@ -1,0 +1,73 @@
+---
+title: "Windows Never Had a Good Screen Time App, So I Built One in Rust"
+publishedAt: "2026-11-18"
+summary: "Every screen time app I tried for Windows looked like it was made in 2009. Mine runs in 9.6 MB of RAM, never touches the internet, and is free on the Microsoft Store."
+image: "/blog/screentime-cover.jpg"
+tags: ["rust", "windows", "productivity", "claude"]
+---
+
+# Windows Never Had a Good Screen Time App, So I Built One in Rust
+
+I made Screentime, a small screen time tracker for Windows. It shows your whole day on a 24-hour dial, every app in its own colour, so you can see where your day actually went. It's free, open source, and on the Microsoft Store.
+
+I built it with Claude Opus 5.5 in Claude Code, and this post is my own answers, edited with Claude. I did the idea and the taste calls. Claude did a lot of the building.
+
+Get it: [Microsoft Store](https://apps.microsoft.com/detail/9PBJ3RV1TPC5) or [GitHub](https://github.com/StarKnightt/screentime).
+
+![Screentime's Today view: the whole day on a 24-hour dial, every app in its own colour](/blog/screentime-day.webp)
+
+## Why I built it
+
+I tried the other screen time apps for Windows, and they were really bad. The UI, the UX, everything felt like a dev tool. It was so outdated it felt like it was built in 2009. So I built a modern one.
+
+People ask if seeing their own dial is scary. One person on X said they weren't sure they were ready to see theirs. For me, no. Even if my screen time hit 24 hours, I wouldn't be embarrassed. On my computer I do my real work, the stuff that actually pays. I don't regret that time. I just want to see where it goes.
+
+## The first version was horrible
+
+The first version was completely vibe coded. The fonts, the design, everything was sloppy. It did not have the taste of something a human would want to use every day. Honestly, it looked like a toddler drew it.
+
+So I changed a lot. I told Claude straight: this looks like generic AI-made software, I wouldn't use it daily. That's where the redesign started.
+
+## The dial took a long process
+
+The 24-hour dial is the heart of the app, and it took the longest. Claude kept building something different from what I had in my head. What finally worked was giving it an example: I had Claude generate an image of the dial I wanted, and it built from that. After that, perfecting the circle and the hover effects still took a long time.
+
+![Click an app and the dial shows only its slices of the day](/blog/screentime-focus.webp)
+
+## Why pure Rust
+
+I built a writing app called CleanType before, with Tauri and Rust. It worked, but it was never as smooth as I wanted. This time I went pure Rust, with no browser engine inside, and I think it was the right call. Rust is the mainstream right now. Even the Linux kernel is using it.
+
+The other reason is personal. I used to work on a potato laptop with 8 GB of RAM and integrated graphics. I know the pain of an app eating your memory in the background. I didn't want anyone to feel that because of my app.
+
+So Screentime uses about 9.6 MB of RAM and close to 0% CPU. It makes no network connections at all: no account, no telemetry, no update check. It stores only app names and times, never window titles, web addresses or keystrokes.
+
+## Why the Microsoft Store
+
+I wanted it to be for everyone, not just for me. When I shipped CleanType on GitHub, Windows showed the "Windows protected your PC" warning on the download. If you're a developer, that's fine, you know what it means. A normal person sees it and panics: is this a virus?
+
+The Store fixes that. Microsoft signs the app, it installs in one click, and nobody has to dig through GitHub for a download link. I submitted it around 10 at night and it was approved the same night. Not even a day.
+
+## The launch video
+
+I made several versions of the [launch video](https://x.com/prasenx/status/2119857013559836795) and posted the last one. What I learned: if your launch video doesn't have taste, people scroll past and never try the product. If you're solving a real problem, the video is worth the effort.
+
+I went clean and Apple style. It's a bit ironic to say for a Windows app, but Apple makes the best launch videos on earth right now, so that's where the inspiration came from.
+
+## Time and cost
+
+I had the idea about eight to ten days before I built it, but my Claude weekly usage was almost gone, at 90 to 98%. So I waited for the weekly reset and built it right after. From the first commit to the Microsoft Store took about two days.
+
+I used Claude Opus 5.5 on medium effort, and that was just enough.
+
+## How it's doing
+
+- The launch post on X got about 2,500 views and 43 likes.
+- 48 downloads from GitHub, plus the Microsoft Store.
+- 20 upvotes on [Peerlist](https://peerlist.io/prasen/project/screentime-for-windows), rated 4.8 out of 5.
+
+## What's next
+
+I didn't plan much beyond solving my own problem. A phone version doesn't make sense, since phones already have screen time built in. It's a small app, so it should run on pretty much any Windows. I might do a Linux version, and I'm thinking about a terminal version: type `screentime`, and it shows your whole day.
+
+If you're on Windows, [try it](https://apps.microsoft.com/detail/9PBJ3RV1TPC5) and tell me what you think. And if you like it, a [star on GitHub](https://github.com/StarKnightt/screentime) helps a lot.
