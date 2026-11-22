@@ -264,7 +264,7 @@ export const DATA = {
       },
       Discord: {
         name: "Discord",
-        url: "https://discord.com/users/878205528570990602",
+        url: "https://discord.gg/ZHsD2shKvz",
         icon: Icons.discord,
         navbar: true,
       },
