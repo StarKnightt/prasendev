@@ -55,10 +55,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: `${DATA.url}/og/home-2026-09.png`,
+        url: `${DATA.url}/og/home-2026-11.png`,
         width: 1200,
         height: 630,
-        alt: "Prasenjit Nayak, full stack developer open to DevRel roles"
+        alt: "A sketchbook page: Prasenjit in ink, a taped polaroid sketch portrait, and doodles for apps, games and notes"
       }
     ]
   },
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Prasenjit Nayak | Full Stack Developer',
     description: 'Full Stack Developer specializing in React, Next.js, TypeScript and Node.js. Check out my portfolio, projects and blog posts.',
-    images: [`${DATA.url}/og/home-2026-09.png`],
+    images: [`${DATA.url}/og/home-2026-11.png`],
     creator: '@prasenx',
   },
   robots: {
