@@ -149,7 +149,7 @@ export const metadata: Metadata = {
     siteName: DATA.name,
     images: [
       {
-        url: `${DATA.url}/og/home-2026-11.png`,
+        url: `${DATA.url}/og/home-2026-11.jpg`,
         width: 1200,
         height: 630,
         alt: "A sketchbook page: Prasenjit in ink, a taped polaroid sketch portrait, and doodles for apps, games and notes",
@@ -165,7 +165,7 @@ export const metadata: Metadata = {
     creator: '@prasenx',
     images: [
       {
-        url: `${DATA.url}/og/home-2026-11.png`,
+        url: `${DATA.url}/og/home-2026-11.jpg`,
         width: 1200,
         height: 630,
         alt: "A sketchbook page: Prasenjit in ink, a taped polaroid sketch portrait, and doodles for apps, games and notes",
