@@ -8,7 +8,7 @@ import { ProjectSortGrid, ProjectSortProvider, ProjectSortSelect } from "@/compo
 import type { Metadata } from "next";
 
 const PAGE_DESCRIPTION =
-  "The Lab by Prasenjit Nayak: short films made entirely in code, plus browser games and 3D worlds built with Claude, including Clawd: Wonder, PRESS START, Jungle Trail and Night Street.";
+  "The Lab by Prasenjit Nayak: short videos made entirely in code, plus browser games and 3D worlds built with Claude, including Clawd: Wonder, PRESS START, Jungle Trail and Night Street.";
 
 const OG_IMAGE = `${DATA.url}/api/og?title=Lab&type=page`;
 
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
         url: OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: "The Lab by Prasenjit Nayak: films, browser games and 3D worlds built with AI",
+        alt: "The Lab by Prasenjit Nayak: videos, browser games and 3D worlds built with AI",
       },
     ],
   },
@@ -63,7 +63,7 @@ export default function LabPage() {
               <ProjectSortSelect label="Sort the Lab" />
             </div>
             <p className="mb-10 mt-3 max-w-2xl text-muted-foreground">
-              Films, browser games and 3D worlds I directed AI to build and shared on X. Every texture, mesh and sound is
+              Videos, browser games and 3D worlds I directed AI to build and shared on X. Every texture, mesh and sound is
               generated in code unless stated. For things people pay for or use every day, see{" "}
               <Link href="/projects" className="underline underline-offset-4 hover:text-foreground">
                 projects
@@ -72,13 +72,13 @@ export default function LabPage() {
             </p>
           </Reveal>
 
-          <section id="films" aria-labelledby="films-heading">
+          <section id="videos" aria-labelledby="videos-heading">
             <Reveal delay={REVEAL_DELAY * 3}>
-              <h2 id="films-heading" className="mb-1 text-2xl">
-                Films <span className="ml-1 font-type text-sm text-muted-foreground">{FILMS.length}</span>
+              <h2 id="videos-heading" className="mb-1 text-2xl">
+                Videos <span className="ml-1 font-type text-sm text-muted-foreground">{FILMS.length}</span>
               </h2>
               <p className="mb-5 text-sm text-muted-foreground">
-                Short films where every frame and every note is made in code. Hover to preview.
+                Short videos where every frame and every note is made in code. Hover to preview.
               </p>
             </Reveal>
             <ProjectSortGrid items={FILM_ITEMS} className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-8">

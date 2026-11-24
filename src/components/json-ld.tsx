@@ -48,7 +48,7 @@ export function JsonLd() {
       'AI Integration'
     ],
     knowsLanguage: ['English', 'Hindi', 'Odia'],
-    description: 'Creative engineer. Making code alive: games, films and art built with AI.'
+    description: 'Creative engineer. Making code alive: games, videos and art built with AI.'
   },
   {
     '@context': 'https://schema.org',
@@ -56,7 +56,7 @@ export function JsonLd() {
     '@id': `${DATA.url}/#website`,
     name: 'Prasenjit Nayak - Creative Engineer',
     url: DATA.url,
-    description: 'Portfolio of Prasenjit Nayak, a creative engineer making games, films and art with code and AI',
+    description: 'Portfolio of Prasenjit Nayak, a creative engineer making games, videos and art with code and AI',
     publisher: {
       '@id': `${DATA.url}/#person`
     }
