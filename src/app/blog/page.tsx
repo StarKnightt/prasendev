@@ -1,4 +1,5 @@
 import BlurFade from "@/components/magicui/blur-fade";
+import { InkDoodle } from "@/components/motion/ink-doodle";
 import { getBlogPosts } from "@/data/blog";
 import Link from "next/link";
 import { DATA } from "@/data/resume";
@@ -58,7 +59,7 @@ export default async function BlogPage() {
       <BreadcrumbJsonLd items={[{ name: "Blog", href: "/blog" }]} />
       <section>
         <BlurFade delay={BLUR_FADE_DELAY}>
-          <h1 className="text-4xl mb-8">blog</h1>
+          <h1 className="relative w-fit text-4xl mb-8">blog<InkDoodle kind="inkpot" delay={300} className="absolute left-full ml-3 -top-4 h-12 w-12" /></h1>
         </BlurFade>
         {posts
           .sort((a, b) =>

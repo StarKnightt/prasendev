@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { InkDoodle } from "@/components/motion/ink-doodle";
 import BlurFade from "@/components/magicui/blur-fade";
 import { DATA, type Project } from "@/data/resume";
 import { ProjectCard } from "@/components/project-card";
@@ -52,7 +53,7 @@ export default function ProjectsPage() {
       <LabHashRedirect />
       <BreadcrumbJsonLd items={[{ name: "Projects", href: "/projects" }]} />
       <BlurFade delay={BLUR_FADE_DELAY}>
-        <h1 className="text-4xl mb-8">projects</h1>
+        <h1 className="relative w-fit text-4xl mb-8">projects<InkDoodle kind="clapper" delay={300} className="absolute left-full ml-3 -top-3 h-11 w-12" /></h1>
       </BlurFade>
       <div className="space-y-12">
         <ProjectSortProvider>

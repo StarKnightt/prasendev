@@ -49,6 +49,11 @@
       --color-5: 72 30% 32%;
 
       --ink-link: 218 48% 28%;
+      --wash-ochre: 38 80% 58%;
+      --wash-rose: 352 62% 66%;
+      --wash-sage: 108 24% 52%;
+      --wash-sky: 206 48% 60%;
+      --wash-coffee: 26 50% 32%;
       --paper-grain-opacity: 0.5;
       --paper-edge: 32 40% 52%;
 
@@ -93,6 +98,11 @@
       --color-5: 64 30% 60%;
 
       --ink-link: 210 50% 76%;
+      --wash-ochre: 38 60% 42%;
+      --wash-rose: 352 40% 46%;
+      --wash-sage: 108 20% 38%;
+      --wash-sky: 206 34% 44%;
+      --wash-coffee: 30 30% 40%;
       --paper-grain-opacity: 0.16;
       --paper-edge: 30 30% 2%;
 
@@ -785,3 +795,16 @@ h1, h2 { letter-spacing: -0.01em; }
 
 /* every post repeats its title as a leading "# " heading; the page already prints it */
 article.prose > h1:first-child, .prose > h1:first-child { display: none; }
+
+/* ---------- Ink doodles and watercolour ---------- */
+.ink-doodle { color: hsl(var(--foreground) / .78); }
+.ink-wash { opacity: 0; transform-box: fill-box; transform-origin: center; }
+:root:not(.dark) .ink-doodle, :root:not(.dark) .wc-wash { mix-blend-mode: multiply; }
+[data-inview] .ink-wash { animation: ink-bloom 1400ms var(--ease-out-strong) var(--draw-delay, 0ms) both; }
+@keyframes ink-bloom {
+  from { opacity: 0; transform: scale(.82); }
+  to { opacity: 1; transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ink-wash { opacity: 1; animation: none !important; }
+}

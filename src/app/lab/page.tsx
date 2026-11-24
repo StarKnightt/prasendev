@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { InkDoodle } from "@/components/motion/ink-doodle";
 import BlurFade from "@/components/magicui/blur-fade";
 import { DATA, type Project } from "@/data/resume";
 import { LabTile } from "@/components/lab-tile";
@@ -54,7 +55,7 @@ export default function LabPage() {
     <section>
       <BreadcrumbJsonLd items={[{ name: "Lab", href: "/lab" }]} />
       <BlurFade delay={BLUR_FADE_DELAY}>
-        <h1 className="text-4xl mb-3">lab</h1>
+        <h1 className="relative w-fit text-4xl mb-3">lab<InkDoodle kind="sparkles" delay={300} className="absolute left-full ml-2 -top-3 h-10 w-12" /></h1>
         <p className="mb-8 text-sm text-muted-foreground">
           Films, browser games and 3D worlds, built with Claude while I directed and reviewed. For things people pay
           for or use every day, see{" "}

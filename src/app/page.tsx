@@ -36,6 +36,7 @@ import { VisitorCounter, GithubContributionsPlain } from "@/components/lazy-clie
 import { StatGlyph, type StatGlyphKind } from "@/components/motion/stat-glyph";
 import { CountUp } from "@/components/motion/count-up";
 import { HeadingScribble } from "@/components/motion/heading-scribble";
+import { CoffeeRing, InkDoodle, WatercolorWash } from "@/components/motion/ink-doodle";
 import { ExperienceTimeline } from "@/components/motion/experience-timeline";
 import { ContributionsWave } from "@/components/motion/contributions-wave";
 import { Signature } from "@/components/motion/signature";
@@ -208,7 +209,9 @@ export default async function Page() {
         <PersonSchema />
 
         {/* ─── HERO ─── */}
-        <section id="hero">
+        <section id="hero" className="relative">
+          <InkDoodle kind="moon" delay={1400} className="absolute -right-40 top-2 hidden h-16 w-16 -rotate-6 xl:block" />
+          <InkDoodle kind="sparkles" delay={2200} className="absolute -left-36 top-44 hidden h-12 w-14 xl:block" />
           <div className="mx-auto w-full space-y-8">
             <div className="flex flex-col-reverse items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex-col flex flex-1 space-y-1.5">
@@ -230,6 +233,7 @@ export default async function Page() {
               </div>
               <BlurFade delay={BLUR_FADE_DELAY}>
                 <div className="profile-wrapper">
+                  <WatercolorWash tone="ochre" seed={7} className="absolute -left-14 -top-4 -z-10 h-[150%] w-[150%] -rotate-12" />
                   <FlipAvatar
                     src={DATA.avatarUrl}
                     alt={DATA.name}
@@ -412,6 +416,7 @@ export default async function Page() {
                 <h2 className="relative w-fit text-2xl">
                   Selected Work
                   <HeadingScribble kind="swoosh" />
+                  <InkDoodle kind="clapper" delay={700} className="absolute left-full ml-3 -top-4 h-10 w-11" />
                 </h2>
                 <div className="flex shrink-0 items-center gap-4">
                   <Link
@@ -452,12 +457,14 @@ export default async function Page() {
 
 
         {/* ─── WORK ─── */}
-        <section id="work">
+        <section id="work" className="relative">
+          <InkDoodle kind="sprig" speed={1.3} className="absolute -left-40 top-10 hidden h-44 w-24 -rotate-6 xl:block" />
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade delay={BLUR_FADE_DELAY * 12}>
               <h2 className="relative w-fit text-2xl">
                 Experience
                 <HeadingScribble kind="flick" />
+                  <InkDoodle kind="plane" delay={700} className="absolute left-full ml-3 -top-5 h-11 w-16" />
               </h2>
             </BlurFade>
             <BlurFade delay={BLUR_FADE_DELAY * 12.5}>
@@ -518,12 +525,14 @@ export default async function Page() {
 
 
         {/* ─── ELSEWHERE ─── */}
-        <section id="elsewhere">
+        <section id="elsewhere" className="relative">
+          <CoffeeRing className="absolute -right-44 top-24 hidden h-32 w-32 rotate-12 xl:block" />
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade delay={BLUR_FADE_DELAY * 14}>
               <h2 className="relative w-fit text-2xl">
                 Behind the Scenes
                 <HeadingScribble kind="double" />
+                  <InkDoodle kind="coffee" delay={700} className="absolute left-full ml-3 -top-5 h-11 w-11" />
               </h2>
             </BlurFade>
             <BlurFade delay={BLUR_FADE_DELAY * 14.5}>
@@ -561,6 +570,7 @@ export default async function Page() {
                 <h2 className="relative w-fit text-2xl">
                   Writing
                   <HeadingScribble kind="wave" />
+                  <InkDoodle kind="inkpot" delay={700} className="absolute left-full ml-3 -top-6 h-12 w-12" />
                 </h2>
                 <Link
                   href="/blog"
@@ -598,7 +608,7 @@ export default async function Page() {
 
 
         {/* ─── CONTACT ─── */}
-        <section id="contact">
+        <section id="contact" className="relative">
           <BlurFade delay={BLUR_FADE_DELAY * 16}>
             <div className="relative overflow-hidden rounded-2xl border border-border/50 bg-gradient-to-b from-card/60 via-card/40 to-card/20 py-12 text-center">
               <div
@@ -616,6 +626,8 @@ export default async function Page() {
               />
               <div className="relative z-10 flex flex-col items-center justify-center space-y-6">
               <SectionLabel label="Get in touch" />
+              <InkDoodle kind="sparkles" delay={900} className="absolute right-[12%] top-8 hidden h-10 w-12 sm:block" />
+              <InkDoodle kind="plane" delay={500} speed={1.4} className="absolute bottom-6 left-[8%] hidden h-14 w-20 sm:block" />
               <p className="text-xl text-muted-foreground">
                I'd love to hear from you.
               </p>
