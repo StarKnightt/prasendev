@@ -8,7 +8,7 @@ import type { Metadata } from "next";
 
 const BLOG_DESCRIPTION =
   "Blog by Prasenjit Nayak: honest takes on web development, Next.js, AI tools like Cursor and Claude, Linux, and what it's like shipping as a freelance dev.";
-const BLOG_IMAGE = `${DATA.url}/og/blog-2026-09.png`;
+const BLOG_IMAGE = `${DATA.url}/og/blog-2026-11.png`;
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
         url: BLOG_IMAGE,
         width: 1200,
         height: 630,
-        alt: "Blog by Prasenjit Nayak: building in public, AI tools and browser 3D",
+        alt: "A notebook page reading Prasenjit's blog: AI tools, apps, games and whatever i'm into",
       },
     ],
   },
