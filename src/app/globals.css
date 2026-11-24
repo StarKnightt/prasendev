@@ -754,17 +754,16 @@ p, li { text-wrap: pretty; }
 }
 .dark .paper-card { box-shadow: 0 12px 24px -18px rgb(0 0 0 / .8); }
 
-/* The cursor is the emblem from a playing card: a crimson diamond holding a
-   four-point star. Over anything clickable the star turns gold and throws a spark.
-   Hotspot is the centre of the star. Plain CSS, no per-frame cost. */
+/* The cursor is the emblem from the Aeris card, drawn as a blade: a long
+   four-point star in an ice-blue outline, its tip pointing up-left. The hotspot
+   is the tip. Anything clickable gets the normal hand. Plain CSS. */
 :root {
-  --cursor-card: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 2.5 28.5 16 16 29.5 3.5 16Z' fill='none' stroke='%232b1f15' stroke-width='3' stroke-opacity='.5' stroke-linejoin='round'/%3E%3Cpath d='M16 2.5 28.5 16 16 29.5 3.5 16Z' fill='%23a3232c' stroke='%23f6efe2' stroke-width='1.4' stroke-linejoin='round'/%3E%3Cpath d='M16 6.6 24.7 16 16 25.4 7.3 16Z' fill='%237c1820' stroke='%23f2c9a4' stroke-width='.8' stroke-linejoin='round'/%3E%3Cpath d='M16 9.2Q16.8 15.2 22.4 16 16.8 16.8 16 22.8 15.2 16.8 9.6 16 15.2 15.2 16 9.2Z' fill='%23f6efe2'/%3E%3C/svg%3E") 16 16;
-  --cursor-card-live: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 2.5 28.5 16 16 29.5 3.5 16Z' fill='none' stroke='%232b1f15' stroke-width='3' stroke-opacity='.5' stroke-linejoin='round'/%3E%3Cpath d='M16 2.5 28.5 16 16 29.5 3.5 16Z' fill='%23a3232c' stroke='%23f6efe2' stroke-width='1.4' stroke-linejoin='round'/%3E%3Cpath d='M16 6.6 24.7 16 16 25.4 7.3 16Z' fill='%237c1820' stroke='%23f2c9a4' stroke-width='.8' stroke-linejoin='round'/%3E%3Cpath d='M16 9.2Q16.8 15.2 22.4 16 16.8 16.8 16 22.8 15.2 16.8 9.6 16 15.2 15.2 16 9.2Z' fill='%23f5c24c'/%3E%3Cpath d='M27 3Q27.4 5.3 29.6 5.7 27.4 6.1 27 8.4 26.6 6.1 24.4 5.7 26.6 5.3 27 3Z' fill='%23f5c24c' stroke='%232b1f15' stroke-width='.6'/%3E%3C/svg%3E") 16 16;
+  --cursor-card: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg transform='translate(2.2 2.2) rotate(-45)' stroke-linejoin='round'%3E%3Cpath d='M0 0Q1.4 20 6 24 1.4 26.5 0 36-1.4 26.5-6 24-1.4 20 0 0Z' fill='none' stroke='%230a1230' stroke-opacity='.55' stroke-width='3'/%3E%3Cpath d='M0 0Q1.4 20 6 24 1.4 26.5 0 36-1.4 26.5-6 24-1.4 20 0 0Z' fill='none' stroke='%235b8dff' stroke-opacity='.75' stroke-width='2.1'/%3E%3Cpath d='M0 0Q1.4 20 6 24 1.4 26.5 0 36-1.4 26.5-6 24-1.4 20 0 0Z' fill='%2316245a' stroke='%23f4f8ff' stroke-width='1'/%3E%3Cpath d='M0 9Q.8 21 3.2 24 .8 25.6 0 31-.8 25.6-3.2 24-.8 21 0 9Z' fill='none' stroke='%239cc4ff' stroke-width='.8'/%3E%3Ccircle cx='0' cy='24' r='1' fill='%23cfe0ff'/%3E%3C/g%3E%3C/svg%3E") 2 2;
 }
 @media (pointer: fine) {
   html, body { cursor: var(--cursor-card), auto; }
   a, button, summary, label[for], select, .cursor-pointer, [role="button"], [role="tab"], [role="link"], [role="menuitem"], [role="option"] {
-    cursor: var(--cursor-card-live), pointer;
+    cursor: pointer;
   }
   input:not([type="checkbox"]):not([type="radio"]):not([type="range"]), textarea, [contenteditable="true"] { cursor: text; }
 }
