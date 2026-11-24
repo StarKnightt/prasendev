@@ -36,7 +36,7 @@ import { VisitorCounter, GithubContributionsPlain } from "@/components/lazy-clie
 import { StatGlyph, type StatGlyphKind } from "@/components/motion/stat-glyph";
 import { CountUp } from "@/components/motion/count-up";
 import { HeadingScribble } from "@/components/motion/heading-scribble";
-import { CoffeeRing, InkDoodle, WatercolorWash } from "@/components/motion/ink-doodle";
+import { CoffeeRing, InkDoodle } from "@/components/motion/ink-doodle";
 import { ExperienceTimeline } from "@/components/motion/experience-timeline";
 import { ContributionsWave } from "@/components/motion/contributions-wave";
 import { Signature } from "@/components/motion/signature";
@@ -226,7 +226,6 @@ export default async function Page() {
               </div>
               <Reveal delay={REVEAL_DELAY}>
                 <div className="profile-wrapper">
-                  <WatercolorWash tone="ochre" seed={7} className="absolute -left-14 -top-4 -z-10 h-[150%] w-[150%] -rotate-12" />
                   <FlipAvatar
                     src={DATA.avatarUrl}
                     alt={DATA.name}
