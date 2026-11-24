@@ -67,7 +67,7 @@ export default function GadgetsPage() {
                   <CategoryIcon className="size-5 text-primary" />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold">{category}</h2>
+                  <h2 className="text-3xl">{category}</h2>
                   <p className="text-sm text-muted-foreground">
                     {categoryProducts.length} {categoryProducts.length === 1 ? 'item' : 'items'}
                   </p>
@@ -95,7 +95,7 @@ export default function GadgetsPage() {
           <Wrench className="size-5 text-primary" />
         </div>
         <div>
-          <h2 className="text-2xl font-bold">Tools & Software</h2>
+          <h2 className="text-3xl">Tools & Software</h2>
           <p className="text-sm text-muted-foreground">
             Apps and software I use to code and stay productive.
           </p>
@@ -149,7 +149,7 @@ export default function GadgetsPage() {
       <Suspense fallback={<GadgetSkeleton />}>
         <BlurFade>
           <div className="max-w-3xl mx-auto mb-12 text-center space-y-4">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">My Tech Setup</h1>
+            <h1 className="text-5xl sm:text-6xl">My Tech Setup</h1>
             <p className="text-muted-foreground text-lg leading-relaxed">
               Products I personally use and recommend. Buying through my affiliate links helps support my work.
             </p>

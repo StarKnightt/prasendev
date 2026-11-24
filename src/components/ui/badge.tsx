@@ -15,6 +15,8 @@ const badgeVariants = cva(
         destructive:
           "border-transparent bg-destructive text-destructive-foreground shadow hover:bg-destructive/80",
         outline: "text-foreground",
+        // an ink stamp: outlined in ink, filled with ink on hover
+        ink: "border-foreground/55 bg-transparent text-foreground hover:bg-foreground hover:text-background",
       },
     },
     defaultVariants: {

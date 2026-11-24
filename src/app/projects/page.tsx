@@ -1,7 +1,6 @@
 import Link from "next/link";
 import BlurFade from "@/components/magicui/blur-fade";
 import { DATA, type Project } from "@/data/resume";
-import { BorderBeam } from "@/components/magicui/border-beam";
 import { ProjectCard } from "@/components/project-card";
 import { HeadingScribble } from "@/components/motion/heading-scribble";
 import { LabBeaker } from "@/components/motion/lab-beaker";
@@ -53,14 +52,14 @@ export default function ProjectsPage() {
       <LabHashRedirect />
       <BreadcrumbJsonLd items={[{ name: "Projects", href: "/projects" }]} />
       <BlurFade delay={BLUR_FADE_DELAY}>
-        <h1 className="font-medium text-2xl mb-8 tracking-tight">projects</h1>
+        <h1 className="text-4xl mb-8">projects</h1>
       </BlurFade>
       <div className="space-y-12">
         <ProjectSortProvider>
           <div id="products">
             <BlurFade delay={BLUR_FADE_DELAY * 2}>
               <div className="flex items-center justify-between gap-3">
-                <h2 className="relative w-fit text-lg font-semibold tracking-tight">
+                <h2 className="relative w-fit text-2xl">
                   Projects
                   <HeadingScribble kind="lift" />
                 </h2>
@@ -72,12 +71,6 @@ export default function ProjectsPage() {
               {PRODUCTS.map((project, i) => (
                 <BlurFade key={project.title} delay={BLUR_FADE_DELAY * 2 + (i + 1) * 0.05}>
                   <div className="relative overflow-hidden rounded-xl">
-                    <BorderBeam
-                      duration={4}
-                      size={300}
-                      reverse
-                      className="from-transparent via-purple-500 to-transparent"
-                    />
                     <ProjectCard {...project} tags={project.technologies} />
                   </div>
                 </BlurFade>

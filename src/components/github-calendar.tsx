@@ -4,12 +4,13 @@ import React from "react";
 import GitHubCalendar from "react-github-calendar";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
-import { BorderBeam } from "@/components/magicui/border-beam";
 import { isHalloweenDate } from "@/lib/season";
 
+// Sepia ink washes on paper: the empty day is a faint pressed square,
+// busy days soak darker until they read as solid ink.
 const CALENDAR_THEME = {
-  dark: ['#161b22', '#3a3f47', '#6b7280', '#b0b8c4', '#e5e7eb'],
-  light: ['#ebedf0', '#9ca3af', '#6b7280', '#4b5563', '#374151'],
+  dark: ["#26201a", "#4a3c2c", "#7a6246", "#b3956b", "#ead8b4"],
+  light: ["#e2d6bf", "#cdb38c", "#a6845a", "#6f5236", "#2f2116"],
 };
 
 const HALLOWEEN_CALENDAR_THEME = {
@@ -53,19 +54,8 @@ export function GithubContributions({ plain = false }: { plain?: boolean }) {
 
   return (
     <div className={`relative overflow-hidden rounded-xl ${containerHeight}`}>
-      <BorderBeam
-        duration={6}
-        size={400}
-        className={halloween ? "from-transparent via-orange-400 to-transparent" : "from-transparent via-zinc-400 to-transparent"}
-      />
-      <BorderBeam
-        duration={6}
-        delay={3}
-        size={400}
-        className={halloween ? "from-transparent via-amber-300 to-transparent" : "from-transparent via-slate-300 to-transparent"}
-      />
       <motion.div
-        className={`w-full overflow-hidden rounded-xl border border-border/60 bg-card/40 p-4 transition-all duration-300 hover:border-border hover:bg-card/70 hover:shadow-lg ${containerHeight}`}
+        className={`w-full overflow-hidden rounded-lg border border-border/70 bg-card/50 p-4 ${containerHeight}`}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3 }}

@@ -20,7 +20,7 @@ export function PlayButton({ title, play }: Props) {
   const [open, setOpen] = useState(false);
 
   const pill = (
-    <Badge className="flex gap-2 px-2 py-1 text-[10px]">
+    <Badge variant="ink" className="flex gap-2 px-2 py-1 text-[10px]">
       <Play className="size-3" />
       Play
     </Badge>
