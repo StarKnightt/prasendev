@@ -42,7 +42,7 @@ import { Signature } from "@/components/motion/signature";
 import { AvatarDoodles } from "@/components/motion/avatar-doodles";
 
 const BLUR_FADE_DELAY = 0.04;
-const SELECTED_WORK = ["Clawd: Wonder", "PRESS START", "Jungle Trail", "Dateup"];
+const SELECTED_WORK = ["Clawd: Wonder", "PRESS START", "Jungle Trail", "Screentime"];
 
 // Brand hover colors for social icons; others fall back to foreground
 const SOCIAL_HOVER_COLORS: Record<string, string> = {

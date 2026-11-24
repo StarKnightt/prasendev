@@ -894,7 +894,7 @@ export const DATA = {
       group: "lab",
       film: true,
       description:
-        "A 2-minute cinematic trailer on the history of video games where every frame and every note is generated in code: GLSL shaders drawn on the GPU, music synthesized in Python, stitched with ffmpeg, no footage, images or samples. Built with Claude Opus 5.5 in Cursor. Reposted by Elon Musk, and the post passed 512K+ views and 4K+ likes.",
+        "A 2-minute cinematic trailer on the history of video games where every frame and every note is generated in code: GLSL shaders drawn on the GPU, music synthesized in Python, stitched with ffmpeg, no footage, images or samples. Built with Claude Opus 5.5 in Cursor. The post passed 512K+ views and 4K+ likes.",
       technologies: [
         "GLSL Shaders",
         "Python",
@@ -905,7 +905,7 @@ export const DATA = {
       ],
       links: [
         {
-          type: "Reposted by Elon Musk",
+          type: "Watch on X",
           href: "https://x.com/prasenx/status/2103851939457093635",
           icon: <Icons.x className="size-3" />,
         },
