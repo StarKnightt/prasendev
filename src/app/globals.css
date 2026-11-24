@@ -860,9 +860,21 @@ article.prose > h1:first-child, .prose > h1:first-child { display: none; }
   mix-blend-mode: screen;
 }
 @media (max-width: 640px) {
-  .sunlight-branch { width: 62vw; opacity: .1; }
-  .dark .sunlight-branch { opacity: .05; }
+  /* on phones the branch is big and reaches over the hero text; it is a shadow, so that is fine */
+  .sunlight-branch { top: -10px; right: -38vw; width: 135vw; opacity: .2; }
+  .dark .sunlight-branch { opacity: .08; }
 }
 @media (prefers-reduced-motion: reduce) {
   .sunlight-branch { animation: none; }
+}
+
+/* Firefox paints SVG filters, blurred text shadows and blurred blend layers on the
+   CPU, so effects that cost Chrome nothing make it stutter. Firefox gets a lighter
+   version: no per-glyph ink bleed, no turbulence wobble on the doodles (a plain soft
+   blur on the washes instead), and a still branch shadow. Everything else is the same. */
+@supports (-moz-appearance: none) {
+  body, .dark body { text-shadow: none; }
+  [filter^="url(#nib-"], [filter^="url(#ring-"] { filter: none; }
+  [filter^="url(#wash-"], [filter^="url(#wc-"] { filter: blur(1px); }
+  .sunlight-branch { animation: none; will-change: auto; }
 }
