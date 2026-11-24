@@ -1,8 +1,8 @@
 import Link from "next/link";
-import BlurFade from "@/components/magicui/blur-fade";
+import { InkDoodle } from "@/components/motion/ink-doodle";
+import Reveal from "@/components/motion/reveal";
 import { DATA, type Project } from "@/data/resume";
 import { ProjectCard } from "@/components/project-card";
-import { HeadingScribble } from "@/components/motion/heading-scribble";
 import { LabBeaker } from "@/components/motion/lab-beaker";
 import { LabHashRedirect } from "@/components/lab-hash-redirect";
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   },
 };
 
-const BLUR_FADE_DELAY = 0.04;
+const REVEAL_DELAY = 0.04;
 
 const PROJECTS: readonly Project[] = DATA.projects;
 const PRODUCTS = PROJECTS.filter((p) => (p.group ?? "products") === "products");
@@ -51,35 +51,32 @@ export default function ProjectsPage() {
     <section>
       <LabHashRedirect />
       <BreadcrumbJsonLd items={[{ name: "Projects", href: "/projects" }]} />
-      <BlurFade delay={BLUR_FADE_DELAY}>
-        <h1 className="text-4xl mb-8">projects</h1>
-      </BlurFade>
       <div className="space-y-12">
         <ProjectSortProvider>
           <div id="products">
-            <BlurFade delay={BLUR_FADE_DELAY * 2}>
+            <Reveal delay={REVEAL_DELAY}>
               <div className="flex items-center justify-between gap-3">
-                <h2 className="relative w-fit text-2xl">
+                <h1 className="relative w-fit text-4xl sm:text-5xl">
                   Projects
-                  <HeadingScribble kind="lift" />
-                </h2>
+                  <InkDoodle kind="clapper" delay={300} className="absolute left-full top-1/2 ml-3 h-11 w-12 -translate-y-1/2" />
+                </h1>
                 <ProjectSortSelect />
               </div>
-              <p className="mt-2 mb-5 text-sm text-muted-foreground">Things people pay for or use every day</p>
-            </BlurFade>
+              <p className="mb-10 mt-3 text-muted-foreground">Things people pay for or use every day.</p>
+            </Reveal>
             <ProjectSortGrid items={SORT_ITEMS} className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {PRODUCTS.map((project, i) => (
-                <BlurFade key={project.title} delay={BLUR_FADE_DELAY * 2 + (i + 1) * 0.05}>
+                <Reveal key={project.title} delay={REVEAL_DELAY * 2 + (i + 1) * 0.05}>
                   <div className="relative overflow-hidden rounded-xl">
                     <ProjectCard {...project} tags={project.technologies} />
                   </div>
-                </BlurFade>
+                </Reveal>
               ))}
             </ProjectSortGrid>
           </div>
         </ProjectSortProvider>
 
-        <BlurFade delay={BLUR_FADE_DELAY * 2 + (PRODUCTS.length + 1) * 0.05}>
+        <Reveal delay={REVEAL_DELAY * 2 + (PRODUCTS.length + 1) * 0.05}>
           <Link
             href="/lab"
             className="group flex items-center gap-3 rounded-xl border border-border/60 px-4 py-3 transition-colors hover:bg-muted/40"
@@ -94,7 +91,7 @@ export default function ProjectsPage() {
               See the Lab →
             </span>
           </Link>
-        </BlurFade>
+        </Reveal>
       </div>
     </section>
   );

@@ -36,7 +36,7 @@ export function ExperienceItem({
 
   return (
     <li className="grid gap-x-8 gap-y-1 py-5 sm:grid-cols-[9rem_1fr]">
-      <span className="whitespace-nowrap pt-0.5 text-[13px] tabular-nums text-muted-foreground">{period}</span>
+      <span className="whitespace-nowrap pt-1 font-type text-xs text-muted-foreground">{period}</span>
       <div className="min-w-0">
         <button
           type="button"

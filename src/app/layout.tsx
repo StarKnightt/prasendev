@@ -4,37 +4,35 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
-import { Caveat, Instrument_Serif, Newsreader } from "next/font/google";
+import { Geist, Geist_Mono, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 import { JsonLd } from "@/components/json-ld";
 import { PageBackground } from "@/components/page-background";
 import { CommandPalette } from "@/components/command-palette";
 import { SoundProvider } from "@/components/sound-provider";
 import { BackToTop } from "@/components/back-to-top";
+import { SmoothCursor } from "@/components/smooth-cursor";
 import { DomainGuardedAnalytics } from "@/components/domain-guarded-analytics";
 import { HALLOWEEN_SEASON_SCRIPT } from "@/lib/season";
 
-// A book page: Newsreader for the body text, Instrument Serif for the headings,
-// and Caveat for the odd handwritten note in the margins.
-const fontSans = Newsreader({
+// Two families. Geist for reading and UI, its mono sibling for dates, tags and
+// code, and Source Serif 4 (optical sizes) for headings, the one bookish note.
+const fontSans = Geist({
   subsets: ["latin"],
-  style: ["normal", "italic"],
   variable: "--font-sans",
   display: "swap",
 });
 
-const fontDisplay = Instrument_Serif({
+const fontDisplay = Source_Serif_4({
   subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
+  axes: ["opsz"],
   variable: "--font-display",
   display: "swap",
 });
 
-const fontHand = Caveat({
+const fontType = Geist_Mono({
   subsets: ["latin"],
-  weight: ["500", "700"],
-  variable: "--font-hand",
+  variable: "--font-type",
   display: "swap",
 });
 
@@ -141,7 +139,7 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: HALLOWEEN_SEASON_SCRIPT }} />
       </head>
-      <body className={cn(fontSans.variable, fontDisplay.variable, fontHand.variable, "font-sans antialiased")}>
+      <body className={cn(fontSans.variable, fontDisplay.variable, fontType.variable, "font-sans antialiased")}>
         {/* Background container */}
         <div className="fixed inset-0 z-[-1]">
           <PageBackground />
@@ -163,6 +161,7 @@ export default function RootLayout({
                 <Navbar />
                 <CommandPalette />
                 <BackToTop />
+                <SmoothCursor />
               </TooltipProvider>
             </SoundProvider>
           </ThemeProvider>

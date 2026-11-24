@@ -54,7 +54,7 @@ export function PlayButton({ title, play }: Props) {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="w-[calc(100vw-1.5rem)] max-w-5xl gap-0 overflow-hidden p-0 sm:rounded-xl">
           <div className="flex flex-col gap-0.5 border-b border-border/60 px-4 py-3 pr-12">
-            <DialogTitle className="text-sm font-semibold">{title}</DialogTitle>
+            <DialogTitle className="text-sm font-medium">{title}</DialogTitle>
             <DialogDescription className="text-xs">
               {play.note ?? "Desktop, keyboard and mouse."}
             </DialogDescription>

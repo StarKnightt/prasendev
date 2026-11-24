@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import BlurFade from "@/components/magicui/blur-fade";
+import Reveal from "@/components/motion/reveal";
 import dynamic from "next/dynamic";
 import { VideoSkeleton } from "@/components/skeletons/video-skeleton";
 import { ArrowUpDown } from "lucide-react";
@@ -29,7 +29,7 @@ interface VideosListProps {
   videos: readonly Video[] | Video[];
 }
 
-const BLUR_FADE_DELAY = 0.04;
+const REVEAL_DELAY = 0.04;
 
 export function VideosList({ videos }: VideosListProps) {
   const [sortOrder, setSortOrder] = useState<"newest" | "oldest">("newest");
@@ -43,7 +43,7 @@ export function VideosList({ videos }: VideosListProps) {
 
   return (
     <>
-      <BlurFade delay={BLUR_FADE_DELAY}>
+      <Reveal delay={REVEAL_DELAY}>
         <div className="flex justify-end mb-6">
           <Select value={sortOrder} onValueChange={(value: "newest" | "oldest") => setSortOrder(value)}>
             <SelectTrigger className="w-[180px]">
@@ -56,13 +56,13 @@ export function VideosList({ videos }: VideosListProps) {
             </SelectContent>
           </Select>
         </div>
-      </BlurFade>
+      </Reveal>
 
       <div className="grid gap-6 sm:grid-cols-2">
         {sortedVideos.map((video, idx) => (
-          <BlurFade key={video.url} delay={BLUR_FADE_DELAY * (idx + 2)}>
+          <Reveal key={video.url} delay={REVEAL_DELAY * (idx + 2)}>
             <VideoCard video={video} />
-          </BlurFade>
+          </Reveal>
         ))}
       </div>
     </>

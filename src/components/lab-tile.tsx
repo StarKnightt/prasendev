@@ -78,7 +78,7 @@ export function LabTile({ title, href, tagline, description, technologies, links
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="truncate text-sm font-semibold tracking-tight"
+          className="truncate text-sm font-medium tracking-tight"
         >
           {title}
         </Link>
@@ -94,7 +94,7 @@ export function LabTile({ title, href, tagline, description, technologies, links
           {play && <PlayButton title={title} play={play} />}
           {receipts.map((link) => (
             <Link href={link.href} key={link.href} target="_blank" rel="noopener noreferrer">
-              <Badge className="flex gap-2 px-2 py-1 text-[10px]">
+              <Badge variant="ink" className="flex gap-2 px-2 py-1 text-[10px]">
                 {link.icon}
                 {link.type}
               </Badge>

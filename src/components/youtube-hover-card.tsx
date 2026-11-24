@@ -108,7 +108,7 @@ export function YouTubeHoverCard({ children }: { children: ReactNode }) {
             </Avatar>
             <div className="min-w-0">
               <div className="flex items-center gap-1.5">
-                <p className="text-sm font-semibold truncate">{data.name}</p>
+                <p className="text-sm font-medium truncate">{data.name}</p>
                 <svg
                   className="size-3.5 shrink-0"
                   viewBox="0 0 24 24"

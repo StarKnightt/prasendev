@@ -24,7 +24,7 @@ const config = {
   				'var(--font-sans)',
                     ...fontFamily.sans
                 ],
-  			hand: ['var(--font-hand)', 'cursive'],
+  			type: ['var(--font-type)', 'ui-monospace', 'monospace'],
   			display: [
   				'var(--font-display)',
   				'var(--font-sans)',

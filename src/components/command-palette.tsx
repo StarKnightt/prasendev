@@ -414,7 +414,7 @@ export function CommandPalette() {
             ) : (
               Object.entries(groupedCommands).map(([group, cmds]) => (
                 <div key={group} className="mb-2">
-                  <div className="px-3 py-1.5 text-xs font-semibold text-muted-foreground">
+                  <div className="px-3 py-1.5 text-xs font-medium text-muted-foreground">
                     {group}
                   </div>
                   {cmds.map((cmd) => {

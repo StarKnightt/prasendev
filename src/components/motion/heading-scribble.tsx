@@ -38,7 +38,7 @@ const SCRIBBLES: Record<string, Scribble> = {
 export type ScribbleKind = keyof typeof SCRIBBLES;
 
 export function HeadingScribble({ kind }: { kind: ScribbleKind }) {
-  const ref = useInViewOnce<SVGSVGElement>({ threshold: 0.9 });
+  const ref = useInViewOnce<SVGSVGElement>({ threshold: 0.9, repeat: true });
   const { w, strokes } = SCRIBBLES[kind];
   return (
     <svg

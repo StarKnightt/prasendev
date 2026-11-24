@@ -1,4 +1,5 @@
-import BlurFade from "@/components/magicui/blur-fade";
+import Reveal from "@/components/motion/reveal";
+import { InkDoodle } from "@/components/motion/ink-doodle";
 import { getBlogPosts } from "@/data/blog";
 import Link from "next/link";
 import { DATA } from "@/data/resume";
@@ -42,47 +43,73 @@ export const metadata: Metadata = {
   },
 };
 
-const BLUR_FADE_DELAY = 0.04;
+const short = (iso: string) =>
+  new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
 
+// The index is laid out like the contents page of a book: posts grouped by year,
+// numbered, with a dotted leader running out to the date.
 export default async function BlogPage() {
-  const posts = await getBlogPosts();
+  const posts = (await getBlogPosts()).sort(
+    (a, b) => new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime()
+  );
+  const years = new Map<string, typeof posts>();
+  for (const post of posts) {
+    const y = post.metadata.publishedAt.slice(0, 4);
+    years.set(y, [...(years.get(y) ?? []), post]);
+  }
+  let n = posts.length;
 
   return (
-    <div 
-      className="relative min-h-screen bg-background"
-      style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23595959' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        backgroundSize: '30px 30px',
-      }}
-    >
+    <section>
       <BreadcrumbJsonLd items={[{ name: "Blog", href: "/blog" }]} />
-      <section>
-        <BlurFade delay={BLUR_FADE_DELAY}>
-          <h1 className="text-4xl mb-8">blog</h1>
-        </BlurFade>
-        {posts
-          .sort((a, b) =>
-            new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime()
-          )
-          .map((post, id) => (
-            <BlurFade delay={BLUR_FADE_DELAY * 2 + id * 0.05} key={post.slug}>
-              <Link
-                className="flex flex-col space-y-1 mb-4"
-                href={`/blog/${post.slug}`}
-              >
-                <div className="w-full flex flex-col">
-                  <p className="tracking-tight">{post.metadata.title}</p>
-                  <p className="h-6 text-xs text-muted-foreground">
-                    <time dateTime={post.metadata.publishedAt}>
-                      {formatDate(post.metadata.publishedAt)}
-                    </time>{" "}
-                    &middot; {post.metadata.readingTime}
-                  </p>
-                </div>
-              </Link>
-            </BlurFade>
-          ))}
-      </section>
-    </div>
+      <Reveal>
+        <h1 className="relative w-fit text-4xl sm:text-5xl">
+          Writing
+          <InkDoodle kind="inkpot" delay={300} className="absolute left-full top-1/2 -translate-y-1/2 ml-3 h-12 w-12" />
+        </h1>
+        <p className="mt-3 max-w-md text-muted-foreground">
+          {posts.length} pieces on AI tools, apps, games and whatever I am building. Newest first.
+        </p>
+      </Reveal>
+
+      {[...years].map(([year, list], yi) => (
+        <Reveal key={year} delay={0.05 + yi * 0.05}>
+          <h2 className="mb-2 mt-12 flex items-center gap-4 text-2xl text-muted-foreground">
+            {year}
+            <span aria-hidden className="h-px flex-1 bg-border" />
+          </h2>
+          <ol>
+            {list.map((post) => {
+              const no = String(n--).padStart(2, "0");
+              return (
+                <li key={post.slug}>
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="group grid grid-cols-[2.25rem_1fr] gap-x-3 rounded-md py-2.5"
+                  >
+                    <span className="pt-[0.3rem] font-type text-xs tabular-nums text-muted-foreground">{no}</span>
+                    <span className="flex min-w-0 items-end gap-3">
+                      <span className="text-[17px] leading-snug decoration-foreground/40 underline-offset-4 group-hover:underline">
+                        {post.metadata.title}
+                      </span>
+                      <span aria-hidden className="mb-[0.45rem] hidden h-0 min-w-8 flex-1 border-b border-dotted border-foreground/35 sm:block" />
+                      <time
+                        dateTime={post.metadata.publishedAt}
+                        className="mb-[0.2rem] hidden whitespace-nowrap font-type text-xs text-muted-foreground sm:block"
+                      >
+                        {short(post.metadata.publishedAt)} &middot; {post.metadata.readingTime.replace(" read", "")}
+                      </time>
+                    </span>
+                    <span className="col-start-2 mt-1 font-type text-[11px] text-muted-foreground sm:hidden">
+                      {formatDate(post.metadata.publishedAt)} &middot; {post.metadata.readingTime}
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ol>
+        </Reveal>
+      ))}
+    </section>
   );
 }

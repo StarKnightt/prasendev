@@ -1,4 +1,4 @@
-import BlurFade from "@/components/magicui/blur-fade";
+import Reveal from "@/components/motion/reveal";
 import { VideosList } from "@/components/videos-list";
 import { fetchYouTubeVideos } from "@/lib/youtube";
 import { DATA } from "@/data/resume";
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
 };
 
-const BLUR_FADE_DELAY = 0.04;
+const REVEAL_DELAY = 0.04;
 
 export default async function VideosPage() {
   const videos = await fetchYouTubeVideos();
@@ -36,13 +36,10 @@ export default async function VideosPage() {
     <main className="flex flex-col min-h-[100dvh] space-y-10">
       <BreadcrumbJsonLd items={[{ name: "Videos", href: "/videos" }]} />
       <section id="videos">
-        <BlurFade delay={BLUR_FADE_DELAY}>
+        <Reveal delay={REVEAL_DELAY}>
           <div className="flex flex-col items-center justify-center space-y-4 text-center mb-8">
             <div className="space-y-2">
-              <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
-                My Videos
-              </div>
-              <h1 className="text-5xl sm:text-6xl">
+              <h1 className="text-4xl sm:text-5xl">
                 Latest Videos
               </h1>
               <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
@@ -50,7 +47,7 @@ export default async function VideosPage() {
               </p>
             </div>
           </div>
-        </BlurFade>
+        </Reveal>
         
         <VideosList videos={videos} />
       </section>

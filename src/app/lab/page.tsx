@@ -1,9 +1,8 @@
 import Link from "next/link";
-import BlurFade from "@/components/magicui/blur-fade";
+import { InkDoodle } from "@/components/motion/ink-doodle";
+import Reveal from "@/components/motion/reveal";
 import { DATA, type Project } from "@/data/resume";
 import { LabTile } from "@/components/lab-tile";
-import { HeadingScribble } from "@/components/motion/heading-scribble";
-import { LabBeaker } from "@/components/motion/lab-beaker";
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld";
 import { ProjectSortGrid, ProjectSortProvider, ProjectSortSelect } from "@/components/project-sort";
 import type { Metadata } from "next";
@@ -40,7 +39,7 @@ export const metadata: Metadata = {
   },
 };
 
-const BLUR_FADE_DELAY = 0.04;
+const REVEAL_DELAY = 0.04;
 
 const LAB: readonly Project[] = DATA.projects.filter((p) => p.group === "lab");
 const FILMS = LAB.filter((p) => p.film);
@@ -53,66 +52,59 @@ export default function LabPage() {
   return (
     <section>
       <BreadcrumbJsonLd items={[{ name: "Lab", href: "/lab" }]} />
-      <BlurFade delay={BLUR_FADE_DELAY}>
-        <h1 className="text-4xl mb-3">lab</h1>
-        <p className="mb-8 text-sm text-muted-foreground">
-          Films, browser games and 3D worlds, built with Claude while I directed and reviewed. For things people pay
-          for or use every day, see{" "}
-          <Link href="/projects" className="underline underline-offset-4 hover:text-foreground">
-            projects
-          </Link>
-          .
-        </p>
-      </BlurFade>
       <ProjectSortProvider>
         <div id="lab">
-          <BlurFade delay={BLUR_FADE_DELAY * 2}>
-            <div className="flex items-center gap-2">
-              <h2 className="relative w-fit text-2xl">
+          <Reveal delay={REVEAL_DELAY}>
+            <div className="flex items-center justify-between gap-4">
+              <h1 className="relative w-fit text-4xl sm:text-5xl">
                 Lab
-                <HeadingScribble kind="hook" />
-              </h2>
-              <LabBeaker />
-              <ProjectSortSelect label="Sort the Lab" className="ml-auto" />
+                <InkDoodle kind="sparkles" delay={300} className="absolute left-full top-1/2 ml-2 h-10 w-12 -translate-y-1/2" />
+              </h1>
+              <ProjectSortSelect label="Sort the Lab" />
             </div>
-            <p className="mt-2 mb-5 text-sm text-muted-foreground">
-              Things I directed AI to build and shared on X. Every texture, mesh and sound generated in code unless stated.
+            <p className="mb-10 mt-3 max-w-2xl text-muted-foreground">
+              Films, browser games and 3D worlds I directed AI to build and shared on X. Every texture, mesh and sound is
+              generated in code unless stated. For things people pay for or use every day, see{" "}
+              <Link href="/projects" className="underline underline-offset-4 hover:text-foreground">
+                projects
+              </Link>
+              .
             </p>
-          </BlurFade>
+          </Reveal>
 
           <section id="films" aria-labelledby="films-heading">
-            <BlurFade delay={BLUR_FADE_DELAY * 3}>
-              <h3 id="films-heading" className="mb-1 text-base font-semibold tracking-tight">
-                Films <span className="ml-1 text-sm font-normal text-muted-foreground">{FILMS.length}</span>
-              </h3>
+            <Reveal delay={REVEAL_DELAY * 3}>
+              <h2 id="films-heading" className="mb-1 text-2xl">
+                Films <span className="ml-1 font-type text-sm text-muted-foreground">{FILMS.length}</span>
+              </h2>
               <p className="mb-5 text-sm text-muted-foreground">
                 Short films where every frame and every note is made in code. Hover to preview.
               </p>
-            </BlurFade>
+            </Reveal>
             <ProjectSortGrid items={FILM_ITEMS} className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-8">
               {FILMS.map((project, i) => (
-                <BlurFade key={project.title} delay={BLUR_FADE_DELAY * 3 + (i + 1) * 0.05}>
+                <Reveal key={project.title} delay={REVEAL_DELAY * 3 + (i + 1) * 0.05}>
                   <LabTile {...project} />
-                </BlurFade>
+                </Reveal>
               ))}
             </ProjectSortGrid>
           </section>
 
           <section id="games" aria-labelledby="games-heading" className="mt-14">
-            <BlurFade delay={BLUR_FADE_DELAY * 4}>
-              <h3 id="games-heading" className="mb-1 text-base font-semibold tracking-tight">
+            <Reveal delay={REVEAL_DELAY * 4}>
+              <h2 id="games-heading" className="mb-1 text-2xl">
                 Games and 3D worlds{" "}
-                <span className="ml-1 text-sm font-normal text-muted-foreground">{WORLDS.length}</span>
-              </h3>
+                <span className="ml-1 font-type text-sm text-muted-foreground">{WORLDS.length}</span>
+              </h2>
               <p className="mb-5 text-sm text-muted-foreground">
                 Playable in the browser. Most open on Wavedash, no install needed.
               </p>
-            </BlurFade>
+            </Reveal>
             <ProjectSortGrid items={WORLD_ITEMS} className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-8">
               {WORLDS.map((project, i) => (
-                <BlurFade key={project.title} delay={BLUR_FADE_DELAY * 4 + Math.min(i + 1, 8) * 0.05}>
+                <Reveal key={project.title} delay={REVEAL_DELAY * 4 + Math.min(i + 1, 8) * 0.05}>
                   <LabTile {...project} />
-                </BlurFade>
+                </Reveal>
               ))}
             </ProjectSortGrid>
           </section>

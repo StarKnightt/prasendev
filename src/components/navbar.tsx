@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import { Menu, X, Terminal, Home } from "lucide-react";
-import { Dock, DockIcon } from "@/components/magicui/dock";
+import { Dock, DockIcon } from "@/components/dock";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { buttonVariants } from "@/components/ui/button";
 

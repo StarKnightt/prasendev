@@ -141,17 +141,17 @@ export function SteamNowPlaying() {
           <div className="flex items-center gap-1.5">
             <p className="text-xs font-medium truncate">{data.name}</p>
             {isPlaying ? (
-              <span className="inline-flex items-center gap-1 shrink-0 rounded-full bg-emerald-500/10 px-1.5 py-0.5 text-[9px] uppercase tracking-wider font-semibold text-emerald-500">
+              <span className="inline-flex items-center gap-1 shrink-0 rounded-full bg-emerald-500/10 px-1.5 py-0.5 text-[9px] uppercase tracking-wider font-medium text-emerald-500">
                 <Equalizer />
                 In Game
               </span>
             ) : data.personastate >= 1 ? (
-              <span className="inline-flex items-center gap-1 shrink-0 rounded-full bg-emerald-500/10 px-1.5 py-0.5 text-[9px] uppercase tracking-wider font-semibold text-emerald-500">
+              <span className="inline-flex items-center gap-1 shrink-0 rounded-full bg-emerald-500/10 px-1.5 py-0.5 text-[9px] uppercase tracking-wider font-medium text-emerald-500">
                 <span className="size-1.5 rounded-full bg-emerald-500" />
                 Online
               </span>
             ) : (
-              <span className="inline-flex items-center gap-1 shrink-0 rounded-full bg-red-500/10 px-1.5 py-0.5 text-[9px] uppercase tracking-wider font-semibold text-red-500">
+              <span className="inline-flex items-center gap-1 shrink-0 rounded-full bg-red-500/10 px-1.5 py-0.5 text-[9px] uppercase tracking-wider font-medium text-red-500">
                 <span className="size-1.5 rounded-full bg-red-500" />
                 Offline
               </span>
@@ -160,7 +160,7 @@ export function SteamNowPlaying() {
 
           {/* Game name */}
           <div className="min-w-0">
-            <p className="text-sm font-semibold truncate leading-tight group-hover:text-primary transition-colors">
+            <p className="text-sm font-medium truncate leading-tight group-hover:text-primary transition-colors">
               {gameName}
             </p>
             {!isPlaying && (

@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import { GadgetCard } from '@/components/gadgets/gadget-card';
 import { products } from '@/data/products';
 import { DATA } from '@/data/resume';
-import BlurFade from '@/components/magicui/blur-fade';
+import Reveal from "@/components/motion/reveal";
 import { GadgetSkeleton } from "@/components/skeletons/gadget-skeleton";
 import { Cpu, Smartphone, Headphones, Wrench, ArrowUpRight } from 'lucide-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -60,14 +60,14 @@ export default function GadgetsPage() {
         const categoryProducts = productsByCategory[category];
 
         return (
-          <BlurFade key={category} delay={0.1 * categoryIndex}>
+          <Reveal key={category} delay={0.1 * categoryIndex}>
             <section>
               <div className="flex items-center gap-3 mb-8">
                 <div className="p-2.5 rounded-xl bg-primary/10">
                   <CategoryIcon className="size-5 text-primary" />
                 </div>
                 <div>
-                  <h2 className="text-3xl">{category}</h2>
+                  <h2 className="text-2xl">{category}</h2>
                   <p className="text-sm text-muted-foreground">
                     {categoryProducts.length} {categoryProducts.length === 1 ? 'item' : 'items'}
                   </p>
@@ -76,13 +76,13 @@ export default function GadgetsPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 {categoryProducts.map((product, index) => (
-                  <BlurFade key={product.id} delay={0.05 * index} inView>
+                  <Reveal key={product.id} delay={0.05 * index} inView>
                     <GadgetCard product={product} />
-                  </BlurFade>
+                  </Reveal>
                 ))}
               </div>
             </section>
-          </BlurFade>
+          </Reveal>
         );
       })}
     </div>
@@ -95,7 +95,7 @@ export default function GadgetsPage() {
           <Wrench className="size-5 text-primary" />
         </div>
         <div>
-          <h2 className="text-3xl">Tools & Software</h2>
+          <h2 className="text-2xl">Tools & Software</h2>
           <p className="text-sm text-muted-foreground">
             Apps and software I use to code and stay productive.
           </p>
@@ -110,7 +110,7 @@ export default function GadgetsPage() {
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {DATA.tools.filter((tool) => tool.category === category).map((tool, index) => (
-                <BlurFade key={tool.name} delay={0.04 * index} inView>
+                <Reveal key={tool.name} delay={0.04 * index} inView>
                   <a
                     href={tool.href}
                     target="_blank"
@@ -134,7 +134,7 @@ export default function GadgetsPage() {
                     </div>
                     <ArrowUpRight className="size-4 shrink-0 mt-0.5 text-muted-foreground/40 group-hover:text-foreground transition-colors" />
                   </a>
-                </BlurFade>
+                </Reveal>
               ))}
             </div>
           </section>
@@ -147,14 +147,14 @@ export default function GadgetsPage() {
     <main className="container max-w-5xl mx-auto px-4 py-12">
       <BreadcrumbJsonLd items={[{ name: "Gadgets", href: "/gadgets" }]} />
       <Suspense fallback={<GadgetSkeleton />}>
-        <BlurFade>
+        <Reveal>
           <div className="max-w-3xl mx-auto mb-12 text-center space-y-4">
-            <h1 className="text-5xl sm:text-6xl">My Tech Setup</h1>
+            <h1 className="text-4xl sm:text-5xl">My Tech Setup</h1>
             <p className="text-muted-foreground text-lg leading-relaxed">
               Products I personally use and recommend. Buying through my affiliate links helps support my work.
             </p>
           </div>
-        </BlurFade>
+        </Reveal>
 
         <GadgetsFilter
           hardware={hardwareContent}

@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Heart, ExternalLink } from "lucide-react";
-import { BorderBeam } from "@/components/magicui/border-beam";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 
@@ -44,7 +43,7 @@ function CompactSponsors({ sponsors, loading }: { sponsors: Sponsor[]; loading: 
         href={SPONSOR_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-1.5 font-semibold underline-offset-4 transition-colors hover:text-foreground hover:underline"
+        className="inline-flex items-center gap-1.5 font-medium underline-offset-4 transition-colors hover:text-foreground hover:underline"
       >
         <Heart className="size-3.5" />
         {!loading && sponsors.length > 0
@@ -87,8 +86,8 @@ export function GitHubSponsors({ variant = "card" }: { variant?: "card" | "compa
     return (
       <div className="w-full rounded-xl border border-border bg-card p-6">
         <div className="flex items-center gap-2 mb-4">
-          <Heart className="w-5 h-5 text-pink-500 animate-pulse" fill="currentColor" />
-          <h3 className="text-xl font-bold">Loading Sponsors...</h3>
+          <Heart className="w-5 h-5 text-[hsl(var(--color-1))] animate-pulse" fill="currentColor" />
+          <h3 className="text-xl font-medium">Loading Sponsors...</h3>
         </div>
         <div className="flex gap-3 flex-wrap">
           {[1, 2, 3, 4].map((i) => (
@@ -107,7 +106,7 @@ export function GitHubSponsors({ variant = "card" }: { variant?: "card" | "compa
       <div className="w-full rounded-xl border border-red-500/20 bg-card p-6">
         <div className="flex items-center gap-2 mb-4">
           <Heart className="w-5 h-5 text-red-500" fill="currentColor" />
-          <h3 className="text-xl font-bold text-red-500">Error Loading Sponsors</h3>
+          <h3 className="text-xl font-medium text-red-500">Error Loading Sponsors</h3>
         </div>
         <p className="text-sm text-muted-foreground mb-2">
           {error}
@@ -119,21 +118,10 @@ export function GitHubSponsors({ variant = "card" }: { variant?: "card" | "compa
   if (sponsors.length === 0) {
     return (
       <div className="relative w-full rounded-xl border border-border bg-card overflow-hidden group">
-        <BorderBeam
-          duration={5}
-          size={350}
-          className="from-transparent via-pink-500 to-transparent"
-        />
-        <BorderBeam
-          duration={5}
-          delay={2.5}
-          size={350}
-          className="from-transparent via-purple-500 to-transparent"
-        />
         <div className="p-6">
           <div className="flex items-center gap-2 mb-4">
-            <Heart className="w-5 h-5 text-pink-500 group-hover:animate-pulse" fill="currentColor" />
-            <h3 className="text-xl font-bold">Become a Sponsor</h3>
+            <Heart className="w-5 h-5 text-[hsl(var(--color-1))] group-hover:animate-pulse" fill="currentColor" />
+            <h3 className="text-xl font-medium">Become a Sponsor</h3>
           </div>
           <p className="text-sm text-muted-foreground mb-6">
             Support my open source work and get your name featured here! ✨
@@ -142,7 +130,7 @@ export function GitHubSponsors({ variant = "card" }: { variant?: "card" | "compa
             href="https://github.com/sponsors/StarKnightt"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-foreground/60 text-foreground hover:bg-foreground hover:text-background font-medium transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95"
           >
             <Heart className="w-5 h-5" fill="currentColor" />
             Sponsor on GitHub
@@ -155,21 +143,10 @@ export function GitHubSponsors({ variant = "card" }: { variant?: "card" | "compa
 
   return (
     <div className="relative w-full rounded-xl border border-border bg-card overflow-hidden">
-      <BorderBeam
-        duration={5}
-        size={350}
-        className="from-transparent via-pink-500 to-transparent"
-      />
-      <BorderBeam
-        duration={5}
-        delay={2.5}
-        size={350}
-        className="from-transparent via-red-500 to-transparent"
-      />
       <div className="p-6">
         <div className="flex items-center gap-2 mb-4">
-          <Heart className="w-5 h-5 text-pink-500 animate-pulse" fill="currentColor" />
-          <h3 className="text-xl font-bold">
+          <Heart className="w-5 h-5 text-[hsl(var(--color-1))] animate-pulse" fill="currentColor" />
+          <h3 className="text-xl font-medium">
             Sponsors {sponsors.length > 0 && `(${sponsors.length})`}
           </h3>
         </div>
@@ -191,19 +168,19 @@ export function GitHubSponsors({ variant = "card" }: { variant?: "card" | "compa
                 rel="noopener noreferrer"
                 className="block group"
               >
-                <div className="relative p-4 rounded-lg border border-border bg-card/50 hover:bg-card transition-all duration-300 hover:shadow-lg hover:scale-[1.02] hover:border-pink-500/50">
+                <div className="relative p-4 rounded-lg border border-border bg-card/50 hover:bg-card transition-all duration-300 hover:shadow-lg hover:scale-[1.02] ">
                   <div className="flex items-center gap-3">
-                    <Avatar className="w-14 h-14 border-2 border-pink-500/30 group-hover:border-pink-500 transition-all duration-300 group-hover:scale-105 shrink-0">
+                    <Avatar className="w-14 h-14 border-2 border-border transition-all duration-300 group-hover:scale-105 shrink-0">
                       <AvatarImage src={sponsor.avatarUrl} alt={sponsor.name || sponsor.login} />
                       <AvatarFallback>{sponsor.login[0].toUpperCase()}</AvatarFallback>
                     </Avatar>
                     
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1">
-                        <h4 className="font-semibold text-sm truncate">
+                        <h4 className="font-medium text-sm truncate">
                           {sponsor.name || sponsor.login}
                         </h4>
-                        <Heart className="w-3 h-3 text-pink-500 shrink-0" fill="currentColor" />
+                        <Heart className="w-3 h-3 text-[hsl(var(--color-1))] shrink-0" fill="currentColor" />
                       </div>
                       <p className="text-xs text-muted-foreground truncate">
                         @{sponsor.login}
@@ -225,7 +202,7 @@ export function GitHubSponsors({ variant = "card" }: { variant?: "card" | "compa
           href="https://github.com/sponsors/StarKnightt"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-4 py-2 mt-6 rounded-lg bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white text-sm font-semibold transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105 active:scale-95"
+          className="inline-flex items-center gap-2 px-4 py-2 mt-6 rounded-lg border border-foreground/60 text-foreground hover:bg-foreground hover:text-background text-sm font-medium transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105 active:scale-95"
         >
           <Heart className="w-4 h-4" fill="currentColor" />
           Sponsor me

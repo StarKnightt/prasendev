@@ -7,8 +7,8 @@ import Markdown, { type Components } from "react-markdown";
 import { remarkMarks } from "@/lib/remark-marks";
 import { formatDate } from "@/lib/utils";
 import { Highlight, type HighlightType } from "@/components/highlight";
-import BlurFade from "@/components/magicui/blur-fade";
-import BlurFadeText from "@/components/magicui/blur-fade-text";
+import Reveal from "@/components/motion/reveal";
+import { RevealText } from "@/components/motion/reveal";
 import { ProjectCard } from "@/components/project-card";
 import { ExperienceItem } from "@/components/experience-item";
 import { EmailButton } from "@/components/email-button";
@@ -36,12 +36,13 @@ import { VisitorCounter, GithubContributionsPlain } from "@/components/lazy-clie
 import { StatGlyph, type StatGlyphKind } from "@/components/motion/stat-glyph";
 import { CountUp } from "@/components/motion/count-up";
 import { HeadingScribble } from "@/components/motion/heading-scribble";
+import { CoffeeRing, InkDoodle, WatercolorWash } from "@/components/motion/ink-doodle";
 import { ExperienceTimeline } from "@/components/motion/experience-timeline";
 import { ContributionsWave } from "@/components/motion/contributions-wave";
 import { Signature } from "@/components/motion/signature";
 import { AvatarDoodles } from "@/components/motion/avatar-doodles";
 
-const BLUR_FADE_DELAY = 0.04;
+const REVEAL_DELAY = 0.04;
 const SELECTED_WORK = ["Clawd: Wonder", "PRESS START", "Bay Ride", "Screentime"];
 
 // Brand hover colors for social icons; others fall back to foreground
@@ -185,13 +186,6 @@ const summaryComponents: Components = {
   },
 };
 
-function SectionLabel({ label }: { label: string }) {
-  return (
-    <span className="inline-block text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground/60">
-      {label}
-    </span>
-  );
-}
 
 export default async function Page() {
   const posts = (await getBlogPosts())
@@ -208,28 +202,31 @@ export default async function Page() {
         <PersonSchema />
 
         {/* ─── HERO ─── */}
-        <section id="hero">
+        <section id="hero" className="relative">
+          <InkDoodle kind="moon" delay={1400} className="absolute -right-40 top-2 hidden h-16 w-16 -rotate-6 xl:block" />
+          <InkDoodle kind="sparkles" delay={2200} className="absolute -left-36 top-44 hidden h-12 w-14 xl:block" />
           <div className="mx-auto w-full space-y-8">
             <div className="flex flex-col-reverse items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex-col flex flex-1 space-y-1.5">
-                <BlurFadeText
-                  delay={BLUR_FADE_DELAY}
-                  className="text-4xl sm:text-6xl xl:text-7xl/none"
+                <RevealText
+                  delay={REVEAL_DELAY}
+                  className="text-4xl sm:text-5xl"
                   yOffset={8}
                   text={`hey, ${DATA.name.split(" ")[0]} here`}
                   as="h1"
                 />
-                <BlurFade delay={BLUR_FADE_DELAY * 1.5}>
+                <Reveal delay={REVEAL_DELAY * 1.5}>
                   <AgeCounter />
-                </BlurFade>
-                <BlurFadeText
+                </Reveal>
+                <RevealText
                   className="max-w-[600px] text-muted-foreground md:text-xl"
-                  delay={BLUR_FADE_DELAY}
+                  delay={REVEAL_DELAY}
                   text={DATA.description}
                 />
               </div>
-              <BlurFade delay={BLUR_FADE_DELAY}>
+              <Reveal delay={REVEAL_DELAY}>
                 <div className="profile-wrapper">
+                  <WatercolorWash tone="ochre" seed={7} className="absolute -left-14 -top-4 -z-10 h-[150%] w-[150%] -rotate-12" />
                   <FlipAvatar
                     src={DATA.avatarUrl}
                     alt={DATA.name}
@@ -238,11 +235,11 @@ export default async function Page() {
                   <BirthdayHat />
                   <AvatarDoodles />
                 </div>
-              </BlurFade>
+              </Reveal>
             </div>
 
             {/* About */}
-            <BlurFade delay={BLUR_FADE_DELAY * 3}>
+            <Reveal delay={REVEAL_DELAY * 3}>
               <Markdown
                 className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert [&_a:has(.rough-mark)]:no-underline"
                 remarkPlugins={[remarkMarks]}
@@ -250,10 +247,10 @@ export default async function Page() {
               >
                 {DATA.summary}
               </Markdown>
-            </BlurFade>
+            </Reveal>
 
             {/* Proof points */}
-            <BlurFade delay={BLUR_FADE_DELAY * 3.5}>
+            <Reveal delay={REVEAL_DELAY * 3.5}>
               <dl className="grid grid-cols-2 gap-x-6 gap-y-6 border-t border-border pt-6 sm:grid-cols-4">
                 {PROOF.map((item) => (
                   <div key={item.label} className="proof-stat flex flex-col">
@@ -281,15 +278,15 @@ export default async function Page() {
                   </div>
                 ))}
               </dl>
-            </BlurFade>
+            </Reveal>
 
-            <BlurFade delay={BLUR_FADE_DELAY * 4}>
+            <Reveal delay={REVEAL_DELAY * 4}>
               <EmailButton />
-            </BlurFade>
+            </Reveal>
 
             {/* Social links + Now Playing */}
             <div className="inline-flex flex-col gap-3 items-start">
-              <BlurFade delay={BLUR_FADE_DELAY * 4.5}>
+              <Reveal delay={REVEAL_DELAY * 4.5}>
                 <div className="flex flex-wrap items-center gap-3">
                   {Object.entries(DATA.contact.social)
                     .filter(([_, social]) => social.navbar !== false)
@@ -398,7 +395,7 @@ export default async function Page() {
                       );
                     })}
                 </div>
-              </BlurFade>
+              </Reveal>
             </div>
           </div>
         </section>
@@ -407,11 +404,12 @@ export default async function Page() {
         {/* ─── PROJECTS ─── */}
         <section id="projects">
           <div className="flex min-h-0 flex-col gap-y-3">
-            <BlurFade delay={BLUR_FADE_DELAY * 11}>
+            <Reveal delay={REVEAL_DELAY * 11}>
               <div className="flex items-end justify-between gap-4">
                 <h2 className="relative w-fit text-2xl">
                   Selected Work
                   <HeadingScribble kind="swoosh" />
+                  <InkDoodle kind="clapper" delay={700} className="absolute left-full top-1/2 -translate-y-1/2 ml-3 h-10 w-11" />
                 </h2>
                 <div className="flex shrink-0 items-center gap-4">
                   <Link
@@ -429,8 +427,8 @@ export default async function Page() {
                   </Link>
                 </div>
               </div>
-            </BlurFade>
-            <BlurFade delay={BLUR_FADE_DELAY * 11.5}>
+            </Reveal>
+            <Reveal delay={REVEAL_DELAY * 11.5}>
               <div className="grid gap-4 sm:grid-cols-2">
                 {SELECTED_WORK.flatMap((title) => DATA.projects.filter((p) => p.title === title)).map((project: Project) => {
                   const isLab = project.group === "lab";
@@ -439,28 +437,29 @@ export default async function Page() {
                       <ProjectCard
                         {...project}
                         description={isLab ? project.tagline ?? project.description : project.description}
-                        badge={isLab ? "Built with Claude" : undefined}
                         tags={Array.from(project.technologies)}
                       />
                     </div>
                   );
                 })}
               </div>
-            </BlurFade>
+            </Reveal>
           </div>
         </section>
 
 
         {/* ─── WORK ─── */}
-        <section id="work">
+        <section id="work" className="relative">
+          <InkDoodle kind="sprig" speed={1.3} className="absolute -left-40 top-10 hidden h-44 w-24 -rotate-6 xl:block" />
           <div className="flex min-h-0 flex-col gap-y-3">
-            <BlurFade delay={BLUR_FADE_DELAY * 12}>
+            <Reveal delay={REVEAL_DELAY * 12}>
               <h2 className="relative w-fit text-2xl">
                 Experience
                 <HeadingScribble kind="flick" />
+                  <InkDoodle kind="plane" delay={700} className="absolute left-full top-1/2 -translate-y-1/2 ml-3 h-11 w-16" />
               </h2>
-            </BlurFade>
-            <BlurFade delay={BLUR_FADE_DELAY * 12.5}>
+            </Reveal>
+            <Reveal delay={REVEAL_DELAY * 12.5}>
               <ExperienceTimeline>
                 <ol className="divide-y divide-border border-y border-border">
                   {DATA.work.map((work) => (
@@ -480,15 +479,15 @@ export default async function Page() {
                   ))}
                 </ol>
               </ExperienceTimeline>
-            </BlurFade>
-            <BlurFade delay={BLUR_FADE_DELAY * 13}>
+            </Reveal>
+            <Reveal delay={REVEAL_DELAY * 13}>
               <ul className="mt-3 space-y-2">
                 {DATA.education.map((edu) => (
                   <li
                     key={edu.school}
                     className="grid gap-x-8 text-sm sm:grid-cols-[9rem_1fr]"
                   >
-                    <span className="whitespace-nowrap text-[13px] leading-5 tabular-nums text-muted-foreground">
+                    <span className="whitespace-nowrap pt-px font-type text-xs leading-5 text-muted-foreground">
                       {edu.start} - {edu.end}
                     </span>
                     <span className="text-muted-foreground">
@@ -512,21 +511,23 @@ export default async function Page() {
                   </li>
                 ))}
               </ul>
-            </BlurFade>
+            </Reveal>
           </div>
         </section>
 
 
         {/* ─── ELSEWHERE ─── */}
-        <section id="elsewhere">
+        <section id="elsewhere" className="relative">
+          <CoffeeRing className="absolute -right-44 top-24 hidden h-32 w-32 rotate-12 xl:block" />
           <div className="flex min-h-0 flex-col gap-y-3">
-            <BlurFade delay={BLUR_FADE_DELAY * 14}>
+            <Reveal delay={REVEAL_DELAY * 14}>
               <h2 className="relative w-fit text-2xl">
                 Behind the Scenes
                 <HeadingScribble kind="double" />
+                  <InkDoodle kind="coffee" delay={700} className="absolute left-full top-1/2 -translate-y-1/2 ml-3 h-11 w-11" />
               </h2>
-            </BlurFade>
-            <BlurFade delay={BLUR_FADE_DELAY * 14.5}>
+            </Reveal>
+            <Reveal delay={REVEAL_DELAY * 14.5}>
               <div className="divide-y divide-border border-y border-border">
                 <Row label="Stack">
                   <p className="text-sm leading-relaxed text-muted-foreground">
@@ -548,7 +549,7 @@ export default async function Page() {
                   <GithubContributionsPlain />
                 </ContributionsWave>
               </div>
-            </BlurFade>
+            </Reveal>
           </div>
         </section>
 
@@ -556,11 +557,12 @@ export default async function Page() {
         {/* ─── WRITING ─── */}
         <section id="writing">
           <div className="flex min-h-0 flex-col gap-y-3">
-            <BlurFade delay={BLUR_FADE_DELAY * 15}>
+            <Reveal delay={REVEAL_DELAY * 15}>
               <div className="flex items-end justify-between gap-4">
                 <h2 className="relative w-fit text-2xl">
                   Writing
                   <HeadingScribble kind="wave" />
+                  <InkDoodle kind="inkpot" delay={700} className="absolute left-full top-1/2 -translate-y-1/2 ml-3 h-12 w-12" />
                 </h2>
                 <Link
                   href="/blog"
@@ -570,8 +572,8 @@ export default async function Page() {
                   <ArrowRight className="size-3.5 transition-transform duration-150 ease-out group-hover:translate-x-0.5" />
                 </Link>
               </div>
-            </BlurFade>
-            <BlurFade delay={BLUR_FADE_DELAY * 15.5}>
+            </Reveal>
+            <Reveal delay={REVEAL_DELAY * 15.5}>
               <ul className="-mx-3">
                 {posts.map((post) => (
                   <li key={post.slug}>
@@ -581,7 +583,7 @@ export default async function Page() {
                     >
                       <time
                         dateTime={post.metadata.publishedAt}
-                        className="whitespace-nowrap text-[13px] leading-6 tabular-nums text-muted-foreground"
+                        className="whitespace-nowrap font-type text-xs leading-6 text-muted-foreground"
                       >
                         {formatDate(post.metadata.publishedAt)}
                       </time>
@@ -592,14 +594,14 @@ export default async function Page() {
                   </li>
                 ))}
               </ul>
-            </BlurFade>
+            </Reveal>
           </div>
         </section>
 
 
         {/* ─── CONTACT ─── */}
-        <section id="contact">
-          <BlurFade delay={BLUR_FADE_DELAY * 16}>
+        <section id="contact" className="relative">
+          <Reveal delay={REVEAL_DELAY * 16}>
             <div className="relative overflow-hidden rounded-2xl border border-border/50 bg-gradient-to-b from-card/60 via-card/40 to-card/20 py-12 text-center">
               <div
                 aria-hidden
@@ -615,7 +617,8 @@ export default async function Page() {
                 className="pointer-events-none absolute -top-24 left-1/2 h-56 w-56 -translate-x-1/2 rounded-full bg-foreground/10 blur-3xl"
               />
               <div className="relative z-10 flex flex-col items-center justify-center space-y-6">
-              <SectionLabel label="Get in touch" />
+              <InkDoodle kind="sparkles" delay={900} className="absolute right-[12%] top-8 hidden h-10 w-12 sm:block" />
+              <InkDoodle kind="plane" delay={500} speed={1.4} className="absolute bottom-6 left-[8%] hidden h-14 w-20 sm:block" />
               <p className="text-xl text-muted-foreground">
                I'd love to hear from you.
               </p>
@@ -633,12 +636,12 @@ export default async function Page() {
               </div>
 
             </div>
-          </BlurFade>
+          </Reveal>
         </section>
 
         {/* ─── FOOTER ─── */}
         <footer className="border-t border-border/40 pt-8 pb-4">
-          <BlurFade delay={BLUR_FADE_DELAY * 17}>
+          <Reveal delay={REVEAL_DELAY * 17}>
             <div className="grid gap-6 sm:grid-cols-3">
               <div className="space-y-2">
                 <p className="text-sm font-medium">{DATA.name}</p>
@@ -698,7 +701,7 @@ export default async function Page() {
               </p>
               <VisitorCounter />
             </div>
-          </BlurFade>
+          </Reveal>
         </footer>
       </main>
     </>

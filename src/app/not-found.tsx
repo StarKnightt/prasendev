@@ -1,28 +1,28 @@
 import Link from "next/link";
-import BlurFade from "@/components/magicui/blur-fade";
+import Reveal from "@/components/motion/reveal";
 
 export default function NotFound() {
   return (
     <div className="flex flex-col items-center justify-center min-h-[70vh] space-y-8 text-center">
-      <BlurFade delay={0.04}>
+      <Reveal delay={0.04}>
         <div className="space-y-2">
-          <h1 className="text-7xl font-bold tracking-tight sm:text-9xl">
+          <h1 className="text-7xl font-medium tracking-tight sm:text-9xl">
             404
           </h1>
           <p className="text-xl text-muted-foreground sm:text-2xl">
             Lost in space?
           </p>
         </div>
-      </BlurFade>
+      </Reveal>
 
-      <BlurFade delay={0.12}>
+      <Reveal delay={0.12}>
         <p className="max-w-md text-sm text-muted-foreground leading-relaxed">
           The page you&apos;re looking for doesn&apos;t exist or has been moved.
           Maybe try one of the links below.
         </p>
-      </BlurFade>
+      </Reveal>
 
-      <BlurFade delay={0.2}>
+      <Reveal delay={0.2}>
         <div className="flex flex-wrap items-center justify-center gap-3">
           <Link
             href="/"
@@ -43,7 +43,7 @@ export default function NotFound() {
             Blog
           </Link>
         </div>
-      </BlurFade>
+      </Reveal>
     </div>
   );
 }
