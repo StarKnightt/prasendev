@@ -138,7 +138,7 @@ function Row({ label, children }: { label: string; children: React.ReactNode }) 
 
 // Plain-text description. DATA.summary is markdown and leaks syntax into meta tags
 const HOME_DESCRIPTION =
-  "Creative engineer from Bhubaneswar, India. Making code alive: games, films and art built with AI, like PRESS START, Clawd: Wonder and Bay Ride. Open to creative engineering and DevRel roles.";
+  "Creative engineer from Bhubaneswar, India. Making code alive: games, videos and art built with AI, like PRESS START, Clawd: Wonder and Bay Ride. Open to creative engineering and DevRel roles.";
 
 export const metadata: Metadata = {
   title: DATA.name,
@@ -646,7 +646,7 @@ export default async function Page() {
                 <p className="text-sm font-medium">{DATA.name}</p>
                 <p className="text-xs text-muted-foreground leading-relaxed">
                   Creative engineer from India.
-                  <br />Games, films and art built with AI.
+                  <br />Games, videos and art built with AI.
                 </p>
               </div>
 

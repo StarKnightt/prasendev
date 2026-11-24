@@ -27,7 +27,7 @@ export type Project = {
   video?: string;
   poster?: string;
   group?: ProjectGroup;
-  /** Lab entries that are films (watched, not played) go in the Lab's Films section. */
+  /** Lab entries that are films (watched, not played) go in the Lab's Videos section. */
   film?: boolean;
   play?: ProjectPlay;
 };
@@ -41,7 +41,7 @@ export const DATA = {
   description:
     "",
   summary:
-    "**[[highlight:Creative engineer]]**. Making code alive: games, films and art built with AI. Open to [**[[underline:creative engineering and DevRel roles]]**](mailto:hi@prasen.dev).",
+    "**[[highlight:Creative engineer]]**. Making code alive: games, videos and art built with AI. Open to [**[[underline:creative engineering and DevRel roles]]**](mailto:hi@prasen.dev).",
 
   avatarUrl: "/prasen.webp",
   // refresh periodically
