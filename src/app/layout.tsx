@@ -11,6 +11,7 @@ import { PageBackground } from "@/components/page-background";
 import { CommandPalette } from "@/components/command-palette";
 import { SoundProvider } from "@/components/sound-provider";
 import { BackToTop } from "@/components/back-to-top";
+import { SmoothCursor } from "@/components/smooth-cursor";
 import { DomainGuardedAnalytics } from "@/components/domain-guarded-analytics";
 import { HALLOWEEN_SEASON_SCRIPT } from "@/lib/season";
 
@@ -160,6 +161,7 @@ export default function RootLayout({
                 <Navbar />
                 <CommandPalette />
                 <BackToTop />
+                <SmoothCursor />
               </TooltipProvider>
             </SoundProvider>
           </ThemeProvider>

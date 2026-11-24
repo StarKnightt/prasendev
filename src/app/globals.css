@@ -754,20 +754,6 @@ p, li { text-wrap: pretty; }
 }
 .dark .paper-card { box-shadow: 0 12px 24px -18px rgb(0 0 0 / .8); }
 
-/* The cursor is the emblem from the Aeris card, drawn as a blade: a long
-   four-point star in an ice-blue outline, its tip pointing up-left. The hotspot
-   is the tip. Anything clickable gets the normal hand. Plain CSS. */
-:root {
-  --cursor-card: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg transform='translate(2.2 2.2) rotate(-45)' stroke-linejoin='round'%3E%3Cpath d='M0 0Q1.4 20 6 24 1.4 26.5 0 36-1.4 26.5-6 24-1.4 20 0 0Z' fill='none' stroke='%230a1230' stroke-opacity='.55' stroke-width='3'/%3E%3Cpath d='M0 0Q1.4 20 6 24 1.4 26.5 0 36-1.4 26.5-6 24-1.4 20 0 0Z' fill='none' stroke='%235b8dff' stroke-opacity='.75' stroke-width='2.1'/%3E%3Cpath d='M0 0Q1.4 20 6 24 1.4 26.5 0 36-1.4 26.5-6 24-1.4 20 0 0Z' fill='%2316245a' stroke='%23f4f8ff' stroke-width='1'/%3E%3Cpath d='M0 9Q.8 21 3.2 24 .8 25.6 0 31-.8 25.6-3.2 24-.8 21 0 9Z' fill='none' stroke='%239cc4ff' stroke-width='.8'/%3E%3Ccircle cx='0' cy='24' r='1' fill='%23cfe0ff'/%3E%3C/g%3E%3C/svg%3E") 2 2;
-}
-@media (pointer: fine) {
-  html, body { cursor: var(--cursor-card), auto; }
-  a, button, summary, label[for], select, .cursor-pointer, [role="button"], [role="tab"], [role="link"], [role="menuitem"], [role="option"] {
-    cursor: pointer;
-  }
-  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]), textarea, [contenteditable="true"] { cursor: text; }
-}
-
 /* code is set on a dark sepia plate; inline code is a faint pencilled box, no backticks */
 .prose pre { background-color: hsl(24 24% 12%) !important; border: 1px solid hsl(24 20% 20%); }
 .dark .prose pre { background-color: hsl(28 16% 6%) !important; border-color: hsl(30 12% 18%); }
