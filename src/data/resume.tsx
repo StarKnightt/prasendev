@@ -479,7 +479,7 @@ export const DATA = {
       ],
       links: [
         {
-          type: "Watch on X",
+          type: "Watch full video on X",
           href: "https://x.com/prasenx/status/2124137226452013553",
           icon: <Icons.x className="size-3" />,
         },
@@ -905,7 +905,7 @@ export const DATA = {
       ],
       links: [
         {
-          type: "Watch on X",
+          type: "Watch full video on X",
           href: "https://x.com/prasenx/status/2103851939457093635",
           icon: <Icons.x className="size-3" />,
         },
@@ -936,7 +936,7 @@ export const DATA = {
       ],
       links: [
         {
-          type: "Watch on X",
+          type: "Watch full video on X",
           href: "https://x.com/prasenx/status/2103538744695693512",
           icon: <Icons.x className="size-3" />,
         },
