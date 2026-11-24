@@ -7,7 +7,6 @@ import { motion } from 'framer-motion';
 import { JetBrains_Mono } from 'next/font/google';
 import { Copy, X, Minus, Maximize2, Monitor, SunIcon, MoonIcon, ArrowLeft } from 'lucide-react';
 import { Button } from './ui/button';
-import ShinyButton from './ui/shiny-button';
 
 const jetbrainsMono = JetBrains_Mono({ 
   subsets: ['latin'],

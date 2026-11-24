@@ -38,7 +38,7 @@ export function BuyMeACoffeeHoverCard({ children }: { children: ReactNode }) {
             </Avatar>
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-1.5">
-                <p className="text-sm font-semibold truncate">{BMC_PROFILE.name}</p>
+                <p className="text-sm font-medium truncate">{BMC_PROFILE.name}</p>
                 <BmcIcon />
               </div>
               <p className="text-xs text-muted-foreground truncate">buymeacoffee.com/{BMC_PROFILE.handle}</p>

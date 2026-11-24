@@ -75,7 +75,7 @@ export default function VisitorCounter() {
           key={count}
           initial={{ opacity: 0, y: 5 }}
           animate={{ opacity: 1, y: 0 }}
-          className="font-semibold text-foreground tabular-nums"
+          className="font-medium text-foreground tabular-nums"
           suppressHydrationWarning
         >
           {count.toLocaleString()}

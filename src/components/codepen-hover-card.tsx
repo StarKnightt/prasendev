@@ -62,7 +62,7 @@ export function CodePenHoverCard({ children }: { children: ReactNode }) {
             </Avatar>
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-1.5">
-                <p className="text-sm font-semibold truncate">{CODEPEN_PROFILE.name}</p>
+                <p className="text-sm font-medium truncate">{CODEPEN_PROFILE.name}</p>
                 <CodePenIcon />
               </div>
               <p className="text-xs text-muted-foreground truncate">@{CODEPEN_PROFILE.username}</p>

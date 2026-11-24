@@ -61,7 +61,7 @@ export const ResumeCard = ({
       <div className="group ml-4 flex min-w-0 flex-grow flex-col items-center">
         <CardHeader className="w-full px-0 py-3">
           <div className="flex items-center justify-between gap-x-2 text-base">
-            <h3 className="inline-flex items-center justify-center font-semibold leading-none text-xs sm:text-sm gap-x-2">
+            <h3 className="inline-flex items-center justify-center font-medium leading-none text-xs sm:text-sm gap-x-2">
               <span className={cn(redacted && "blur-[3px] select-none")}>{title}</span>
               {badges && (
                 <span className="inline-flex gap-x-1">

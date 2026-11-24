@@ -35,7 +35,7 @@ export function HackathonCard({
         {dates && (
           <time className="text-xs text-muted-foreground">{dates}</time>
         )}
-        <h2 className="font-semibold leading-none">{title}</h2>
+        <h2 className="font-medium leading-none">{title}</h2>
         {location && (
           <p className="text-sm text-muted-foreground">{location}</p>
         )}

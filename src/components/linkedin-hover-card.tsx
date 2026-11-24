@@ -38,7 +38,7 @@ export function LinkedInHoverCard({ children }: { children: ReactNode }) {
             </Avatar>
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-1.5">
-                <p className="text-sm font-semibold truncate">{LINKEDIN_PROFILE.name}</p>
+                <p className="text-sm font-medium truncate">{LINKEDIN_PROFILE.name}</p>
                 <LinkedInIcon />
               </div>
               <p className="text-xs text-muted-foreground truncate">{LINKEDIN_PROFILE.headline}</p>

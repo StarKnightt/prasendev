@@ -94,7 +94,7 @@ export function MediumHoverCard({ children }: { children: ReactNode }) {
             </Avatar>
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-1.5">
-                <p className="text-sm font-semibold truncate">{MEDIUM_PROFILE.name}</p>
+                <p className="text-sm font-medium truncate">{MEDIUM_PROFILE.name}</p>
                 <MediumIcon />
               </div>
               <p className="text-xs text-muted-foreground truncate">@{MEDIUM_PROFILE.handle}</p>

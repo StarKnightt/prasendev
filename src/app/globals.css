@@ -56,9 +56,6 @@
       --wash-coffee: 26 50% 32%;
       --paper-grain-opacity: 0.5;
       --paper-edge: 32 40% 52%;
-
-      --ghibli-element-fill: 32 20% 70%;
-      --ghibli-element-opacity: 0.5;
     }
 
     /* The same book at night: lamp-lit dark paper, cream ink. */
@@ -105,9 +102,6 @@
       --wash-coffee: 30 30% 40%;
       --paper-grain-opacity: 0.16;
       --paper-edge: 30 30% 2%;
-
-      --ghibli-element-fill: 36 20% 60%;
-      --ghibli-element-opacity: 0.4;
     }
 
     html[data-theme-season="halloween"] {
@@ -159,14 +153,6 @@
       --color-4: 14 80% 50%;
       --color-5: 42 74% 54%;
     }
-
-    html[data-theme-season="halloween"] [data-meteor] {
-      background-color: hsl(var(--color-1));
-    }
-
-    html[data-theme-season="halloween"] [data-meteor-tail] {
-      background-image: linear-gradient(to right, hsl(var(--color-1)), transparent);
-    }
   }
 
   @layer base {
@@ -176,7 +162,7 @@
     body {
       @apply bg-background text-foreground;
     }
-    /* Only the 600 weight of General Sans ships, so never fake a bold */
+    /* Headings are set in the serif; never synthesise a bold or italic for it */
     h1,
     h2 {
       @apply font-display;
@@ -330,10 +316,6 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
   );
 }
 
-.cloud-container {
-  position: relative;
-  isolation: isolate;
-}
 
 .mix-blend-overlay {
   mix-blend-mode: overlay;
@@ -734,12 +716,19 @@ a:active .lab-flask-bubble { animation: flask-bubble 850ms ease-out backwards; }
 /* ink sits in the paper instead of on top of it: a hair of bleed on every glyph */
 body {
   text-shadow: 0 0 .7px hsl(var(--foreground) / .28);
-  font-feature-settings: "kern", "liga", "onum";
+  font-feature-settings: "kern", "liga";
   text-rendering: optimizeLegibility;
 }
 .dark body { text-shadow: 0 0 .6px hsl(var(--foreground) / .18); }
 
-h1, h2 { letter-spacing: -0.01em; }
+/* Type rules: one small scale, 400 for body and headings (500 at most), headings
+   upright, tracking tightens and leading closes up as the size grows, and wrapped
+   headings are balanced so no word is left alone on the last line. */
+h1, h2, h3 { font-weight: 400; text-wrap: balance; }
+h1 { letter-spacing: -0.025em; line-height: 1.05; }
+h2 { letter-spacing: -0.015em; line-height: 1.15; }
+h3 { letter-spacing: -0.005em; }
+p, li { text-wrap: pretty; }
 
 ::selection { background: hsl(46 88% 62% / .55); color: inherit; }
 
@@ -765,17 +754,17 @@ h1, h2 { letter-spacing: -0.01em; }
 }
 .dark .paper-card { box-shadow: 0 12px 24px -18px rgb(0 0 0 / .8); }
 
-/* A fountain pen for a cursor: oxblood barrel, ink nib, cream outline so it reads
-   on both the light and the night page. Over links the pen is loaded with
-   blue-black ink. Hotspot is the nib tip. Plain CSS, no per-frame cost. */
+/* A playing card for a cursor: crimson, cream border, a diamond with a four-point
+   star. Over anything clickable the star turns gold and throws a spark.
+   Hotspot is the card's top-left corner. Plain CSS, no per-frame cost. */
 :root {
-  --cursor-pen: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg transform='translate(4 28) rotate(40)' stroke='%23f6efe2' stroke-width='1.3' stroke-linejoin='round'%3E%3Crect x='-4' y='-26' width='8' height='10.5' rx='1.6' fill='%237a2b22'/%3E%3Cpath d='M0 0 L-4.5 -11 Q-4.5 -14 -3 -15.5 L3 -15.5 Q4.5 -14 4.5 -11 Z' fill='%232b1f15'/%3E%3Cpath d='M0 -2.5 V-9.5' stroke-width='.9'/%3E%3Ccircle cx='0' cy='-10.6' r='1.1' fill='%23f6efe2' stroke='none'/%3E%3C/g%3E%3C/svg%3E") 4 28;
-  --cursor-pen-ink: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg transform='translate(4 28) rotate(40)' stroke='%23f6efe2' stroke-width='1.3' stroke-linejoin='round'%3E%3Crect x='-4' y='-26' width='8' height='10.5' rx='1.6' fill='%2322345a'/%3E%3Cpath d='M0 0 L-4.5 -11 Q-4.5 -14 -3 -15.5 L3 -15.5 Q4.5 -14 4.5 -11 Z' fill='%232b1f15'/%3E%3Cpath d='M0 -2.5 V-9.5' stroke-width='.9'/%3E%3Ccircle cx='0' cy='-10.6' r='1.1' fill='%23f6efe2' stroke='none'/%3E%3C/g%3E%3Ccircle cx='4.2' cy='28.6' r='2.4' fill='%2322345a' stroke='%23f6efe2' stroke-width='1'/%3E%3C/svg%3E") 4 28;
+  --cursor-card: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg transform='rotate(-14 14.5 15.5)'%3E%3Crect x='6' y='3' width='17' height='25' rx='2.6' fill='none' stroke='%232b1f15' stroke-width='3' stroke-opacity='.55'/%3E%3Crect x='6' y='3' width='17' height='25' rx='2.6' fill='%23a3232c' stroke='%23f6efe2' stroke-width='1.3'/%3E%3Crect x='8.2' y='5.2' width='12.6' height='20.6' rx='1.4' fill='none' stroke='%23f2c9a4' stroke-width='.7' stroke-opacity='.85'/%3E%3Cpath d='M14.5 8.6 19.4 15.5 14.5 22.4 9.6 15.5Z' fill='%237c1820' stroke='%23f2c9a4' stroke-width='.8'/%3E%3Cpath d='M14.5 11.2Q15.1 14.9 18.4 15.5 15.1 16.1 14.5 19.8 13.9 16.1 10.6 15.5 13.9 14.9 14.5 11.2Z' fill='%23f6efe2'/%3E%3Cpath d='M9.6 7.2 10.4 8.3 9.6 9.4 8.8 8.3Z M19.4 21.6 20.2 22.7 19.4 23.8 18.6 22.7Z' fill='%23f2c9a4'/%3E%3C/g%3E%3C/svg%3E") 3 5;
+  --cursor-card-live: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg transform='rotate(-14 14.5 15.5)'%3E%3Crect x='6' y='3' width='17' height='25' rx='2.6' fill='none' stroke='%232b1f15' stroke-width='3' stroke-opacity='.55'/%3E%3Crect x='6' y='3' width='17' height='25' rx='2.6' fill='%23a3232c' stroke='%23f6efe2' stroke-width='1.3'/%3E%3Crect x='8.2' y='5.2' width='12.6' height='20.6' rx='1.4' fill='none' stroke='%23f2c9a4' stroke-width='.7' stroke-opacity='.85'/%3E%3Cpath d='M14.5 8.6 19.4 15.5 14.5 22.4 9.6 15.5Z' fill='%237c1820' stroke='%23f2c9a4' stroke-width='.8'/%3E%3Cpath d='M14.5 11.2Q15.1 14.9 18.4 15.5 15.1 16.1 14.5 19.8 13.9 16.1 10.6 15.5 13.9 14.9 14.5 11.2Z' fill='%23f5c24c'/%3E%3Cpath d='M9.6 7.2 10.4 8.3 9.6 9.4 8.8 8.3Z M19.4 21.6 20.2 22.7 19.4 23.8 18.6 22.7Z' fill='%23f2c9a4'/%3E%3C/g%3E%3Cpath d='M26 4.5Q26.5 7.2 29 7.7 26.5 8.2 26 10.9 25.5 8.2 23 7.7 25.5 7.2 26 4.5Z' fill='%23f5c24c' stroke='%232b1f15' stroke-width='.6'/%3E%3C/svg%3E") 3 5;
 }
 @media (pointer: fine) {
-  html, body { cursor: var(--cursor-pen), auto; }
+  html, body { cursor: var(--cursor-card), auto; }
   a, button, summary, label[for], select, .cursor-pointer, [role="button"], [role="tab"], [role="link"], [role="menuitem"], [role="option"] {
-    cursor: var(--cursor-pen-ink), pointer;
+    cursor: var(--cursor-card-live), pointer;
   }
   input:not([type="checkbox"]):not([type="radio"]):not([type="range"]), textarea, [contenteditable="true"] { cursor: text; }
 }
@@ -808,3 +797,39 @@ article.prose > h1:first-child, .prose > h1:first-child { display: none; }
 @media (prefers-reduced-motion: reduce) {
   .ink-wash { opacity: 1; animation: none !important; }
 }
+
+/* ---------- Reveal: ink settling, and lines being written ---------- */
+.reveal { opacity: 0; transform: translateY(var(--reveal-y, 6px)); }
+.reveal[data-inview] { animation: reveal-settle 560ms var(--ease-out-strong) var(--reveal-delay, 0ms) both; }
+@keyframes reveal-settle {
+  from { opacity: 0; transform: translateY(var(--reveal-y, 6px)); }
+  to { opacity: 1; transform: none; }
+}
+.reveal-write { clip-path: inset(-20% 100% -20% 0); }
+.reveal-write[data-inview] { animation: reveal-write 900ms var(--ease-draw) var(--reveal-delay, 0ms) both; }
+@keyframes reveal-write {
+  from { clip-path: inset(-20% 100% -20% 0); }
+  to { clip-path: inset(-20% -2% -20% 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-write { opacity: 1; transform: none; clip-path: none; animation: none !important; }
+}
+/* without JS nothing would ever reveal, so show everything */
+@media (scripting: none) {
+  .reveal, .reveal-write { opacity: 1; transform: none; clip-path: none; }
+}
+
+/* doodles keep living after they are drawn, only while they are on screen */
+.ink-doodle [class^="idle-"] { transform-box: view-box; }
+.ink-doodle .idle-twinkle { transform-box: fill-box; transform-origin: center; }
+.ink-doodle[data-inview] .idle-steam { animation: idle-steam 2.6s ease-in-out calc(var(--idle-start) + var(--idle-i) * 380ms) infinite; }
+.ink-doodle[data-inview] .idle-sway { animation: idle-sway 4.8s ease-in-out var(--idle-start) infinite; }
+.ink-doodle[data-inview] .idle-rock { animation: idle-sway 6s ease-in-out var(--idle-start) infinite; }
+.ink-doodle[data-inview] .idle-bob { animation: idle-bob 3.4s ease-in-out var(--idle-start) infinite; }
+.ink-doodle[data-inview] .idle-twinkle { animation: idle-twinkle 2.4s ease-in-out calc(var(--idle-start) + var(--idle-i) * 520ms) infinite; }
+.ink-doodle[data-inview] .idle-clap { animation: idle-clap 3.6s var(--ease-out-strong) var(--idle-start) infinite; }
+@keyframes idle-steam { 0%, 100% { transform: translateY(0); opacity: 1; } 50% { transform: translateY(-2.5px); opacity: .35; } }
+@keyframes idle-sway { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+@keyframes idle-bob { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(1.5px, -2.5px); } }
+@keyframes idle-twinkle { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(.55); opacity: .5; } }
+@keyframes idle-clap { 0%, 70%, 100% { transform: rotate(0); } 78% { transform: rotate(-12deg); } 86% { transform: rotate(0); } }

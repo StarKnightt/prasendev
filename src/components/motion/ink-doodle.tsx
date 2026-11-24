@@ -12,12 +12,20 @@ import { useInViewOnce } from "./use-in-view-once";
  * An optional watercolour wash blooms in underneath.
  */
 
-type Doodle = { vb: string; strokes: string[]; wash?: { d: string; tone: Tone } };
+type Idle = "steam" | "sway" | "twinkle" | "bob" | "clap" | "rock";
+type Doodle = {
+  vb: string;
+  strokes: string[];
+  wash?: { d: string; tone: Tone };
+  /** after it is drawn, these strokes keep moving while it stays on screen */
+  idle?: { kind: Idle; strokes?: number[]; origin?: string }[];
+};
 type Tone = "ochre" | "rose" | "sage" | "sky";
 
 const DOODLES = {
   coffee: {
     vb: "0 0 64 64",
+    idle: [{ kind: "steam", strokes: [4, 5, 6] }],
     wash: { d: "M12 34c2-8 14-10 22-9s16 3 15 12-7 16-19 16S10 44 12 34z", tone: "ochre" },
     strokes: [
       "M13 30c7-4 27-4 34 0-7 4-27 4-34 0",
@@ -31,6 +39,7 @@ const DOODLES = {
   },
   inkpot: {
     vb: "0 0 72 72",
+    idle: [{ kind: "sway", strokes: [4, 5, 6], origin: "38px 31px" }],
     wash: { d: "M20 46c1-8 12-12 20-11s16 6 15 15-8 15-18 14-18-9-17-18z", tone: "sky" },
     strokes: [
       "M22 40v22c0 3 2 4 5 4h22c3 0 5-1 5-4V40c0-4-4-6-8-6H30c-4 0-8 2-8 6z",
@@ -44,6 +53,7 @@ const DOODLES = {
   },
   clapper: {
     vb: "0 0 72 64",
+    idle: [{ kind: "clap", strokes: [1, 2], origin: "10px 28px" }],
     wash: { d: "M12 36c3-8 16-9 26-8s22 4 21 13-10 15-24 14-25-10-23-19z", tone: "rose" },
     strokes: [
       "M10 28h50v26H10z",
@@ -55,6 +65,7 @@ const DOODLES = {
   },
   plane: {
     vb: "0 0 96 64",
+    idle: [{ kind: "bob" }],
     strokes: [
       "M6 50c10-6 18-2 24 3s14 6 16-4-8-14-14-6 4 16 16 12 18-18 26-24",
       "M60 22L90 8 74 34l-8-8z",
@@ -64,6 +75,7 @@ const DOODLES = {
   },
   sprig: {
     vb: "0 0 64 110",
+    idle: [{ kind: "sway", origin: "31px 106px" }],
     wash: { d: "M16 62c-4-14 4-34 16-40s20 8 18 26-6 34-18 36-12-8-16-22z", tone: "sage" },
     strokes: [
       "M31 106c-3-28 4-60-1-100",
@@ -76,6 +88,7 @@ const DOODLES = {
   },
   sparkles: {
     vb: "0 0 60 48",
+    idle: [{ kind: "twinkle", strokes: [0, 1, 2, 3] }],
     strokes: [
       "M16 4c1 8 2.5 9.5 10 10.5-7.5 1-9 2.5-10 10.5-1-8-2.5-9.5-10-10.5 7.5-1 9-2.5 10-10.5z",
       "M44 6c.6 4.5 1.5 5.4 5.5 6-4 .6-4.9 1.5-5.5 6-.6-4.5-1.5-5.4-5.5-6 4-.6 4.9-1.5 5.5-6z",
@@ -85,6 +98,7 @@ const DOODLES = {
   },
   moon: {
     vb: "0 0 56 56",
+    idle: [{ kind: "rock", strokes: [0], origin: "24px 28px" }, { kind: "twinkle", strokes: [1, 2] }],
     wash: { d: "M10 28c0-11 9-19 19-19s17 9 16 19-8 18-18 18-17-7-17-18z", tone: "ochre" },
     strokes: [
       "M34 9c-10 1-18 9-18 19s8 18 18 19c-12 4-26-4-26-19S22 5 34 9z",
@@ -120,10 +134,39 @@ export function InkDoodle({
   /** >1 draws slower */
   speed?: number;
 }) {
-  const ref = useInViewOnce<SVGSVGElement>({ threshold: 0.6 });
+  // repeat: it is redrawn every time it comes back into view
+  const ref = useInViewOnce<SVGSVGElement>({ threshold: 0.6, repeat: true });
   const id = useId().replace(/:/g, "");
   const doodle: Doodle = DOODLES[kind];
   const step = 260 * speed;
+  const dur = Math.round(420 * speed);
+  const drawn = delay + 200 + (doodle.strokes.length - 1) * step + dur;
+  const whole = doodle.idle?.find((m) => !m.strokes);
+  const idleFor = (i: number) => doodle.idle?.find((m) => m.strokes?.includes(i));
+
+  const strokes = doodle.strokes.map((d, i) => {
+    const path = (
+      <path
+        key={i}
+        d={d}
+        pathLength={1}
+        className="motion-draw"
+        style={{ "--draw-delay": `${delay + 200 + i * step}ms`, "--draw-dur": `${dur}ms` } as CSSProperties}
+      />
+    );
+    const m = idleFor(i);
+    if (!m) return path;
+    return (
+      <g
+        key={i}
+        className={`idle-${m.kind}`}
+        style={{ "--idle-i": m.strokes!.indexOf(i), transformOrigin: m.origin } as CSSProperties}
+      >
+        {path}
+      </g>
+    );
+  });
+
   return (
     <svg
       ref={ref}
@@ -131,6 +174,7 @@ export function InkDoodle({
       viewBox={doodle.vb}
       fill="none"
       className={cn("ink-doodle pointer-events-none overflow-visible", className)}
+      style={{ "--idle-start": `${drawn}ms` } as CSSProperties}
     >
       <defs>
         <filter id={`nib-${id}`} x="-10%" y="-10%" width="120%" height="120%">
@@ -145,6 +189,7 @@ export function InkDoodle({
           </filter>
         )}
       </defs>
+      <g className={whole ? `idle-${whole.kind}` : undefined} style={{ transformOrigin: whole?.origin }}>
       {doodle.wash && (
         <g filter={`url(#wash-${id})`} className="ink-wash" style={{ "--draw-delay": `${delay}ms` } as CSSProperties}>
           <path d={doodle.wash.d} fill={TONE[doodle.wash.tone]} opacity={0.55} />
@@ -158,20 +203,8 @@ export function InkDoodle({
         strokeLinecap="round"
         strokeLinejoin="round"
       >
-        {doodle.strokes.map((d, i) => (
-          <path
-            key={i}
-            d={d}
-            pathLength={1}
-            className="motion-draw"
-            style={
-              {
-                "--draw-delay": `${delay + 200 + i * step}ms`,
-                "--draw-dur": `${Math.round(420 * speed)}ms`,
-              } as CSSProperties
-            }
-          />
-        ))}
+        {strokes}
+      </g>
       </g>
     </svg>
   );

@@ -116,7 +116,7 @@ export function SteamHoverCard({ children }: { children: ReactNode }) {
                 />
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-semibold truncate">{data.name}</p>
+                <p className="text-sm font-medium truncate">{data.name}</p>
                 <p className="text-xs text-muted-foreground truncate">
                   {data.gameextrainfo
                     ? `Playing ${data.gameextrainfo}`

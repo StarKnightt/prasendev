@@ -2,7 +2,7 @@
 'use client';
 
 import type { JSX } from 'react';
-import BlurFade from './magicui/blur-fade';
+import Reveal from "@/components/motion/reveal";
 import Link from 'next/link';
 
 type SocialIconLinkProps = {
@@ -15,7 +15,7 @@ type SocialIconLinkProps = {
 
 export function SocialIconLink({ name, url, icon, delay, color }: SocialIconLinkProps) {
   return (
-    <BlurFade delay={delay}>
+    <Reveal delay={delay}>
       <div className="group relative">
         <Link
           href={url}
@@ -32,6 +32,6 @@ export function SocialIconLink({ name, url, icon, delay, color }: SocialIconLink
           {name}
         </div>
       </div>
-    </BlurFade>
+    </Reveal>
   );
 }

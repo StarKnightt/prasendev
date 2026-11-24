@@ -136,7 +136,7 @@ export function ProjectCard({
         <CardHeader className="px-4 pt-4">
           <div className="space-y-1.5">
             <div className="flex items-center justify-between gap-2">
-              <CardTitle className="text-base font-semibold">{title}</CardTitle>
+              <CardTitle className="text-base font-medium">{title}</CardTitle>
               {badge ? (
                 <span className="shrink-0 rounded-full border border-border px-1.5 py-0.5 text-[10px] text-muted-foreground">
                   {badge}

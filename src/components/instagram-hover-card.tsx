@@ -66,7 +66,7 @@ export function InstagramHoverCard({ children }: { children: ReactNode }) {
             </Avatar>
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-1.5">
-                <p className="text-sm font-semibold truncate">{INSTAGRAM_PROFILE.name}</p>
+                <p className="text-sm font-medium truncate">{INSTAGRAM_PROFILE.name}</p>
                 <InstagramIcon />
               </div>
               <p className="text-xs text-muted-foreground truncate">@{INSTAGRAM_PROFILE.handle}</p>

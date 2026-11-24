@@ -130,7 +130,7 @@ export function DiscordHoverCard({ children }: { children: ReactNode }) {
               </div>
               <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-1.5">
-                  <p className="text-sm font-semibold truncate">{data.displayName}</p>
+                  <p className="text-sm font-medium truncate">{data.displayName}</p>
                   <DiscordIcon />
                 </div>
                 <p className="text-xs text-muted-foreground truncate">@{data.username}</p>

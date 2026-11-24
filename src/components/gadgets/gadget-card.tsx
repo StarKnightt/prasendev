@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import type { Product } from '@/data/products';
 import Link from 'next/link';
-import { MagicCard } from "@/components/magicui/magic-card";
 import { ExternalLink } from "lucide-react";
 
 interface GadgetCardProps {
@@ -19,7 +18,7 @@ export function GadgetCard({ product }: GadgetCardProps) {
       target="_blank"
       rel="noopener noreferrer"
     >
-      <MagicCard className="group relative overflow-hidden bg-card rounded-xl h-full transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+      <div className="paper-card group relative h-full overflow-hidden rounded-lg">
         {/* Image */}
         <div className="relative aspect-[4/3] bg-muted/30">
           <Image
@@ -43,14 +42,14 @@ export function GadgetCard({ product }: GadgetCardProps) {
         
         {/* Content */}
         <div className="p-4">
-          <h3 className="font-semibold text-sm line-clamp-2 mb-1.5 group-hover:text-primary transition-colors">
+          <h3 className="font-medium text-sm line-clamp-2 mb-1.5 group-hover:text-primary transition-colors">
             {product.title}
           </h3>
           <p className="text-muted-foreground text-xs line-clamp-2">
             {product.description}
           </p>
         </div>
-      </MagicCard>
+      </div>
     </Link>
   );
 }

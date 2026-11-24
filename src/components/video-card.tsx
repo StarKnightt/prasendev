@@ -5,7 +5,6 @@ import { formatDate } from "@/lib/utils";
 import Image from "next/image";
 import { PlayIcon } from "lucide-react";
 import { useState } from "react";
-import { Backlight } from "@/components/ui/backlight";
 import { VideoPlayerModal } from "./video-player-modal";
 
 interface VideoCardProps {
@@ -19,7 +18,6 @@ interface VideoCardProps {
 }
 
 // blur intensity for the backlight glow; tweak to taste
-const BACKLIGHT_BLUR = 32;
 
 export function VideoCard({ video }: VideoCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -33,7 +31,7 @@ export function VideoCard({ video }: VideoCardProps) {
           aria-label={`Play ${video.title}`}
           className="relative block w-full rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
-          <Backlight blur={BACKLIGHT_BLUR} className="w-full">
+          <div className="w-full">
             <Image
               src={video.thumbnail}
               alt={video.title}
@@ -41,11 +39,11 @@ export function VideoCard({ video }: VideoCardProps) {
               height={360}
               className="aspect-video w-full rounded-lg object-cover"
             />
-          </Backlight>
+          </div>
           {/* Play button overlay (outside the filtered layer so it stays crisp) */}
           <span className="pointer-events-none absolute inset-0 flex items-center justify-center">
-            <span className="flex size-14 items-center justify-center rounded-full bg-red-600/90 shadow-lg transition-transform duration-300 group-hover:scale-110">
-              <PlayIcon className="size-6 translate-x-[1px] fill-white text-white" />
+            <span className="flex size-14 items-center justify-center rounded-full bg-foreground/85 text-background shadow-lg transition-transform duration-300 group-hover:scale-110">
+              <PlayIcon className="size-6 translate-x-[1px] fill-current" />
             </span>
           </span>
         </button>
