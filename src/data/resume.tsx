@@ -39,7 +39,7 @@ export const DATA = {
   description:
     "",
   summary:
-    "**[[highlight:Creative engineer]]**. I make code come alive: games, films and art built with AI. Building in public for 23K+ on X. Open to [**[[underline:creative engineering and DevRel roles]]**](mailto:hi@prasen.dev).",
+    "**[[highlight:Creative engineer]]**. Making code alive: games, films and art built with AI. Open to [**[[underline:creative engineering and DevRel roles]]**](mailto:hi@prasen.dev).",
 
   avatarUrl: "/prasen.webp",
   // refresh periodically
@@ -482,6 +482,8 @@ export const DATA = {
         },
       ],
       image: "/projects/clawd-wonder.webp",
+      video: "https://video.gumlet.io/6745e593080b60408ca085f7/6b05355245faabbfced162a7/download.mp4",
+      poster: "/projects/clawd-wonder.webp",
     },
     {
       title: "Summer Festival",
@@ -935,6 +937,7 @@ export const DATA = {
         },
       ],
       image: "/projects/motion-showreel.webp",
+      video: "https://video.gumlet.io/6745e593080b60408ca085f7/6b05359145faabbfced162f7/download.mp4",
     },
     {
       title: "Summer Cycle",

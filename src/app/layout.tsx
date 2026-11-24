@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     default: "Prasenjit Nayak | Creative Engineer",
     template: `%s | Prasenjit Nayak`,
   },
-  description: "Prasenjit Nayak, a creative engineer from India. I make code come alive: games, films and art built with AI. Explore my lab, projects and blog.",
+  description: "Prasenjit Nayak, a creative engineer from India. Making code alive: games, films and art built with AI. Explore my lab, projects and blog.",
   keywords: ["Prasenjit Nayak", "Creative Engineer", "Creative Coding", "Full Stack Developer", "React Developer", "Next.js Developer", "TypeScript Developer", "Node.js Developer", "Web Developer India", "Software Engineer"],
   authors: [{ name: "Prasenjit Nayak" }],
   creator: "Prasenjit Nayak",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Prasenjit Nayak | Creative Engineer",
-    description: "Creative engineer. I make code come alive: games, films and art built with AI. Building in public for 23K+ on X.",
+    description: "Creative engineer. Making code alive: games, films and art built with AI. Building in public for 23K+ on X.",
     url: DATA.url,
     siteName: "Prasenjit Nayak - Portfolio",
     locale: "en_US",
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Prasenjit Nayak | Creative Engineer',
-    description: 'Creative engineer. I make code come alive: games, films and art built with AI. Building in public for 23K+ on X.',
+    description: 'Creative engineer. Making code alive: games, films and art built with AI. Building in public for 23K+ on X.',
     images: [`${DATA.url}/og/home-2026-11.jpg`],
     creator: '@prasenx',
   },

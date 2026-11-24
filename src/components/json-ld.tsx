@@ -48,7 +48,7 @@ export function JsonLd() {
       'AI Integration'
     ],
     knowsLanguage: ['English', 'Hindi', 'Odia'],
-    description: 'Creative engineer. I make code come alive: games, films and art built with AI.'
+    description: 'Creative engineer. Making code alive: games, films and art built with AI.'
   },
   {
     '@context': 'https://schema.org',
