@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import { Menu, X, Terminal, Home } from "lucide-react";
+import { Dock, DockIcon } from "@/components/dock";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { buttonVariants } from "@/components/ui/button";
 
@@ -255,15 +256,19 @@ export default function Navbar() {
       <AnimatePresence>
         {isScrolled && (
           <motion.div
-            initial={{ y: 40, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 40, opacity: 0 }}
+            initial={{ y: 60, opacity: 0, scale: 0.9 }}
+            animate={{ y: 0, opacity: 1, scale: 1 }}
+            exit={{ y: 60, opacity: 0, scale: 0.9 }}
             transition={{ type: "spring", stiffness: 260, damping: 24 }}
             className="fixed bottom-5 left-0 right-0 z-50 flex justify-center px-4"
           >
-            <div className="flex items-center gap-0.5 rounded-full border border-border/80 bg-card/95 px-1.5 py-1.5 shadow-[0_14px_28px_-18px_hsl(var(--paper-edge)/0.9)] backdrop-blur-sm">
+            <Dock
+              magnification={50}
+              distance={120}
+              className="border border-white/20 bg-background/30 dark:border-white/10 dark:bg-background/20"
+            >
               {DATA.navbar.map((item) => (
-                <div key={item.href} className="flex">
+                <DockIcon key={item.href}>
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <Link
@@ -282,12 +287,12 @@ export default function Navbar() {
                       <p>{item.label}</p>
                     </TooltipContent>
                   </Tooltip>
-                </div>
+                </DockIcon>
               ))}
 
               <div className="mx-0.5 h-8 w-px shrink-0 bg-border/40" />
 
-              <div className="flex">
+              <DockIcon>
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Link
@@ -305,12 +310,12 @@ export default function Navbar() {
                     <p>CLI Mode</p>
                   </TooltipContent>
                 </Tooltip>
-              </div>
+              </DockIcon>
 
-              <div className="flex">
+              <DockIcon>
                 <ModeToggle />
-              </div>
-            </div>
+              </DockIcon>
+            </Dock>
           </motion.div>
         )}
       </AnimatePresence>
