@@ -39,7 +39,7 @@ export const DATA = {
   description:
     "",
   summary:
-    "**[[highlight:Full Stack Developer]]** who builds in public and runs a 500+ member developer community. Currently freelancing and open to [**[[underline:DevRel work]]**](mailto:hi@prasen.dev). Always up for collaborating on exciting projects.",
+    "**[[highlight:Creative engineer]]**. I make code come alive: games, films and art built with AI. Building in public for 23K+ on X. Open to [**[[underline:creative engineering and DevRel roles]]**](mailto:hi@prasen.dev).",
 
   avatarUrl: "/prasen.webp",
   // refresh periodically
@@ -456,6 +456,32 @@ export const DATA = {
       image: "",
       video: "https://video.gumlet.io/6745e593080b60408ca085f7/6a8ef3e50784f723ea1a0908/download.mp4",
       poster: "https://video.gumlet.io/6745e593080b60408ca085f7/6a8ef3e50784f723ea1a0908/thumbnail-1-0.png?v=1787753505658",
+    },
+    {
+      title: "Clawd: Wonder",
+      tagline: "A short film about everything Claude finds beautiful. Every frame and every note made in code.",
+      href: "https://x.com/prasenx/status/2124137226452013553",
+      dates: "November 2026",
+      active: true,
+      group: "lab",
+      description:
+        "I asked Claude Opus 5.5 to make a film about everything it finds beautiful. Clawd walks onto a page and the camera falls into its eye: a snowflake, a sunflower, starlings, a humpback whale, an aurora, the solar system and a spiral galaxy. Every frame is ink and watercolour drawn in code, and the score is synthesized from scratch, no samples. The post passed 156K+ views and 2.5K+ likes.",
+      technologies: [
+        "Canvas 2D",
+        "WebGL",
+        "JavaScript",
+        "Playwright",
+        "FFmpeg",
+        "Claude Opus 5.5",
+      ],
+      links: [
+        {
+          type: "Watch on X",
+          href: "https://x.com/prasenx/status/2124137226452013553",
+          icon: <Icons.x className="size-3" />,
+        },
+      ],
+      image: "/projects/clawd-wonder.webp",
     },
     {
       title: "Summer Festival",
@@ -884,6 +910,31 @@ export const DATA = {
         },
       ],
       image: "/projects/press-start.webp",
+    },
+    {
+      title: "Motion Showreel",
+      tagline: "A 15-second motion design reel from one prompt, with music synthesized from scratch.",
+      href: "https://x.com/prasenx/status/2103538744695693512",
+      dates: "September 2026",
+      active: true,
+      group: "lab",
+      description:
+        "I know nothing about motion design, so I gave Claude Opus 5.5 one prompt. It made this reel in a single WebGL page, with easing curves, a tunnel, kinetic type and a sunburst, and synthesized the music from oscillators and noise, no samples. The post passed 15K+ views.",
+      technologies: [
+        "WebGL",
+        "JavaScript",
+        "Playwright",
+        "FFmpeg",
+        "Claude Opus 5.5",
+      ],
+      links: [
+        {
+          type: "Watch on X",
+          href: "https://x.com/prasenx/status/2103538744695693512",
+          icon: <Icons.x className="size-3" />,
+        },
+      ],
+      image: "/projects/motion-showreel.webp",
     },
     {
       title: "Summer Cycle",

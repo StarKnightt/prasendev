@@ -35,11 +35,11 @@ const fontDisplay = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL(DATA.url),
   title: {
-    default: "Prasenjit Nayak | Full Stack Developer",
+    default: "Prasenjit Nayak | Creative Engineer",
     template: `%s | Prasenjit Nayak`,
   },
-  description: "Prasenjit Nayak, Full Stack Developer from India specializing in React, Next.js, TypeScript and Node.js. Explore my projects, blog, and open-source work.",
-  keywords: ["Prasenjit Nayak", "Full Stack Developer", "React Developer", "Next.js Developer", "TypeScript Developer", "Node.js Developer", "Web Developer India", "Software Engineer"],
+  description: "Prasenjit Nayak, a creative engineer from India. I make code come alive: games, films and art built with AI. Explore my lab, projects and blog.",
+  keywords: ["Prasenjit Nayak", "Creative Engineer", "Creative Coding", "Full Stack Developer", "React Developer", "Next.js Developer", "TypeScript Developer", "Node.js Developer", "Web Developer India", "Software Engineer"],
   authors: [{ name: "Prasenjit Nayak" }],
   creator: "Prasenjit Nayak",
   publisher: "Prasenjit Nayak",
@@ -47,8 +47,8 @@ export const metadata: Metadata = {
     canonical: DATA.url,
   },
   openGraph: {
-    title: "Prasenjit Nayak | Full Stack Developer",
-    description: "Full Stack Developer specializing in React, Next.js, TypeScript and Node.js. Check out my portfolio, projects and blog posts.",
+    title: "Prasenjit Nayak | Creative Engineer",
+    description: "Creative engineer. I make code come alive: games, films and art built with AI. Building in public for 23K+ on X.",
     url: DATA.url,
     siteName: "Prasenjit Nayak - Portfolio",
     locale: "en_US",
@@ -64,8 +64,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Prasenjit Nayak | Full Stack Developer',
-    description: 'Full Stack Developer specializing in React, Next.js, TypeScript and Node.js. Check out my portfolio, projects and blog posts.',
+    title: 'Prasenjit Nayak | Creative Engineer',
+    description: 'Creative engineer. I make code come alive: games, films and art built with AI. Building in public for 23K+ on X.',
     images: [`${DATA.url}/og/home-2026-11.jpg`],
     creator: '@prasenx',
   },
