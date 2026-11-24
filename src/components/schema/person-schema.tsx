@@ -30,11 +30,6 @@ export function PersonSchema() {
             "@type": "CollegeOrUniversity",
             name: "Trident Academy Of Technology"
           },
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: "Odisha",
-            addressCountry: "India"
-          },
           email: DATA.contact.email,
           knowsAbout: DATA.skills
         })

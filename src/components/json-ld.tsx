@@ -11,10 +11,6 @@ export function JsonLd() {
     url: DATA.url,
     image: `${DATA.url}/prasen.webp`,
     jobTitle: 'Creative Engineer',
-    nationality: {
-      '@type': 'Country',
-      name: 'India'
-    },
     alumniOf: {
       '@type': 'EducationalOrganization',
       name: 'Trident Academy of Technology',
