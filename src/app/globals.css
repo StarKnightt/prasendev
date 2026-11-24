@@ -818,3 +818,51 @@ article.prose > h1:first-child, .prose > h1:first-child { display: none; }
 @keyframes idle-bob { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(1.5px, -2.5px); } }
 @keyframes idle-twinkle { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(.55); opacity: .5; } }
 @keyframes idle-clap { 0%, 70%, 100% { transform: rotate(0); } 78% { transform: rotate(-12deg); } 86% { transform: rotate(0); } }
+
+/* Afternoon light on the paper (components/sunlight.tsx). A warm band of light and
+   the blurred shadow of a branch from the top-right, multiplied into the paper so it
+   reads as a shadow, not a sticker. In dark mode the branch turns to faint moonlight. */
+.sunlight-band {
+  position: absolute;
+  top: -260px;
+  right: -12%;
+  width: 80%;
+  height: 1000px;
+  background: linear-gradient(118deg, transparent 32%, hsl(44 100% 88% / .7) 46%, hsl(38 100% 82% / .45) 56%, transparent 70%);
+  filter: blur(36px);
+  mix-blend-mode: soft-light;
+}
+.sunlight-branch {
+  position: absolute;
+  top: -24px;
+  right: -40px;
+  width: min(60vw, 780px);
+  height: auto;
+  color: hsl(26 40% 20%);
+  opacity: .17;
+  mix-blend-mode: multiply;
+  filter: blur(2.4px);
+  transform-origin: 100% 0;
+  animation: sunlight-sway 11s ease-in-out infinite;
+  will-change: transform;
+}
+@keyframes sunlight-sway {
+  0%, 100% { transform: rotate(-.7deg); }
+  45% { transform: rotate(1.1deg) translateY(4px); }
+}
+.dark .sunlight-band {
+  background: linear-gradient(118deg, transparent 34%, hsl(212 60% 80% / .18) 48%, transparent 66%);
+  mix-blend-mode: screen;
+}
+.dark .sunlight-branch {
+  color: hsl(214 35% 72%);
+  opacity: .09;
+  mix-blend-mode: screen;
+}
+@media (max-width: 640px) {
+  .sunlight-branch { width: 62vw; opacity: .1; }
+  .dark .sunlight-branch { opacity: .05; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sunlight-branch { animation: none; }
+}

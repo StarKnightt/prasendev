@@ -8,6 +8,7 @@ import { Geist, Geist_Mono, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 import { JsonLd } from "@/components/json-ld";
 import { PageBackground } from "@/components/page-background";
+import { Sunlight } from "@/components/sunlight";
 import { CommandPalette } from "@/components/command-palette";
 import { SoundProvider } from "@/components/sound-provider";
 import { BackToTop } from "@/components/back-to-top";
@@ -144,6 +145,7 @@ export default function RootLayout({
         <div className="fixed inset-0 z-[-1]">
           <PageBackground />
         </div>
+        <Sunlight />
 
 
         {/* Main content */}
