@@ -26,14 +26,14 @@ export function AgeCounter() {
   // show placeholder until mounted to prevent hydration mismatch
   if (years === null) {
     return (
-      <div className="text-sm font-bold min-h-[20px]">
+      <div className="font-hand text-xl leading-7 text-muted-foreground min-h-[28px] -rotate-1 origin-left">
         <span className="tabular-nums opacity-0">been on earth for 00.000000000 years</span>
       </div>
     );
   }
 
   return (
-    <div className="text-sm font-bold min-h-[20px]">
+    <div className="font-hand text-xl leading-7 text-muted-foreground min-h-[28px] -rotate-1 origin-left">
       <span className="tabular-nums">
         been on earth for {years} years
       </span>

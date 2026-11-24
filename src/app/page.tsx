@@ -214,7 +214,7 @@ export default async function Page() {
               <div className="flex-col flex flex-1 space-y-1.5">
                 <BlurFadeText
                   delay={BLUR_FADE_DELAY}
-                  className="text-3xl font-bold tracking-tight sm:text-5xl xl:text-6xl/none"
+                  className="text-4xl sm:text-6xl xl:text-7xl/none"
                   yOffset={8}
                   text={`hey, ${DATA.name.split(" ")[0]} here`}
                   as="h1"
@@ -409,7 +409,7 @@ export default async function Page() {
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade delay={BLUR_FADE_DELAY * 11}>
               <div className="flex items-end justify-between gap-4">
-                <h2 className="relative w-fit text-xl font-bold tracking-tight">
+                <h2 className="relative w-fit text-2xl">
                   Selected Work
                   <HeadingScribble kind="swoosh" />
                 </h2>
@@ -455,7 +455,7 @@ export default async function Page() {
         <section id="work">
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade delay={BLUR_FADE_DELAY * 12}>
-              <h2 className="relative w-fit text-xl font-bold tracking-tight">
+              <h2 className="relative w-fit text-2xl">
                 Experience
                 <HeadingScribble kind="flick" />
               </h2>
@@ -521,7 +521,7 @@ export default async function Page() {
         <section id="elsewhere">
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade delay={BLUR_FADE_DELAY * 14}>
-              <h2 className="relative w-fit text-xl font-bold tracking-tight">
+              <h2 className="relative w-fit text-2xl">
                 Behind the Scenes
                 <HeadingScribble kind="double" />
               </h2>
@@ -558,7 +558,7 @@ export default async function Page() {
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade delay={BLUR_FADE_DELAY * 15}>
               <div className="flex items-end justify-between gap-4">
-                <h2 className="relative w-fit text-xl font-bold tracking-tight">
+                <h2 className="relative w-fit text-2xl">
                   Writing
                   <HeadingScribble kind="wave" />
                 </h2>

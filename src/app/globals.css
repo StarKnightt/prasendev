@@ -739,3 +739,49 @@ h1, h2 { letter-spacing: -0.01em; }
 
 /* photos and video posters get printed onto the page rather than glowing on it */
 .dark img:not([data-no-ink]) { filter: brightness(.92) sepia(.06); }
+
+/* a card is a slip of slightly fresher paper laid on the page */
+.paper-card {
+  background: hsl(var(--card) / .78);
+  border: 1px solid hsl(var(--border) / .85);
+  box-shadow: 0 1px 0 hsl(var(--paper-edge) / .10), 0 12px 24px -18px hsl(var(--paper-edge) / .7);
+  transition: transform 300ms var(--ease-out-strong, ease-out), box-shadow 300ms ease-out;
+}
+@media (hover: hover) and (pointer: fine) {
+  .paper-card:hover {
+    transform: translateY(-2px) rotate(-.15deg);
+    box-shadow: 0 1px 0 hsl(var(--paper-edge) / .12), 0 18px 30px -18px hsl(var(--paper-edge) / .85);
+  }
+}
+.dark .paper-card { box-shadow: 0 12px 24px -18px rgb(0 0 0 / .8); }
+
+/* A fountain pen for a cursor: oxblood barrel, ink nib, cream outline so it reads
+   on both the light and the night page. Over links the pen is loaded with
+   blue-black ink. Hotspot is the nib tip. Plain CSS, no per-frame cost. */
+:root {
+  --cursor-pen: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg transform='translate(4 28) rotate(40)' stroke='%23f6efe2' stroke-width='1.3' stroke-linejoin='round'%3E%3Crect x='-4' y='-26' width='8' height='10.5' rx='1.6' fill='%237a2b22'/%3E%3Cpath d='M0 0 L-4.5 -11 Q-4.5 -14 -3 -15.5 L3 -15.5 Q4.5 -14 4.5 -11 Z' fill='%232b1f15'/%3E%3Cpath d='M0 -2.5 V-9.5' stroke-width='.9'/%3E%3Ccircle cx='0' cy='-10.6' r='1.1' fill='%23f6efe2' stroke='none'/%3E%3C/g%3E%3C/svg%3E") 4 28;
+  --cursor-pen-ink: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg transform='translate(4 28) rotate(40)' stroke='%23f6efe2' stroke-width='1.3' stroke-linejoin='round'%3E%3Crect x='-4' y='-26' width='8' height='10.5' rx='1.6' fill='%2322345a'/%3E%3Cpath d='M0 0 L-4.5 -11 Q-4.5 -14 -3 -15.5 L3 -15.5 Q4.5 -14 4.5 -11 Z' fill='%232b1f15'/%3E%3Cpath d='M0 -2.5 V-9.5' stroke-width='.9'/%3E%3Ccircle cx='0' cy='-10.6' r='1.1' fill='%23f6efe2' stroke='none'/%3E%3C/g%3E%3Ccircle cx='4.2' cy='28.6' r='2.4' fill='%2322345a' stroke='%23f6efe2' stroke-width='1'/%3E%3C/svg%3E") 4 28;
+}
+@media (pointer: fine) {
+  html, body { cursor: var(--cursor-pen), auto; }
+  a, button, summary, label[for], select, .cursor-pointer, [role="button"], [role="tab"], [role="link"], [role="menuitem"], [role="option"] {
+    cursor: var(--cursor-pen-ink), pointer;
+  }
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]), textarea, [contenteditable="true"] { cursor: text; }
+}
+
+/* code is set on a dark sepia plate; inline code is a faint pencilled box, no backticks */
+.prose pre { background-color: hsl(24 24% 12%) !important; border: 1px solid hsl(24 20% 20%); }
+.dark .prose pre { background-color: hsl(28 16% 6%) !important; border-color: hsl(30 12% 18%); }
+.prose :not(pre) > code {
+  background: hsl(var(--muted) / .8);
+  border: 1px solid hsl(var(--border) / .8);
+  border-radius: 4px;
+  padding: .05em .35em;
+  font-weight: 500;
+  font-size: .85em;
+}
+.prose :not(pre) > code::before, .prose :not(pre) > code::after { content: none; }
+
+/* every post repeats its title as a leading "# " heading; the page already prints it */
+article.prose > h1:first-child, .prose > h1:first-child { display: none; }

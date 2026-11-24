@@ -12,7 +12,6 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import Markdown from "react-markdown";
-import { BorderBeam } from "@/components/magicui/border-beam";
 import { VideoPlayerModal } from "./video-player-modal";
 import { PlayButton } from "./play-button";
 import { useState, useRef } from "react";
@@ -91,7 +90,7 @@ export function ProjectCard({
     <>
       <Card
         className={cn(
-          "group relative flex h-full flex-col overflow-hidden border border-border/60 bg-card/40 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-border hover:bg-card/80 hover:shadow-xl",
+          "paper-card group relative flex h-full flex-col overflow-hidden",
           className
         )}
         onMouseEnter={handleMouseEnter}
@@ -180,7 +179,7 @@ export function ProjectCard({
               {play && <PlayButton title={title} play={play} />}
               {links?.map((link, idx) => (
                 <Link href={link?.href} key={idx} target="_blank" rel="noopener noreferrer">
-                  <Badge className="flex gap-2 px-2 py-1 text-[10px]">
+                  <Badge variant="ink" className="flex gap-2 px-2 py-1 text-[10px]">
                     {link.icon}
                     {link.type}
                   </Badge>
@@ -189,12 +188,6 @@ export function ProjectCard({
             </div>
           )}
         </CardFooter>
-        <BorderBeam
-          duration={4}
-          size={300}
-          reverse
-          className="from-transparent via-green-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-        />
       </Card>
 
       {video && (
