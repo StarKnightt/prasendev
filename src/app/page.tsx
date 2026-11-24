@@ -42,7 +42,7 @@ import { Signature } from "@/components/motion/signature";
 import { AvatarDoodles } from "@/components/motion/avatar-doodles";
 
 const BLUR_FADE_DELAY = 0.04;
-const SELECTED_WORK = ["Dateup", "Wallpaperz", "Jungle Trail", "Bay Ride"];
+const SELECTED_WORK = ["Clawd: Wonder", "PRESS START", "Bay Ride", "Screentime"];
 
 // Brand hover colors for social icons; others fall back to foreground
 const SOCIAL_HOVER_COLORS: Record<string, string> = {
@@ -137,7 +137,7 @@ function Row({ label, children }: { label: string; children: React.ReactNode }) 
 
 // Plain-text description. DATA.summary is markdown and leaks syntax into meta tags
 const HOME_DESCRIPTION =
-  "Freelance full stack developer from Bhubaneswar, India. I build with Next.js, TypeScript and React: Outbuilt, Dateup, PayBrackets and more. Open to DevRel work.";
+  "Creative engineer from Bhubaneswar, India. Making code alive: games, films and art built with AI, like PRESS START, Clawd: Wonder and Bay Ride. Open to creative engineering and DevRel roles.";
 
 export const metadata: Metadata = {
   title: DATA.name,
@@ -643,8 +643,8 @@ export default async function Page() {
               <div className="space-y-2">
                 <p className="text-sm font-medium">{DATA.name}</p>
                 <p className="text-xs text-muted-foreground leading-relaxed">
-                  Full Stack Developer from India.
-                  <br />Building modern web applications.
+                  Creative engineer from India.
+                  <br />Games, films and art built with AI.
                 </p>
               </div>
 

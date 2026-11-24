@@ -9,7 +9,7 @@ import { ProjectSortGrid, ProjectSortProvider, ProjectSortSelect } from "@/compo
 import type { Metadata } from "next";
 
 const PAGE_DESCRIPTION =
-  "The Lab by Prasenjit Nayak: browser 3D worlds, games and a code-generated trailer built with Claude while he directed, including Jungle Trail, Night Street, Sedona Sunset and PRESS START.";
+  "The Lab by Prasenjit Nayak: short films made entirely in code, plus browser games and 3D worlds built with Claude, including Clawd: Wonder, PRESS START, Jungle Trail and Night Street.";
 
 const OG_IMAGE = `${DATA.url}/api/og?title=Lab&type=page`;
 
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
         url: OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: "The Lab by Prasenjit Nayak: AI-built browser 3D demos",
+        alt: "The Lab by Prasenjit Nayak: films, browser games and 3D worlds built with AI",
       },
     ],
   },
@@ -43,7 +43,11 @@ export const metadata: Metadata = {
 const BLUR_FADE_DELAY = 0.04;
 
 const LAB: readonly Project[] = DATA.projects.filter((p) => p.group === "lab");
-const SORT_ITEMS = LAB.map((p) => ({ key: p.title, title: p.title, dates: p.dates }));
+const FILMS = LAB.filter((p) => p.film);
+const WORLDS = LAB.filter((p) => !p.film);
+const toSortItems = (list: readonly Project[]) => list.map((p) => ({ key: p.title, title: p.title, dates: p.dates }));
+const FILM_ITEMS = toSortItems(FILMS);
+const WORLD_ITEMS = toSortItems(WORLDS);
 
 export default function LabPage() {
   return (
@@ -52,7 +56,7 @@ export default function LabPage() {
       <BlurFade delay={BLUR_FADE_DELAY}>
         <h1 className="font-medium text-2xl mb-3 tracking-tight">lab</h1>
         <p className="mb-8 text-sm text-muted-foreground">
-          Browser worlds, games and one trailer, built with Claude while I directed and reviewed. For things people pay
+          Films, browser games and 3D worlds, built with Claude while I directed and reviewed. For things people pay
           for or use every day, see{" "}
           <Link href="/projects" className="underline underline-offset-4 hover:text-foreground">
             projects
@@ -75,13 +79,43 @@ export default function LabPage() {
               Things I directed AI to build and shared on X. Every texture, mesh and sound generated in code unless stated.
             </p>
           </BlurFade>
-          <ProjectSortGrid items={SORT_ITEMS} className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-8">
-            {LAB.map((project, i) => (
-              <BlurFade key={project.title} delay={BLUR_FADE_DELAY * 2 + (i + 1) * 0.05}>
-                <LabTile {...project} />
-              </BlurFade>
-            ))}
-          </ProjectSortGrid>
+
+          <section id="films" aria-labelledby="films-heading">
+            <BlurFade delay={BLUR_FADE_DELAY * 3}>
+              <h3 id="films-heading" className="mb-1 text-base font-semibold tracking-tight">
+                Films <span className="ml-1 text-sm font-normal text-muted-foreground">{FILMS.length}</span>
+              </h3>
+              <p className="mb-5 text-sm text-muted-foreground">
+                Short films where every frame and every note is made in code. Hover to preview.
+              </p>
+            </BlurFade>
+            <ProjectSortGrid items={FILM_ITEMS} className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-8">
+              {FILMS.map((project, i) => (
+                <BlurFade key={project.title} delay={BLUR_FADE_DELAY * 3 + (i + 1) * 0.05}>
+                  <LabTile {...project} />
+                </BlurFade>
+              ))}
+            </ProjectSortGrid>
+          </section>
+
+          <section id="games" aria-labelledby="games-heading" className="mt-14">
+            <BlurFade delay={BLUR_FADE_DELAY * 4}>
+              <h3 id="games-heading" className="mb-1 text-base font-semibold tracking-tight">
+                Games and 3D worlds{" "}
+                <span className="ml-1 text-sm font-normal text-muted-foreground">{WORLDS.length}</span>
+              </h3>
+              <p className="mb-5 text-sm text-muted-foreground">
+                Playable in the browser. Most open on Wavedash, no install needed.
+              </p>
+            </BlurFade>
+            <ProjectSortGrid items={WORLD_ITEMS} className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-8">
+              {WORLDS.map((project, i) => (
+                <BlurFade key={project.title} delay={BLUR_FADE_DELAY * 4 + Math.min(i + 1, 8) * 0.05}>
+                  <LabTile {...project} />
+                </BlurFade>
+              ))}
+            </ProjectSortGrid>
+          </section>
         </div>
       </ProjectSortProvider>
     </section>

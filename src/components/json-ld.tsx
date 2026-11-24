@@ -10,7 +10,7 @@ export function JsonLd() {
     familyName: 'Nayak',
     url: DATA.url,
     image: `${DATA.url}/prasen.webp`,
-    jobTitle: 'Full Stack Developer',
+    jobTitle: 'Creative Engineer',
     nationality: {
       '@type': 'Country',
       name: 'India'
@@ -48,15 +48,15 @@ export function JsonLd() {
       'AI Integration'
     ],
     knowsLanguage: ['English', 'Hindi', 'Odia'],
-    description: 'Full Stack Developer specializing in React, Next.js, TypeScript, and Node.js. Building modern web applications and open-source tools.'
+    description: 'Creative engineer. Making code alive: games, films and art built with AI.'
   },
   {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     '@id': `${DATA.url}/#website`,
-    name: 'Prasenjit Nayak - Full Stack Developer',
+    name: 'Prasenjit Nayak - Creative Engineer',
     url: DATA.url,
-    description: 'Portfolio of Prasenjit Nayak - Full Stack Developer specializing in React, Next.js, and TypeScript',
+    description: 'Portfolio of Prasenjit Nayak, a creative engineer making games, films and art with code and AI',
     publisher: {
       '@id': `${DATA.url}/#person`
     }
