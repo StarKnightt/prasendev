@@ -9,87 +9,95 @@
 }
 
 @layer base {
+    /* Paper and ink: an old book page, written in brown-black ink. */
     :root {
-      --background: 0 0% 100%;
-      --foreground: 210 11.1% 3.53%;
+      --background: 40 38% 90%;
+      --foreground: 24 30% 11%;
 
-      --card: 0 0% 100%;
-      --card-foreground: 210 11.1% 3.53%;
+      --card: 42 44% 93%;
+      --card-foreground: 24 30% 11%;
 
-      --popover: 0 0% 100%;
-      --popover-foreground: 210 11.1% 3.53%;
+      --popover: 42 44% 94%;
+      --popover-foreground: 24 30% 11%;
 
-      --primary: 0 0% 9%;
-      --primary-foreground: 0 0% 98%;
+      --primary: 24 30% 12%;
+      --primary-foreground: 42 44% 94%;
 
-      --secondary: 0 0% 96.1%;
-      --secondary-foreground: 0 0% 9%;
+      --secondary: 38 30% 85%;
+      --secondary-foreground: 24 30% 12%;
 
-      --muted: 0 0% 96.1%;
-      --muted-foreground: 0 0% 45.1%;
+      --muted: 38 28% 85.5%;
+      --muted-foreground: 26 18% 34%;
 
-      --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
+      --accent: 38 34% 84%;
+      --accent-foreground: 24 30% 12%;
 
-      --destructive: 0 84.2% 60.2%;
-      --destructive-foreground: 0 0% 98%;
+      --destructive: 4 62% 40%;
+      --destructive-foreground: 42 44% 94%;
 
-      --border: 0 0% 89.8%;
-      --input: 0 0% 89.8%;
-      --ring: 0 0% 3.9%;
+      --border: 32 22% 74%;
+      --input: 32 22% 74%;
+      --ring: 24 30% 20%;
 
-      --radius: 0.5rem;
+      --radius: 0.375rem;
 
-      --color-1: 0 100% 63%;
+      /* inks: oxblood, violet, blue-black, faded teal, olive */
+      --color-1: 4 58% 38%;
+      --color-2: 268 26% 38%;
+      --color-3: 218 42% 30%;
+      --color-4: 186 30% 32%;
+      --color-5: 72 30% 32%;
 
-      --color-2: 270 100% 63%;
+      --ink-link: 218 48% 28%;
+      --paper-grain-opacity: 0.5;
+      --paper-edge: 32 40% 52%;
 
-      --color-3: 210 100% 63%;
-
-      --color-4: 195 100% 63%;
-
-      --color-5: 90 100% 63%;
-
-      --ghibli-element-fill: 210 11.1% 85%; /* Light gray for light mode */
-      --ghibli-element-opacity: 0.6;
+      --ghibli-element-fill: 32 20% 70%;
+      --ghibli-element-opacity: 0.5;
     }
 
+    /* The same book at night: lamp-lit dark paper, cream ink. */
     .dark {
-      --background: 210 11.1% 3.53%;
-      --foreground: 0 0% 98%;
+      --background: 28 14% 8%;
+      --foreground: 40 32% 86%;
 
-      --card: 210 11.1% 3.53%;
-      --card-foreground: 0 0% 98%;
+      --card: 28 14% 10%;
+      --card-foreground: 40 32% 86%;
 
-      --popover: 210 11.1% 3.53%;
-      --popover-foreground: 0 0% 98%;
+      --popover: 28 14% 10%;
+      --popover-foreground: 40 32% 86%;
 
-      --primary: 0 0% 98%;
-      --primary-foreground: 0 0% 9%;
+      --primary: 40 36% 86%;
+      --primary-foreground: 28 14% 9%;
 
-      --secondary: 0 0% 14.9%;
-      --secondary-foreground: 0 0% 98%;
+      --secondary: 28 12% 15%;
+      --secondary-foreground: 40 32% 86%;
 
-      --muted: 0 0% 14.9%;
-      --muted-foreground: 0 0% 63.9%;
+      --muted: 28 12% 15%;
+      --muted-foreground: 34 14% 60%;
 
-      --accent: 0 0% 14.9%;
-      --accent-foreground: 0 0% 98%;
+      --accent: 28 14% 16%;
+      --accent-foreground: 40 32% 88%;
 
-      --destructive: 0 62.8% 30.6%;
-      --destructive-foreground: 0 0% 98%;
+      --destructive: 4 50% 42%;
+      --destructive-foreground: 40 32% 90%;
 
-      --border: 0 0% 14.9%;
-      --input: 0 0% 14.9%;
-      --ring: 0 0% 83.1%;
-      --color-1: 0 100% 63%;
-      --color-2: 270 100% 63%;
-      --color-3: 210 100% 63%;
-      --color-4: 195 100% 63%;
-      --color-5: 90 100% 63%;
+      --border: 30 12% 20%;
+      --input: 30 12% 20%;
+      --ring: 40 30% 70%;
 
-      --ghibli-element-fill: 0 0% 100%; /* White for dark mode */
-      --ghibli-element-opacity: 0.9;
+      --color-1: 6 56% 62%;
+      --color-2: 268 30% 70%;
+      --color-3: 214 46% 70%;
+      --color-4: 182 30% 60%;
+      --color-5: 64 30% 60%;
+
+      --ink-link: 210 50% 76%;
+      --paper-grain-opacity: 0.16;
+      --paper-edge: 30 30% 2%;
+
+      --ghibli-element-fill: 36 20% 60%;
+      --ghibli-element-opacity: 0.4;
     }
 
     html[data-theme-season="halloween"] {
@@ -690,3 +698,44 @@ a:active .lab-flask-bubble { animation: flask-bubble 850ms ease-out backwards; }
     scroll-behavior: auto !important;
   }
 }
+/* ---------- Paper and ink ---------- */
+
+.paper-layer {
+  position: absolute;
+  inset: 0;
+  background-repeat: repeat;
+  mix-blend-mode: multiply;
+  opacity: var(--paper-grain-opacity);
+}
+.paper-fibres { opacity: calc(var(--paper-grain-opacity) * .35); }
+.paper-grain { opacity: calc(var(--paper-grain-opacity) * .55); }
+
+/* foxed, browned edges like a page that has sat in a book for decades */
+.paper-edge {
+  opacity: 1;
+  background:
+    radial-gradient(ellipse 120% 95% at 50% 45%, transparent 55%, hsl(var(--paper-edge) / .22) 88%, hsl(var(--paper-edge) / .42) 100%),
+    linear-gradient(90deg, hsl(var(--paper-edge) / .16), transparent 9%, transparent 91%, hsl(var(--paper-edge) / .16));
+}
+
+.dark .paper-layer { mix-blend-mode: soft-light; }
+.dark .paper-edge { mix-blend-mode: multiply; }
+
+/* ink sits in the paper instead of on top of it: a hair of bleed on every glyph */
+body {
+  text-shadow: 0 0 .7px hsl(var(--foreground) / .28);
+  font-feature-settings: "kern", "liga", "onum";
+  text-rendering: optimizeLegibility;
+}
+.dark body { text-shadow: 0 0 .6px hsl(var(--foreground) / .18); }
+
+h1, h2 { letter-spacing: -0.01em; }
+
+::selection { background: hsl(46 88% 62% / .55); color: inherit; }
+
+/* links in fountain-pen blue-black */
+.prose a, .ink-link { color: hsl(var(--ink-link)); text-decoration-color: hsl(var(--ink-link) / .45); text-underline-offset: 3px; }
+.prose a:hover, .ink-link:hover { text-decoration-color: currentColor; }
+
+/* photos and video posters get printed onto the page rather than glowing on it */
+.dark img:not([data-no-ink]) { filter: brightness(.92) sepia(.06); }

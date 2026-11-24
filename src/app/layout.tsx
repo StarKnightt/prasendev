@@ -4,31 +4,37 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Caveat, Instrument_Serif, Newsreader } from "next/font/google";
 import "./globals.css";
-import { ScrollProgress } from "@/components/scroll-progress";
 import { JsonLd } from "@/components/json-ld";
 import { PageBackground } from "@/components/page-background";
 import { CommandPalette } from "@/components/command-palette";
 import { SoundProvider } from "@/components/sound-provider";
 import { BackToTop } from "@/components/back-to-top";
 import { DomainGuardedAnalytics } from "@/components/domain-guarded-analytics";
-import { SmoothCursor } from "@/components/ui/smooth-cursor";
 import { HALLOWEEN_SEASON_SCRIPT } from "@/lib/season";
 
-const fontSans = localFont({
-  src: [
-    { path: "../fonts/Switzer-Variable.woff2", weight: "100 900", style: "normal" },
-    { path: "../fonts/Switzer-VariableItalic.woff2", weight: "100 900", style: "italic" },
-  ],
+// A book page: Newsreader for the body text, Instrument Serif for the headings,
+// and Caveat for the odd handwritten note in the margins.
+const fontSans = Newsreader({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
   variable: "--font-sans",
   display: "swap",
 });
 
-const fontDisplay = localFont({
-  src: "../fonts/GeneralSans-Semibold.woff2",
-  weight: "600",
+const fontDisplay = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
   variable: "--font-display",
+  display: "swap",
+});
+
+const fontHand = Caveat({
+  subsets: ["latin"],
+  weight: ["500", "700"],
+  variable: "--font-hand",
   display: "swap",
 });
 
@@ -121,7 +127,7 @@ export const metadata: Metadata = {
     "msapplication-TileColor": "#ffffff",
     "msapplication-TileImage": "/favicons/ms-icon-144x144.png",
     "msapplication-config": "/favicons/browserconfig.xml",
-    "theme-color": "#ffffff",
+    "theme-color": "#efe9dc",
   },
 };
 
@@ -135,7 +141,7 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: HALLOWEEN_SEASON_SCRIPT }} />
       </head>
-      <body className={cn(fontSans.variable, fontDisplay.variable, "font-sans antialiased")}>
+      <body className={cn(fontSans.variable, fontDisplay.variable, fontHand.variable, "font-sans antialiased")}>
         {/* Background container */}
         <div className="fixed inset-0 z-[-1]">
           <PageBackground />
@@ -146,7 +152,6 @@ export default function RootLayout({
         <div className="relative z-10 max-w-4xl mx-auto pt-20 sm:pt-24 pb-24 px-6">
           <DomainGuardedAnalytics gaId="G-XVF0SFD4GW" />
           <JsonLd />
-          <ScrollProgress />
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -158,7 +163,6 @@ export default function RootLayout({
                 <Navbar />
                 <CommandPalette />
                 <BackToTop />
-                <SmoothCursor />
               </TooltipProvider>
             </SoundProvider>
           </ThemeProvider>
