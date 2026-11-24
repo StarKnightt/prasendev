@@ -42,7 +42,7 @@ import { Signature } from "@/components/motion/signature";
 import { AvatarDoodles } from "@/components/motion/avatar-doodles";
 
 const BLUR_FADE_DELAY = 0.04;
-const SELECTED_WORK = ["Clawd: Wonder", "PRESS START", "Jungle Trail", "Screentime"];
+const SELECTED_WORK = ["Clawd: Wonder", "PRESS START", "Bay Ride", "Screentime"];
 
 // Brand hover colors for social icons; others fall back to foreground
 const SOCIAL_HOVER_COLORS: Record<string, string> = {
@@ -137,7 +137,7 @@ function Row({ label, children }: { label: string; children: React.ReactNode }) 
 
 // Plain-text description. DATA.summary is markdown and leaks syntax into meta tags
 const HOME_DESCRIPTION =
-  "Creative engineer from Bhubaneswar, India. Making code alive: games, films and art built with AI, like PRESS START, Clawd: Wonder and Jungle Trail. Open to creative engineering and DevRel roles.";
+  "Creative engineer from Bhubaneswar, India. Making code alive: games, films and art built with AI, like PRESS START, Clawd: Wonder and Bay Ride. Open to creative engineering and DevRel roles.";
 
 export const metadata: Metadata = {
   title: DATA.name,
