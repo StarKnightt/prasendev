@@ -7,7 +7,7 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Users, Code2 } from "lucide-react";
+import { Users } from "lucide-react";
 
 const CODEPEN_PROFILE = {
   name: "Prasen",
@@ -73,10 +73,6 @@ export function CodePenHoverCard({ children }: { children: ReactNode }) {
           </p>
           <div className="flex items-center gap-3 pt-0.5">
             <StatPill icon={Users} value={CODEPEN_PROFILE.followers} label="Followers" />
-            <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-              <Code2 className="size-3.5" />
-              <span className="font-medium text-foreground">India</span>
-            </div>
           </div>
         </div>
       </HoverCardContent>
