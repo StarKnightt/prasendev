@@ -27,6 +27,8 @@ export type Project = {
   video?: string;
   poster?: string;
   group?: ProjectGroup;
+  /** Lab entries that are films (watched, not played) go in the Lab's Films section. */
+  film?: boolean;
   play?: ProjectPlay;
 };
 
@@ -464,6 +466,7 @@ export const DATA = {
       dates: "November 2026",
       active: true,
       group: "lab",
+      film: true,
       description:
         "I asked Claude Opus 5.5 to make a film about everything it finds beautiful. Clawd walks onto a page and the camera falls into its eye: a snowflake, a sunflower, starlings, a humpback whale, an aurora, the solar system and a spiral galaxy. Every frame is ink and watercolour drawn in code, and the score is synthesized from scratch, no samples. The post passed 156K+ views and 2.5K+ likes.",
       technologies: [
@@ -889,6 +892,7 @@ export const DATA = {
       dates: "September 2026",
       active: true,
       group: "lab",
+      film: true,
       description:
         "A 2-minute cinematic trailer on the history of video games where every frame and every note is generated in code: GLSL shaders drawn on the GPU, music synthesized in Python, stitched with ffmpeg, no footage, images or samples. Built with Claude Opus 5.5 in Cursor. Reposted by Elon Musk, and the post passed 512K+ views and 4K+ likes.",
       technologies: [
@@ -920,6 +924,7 @@ export const DATA = {
       dates: "September 2026",
       active: true,
       group: "lab",
+      film: true,
       description:
         "I know nothing about motion design, so I gave Claude Opus 5.5 one prompt. It made this reel in a single WebGL page, with easing curves, a tunnel, kinetic type and a sunburst, and synthesized the music from oscillators and noise, no samples. The post passed 15K+ views.",
       technologies: [
