@@ -489,6 +489,42 @@ export const DATA = {
       poster: "/projects/clawd-wonder.webp",
     },
     {
+      title: "Ink Flight",
+      tagline: "Fly a paper plane through a valley drawn in ink and watercolour on old paper.",
+      href: "https://starknightt.github.io/ink-flight/",
+      dates: "November 2026",
+      active: true,
+      group: "lab",
+      play: {
+        url: "https://starknightt.github.io/ink-flight/",
+        mode: "external",
+        note: "Keyboard and mouse. Runs on WebGPU, with WebGL 2 where WebGPU is missing.",
+      },
+      description:
+        "An explorer's sketchbook that has stood up off the page, and you fly through it as a folded white paper plane. Ink-hatched mountains fade into blue haze over a teal river, a pen-drawn town with terracotta roofs, a stone bridge, a windmill, a lighthouse on a cliff and a forest in green ink. The world is flat drawn sheets standing in space like a theatre set, so it has real depth and parallax. Clouds smudge as you fly through them, wind is drawn as pencil strokes, and the late afternoon sun comes through the paper. There is no score and no way to fail. No images, all code: every drawing is generated in code and rendered with three.js on WebGPU. Built with Claude Fable 5.2.",
+      technologies: [
+        "Three.js",
+        "WebGPU",
+        "JavaScript",
+        "Vite",
+        "Web Audio API",
+        "Claude Fable 5.2",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://starknightt.github.io/ink-flight/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/StarKnightt/ink-flight",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/projects/ink-flight.webp",
+    },
+    {
       title: "Summer Festival",
       tagline: "A seaside town on the night of its summer festival. Five stalls to play, then fireworks over the sea.",
       href: "https://wavedash.com/games/summer-festival",
