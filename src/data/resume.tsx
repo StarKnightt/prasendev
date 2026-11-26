@@ -489,6 +489,45 @@ export const DATA = {
       poster: "/projects/clawd-wonder.webp",
     },
     {
+      title: "Sky Islands",
+      tagline: "Floating islands above a sea of clouds at sunset. Fly between them, past waterfalls and through the grass.",
+      href: "https://wavedash.com/games/sky-islands",
+      dates: "November 2026",
+      active: true,
+      group: "lab",
+      play: {
+        url: "https://wavedash.com/games/sky-islands",
+        mode: "external",
+        note: "Desktop GPU, keyboard and mouse. Quality steps down by itself on slower GPUs.",
+      },
+      description:
+        "Floating islands above a sea of clouds at sunset, in one HTML file. You are the camera: fly between the islands, down the waterfalls into the mist and low over the meadows. The sky is a single-scattering atmosphere baked once into a lookup table, and the clouds are a raymarched volume, self-shadowed and shadowed by the islands. Each island's rim is a real soil profile with an undercut lip, hanging roots and wet rock by the falls. Streams run from ponds to the lip and tear into ropes, veils and spray as they fall. About a million blades of grass sway in gusts that cross the meadow in bands, with trees, a cottage with chimney smoke, a flock of birds, and wind, water and birdsong synthesized with Web Audio. Everything except three.js is generated in code at load: no images, textures, models or audio files. Built with Claude Fable 5.2.",
+      technologies: [
+        "Three.js",
+        "GLSL",
+        "Web Audio API",
+        "Claude Fable 5.2",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://wavedash.com/games/sky-islands",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/StarKnightt/sky-islands",
+          icon: <Icons.github className="size-3" />,
+        },
+        {
+          type: "Launch post",
+          href: "https://x.com/prasenx/status/2125637810011201981",
+          icon: <Icons.x className="size-3" />,
+        },
+      ],
+      image: "/projects/sky-islands.webp",
+    },
+    {
       title: "Ink Flight",
       tagline: "Fly a paper plane through a valley drawn in ink and watercolour on old paper.",
       href: "https://starknightt.github.io/ink-flight/",
@@ -520,6 +559,11 @@ export const DATA = {
           type: "Source",
           href: "https://github.com/StarKnightt/ink-flight",
           icon: <Icons.github className="size-3" />,
+        },
+        {
+          type: "Launch post",
+          href: "https://x.com/prasenx/status/2123467881170243808",
+          icon: <Icons.x className="size-3" />,
         },
       ],
       image: "/projects/ink-flight.webp",
