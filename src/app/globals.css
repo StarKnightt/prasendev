@@ -819,9 +819,10 @@ article.prose > h1:first-child, .prose > h1:first-child { display: none; }
 @keyframes idle-twinkle { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(.55); opacity: .5; } }
 @keyframes idle-clap { 0%, 70%, 100% { transform: rotate(0); } 78% { transform: rotate(-12deg); } 86% { transform: rotate(0); } }
 
-/* Afternoon light on the paper (components/sunlight.tsx). A warm band of light and
-   the blurred shadow of a branch from the top-right, multiplied into the paper so it
-   reads as a shadow, not a sticker. In dark mode the branch turns to faint moonlight. */
+/* Afternoon light on the paper (components/sunlight.tsx), on every page: blurred plant
+   shadows multiplied into the paper so they read as shadows, not stickers, and soft
+   patches of window light. In dark mode the plants turn to faint moonlight. */
+body { position: relative; }
 .sunlight-band {
   position: absolute;
   top: -260px;
@@ -832,40 +833,69 @@ article.prose > h1:first-child, .prose > h1:first-child { display: none; }
   filter: blur(36px);
   mix-blend-mode: soft-light;
 }
-.sunlight-branch {
+.shadow-plant {
+  --w-now: min(var(--w), var(--w-max));
+  --off-now: var(--off);
   position: absolute;
-  top: -24px;
-  right: -40px;
-  width: min(60vw, 780px);
+  width: var(--w-now);
   height: auto;
   color: hsl(26 40% 20%);
   opacity: .17;
   mix-blend-mode: multiply;
   filter: blur(2.4px);
-  transform-origin: 100% 0;
+  rotate: var(--tilt);
+  scale: var(--flip) 1;
   animation: sunlight-sway 11s ease-in-out infinite;
   will-change: transform;
 }
+.shadow-plant[data-sway="slower"] { animation-duration: 15s; animation-delay: -4s; }
+.shadow-plant[data-sway="none"] { animation: none; }
+.shadow-plant[data-kind="reed"] { opacity: .26; filter: blur(1.2px); animation-name: sunlight-sway-reed; animation-duration: 8s; }
 @keyframes sunlight-sway {
   0%, 100% { transform: rotate(-.7deg); }
   45% { transform: rotate(1.1deg) translateY(4px); }
+}
+@keyframes sunlight-sway-reed {
+  0%, 100% { transform: rotate(-1.6deg); }
+  50% { transform: rotate(2deg); }
+}
+/* window light: two panes of blind slats thrown at an angle */
+.window-light {
+  position: absolute;
+  display: flex;
+  gap: 18px;
+  width: min(46vw, 560px);
+  height: 380px;
+  transform: rotate(-10deg) skewX(-16deg);
+  filter: blur(6px);
+  mix-blend-mode: soft-light;
+  opacity: .85;
+  -webkit-mask-image: radial-gradient(closest-side, #000 55%, transparent);
+  mask-image: radial-gradient(closest-side, #000 55%, transparent);
+}
+.window-light span {
+  flex: 1;
+  background: repeating-linear-gradient(180deg, hsl(44 100% 90% / .9) 0 22px, transparent 22px 36px);
 }
 .dark .sunlight-band {
   background: linear-gradient(118deg, transparent 34%, hsl(212 60% 80% / .18) 48%, transparent 66%);
   mix-blend-mode: screen;
 }
-.dark .sunlight-branch {
+.dark .shadow-plant {
   color: hsl(214 35% 72%);
   opacity: .09;
   mix-blend-mode: screen;
 }
+.dark .window-light { mix-blend-mode: screen; opacity: .1; }
+.dark .window-light span { background: repeating-linear-gradient(180deg, hsl(212 60% 85%) 0 22px, transparent 22px 36px); }
 @media (max-width: 640px) {
-  /* on phones the branch is big and reaches over the hero text; it is a shadow, so that is fine */
-  .sunlight-branch { top: -10px; right: -38vw; width: 135vw; opacity: .2; }
-  .dark .sunlight-branch { opacity: .08; }
+  /* on phones the shadows are big and reach over the text; they are shadows, so that is fine */
+  .shadow-plant { --w-now: var(--w-sm); --off-now: var(--off-sm); opacity: .2; }
+  .dark .shadow-plant { opacity: .08; }
+  .window-light { width: 90vw; height: 300px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .sunlight-branch { animation: none; }
+  .shadow-plant { animation: none; }
 }
 
 /* Firefox paints SVG filters, blurred text shadows and blurred blend layers on the
@@ -876,5 +906,6 @@ article.prose > h1:first-child, .prose > h1:first-child { display: none; }
   body, .dark body { text-shadow: none; }
   [filter^="url(#nib-"], [filter^="url(#ring-"] { filter: none; }
   [filter^="url(#wash-"], [filter^="url(#wc-"] { filter: blur(1px); }
-  .sunlight-branch { animation: none; will-change: auto; }
+  .shadow-plant { animation: none; will-change: auto; }
+  .window-light { filter: none; }
 }
