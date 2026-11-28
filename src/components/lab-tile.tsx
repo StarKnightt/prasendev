@@ -9,7 +9,8 @@ import { PlayButton } from "./play-button";
 import { VideoPlayerModal } from "./video-player-modal";
 import type { Project } from "@/data/resume";
 
-export function LabTile({ title, href, tagline, description, technologies, links, image, video, play }: Project) {
+export function LabTile({ title, href, tagline, description, technologies, links, image, video, play, art }: Project) {
+  const aspect = art ? "aspect-[4/5]" : "aspect-video";
   const [isModalOpen, setIsModalOpen] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const model = technologies.find((t) => t.startsWith("Claude"));
@@ -48,7 +49,7 @@ export function LabTile({ title, href, tagline, description, technologies, links
             muted
             playsInline
             preload="none"
-            className="pointer-events-none aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            className={`pointer-events-none ${aspect} w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]`}
           />
           <div className="absolute inset-0 flex items-center justify-center bg-black/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
             <div className="rounded-full border border-white/20 bg-black/50 p-3 shadow-xl backdrop-blur-sm">
@@ -69,7 +70,7 @@ export function LabTile({ title, href, tagline, description, technologies, links
             width={640}
             height={360}
             sizes="(min-width: 640px) 320px, 100vw"
-            className="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            className={`${aspect} w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]`}
           />
         </Link>
       )}
