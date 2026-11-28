@@ -489,6 +489,85 @@ export const DATA = {
       poster: "/projects/clawd-wonder.webp",
     },
     {
+      title: "Paper Snow",
+      tagline: "The morning after the first snow, in a little town made entirely of paper. Build a snowman and wake the town.",
+      href: "https://starknightt.github.io/paper-snow/",
+      dates: "November 2026",
+      active: true,
+      group: "lab",
+      play: {
+        url: "https://starknightt.github.io/paper-snow/",
+        mode: "external",
+        note: "Keyboard and mouse, or touch on a phone.",
+      },
+      description:
+        "You are a paper kid in a red scarf in a town made of paper, the morning after the first snow. Leave footprints, roll three snowballs into a snowman, find him a carrot, two sticks and a hat, throw snowballs for the paper dog to chase, warm up by the fire and ride the sled down the hill. When the snowman is finished the town wakes up: windows light, paper birds fly and the sun comes over the hill. The whole game is one HTML file of 98 KB. It downloads no images, models, fonts or sounds: every house, tree and footprint is built from cut and folded sheets in hand-written WebGL2 when the page opens, and every sound, from the crunch of snow to the music box, is synthesised live. Built with Claude Fable 5.2.",
+      technologies: [
+        "WebGL2",
+        "JavaScript",
+        "Web Audio API",
+        "Claude Fable 5.2",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://starknightt.github.io/paper-snow/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/StarKnightt/paper-snow",
+          icon: <Icons.github className="size-3" />,
+        },
+        {
+          type: "Launch post",
+          href: "https://x.com/prasenx/status/2126314965833560130",
+          icon: <Icons.x className="size-3" />,
+        },
+      ],
+      image: "/projects/paper-snow.webp",
+    },
+    {
+      title: "Firefly Jar",
+      tagline: "A summer evening in a meadow with a glass jar. Catch twenty fireflies before night falls, then let them go.",
+      href: "https://starknightt.github.io/firefly-jar/",
+      dates: "November 2026",
+      active: true,
+      group: "lab",
+      play: {
+        url: "https://starknightt.github.io/firefly-jar/",
+        mode: "external",
+        note: "Keyboard and mouse, or touch on a phone. About five minutes, sound on.",
+      },
+      description:
+        "One summer evening when you were eight, standing in a meadow at the edge of a small town with a glass jar in your hands. Each firefly you catch makes the jar glow brighter and brings night a little closer, and after dark they get shy. The whole evening runs on one number from golden hour to night: the sun, sky, haze, crickets and the farmhouse lights all follow it. About 260,000 tufts of grass sway and part around your legs, the jar's light spills on your fingers and the grass, and a music box melody adds layers as the jar fills. Three.js on the WebGPU renderer with TSL shaders, with a WebGL 2 fallback for phones. Built with Claude Fable 5.2.",
+      technologies: [
+        "Three.js",
+        "WebGPU",
+        "TSL",
+        "Web Audio API",
+        "Claude Fable 5.2",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://starknightt.github.io/firefly-jar/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/StarKnightt/firefly-jar",
+          icon: <Icons.github className="size-3" />,
+        },
+        {
+          type: "Launch post",
+          href: "https://x.com/prasenx/status/2125980702336549056",
+          icon: <Icons.x className="size-3" />,
+        },
+      ],
+      image: "/projects/firefly-jar.webp",
+    },
+    {
       title: "Sky Islands",
       tagline: "Floating islands above a sea of clouds at sunset. Fly between them, past waterfalls and through the grass.",
       href: "https://wavedash.com/games/sky-islands",
@@ -567,6 +646,46 @@ export const DATA = {
         },
       ],
       image: "/projects/ink-flight.webp",
+    },
+    {
+      title: "Shinobi Duel",
+      tagline: "A Sekiro-style sword duel on a snowy castle rooftop at dusk. Deflect, break his posture, land the deathblow.",
+      href: "https://wavedash.com/games/shinobi-duel",
+      dates: "November 2026",
+      active: true,
+      group: "lab",
+      play: {
+        url: "https://wavedash.com/games/shinobi-duel",
+        mode: "external",
+        note: "Desktop Chrome or Edge, keyboard and mouse. Achievements and a fastest-victory leaderboard on Wavedash.",
+      },
+      description:
+        "One sword duel in a browser tab: a kunoichi against a samurai general on a snowy castle rooftop at dusk. You win by deflecting his blade until his posture breaks, not by whittling down a health bar, then you drive the deathblow home. He gets up once, angrier. Guard, deflect, step dodge, mikiri a thrust, jump off his head, and use a cursed blade, firecrackers and a crow step. A full remake of the duel I posted two months earlier. The characters come from Mixamo and the textures from Poly Haven; the Blender-built arena, the combat and the synthesised audio are code. Built with Claude Opus 5.5.",
+      technologies: [
+        "Three.js",
+        "TypeScript",
+        "Blender",
+        "Web Audio API",
+        "Claude Opus 5.5",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://wavedash.com/games/shinobi-duel",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/StarKnightt/shinobi-duel",
+          icon: <Icons.github className="size-3" />,
+        },
+        {
+          type: "Launch post",
+          href: "https://x.com/prasenx/status/2123150083499979013",
+          icon: <Icons.x className="size-3" />,
+        },
+      ],
+      image: "/projects/shinobi-duel.webp",
     },
     {
       title: "Summer Festival",
