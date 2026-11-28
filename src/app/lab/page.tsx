@@ -43,9 +43,11 @@ const REVEAL_DELAY = 0.04;
 
 const LAB: readonly Project[] = DATA.projects.filter((p) => p.group === "lab");
 const FILMS = LAB.filter((p) => p.film);
-const WORLDS = LAB.filter((p) => !p.film);
+const ART = LAB.filter((p) => p.art);
+const WORLDS = LAB.filter((p) => !p.film && !p.art);
 const toSortItems = (list: readonly Project[]) => list.map((p) => ({ key: p.title, title: p.title, dates: p.dates }));
 const FILM_ITEMS = toSortItems(FILMS);
+const ART_ITEMS = toSortItems(ART);
 const WORLD_ITEMS = toSortItems(WORLDS);
 
 export default function LabPage() {
@@ -63,7 +65,7 @@ export default function LabPage() {
               <ProjectSortSelect label="Sort the Lab" />
             </div>
             <p className="mb-10 mt-3 max-w-2xl text-muted-foreground">
-              Videos, browser games and 3D worlds I directed AI to build and shared on X. Every texture, mesh and sound is
+              Videos, art, browser games and 3D worlds I directed AI to build and shared on X. Every texture, mesh and sound is
               generated in code unless stated. For things people pay for or use every day, see{" "}
               <Link href="/projects" className="underline underline-offset-4 hover:text-foreground">
                 projects
@@ -83,6 +85,24 @@ export default function LabPage() {
             </Reveal>
             <ProjectSortGrid items={FILM_ITEMS} className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-8">
               {FILMS.map((project, i) => (
+                <Reveal key={project.title} delay={REVEAL_DELAY * 3 + (i + 1) * 0.05}>
+                  <LabTile {...project} />
+                </Reveal>
+              ))}
+            </ProjectSortGrid>
+          </section>
+
+          <section id="art" aria-labelledby="art-heading" className="mt-14">
+            <Reveal delay={REVEAL_DELAY * 3}>
+              <h2 id="art-heading" className="mb-1 text-2xl">
+                Art <span className="ml-1 font-type text-sm text-muted-foreground">{ART.length}</span>
+              </h2>
+              <p className="mb-5 text-sm text-muted-foreground">
+                Animations painted in code, stroke by stroke, with the music made from scratch. Hover to preview.
+              </p>
+            </Reveal>
+            <ProjectSortGrid items={ART_ITEMS} className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-8 sm:gap-x-6">
+              {ART.map((project, i) => (
                 <Reveal key={project.title} delay={REVEAL_DELAY * 3 + (i + 1) * 0.05}>
                   <LabTile {...project} />
                 </Reveal>

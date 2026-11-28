@@ -29,6 +29,8 @@ export type Project = {
   group?: ProjectGroup;
   /** Lab entries that are films (watched, not played) go in the Lab's Videos section. */
   film?: boolean;
+  /** Lab entries that are hand-drawn style animations go in the Lab's Art section, shown as portrait tiles. */
+  art?: boolean;
   play?: ProjectPlay;
 };
 
@@ -487,6 +489,64 @@ export const DATA = {
       image: "/projects/clawd-wonder.webp",
       video: "https://video.gumlet.io/6745e593080b60408ca085f7/6b05355245faabbfced162a7/download.mp4",
       poster: "/projects/clawd-wonder.webp",
+    },
+    {
+      title: "Lighthouse",
+      tagline: "A lighthouse at night, a child with a lantern and a boat coming home. Painted and scored in code.",
+      href: "https://x.com/prasenx/status/2125946621209030739",
+      dates: "November 2026",
+      active: true,
+      group: "lab",
+      art: true,
+      description:
+        "I asked Claude Fable 5.2 to animate something it loves, and it picked a lighthouse. A child in a red coat waits on the shore with a lantern while the beam swings over the sea, until a small sailing boat comes in through the light and someone steps off to hold her. Every frame is drawn in code as soft pastel, chalk, charcoal and coloured pencil on deep blue paper, and the music box and harp score and the sea are synthesised from scratch, no samples.",
+      technologies: [
+        "Canvas 2D",
+        "WebGL",
+        "JavaScript",
+        "Python",
+        "FFmpeg",
+        "Claude Fable 5.2",
+      ],
+      links: [
+        {
+          type: "Watch full video on X",
+          href: "https://x.com/prasenx/status/2125946621209030739",
+          icon: <Icons.x className="size-3" />,
+        },
+      ],
+      image: "/projects/lighthouse.webp",
+      video: "https://video.gumlet.io/6745e593080b60408ca085f7/6b0a8d6bc2c1ec3b5dea17d0/download.mp4",
+      poster: "/projects/lighthouse.webp",
+    },
+    {
+      title: "Kite",
+      tagline: "A gust takes a child's kite, and the little dog brings it back. A story Claude picked itself.",
+      href: "https://x.com/prasenx/status/2124867289266917718",
+      dates: "November 2026",
+      active: true,
+      group: "lab",
+      art: true,
+      description:
+        "Claude Fable 5.2 painted this animation and picked the story itself. A child flies a red kite on a windy hill until a gust tears it away over the hill, and then the little dog comes running back with the line in its mouth, flying the kite, and the two of them sit and watch it together. Every frame is drawn in code as soft pastel, coloured pencil and charcoal on warm buff paper, and the waltz, the wind and the dog's barks are synthesised from scratch, no samples.",
+      technologies: [
+        "Canvas 2D",
+        "WebGL",
+        "JavaScript",
+        "Python",
+        "FFmpeg",
+        "Claude Fable 5.2",
+      ],
+      links: [
+        {
+          type: "Watch full video on X",
+          href: "https://x.com/prasenx/status/2124867289266917718",
+          icon: <Icons.x className="size-3" />,
+        },
+      ],
+      image: "/projects/kite.webp",
+      video: "https://video.gumlet.io/6745e593080b60408ca085f7/6b0a8d6bc2c1ec3b5dea17ce/download.mp4",
+      poster: "/projects/kite.webp",
     },
     {
       title: "Paper Snow",
